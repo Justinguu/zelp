@@ -1,8 +1,8 @@
-Welcome to the Klickr_Clone!
+Welcome to the zelp!
 
-Klickr Project is a clone of Flickr that is centered around sharing images and looking at images relatable to you. Users can browse images to find inspiration for themselves or to use images for personal projects.
+zelp Project is a clone of Flickr that is centered around sharing images and looking at images relatable to you. Users can browse images to find inspiration for themselves or to use images for personal projects.
 
-Link to test out website: https://klickr-group.herokuapp.com/
+Link to test out website: https://app-zelp.herokuapp.com/
 
 Tech Stack
 Frontend:
@@ -11,14 +11,14 @@ Frontend:
   ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 SQLAlchemy
-How to run Klickr Locally
-Clone/download the repo https://github.com/ChzFlvrHrse/Klickr-Group.git
+How to run zelp Locally
+Clone/download the repo https://github.com/ChzFlvrHrse/zelp-Group.git
 
-cd into Klickr-group folder and run pipenv install
+cd into zelp-group folder and run pipenv install
 
-Open two terminal paths for both Klickr-group and react-app.
+Open two terminal paths for both zelp and react-app.
 
-Under Klickr run pipenv shell then flask run, for react-app run npm install
+Under zelp run pipenv shell then flask run, for react-app run npm install
 
 Create a .env file under the root of the backend folder with the following contents:
 
