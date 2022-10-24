@@ -1,0 +1,359 @@
+Get all businesses
+Require Authentication: true
+Method: GET
+URL: api/businesses
+Body: none
+Successful Response
+Status Code: 200
+
+Headers:Content-Type: application/json
+Body:
+
+  {
+    "businesses": 
+      "1":{
+        "id": 1,
+        "ownerId":1,
+        "name":  "May",
+        "phone": "4443332222",
+        "description": "Yummy",
+        "email": "HelloWorld1@gmail.com",
+        "address": "320 Damns street",
+        "city": "Atlanta",
+        "state": "GA",
+        "zipcode": "30044",
+        "country": "United States",
+        "created_at": "2019-10-10",
+        "updated_at": "2019-10-10"
+        "images": "previewImageUrl"
+      }
+    }
+}
+Get details of one business by businessId
+
+Require Authentication: true
+
+
+
+Method: GET
+URL: api/business/:businessId
+Body: none
+Successful Response
+Status Code: 200
+Headers: Content-Type: application/json
+Body:
+  "businessesId": {
+      "1":{
+        "id": 1,
+        "ownerId":1,
+        "name":  "May",
+        "phone": "4443332222",
+        "description": "Yummy",
+        "email": "HelloWorld1@gmail.com",
+        "address": "320 Damns street",
+        "city": "Atlanta",
+        "state": "GA",
+        "zipcode": "30044",
+        "country": "United States",
+        "created_at": "2019-10-10",
+        "images": "previewImageUrl"
+      }
+Error response: Business not in our database
+Status Code: 404
+Headers:Content-Type: application/json
+Body:
+
+{
+  "message": "Business couldn't be found",
+  "statusCode": 404
+}
+Create a Business
+Creates and returns a new Business
+Require Authentication: true
+ Method: POST
+URL: api/businesses/create
+Headers:Content-Type: application/json
+Body:
+        {
+        "id": 1,
+        "ownerId":1,
+        "name":  "May",
+        "phone": "4443332222",
+        "description": "Yummy",
+        "email": "HelloWorld1@gmail.com",
+        "address": "320 Damns street",
+        "city": "Atlanta",
+        "state": "GA",
+        "zipcode": "30044",
+        "country": "United States",
+        "images": "previewImageUrl"
+      }
+Successful Response
+Status Code: 201
+Headers:Content-Type: application/json
+Body:
+{
+     
+        "name":  "May",
+        "phone": "4443332222",
+        "description": "Yummy",
+        "email": "HelloWorld1@gmail.com",
+        "address": "320 Damns street",
+        "city": "Atlanta",
+        "state": "GA",
+        "zipcode": "30044",
+        "country": "United States",
+        "images": "previewImageUrl"
+}
+Error response: Body validation error
+
+Status Code: 400
+
+Headers:Content-Type: application/json
+Body:
+
+{
+  "message": "Validation Error",
+  "statusCode": 400,
+  "errors": {
+    "name": "Name is required", required
+        "phone": "111-333-4444, required
+        "email": "HelloWorld1@gmail.com", required
+        "address": "Valid address is required", required
+        "description": "Description must be less than 600 characters", required
+  }
+}
+Edit an existing Business
+Updates and returns an existing business
+Require Authentication: true
+
+Method: PUT
+URL: /api/businesses/:businessId
+Headers:
+Content-Type: application/json
+Body:
+  {
+        "name":  "May",prefilled
+        "phone": "4443332222",prefilled
+        "description": "Yummy",prefilled
+        "email": "HelloWorld1@gmail.com",prefilled
+        "address": "320 Damns street",prefilled
+        "city": "Atlanta",prefilled
+        "state": "GA",prefilled
+        "zipcode": "30044",prefilled
+        "country": "United States",prefilled
+        "images": "previewImageUrl",prefilled
+      }
+Successful Response
+Status Code: 200
+Headers:
+Content-Type: application/json
+Body:
+ "name": "Name is required", required
+"phone": "111-333-4444, required
+"email": "HelloWorld1@gmail.com", required
+"address": "Valid address is required", required
+"description": "Description must be less than 600 characters", required: Body validation error
+
+Status Code: 400
+
+Headers:
+
+Content-Type: application/json
+Body:
+
+{
+  "message": "Validation Error",
+  "statusCode": 400,
+      "errors": {
+    "name": "Name is required",
+       "name": "Example 2",
+        "phone": "28798338",
+        "email": "business11!@gmail.com",
+        "address": "Valid address is required",
+        "description": "Description must be less than 600 characters"
+  }
+}
+Error response: Couldn't find busineess with credetinals provided
+
+Status Code: 404
+Headers:Content-Type: application/json
+Body:
+{
+  "message": "Business not found in database",
+  "statusCode": 404
+}
+Deletes an existing Business
+Require Authentication: true
+
+Method: DELETE
+URL: api/businesses/:businessId
+Successful Response
+Status Code: 200
+Headers:
+Content-Type: application/json
+Body:
+{
+  "message": "Successfully deleted",
+  "statusCode": 200
+}
+Error response: Business not found in database
+Status Code: 404
+Headers:
+Content-Type: application/json
+Body:
+
+{
+  "message": "Business not found in database",
+  "statusCode": 404
+}
+Reviews
+Get all reviews for the business
+Require Authentication: true
+
+Method: GET
+URL: api/businesses/:businessId/reviews
+Body: none
+Successful Response
+Status Code: 200
+Headers:
+Content-Type: application/json
+Body:
+  {
+    "reviews": {
+      "1":{
+        "id": 1,
+        "user_id":2,
+        "business_id": "1",
+        "review": "Great place to eat was very clean and the food was great",
+        "rating": "5",
+      }
+    }
+}
+
+
+Get reviews of one business by businessId
+Require Authentication: true
+Method: GET
+URL: api/reviews/user
+Body: none
+Successful Response
+
+Status Code: 200
+
+Headers:
+
+Content-Type: application/json
+Body:
+
+    "2":{
+        "id": 2,
+        "user_id":2,
+        "business_id": "2",
+        "review": "Great place to eat was very clean and the food was great",
+        "rating": "2",
+      }
+Error response: Couldn't find the Review with the specified id
+
+Status Code: 404
+
+Headers:
+
+Content-Type: application/json
+
+Body:
+
+{
+  "message": "Review for user couldn't be found",
+  "statusCode": 404
+}
+Create a Review
+Require Authentication: true
+Method: POST
+URL: api/businesses/:businessId/reviews
+Headers:
+Content-Type: application/json
+Body:
+       {
+          "review": "Great place to eat was very clean and the food was great",
+          "rating": "5",
+        }
+Successful Response
+Status Code: 200
+Headers:
+Content-Type: application/json
+Body:
+
+      {
+       "id": 2,
+       "user_id":2,
+       "business_id": "1",
+      "review": "Great place to eat was very clean and the food was great",
+          "rating": "5",
+      }
+Error response: Body validation error
+Status Code: 400
+Headers:
+Content-Type: application/json
+Body:
+
+{
+  "message": "Validation Error",
+  "statusCode": 400,
+  "errors": {
+        "review": "Review can not be more than 600 characters",
+        "rating": "Rating must be between 1-5",
+      }
+
+  }
+}
+Edit an existing review
+Require Authentication: true
+Method: PUT
+URL: /api/review/:reviewId
+Headers:
+Content-Type: application/json
+Body:
+    {
+       "review": "Great place to eat was very clean and the food was great",
+       "rating": "5",
+      }
+Successful Response
+Status Code: 200
+Headers:
+Content-Type: application/json
+Body:
+      {
+       "id": 2,
+       "user_id":3,
+       "business_id": "1",
+       "review": "Great place to eat was very clean and the food was great",
+       "rating": "5",
+      }
+      
+
+
+Deletes an existing Review
+Require Authentication: true
+Method: DELETE
+URL: api/reviews/:reviewId
+Successful Response
+Status Code: 200
+Headers:Content-Type: application/json
+Body:
+{
+  "message": "Successfully deleted",
+  "statusCode": 200
+}
+Error response: Couldn't find a review with that id
+Status Code: 404
+
+Headers:
+
+Content-Type: application/json
+Body:
+
+{
+  "message": "Review not found in database",
+  "statusCode": 404
+}
