@@ -28,7 +28,7 @@ def business(id):
 
 # create a new business
 @business_routes.route('/new', methods=['POST'])
-@login_required
+# @login_required
 def new_business():
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -47,8 +47,8 @@ def new_business():
             lng=form.data['lng'],
             description=form.data['description'],
             price=form.data['price'],
-            image=form.data['image'],
-            created_at=form.data['created_at']
+          
+            
         )
         db.session.add(new_business)
         db.session.commit()

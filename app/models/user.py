@@ -40,7 +40,7 @@ class User(db.Model, UserMixin):
             'lastName': self.last_name,
             'username': self.username,
             'email': self.email,
-            'profileImage': self.profile_image,
+            'profileImage': self.profile_Image,
             'createdAt': self.created_at,
             'reviews': [review.to_dict() for review in self.reviews],
             'businesses': [business.to_dict() for business in self.businesses]
