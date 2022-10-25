@@ -1,5 +1,4 @@
 
-from unicodedata import category
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, IntegerField,SelectField, SubmitField
 from wtforms.validators import DataRequired
