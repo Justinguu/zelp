@@ -46,7 +46,7 @@ class Business(db.Model):
         "zip_code": self.zip_code,
         "description": self.description,
         "price": self.price,
-        "avgRating": self.avgRating,
+        "preview_image": self.preview_image,
         "created_at": self.created_at,
         "updated_at": self.updated_at,
     }

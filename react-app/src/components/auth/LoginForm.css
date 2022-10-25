@@ -1,0 +1,55 @@
+#loginPic{
+    display: flex;
+    height:16rem;
+    width:16rem;
+    right: 90%;
+ 
+}
+
+.login-font {
+    color: rgb(211,34,34);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.login-container{
+    display:flex;
+    justify-content: center;
+    height:100%;
+    width:100%;
+
+}
+
+.login-form-container{
+    display:flex;
+    flex-direction: column;
+   
+}
+
+
+.login-button {
+    height: 2.2rem;
+    width: 15.0rem;
+    color: white;
+    background-color: #348fdc;
+    margin-top: 3px;
+    margin-bottom: 14px;
+    border-radius: .3rem;
+    border: solid 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.demo-button {
+    height: 2.2rem;
+    width: 15.0rem;
+    color: white;
+    background-color: #348fdc;
+    margin-top: 3px;
+    margin-bottom: 8px;
+   
+    border-radius: .3rem;
+    border: solid 0;
+    font-size: 1rem;
+    font-weight: bold;
+}

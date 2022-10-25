@@ -1,6 +1,6 @@
 from xmlrpc.client import DateTime
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
@@ -21,8 +21,8 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
     
 def valid_image(form, field):
-    previewImageUrl = field.data
-    if previewImageUrl == None or not previewImageUrl.startswith("https://") or not previewImageUrl.startswith("http://"):
+    profileImage = field.data
+    if profileImage == None or not profileImage.startswith("https://") or not profileImage.startswith("http://"):
         field.data = "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png"
 
 

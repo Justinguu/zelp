@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(50), nullable=False)
-    profile_Image = db.Column(db.String(255), nullable=False)
+    profileImage = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
@@ -40,7 +40,7 @@ class User(db.Model, UserMixin):
             'lastName': self.last_name,
             'username': self.username,
             'email': self.email,
-            'profileImage': self.profile_Image,
+            'profileImage': self.profileImage,
             'createdAt': self.created_at,
             'reviews': [review.to_dict() for review in self.reviews],
             'businesses': [business.to_dict() for business in self.businesses]

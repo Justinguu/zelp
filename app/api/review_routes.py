@@ -24,7 +24,7 @@ def one_review(id):
 
 # create a new review
 @review_routes.route('/new', methods=['POST'])
-# @login_required
+@login_required
 def new_review():
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -33,7 +33,7 @@ def new_review():
             user_id = form.data['user_id'],
             business_id=form.data['business_id'],
             review=form.data['review'],
-            avgRating=form.data['avgRating'],
+            avg_rating=form.data['avg_rating'],
         )
 
         db.session.add(review)
@@ -44,7 +44,7 @@ def new_review():
     
     # edit a review
 @review_routes.route('/<int:id>', methods=['PUT'])
-# @login_required
+@login_required
 def edit_review(id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -61,7 +61,7 @@ def edit_review(id):
     
     # delete a review
 @review_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
+@login_required
 def delete_review(id):
     review = Review.query.get(id)
     db.session.delete(review)

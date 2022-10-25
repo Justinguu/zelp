@@ -1,0 +1,60 @@
+.first-last-input:hover {
+    box-shadow: 0 0 2px rgb(44, 44, 231);
+    width: 19.3rem;
+    
+}
+
+.signup-whole-container {
+    display: flex;
+    flex-direction: column;
+    
+    height: 50%;
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+}
+
+.zelp-signup {
+    color: blue;
+    font-weight:600;
+    font-size: 1.3rem;
+    margin-left: 5rem;
+    margin-bottom: 2rem;
+    width: 20vw
+}
+.signup-pic-container{
+    margin-right: 5rem;
+    
+}
+.signup-picture {
+    right: 100px;
+}
+
+.signup-form {
+    margin-left: 2rem;
+    width: 30vw;
+}
+
+div.signup-input {
+    width: 20rem;
+}
+label.signupinput {
+    width: 20rem;
+}
+
+.signup-label {
+    width: 20rem;
+}
+
+.demo-button{
+    height: 2.2rem;
+    width: 15.0rem;
+    color: white;
+    background-color: #348fdc;
+    margin-top: 3px;
+    margin-bottom: 8px;
+   
+    border-radius: .3rem;
+    border: solid 0;
+    font-size: 1rem;
+    font-weight: bold;
+}

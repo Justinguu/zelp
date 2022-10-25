@@ -28,7 +28,7 @@ def one_business(id):
 
 # create a new business
 @business_routes.route('/new', methods=['POST'])
-# @login_required
+@login_required
 def new_business():
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -65,7 +65,7 @@ def new_business():
 
 # edit an existing business
 @business_routes.route('/<int:id>/edit', methods=['PUT'])
-# @login_required
+@login_required
 def edit_business(id):
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -94,7 +94,7 @@ def edit_business(id):
         
 # delete an existing business if you are the owner
 @business_routes.route('/<int:id>/delete', methods=['DELETE'])
-# @login_required
+@login_required
 def delete_business(id):
     business = Business.query.get(id)
     db.session.delete(business)
