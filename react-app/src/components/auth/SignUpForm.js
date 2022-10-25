@@ -73,6 +73,10 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const updateZipCode = (e) => {
+    setZipCode(e.target.value);
+  };
+
   const updateProfileImage = (e) => {
     setProfileImage(e.target.value);
   }
@@ -83,11 +87,14 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div className='signup-pic-container'>  <img src={loginPic} alt='' className='signup-picture'></img></div>
+      <div className='signup-pic-container'>
+          <img src={loginPic} alt='' className='signup-picture'></img>
+          </div>
     <div className='signup-whole-container'>
       <div className='zelp-signup'>Sign up for Zelp</div>
     
-   
+   <div className="signup-picture">
+    <img className='picture2' src={loginPic} alt='' />
     <form  className='signup-form' onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
@@ -169,6 +176,20 @@ const SignUpForm = () => {
         ></input>
          
       </div>
+
+      <div className='signup-input'>
+        <label className="signup-input"></label>
+        <input
+          type='text'
+          className= "signup-inputs"
+          name='profileImage'
+          placeholder='Zip Code'
+          onChange={updateZipCode}
+          value={zip_code}
+          required={true}
+        ></input>
+         
+      </div>
      
       <div className='signup-input'>
         <label className="signup-input"></label>
@@ -185,6 +206,7 @@ const SignUpForm = () => {
       </div>
       <button className='demo-button' type='submit'>Sign Up</button>
     </form>
+    </div>
     </div>
     </>
   );
