@@ -23,7 +23,7 @@ class Business(db.Model):
 
 
 
-owner = db.relationship('User', back_populates='businesses')
+owner = db.relationship('User', back_populates='business')
 review = db.relationship('Review', back_populates='business', cascade="all, delete")
 images = db.relationship('Image', back_populates='business')
 

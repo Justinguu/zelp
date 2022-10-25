@@ -14,9 +14,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(50), nullable=False)
     profile_image = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-
-    reviews = db.relationship('Review', back_populates='user')
+    reviews = db.relationship('Review', back_populates='user', cascade="all, delete")
     businesses = db.relationship('Business', back_populates='owner')
+    
 
     @property
     def password(self):
@@ -38,4 +38,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profileImage': self.profile_image,
             'createdAt': self.created_at,
+            'reviews': [review.to_dict() for review in self.reviews],
+            'businesses': [business.to_dict() for business in self.businesses]
         }
