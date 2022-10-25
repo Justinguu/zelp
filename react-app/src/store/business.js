@@ -79,8 +79,9 @@ export const createBusinessThunk = (business) => async (dispatch) => {
     }
 }
 
-export const updateBusinessThunk = (business) => async (dispatch) => {
-    const response = await fetch(`/api/businesses/${business.id}/edit`, {
+//update business thunk by businessId
+export const updateBusinessThunk = (businessId, business) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -95,8 +96,9 @@ export const updateBusinessThunk = (business) => async (dispatch) => {
     }
 }
 
+
 export const deleteBusinessThunk = (businessId) => async (dispatch) => {
-    const response = await fetch(`/api/businesses/${businessId}`, {
+    const response = await fetch(`/api/businesses/${businessId}/delete`, {
         method: 'DELETE'
     });
 
@@ -112,36 +114,35 @@ const initialState = {};
 const businessReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_BUSINESSES: {
-            const newState = {};
-            action.businesses.forEach((business) => {
-                newState[business.id] = business
-            });
+            const newState = {...action.businesses}
             return newState;
-        }
+    }
         case GET_ONE_BUSINESS: {
-            const newState = {...state, businessId}
+            const newState = {...state};
             newState[action.business.id] = action.business;
             return newState;
-        }
+    }
         case CREATE_BUSINESS: {
             const newState = {...state};
             newState[action.businessId] = action.business;
             return newState;
-        }
+    }       
         case UPDATE_BUSINESS: {
             const newState = {...state};
             newState[action.payload.business.id] = action.payload.business;
             return newState;
-        }
+    }
         case DELETE_BUSINESS: {
             const newState = {...state};
             delete newState[action.businessId];
             return newState;
-        }
+    }
         default:
             return state;
     }
 }
+
+    
 
 export default businessReducer;
        
