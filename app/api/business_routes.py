@@ -47,7 +47,7 @@ def new_business():
             zip_code=form.data['zip_code'],
             description=form.data['description'],
             price=form.data['price'],
-            avgRating=2,
+            preview_image=form.data['preview_image'],
         )
 
         db.session.add(business)
@@ -58,11 +58,10 @@ def new_business():
         
     
 
-# #get all images for the business by business id
-# @business_routes.route('/<int:id>/images')
-# def business_images(id):
-#     images = Image.query.filter(Image.business_id == id).all()
-#     return {"images": [image.to_dict() for image in images]}
+# # Add an Image to a Business by business_id
+# @business_routes.route('/<int:id>/images', methods=['POST'])
+# def add_business_image(id):
+
 
 # edit an existing business
 @business_routes.route('/<int:id>/edit', methods=['PUT'])
@@ -86,7 +85,7 @@ def edit_business(id):
         business.zip_code=form.data['zip_code'],
         business.description=form.data['description'],
         business.price=form.data['price'],
-        business.avgRating = form.data['avgRating']
+        business.preview_image=form.data['preview_image'],
         db.session.commit()
         return(business.to_dict())
     if form.errors:

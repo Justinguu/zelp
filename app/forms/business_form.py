@@ -19,5 +19,5 @@ class BusinessForm(FlaskForm):
     zip_code = IntegerField('zip_code', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
     price = IntegerField('price', validators=[DataRequired()])
-    avgRating = FloatField('avgRating', validators=[DataRequired()])
+    preview_image = StringField('preview_image', validators=[DataRequired()])
     submit = SubmitField('Submit')

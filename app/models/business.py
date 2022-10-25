@@ -19,7 +19,7 @@ class Business(db.Model):
     zip_code = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text(500), nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    avgRating = db.Column(db.FLOAT, nullable=False)
+    preview_image = db.Column(db.String(255), nullable=False)
 
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
