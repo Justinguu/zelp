@@ -1,8 +1,8 @@
 
 from unicodedata import category
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, IntegerField, SubmitField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms import StringField, TextAreaField, IntegerField,SelectField, SubmitField
+from wtforms.validators import DataRequired
 
 
    
@@ -18,5 +18,5 @@ class BusinessForm(FlaskForm):
     lat = IntegerField('lat', validators=[DataRequired()])
     lng = IntegerField('lng', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
-    price = IntegerField('rice', validators=[DataRequired()], choices = [(1, '$'), (2, '$$'), (3, '$$$'), (4, '$$$$')])
+    price = SelectField('price', validators=[DataRequired()], choices = [(1, '$'), (2, '$$'), (3, '$$$'), (4, '$$$$')])
     submit = SubmitField('Submit')
