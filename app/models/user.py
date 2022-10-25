@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 
 
 class User(db.Model, UserMixin):
@@ -12,10 +13,13 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(50), nullable=False)
-    profile_image = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
-    reviews = db.relationship('Review', back_populates='user', cascade="all, delete")
-    businesses = db.relationship('Business', back_populates='owner')
+    profile_Image = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+
+    # reviews = db.relationship('Review', back_populates='user', cascade="all, delete")
+    businesses = db.relationship('Business',backref='user')
+    reviews = db.relationship('Review', backref='user', cascade="all, delete")
     
 
     @property

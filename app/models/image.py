@@ -7,7 +7,9 @@ class Image(db.Model):
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=False)
     url = db.Column(db.String(255), nullable=False)
 
-    business = db.relationship('Business', back_populates='images')
+    # business = db.relationship('Business', back_populates='images')
+
+
     def to_dict(self):
         return {
         "id": self.id,

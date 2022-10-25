@@ -1,4 +1,5 @@
 
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, IntegerField,SelectField, SubmitField
 from wtforms.validators import DataRequired
@@ -9,6 +10,7 @@ from wtforms.validators import DataRequired
 class BusinessForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     phone_number = StringField('phone_number', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired()])
     address = StringField('address', validators=[DataRequired()])
     city = StringField('city', validators=[DataRequired()])
     state = StringField('state', validators=[DataRequired()])

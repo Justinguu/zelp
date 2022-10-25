@@ -1,3 +1,4 @@
+
 from .db import db
 from datetime import datetime
 
@@ -8,6 +9,7 @@ class Business(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     phone_number = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(255), nullable=False)
     address = db.Column(db.String(60), nullable=False)
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
@@ -23,9 +25,9 @@ class Business(db.Model):
 
 
 
-owner = db.relationship('User', back_populates='business')
-review = db.relationship('Review', back_populates='business', cascade="all, delete")
-images = db.relationship('Image', back_populates='business')
+
+review = db.relationship('Review', backref='business', cascade="all, delete")
+images = db.relationship('Image', backref='business')
 
 def to_dict(self):
     return {
