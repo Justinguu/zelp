@@ -12,9 +12,12 @@ from .api.business_routes import business_routes
 from .api.review_routes import review_routes
 
 
+
 from .seeds import seed_commands
 
 from .config import Config
+from .models import User, db
+
 
 app = Flask(__name__)
 
