@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 7dae7268e7e1
+Revision ID: a8e7ab604649
 Revises: 
-Create Date: 2022-10-24 22:46:01.248969
+Create Date: 2022-10-25 01:40:26.298749
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7dae7268e7e1'
+revision = 'a8e7ab604649'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,19 +34,19 @@ def upgrade():
     op.create_table('businesses',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=50), nullable=False),
+    sa.Column('business_name', sa.String(length=50), nullable=False),
     sa.Column('phone_number', sa.String(length=50), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('address', sa.String(length=60), nullable=False),
     sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('state', sa.String(length=50), nullable=False),
     sa.Column('country', sa.String(length=50), nullable=False),
+    sa.Column('lat', sa.FLOAT(), nullable=False),
+    sa.Column('lng', sa.FLOAT(), nullable=False),
     sa.Column('zip_code', sa.String(length=50), nullable=False),
-    sa.Column('lat', sa.Float(), nullable=False),
-    sa.Column('lng', sa.Float(), nullable=False),
     sa.Column('description', sa.Text(length=500), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.Column('avgRating', sa.Float(), nullable=False),
+    sa.Column('avgRating', sa.FLOAT(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
