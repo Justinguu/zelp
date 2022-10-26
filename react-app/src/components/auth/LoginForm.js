@@ -70,8 +70,8 @@ const LoginForm = () => {
             <div className="login-button">
               <button className='login-button' type='submit'>Log In</button>
             </div>
-            <div className='demoo-button'>
-              <button className='demoo-button' onClick={(e) => {
+            <div className='demo-button'>
+              <button className='demo-button' onClick={(e) => {
                 setEmail('demo@aa.io');
                 setPassword('password')
               }}>Demo Login
