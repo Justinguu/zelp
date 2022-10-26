@@ -45,14 +45,25 @@ const deleteBusiness = (businessId) => {
 }
 
 //THUNKS
-export const getAllBusinessesThunk = () => async (dispatch) => {
-    const response = await fetch('/api/businesses');
 
-    if (response.ok) {
-    const businesses = await response.json();
-    dispatch(getAllBusinesses(businesses));
-    }
+// get all businesses thunk
+export const getAllBusinessesThunk = () => async (dispatch) => {
+    const response = await fetch('/api/businesses/');
+    const data = await response.json();
+    dispatch(getAllBusinesses(data.businesses));
+    return response;
 };
+
+
+// export const getAllBusinessesThunk = () => async (dispatch) => {
+//     const response = await fetch('/api/businesses/');
+
+//     if (response.ok) {
+//     const businesses = await response.json();
+//     dispatch(getAllBusinesses(businesses));
+   
+//     }
+// };
 
 export const getOneBusinessThunk = (businessId) => async (dispatch) => {
     const response = await fetch(`/api/businesses/${businessId}`);
@@ -63,21 +74,54 @@ export const getOneBusinessThunk = (businessId) => async (dispatch) => {
     }
 }
 
+//create business thunk
+// export const createBusinessThunk = (business) => async (dispatch) => {
+//     const response = await fetch('/api/businesses/new/', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(business)
+//     });
+
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(createBusiness(data.business.id));
+//         return data;
+//     }
+// };
+
 export const createBusinessThunk = (business) => async (dispatch) => {
-    const response = await fetch('/api/businesses/new', {
+    const response = await fetch("/api/businesses/new", {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(business)
-    });
-
-    if (response.ok) {
-        const businessId = await response.json();
-        dispatch(createBusiness(businessId));
-        return businessId;
+      });
+    
+      if (response.ok) {
+        const data = await response.json();
+        dispatch(createBusiness(data));
+        return data;
+      }
+      return
     }
-}
+// export const createBusinessThunk = (business) => async (dispatch) => {
+//     const response = await fetch('/api/businesses/new/', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(business)
+//     });
+
+//     if (response.ok) {
+//         const businessId = await response.json();
+//         dispatch(createBusiness(businessId));
+//         return businessId;
+//     }
+// }
 
 //update business thunk by businessId
 export const updateBusinessThunk = (businessId, business) => async (dispatch) => {
@@ -124,11 +168,12 @@ const businessReducer = (state = initialState, action) => {
     }
         case CREATE_BUSINESS: {
             const newState = {...state};
-            newState[action.businessId] = action.business;
-            return newState;
-    }       
+             newState = JSON.parse(JSON.stringify(state))
+             newState.normalizedBusinesses[action.business.new_business.id] = action.business.new_business
+            return newState     
+        } 
         case UPDATE_BUSINESS: {
-            const newState = {...state};
+            const newState = {};
             newState[action.payload.business.id] = action.payload.business;
             return newState;
     }
