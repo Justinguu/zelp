@@ -187,7 +187,7 @@ const businessReducer = (state = initialState, action) => {
     }
 }
 
-
+    
 
 export default businessReducer;
        
