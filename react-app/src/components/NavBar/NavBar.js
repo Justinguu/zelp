@@ -38,7 +38,7 @@ NavBar = () => {
     dispatch(sessionActions.logout());
     history.push("/");
   };
-///
+/////////
 
   if (user) {
     return (
@@ -50,7 +50,7 @@ NavBar = () => {
   
         </div>
         <div className="loggedInNav">
-      
+    
         </div>
         <div className="navbar-explore-container">
           <div className="explore-bttn-container">
