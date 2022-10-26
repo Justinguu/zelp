@@ -62,7 +62,7 @@ const BusinessDetails = () => {
   return (
     isLoaded && (
       <>
-      <div>Hello World</div>
+      
         <div className="whole-page-container">
           <div className="whole-page-wrapper">
             <div className="currSpot-header">
@@ -80,19 +80,20 @@ const BusinessDetails = () => {
                     {/* {Number(rating).toFixed(2)}{" "} {currBusiness.num_reviews} Reviews */}
                 </p>
             </div>
+            {/* if not user or null or if currbusiness owner === a user*/}
             {!user ? null : currBusiness.owner_id === user?.id && (
                 <button
                 className="review-spot-button"
                 disabled={disabled}
                 onClick={(e) => addReview(e, currBusiness.id)}
                 >
-                    Review Spot
+                    Review Business
                 </button>
             )}
             {/* {disabled && (
                 <div className="review-text-disabled"> Thanks for leaving a review for this spot! </div>
             )} */}
-
+                  {/* if they are the business owner equals user.id*/}
             {currBusiness.owner_id === user?.id && (
                 <div>
                     <button
@@ -103,6 +104,7 @@ const BusinessDetails = () => {
                     </button>
                 </div>
                 )}
+                
           </div>
         </div>
       </>

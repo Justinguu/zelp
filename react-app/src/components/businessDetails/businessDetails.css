@@ -1,0 +1,136 @@
+
+
+div.currSpot-header {
+    height: 65px;
+}
+
+div.whole-page-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+   
+    
+}
+div.whole-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+}
+
+
+.getCurr-star-icon{
+ display:inline-flex;
+    height: 14px;
+    width: 14px;
+    padding-right: 4px;
+}
+
+.img-currSpots{
+    height: 400px;
+    width: 700px
+
+}
+
+div.spot-hosted-by {
+    font-size: 23px;
+    font-weight: 500;
+    padding-top: 20px;
+    padding-bottom: 30px
+}
+
+img.img-currSpots {
+    display: flex;
+    align-items: center;
+    border-radius: .8em;
+
+    }
+
+    p.numReview-star {
+    display:flex;
+    border-top: 1px solid rgb(235, 228, 228);
+    padding-top: 10px;
+    
+    font-size: 20px;
+    font-weight: 500;
+    }
+    .review-star-icon{
+    display:inline-flex;
+    padding-top: 2px;
+    height: 18px;
+    width: 16px;
+    padding-right: 4px;
+    }
+
+    button.EditSpot-button {
+        background: linear-gradient( #f6083f, #d42a79);
+        color:white;
+        border: none;
+        height: 2.0em;
+        border-radius: .6em;
+        width: 100px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    button.DeleteSpot-button {
+        background: linear-gradient( #f6083f, #d42a79);
+        color:white;
+        border: none;
+        height: 2.0em;
+        border-radius: .6em;
+        width: 100px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    p.price-text {
+        font-weight: 450;
+        font-size:larger;
+        
+    } 
+
+    h2.currSpot-name {
+        display: flex;
+        padding-bottom: 100px;
+        margin-top: none;
+        font-size: 30px;
+    }
+    button.review-spot-button {
+        background: linear-gradient( #f6083f, #d42a79);
+        color:white;
+        border: none;
+        height: 2.2em;
+        width: 2.2em;
+        border-radius: .6em;
+        width: 100px;
+        cursor: pointer;
+        margin-top: 20px;
+       
+    }
+    button.review-spot-button:disabled {
+        background: linear-gradient( #6d6567, #6d6567);
+        color:white;
+        border: none;
+        height: 1.9em;
+        width: 1.9em;
+        border-radius: .6em;
+        width: 100px;
+        margin-top: 20px;
+        pointer-events: none;
+    }
+    .review-text-disabled{
+        font-size: small;
+        color:gray;
+        padding-top: 10px;
+        
+    }
+
+    .currSpot-description{
+        border-top: 1px solid rgb(235, 228, 228);
+        font-size: 17px;
+        font-weight: 350;
+        padding-top: 30px;
+        padding-bottom:10px;
+    }
