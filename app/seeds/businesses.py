@@ -3,7 +3,6 @@ from app.models import db, Business
 
 def seed_businesses():
     business_1 = Business(
-        id = 1,
         owner_id= 1,
         business_name= "JustDaLoi",
         phone_number= 678,
