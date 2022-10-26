@@ -28,7 +28,7 @@ def one_business(id):
         return {'errors': ['Business not found']}, 404
     return business.to_dict()
 
-# create a new business
+# create a new business if you are logged in user
 @business_routes.route('/new', methods=['POST'])
 @login_required
 def new_business():
@@ -50,11 +50,11 @@ def new_business():
             preview_image=form.data['preview_image'],
         )
 
-        db.session.add(business)
-        db.session.commit()
-        return(business.to_dict())
-    if form.errors:
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+#         db.session.add(business)
+#         db.session.commit()
+#         return(business.to_dict())
+#     if form.errors:
+#         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
         
     
 
