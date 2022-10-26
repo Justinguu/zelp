@@ -15,17 +15,16 @@ div.whole-page-container{
 div.whole-page-wrapper{
     display: flex;
     flex-direction: column;
-    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-    sans-serif;
+  
 }
 
 
-.getCurr-star-icon{
+/* .getCurr-star-icon{
  display:inline-flex;
     height: 14px;
     width: 14px;
     padding-right: 4px;
-}
+} */
 
 .img-currSpots{
     height: 400px;
@@ -44,6 +43,10 @@ img.img-currSpots {
     display: flex;
     align-items: center;
     border-radius: .8em;
+    height:35rem;
+    width: 90rem;
+    object-fit: cover;
+    z-index: 1;
 
     }
 

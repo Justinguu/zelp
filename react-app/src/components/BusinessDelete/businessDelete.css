@@ -1,0 +1,30 @@
+div.delete-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5em;
+    min-height: 6em;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  .delete-button {
+    background-color: #E00707;
+    color: white;
+    border: none;
+    height: 2.6em;
+    border-radius: .5em;
+    min-width: 9em;
+    cursor: pointer;
+    margin-right: 2em;
+    margin-bottom: 0.7em;
+    margin-left: 2em;
+  }
+
+
+  .delete-buttons {
+    margin-top: 1.5em;
+    display: flex;
+  }
