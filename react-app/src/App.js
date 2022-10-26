@@ -9,7 +9,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import CreateBusinessForm from './components/createBusiness/createBusiness';
-import CreateBusinessForm from './components/createBusiness/createBusiness';
 import GetAllTheBusinesses from './components/HomePage/HomePage.js';
 
 function App() {

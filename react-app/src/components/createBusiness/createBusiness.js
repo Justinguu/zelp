@@ -7,10 +7,11 @@ import "./createBusiness.css";
 
 export default function CreateBusinessForm() {
 
-const ownerId = useSelector(state => state.session.userId);
+const ownerId = useSelector(state => state.session.user.id);
 // const businesses = useSelector((state) => state.business);
 // const Allbusinesses = Object.values(businesses);
 // console.log(Allbusinesses)
+// console.log(ownerId)
 
 const [businessName, setBusinessName] = useState("");
 const [phoneNumber, setPhoneNumber] = useState("");
@@ -66,7 +67,8 @@ async function onSubmit(e) {
   }
 
   if(loadImage(previewImage)){
-    dispatch(createBusinessThunk(businessName, phoneNumber, email, address, city, state, country, zipCode, description, price, ownerId)).then(() => dispatch(getAllBusinessesThunk()))
+    dispatch(createBusinessThunk(ownerId,businessName,phoneNumber,email,address,city,state,country,zipCode,description,price,previewImage))
+    .then(() => dispatch(getAllBusinessesThunk()))
     history.push("/");
   }
 
@@ -217,6 +219,7 @@ return (
 
                 </div>
                 <button className="business-submit-button" type="submit">Submit</button>
+                {/* <button onClick={() =>{dispatch(createBusinessThunk(ownerId,"chang",1112223333,"randy@gmail.com","addresssssss","cityyyyyyyyyy","stateeeeeeee","countryyyyyyyyy",33333,"fwfefwefwefwefwfwefwefwefwefwefwfwef",22,"https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"))}}>test</button> */}
                 </form>
         </div>
         </div>

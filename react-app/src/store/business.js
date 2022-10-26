@@ -16,17 +16,17 @@ const getAllBusinesses = (businesses) => {
     };
 };
 
-const getOneBusiness = (business) => {
+const getOneBusiness = (businessId) => {
     return {
         type: GET_ONE_BUSINESS,
-        business
+        businessId
     };
 }
 
-const createBusiness = (businessId) => {
+const createBusiness = (business) => {
     return {
         type: CREATE_BUSINESS,
-        businessId
+        business
     };
 }
 
@@ -91,13 +91,13 @@ export const getOneBusinessThunk = (businessId) => async (dispatch) => {
 //     }
 // };
 
-export const createBusinessThunk = (business) => async (dispatch) => {
+export const createBusinessThunk = (owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
     const response = await fetch("/api/businesses/new", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(business)
+        body: JSON.stringify({owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image})
       });
     
       if (response.ok) {
@@ -105,23 +105,8 @@ export const createBusinessThunk = (business) => async (dispatch) => {
         dispatch(createBusiness(data));
         return data;
       }
-      return
     }
-// export const createBusinessThunk = (business) => async (dispatch) => {
-//     const response = await fetch('/api/businesses/new/', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(business)
-//     });
 
-//     if (response.ok) {
-//         const businessId = await response.json();
-//         dispatch(createBusiness(businessId));
-//         return businessId;
-//     }
-// }
 
 //update business thunk by businessId
 export const updateBusinessThunk = (businessId, business) => async (dispatch) => {
@@ -167,10 +152,9 @@ const businessReducer = (state = initialState, action) => {
             return newState;
     }
         case CREATE_BUSINESS: {
-            const newState = {...state};
-             newState = JSON.parse(JSON.stringify(state))
-             newState.normalizedBusinesses[action.business.new_business.id] = action.business.new_business
-            return newState     
+            const newState = { ...state };
+            newState[action.business.id] = action.business;
+            return newState;
         } 
         case UPDATE_BUSINESS: {
             const newState = {};
