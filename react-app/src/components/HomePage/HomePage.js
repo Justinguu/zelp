@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 import { getAllBusinessesThunk } from "../../store/business";
 import { getAllUsersThunk } from "../../store/AllUsers";
 import "./HomePage.css";
@@ -9,12 +9,13 @@ import "./HomePage.css";
 const GetAllTheBusinesses = () => {
     const history= useHistory();
     const dispatch = useDispatch();
+    const {businessId} = useParams();
     const [imageState, setImageState] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
     const business = useSelector(state => state.business);
     const allbusinessesArr = Object.values(business);
-    console.log("business", business);
+    // console.log("business", allbusinessesArr);
 
     // const businesses = useSelector(state => state.businesses);
     const allusers = useSelector(state => state.allUsers);
@@ -47,7 +48,7 @@ useEffect(() => {
                     return (
                         <>
                         <div className="singleBusinessContainer" key={business.id}>
-                            <Link to={`/business/${business.id}`}> 
+                            <Link to={`/businesses/${business.id}`}> 
                             <img
                                 className="single-image"
                                 src={business.preview_image}

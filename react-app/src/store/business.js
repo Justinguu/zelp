@@ -16,10 +16,10 @@ const getAllBusinesses = (businesses) => {
     };
 };
 
-const getOneBusiness = (businessId) => {
+const getOneBusiness = (business) => {
     return {
         type: GET_ONE_BUSINESS,
-        businessId
+        business
     };
 }
 
@@ -67,30 +67,13 @@ export const getAllBusinessesThunk = () => async (dispatch) => {
 
 export const getOneBusinessThunk = (businessId) => async (dispatch) => {
     const response = await fetch(`/api/businesses/${businessId}`);
-
     if (response.ok) {
     const business = await response.json();
     dispatch(getOneBusiness(business));
     }
 }
 
-//create business thunk
-// export const createBusinessThunk = (business) => async (dispatch) => {
-//     const response = await fetch('/api/businesses/new/', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(business)
-//     });
-
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(createBusiness(data.business.id));
-//         return data;
-//     }
-// };
-
+// create business thunk
 export const createBusinessThunk = (owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
     const response = await fetch("/api/businesses/new", {
         method: 'POST',

@@ -10,7 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import CreateBusinessForm from './components/createBusiness/createBusiness';
 import GetAllTheBusinesses from './components/HomePage/HomePage.js';
-
+import BusinessDetails from './components/businessDetails/businessDetails.js';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -42,6 +42,9 @@ function App() {
         <Route path="/new" exact={true}>
           <CreateBusinessForm />
         </Route>
+        <ProtectedRoute path='/businesses/:businessId' exact={true} >
+          <BusinessDetails/>
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
