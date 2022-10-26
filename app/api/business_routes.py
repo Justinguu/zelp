@@ -32,31 +32,60 @@ def one_business(id):
 @business_routes.route('/new', methods=['POST'])
 @login_required
 def new_business():
+
+# create a new business if you are logged in user and current user
+@business_routes.route('/new', methods=["POST"])
+def create_business():
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        business = Business(
-            owner_id = form.data['owner_id'],
-            business_name=form.data['business_name'],
-            phone_number=form.data['phone_number'],
-            email = form.data['email'],
-            address=form.data['address'],
-            city=form.data['city'],
-            state=form.data['state'],
-            country=form.data['country'],
-            zip_code=form.data['zip_code'],
-            description=form.data['description'],
-            price=form.data['price'],
-            preview_image=form.data['preview_image'],
+        data = form.data
+        new_business = Business(
+            title = data['title'],
+            description = data['description'],
+            address1 = data['address1'],
+            address2 = data['address2'],
+            city = data['city'],
+            state = data['state'],
+            zip_code = data['zipCode'],
+            image_url= data['imageUrl'],
+            owner_id = current_user.id
         )
+        db.session.add(new_business)
+        db.session.commit()
+        return {'new_business': new_business.to_dict_with_user()}
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
-#         db.session.add(business)
-#         db.session.commit()
-#         return(business.to_dict())
-#     if form.errors:
-#         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+# @business_routes.route('/new', methods=['POST'])
+# @login_required
+# def new_business():
+#     form = BusinessForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         data = Business(
+#             owner_id = form.data['owner_id'],
+#             business_name=form.data['business_name'],
+#             phone_number=form.data['phone_number'],
+#             email = form.data['email'],
+#             address=form.data['address'],
+#             city=form.data['city'],
+#             state=form.data['state'],
+#             country=form.data['country'],
+#             zip_code=form.data['zip_code'],
+#             description=form.data['description'],
+#             price=form.data['price'],
+#             preview_image=form.data['preview_image'],
+#         )
+
+
+        db.session.add(business)
+        db.session.commit()
+        return(business.to_dict())
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
         
-    
+
 
 
 
