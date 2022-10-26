@@ -21,6 +21,7 @@ const BusinessDetails = () => {
 //   console.log(currBusiness)
 //   const allReviews = useSelector((state) => state.review);
 //   const getAllReviewsArr = Object.values(allReviews);
+//   console.log(allReviews)
 
   const history = useHistory();
 
@@ -70,12 +71,38 @@ const BusinessDetails = () => {
             <div>
                 <p>
                     {/* {Number(rating).toFixed(2)}{" "} */}
-                    {currBusiness.city}, {currBusiness.state}, {currBusiness.zip}
-
+                   {currBusiness.address} {currBusiness.city}, {currBusiness.state},{currBusiness.country} {currBusiness.zip}
                 </p>
-
                 <p className="price-text"> ${currBusiness.price}</p>
+                <img className="img-currSpots"
+                src={currBusiness.preview_image} alt="business image" />
+                <p className="numReview-star" >
+                    {/* {Number(rating).toFixed(2)}{" "} {currBusiness.num_reviews} Reviews */}
+                </p>
             </div>
+            {!user ? null : currBusiness.owner_id === user?.id && (
+                <button
+                className="review-spot-button"
+                disabled={disabled}
+                onClick={(e) => addReview(e, currBusiness.id)}
+                >
+                    Review Spot
+                </button>
+            )}
+            {/* {disabled && (
+                <div className="review-text-disabled"> Thanks for leaving a review for this spot! </div>
+            )} */}
+
+            {currBusiness.owner_id === user?.id && (
+                <div>
+                    <button
+                    className="EditSpot-button"
+                    onClick={() => setShowUpdate(true)}
+                    >
+                        Review Business
+                    </button>
+                </div>
+                )}
           </div>
         </div>
       </>
