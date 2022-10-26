@@ -8,8 +8,11 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+<<<<<<< Updated upstream
+=======
 import CreateBusinessForm from './components/createBusiness/createBusiness';
 import GetAllTheBusinesses from './components/HomePage/HomePage.js';
+>>>>>>> Stashed changes
 
 function App() {
   const [loaded, setLoaded] = useState(false);

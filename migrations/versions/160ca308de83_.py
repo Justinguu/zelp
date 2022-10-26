@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/160ca308de83_.py
 Revision ID: 160ca308de83
 Revises: 
 Create Date: 2022-10-25 23:56:25.581808
-========
-Revision ID: 35f7fb6aafc1
-Revises: 
-Create Date: 2022-10-25 13:59:38.936083
->>>>>>>> parent of 7f6c6f8 (fixed zipcode component):migrations/versions/35f7fb6aafc1_.py
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/160ca308de83_.py
 revision = '160ca308de83'
-========
-revision = '35f7fb6aafc1'
->>>>>>>> parent of 7f6c6f8 (fixed zipcode component):migrations/versions/35f7fb6aafc1_.py
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,16 +34,14 @@ def upgrade():
     op.create_table('businesses',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
-    sa.Column('business_name', sa.String(length=50), nullable=False),
-    sa.Column('phone_number', sa.String(length=50), nullable=False),
-    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('business_name', sa.String(length=40), nullable=False),
+    sa.Column('phone_number', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(length=60), nullable=False),
     sa.Column('address', sa.String(length=60), nullable=False),
     sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('state', sa.String(length=50), nullable=False),
     sa.Column('country', sa.String(length=50), nullable=False),
-    sa.Column('lat', sa.FLOAT(), nullable=False),
-    sa.Column('lng', sa.FLOAT(), nullable=False),
-    sa.Column('zip_code', sa.String(length=50), nullable=False),
+    sa.Column('zip_code', sa.Integer(), nullable=False),
     sa.Column('description', sa.Text(length=500), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('preview_image', sa.String(length=255), nullable=False),
