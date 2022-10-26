@@ -15,7 +15,7 @@ class Business(db.Model):
     state = db.Column(db.String(50), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.Text(500), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     preview_image = db.Column(db.String(255), nullable=False)
 
