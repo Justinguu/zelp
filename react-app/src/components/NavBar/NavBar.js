@@ -38,7 +38,7 @@ NavBar = () => {
     dispatch(sessionActions.logout());
     history.push("/");
   };
-
+///
 
   if (user) {
     return (
