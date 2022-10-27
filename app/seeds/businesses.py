@@ -15,6 +15,8 @@ def seed_businesses():
         description= "Best pho in the country",
         price = 10,
         preview_image="https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=831&q=80"
+
+
     )
     businesses=[business_1]
     for business in businesses:
