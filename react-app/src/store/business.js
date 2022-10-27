@@ -30,10 +30,10 @@ const createBusiness = (business) => {
     };
 }
 
-const updateBusiness = (payload) => {
+const updateBusiness = (business) => {
     return {
         type: UPDATE_BUSINESS,
-        payload
+        business
     };
 };
 
@@ -91,22 +91,35 @@ export const createBusinessThunk = (owner_id,business_name,phone_number,email,ad
     }
 
 
-//update business thunk by businessId
-export const updateBusinessThunk = (businessId, business) => async (dispatch) => {
-    const response = await fetch(`/api/businesses/${businessId}`, {
+//update business thunk with fetch including  business id
+export const updateBusinessThunk = (businessId,owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}/edit`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(business)
+        body: JSON.stringify({owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image})
     });
-
     if (response.ok) {
-        const payload = await response.json();
-        dispatch(updateBusiness(payload));
-        return payload;
+        const data = await response.json();
+        dispatch(updateBusiness(data));
     }
 }
+// export const updateBusinessThunk = (owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image,businessId) => async (dispatch) => {
+//     const response = await fetch(`/api/businesses/${businessId}/edit`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image)
+//     });
+
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(updateBusiness(data));
+       
+//     }
+// }
 
 
 export const deleteBusinessThunk = (businessId) => async (dispatch) => {
@@ -130,8 +143,10 @@ const businessReducer = (state = initialState, action) => {
             return newState;
     }
         case GET_ONE_BUSINESS: {
-            const newState = {...state};
-            newState[action.business.id] = action.business;
+            // const newState = {...state};
+            // newState[action.business.id] = action.business;
+            // return newState;
+            const newState = {...action.business}
             return newState;
     }
         case CREATE_BUSINESS: {
@@ -140,8 +155,8 @@ const businessReducer = (state = initialState, action) => {
             return newState;
         } 
         case UPDATE_BUSINESS: {
-            const newState = {};
-            newState[action.payload.business.id] = action.payload.business;
+            const newState = { ...state };
+            newState[action.business.id] = action.business;
             return newState;
     }
         case DELETE_BUSINESS: {

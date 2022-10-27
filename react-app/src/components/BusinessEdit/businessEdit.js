@@ -8,19 +8,19 @@ function BusinessEditForm({ setShowUpdate }){
     const ownerId = useSelector(state => state.session.user.id);
 
 const { businessId } = useParams();
-const prefilled = useSelector(state => state.business[businessId]);
+const prefilledBizInfo = useSelector(state => state.business);
 
-const [businessName, setBusinessName] = useState("prefilled.business_name");
-const [phoneNumber, setPhoneNumber] = useState("prefilled.phone_number");
-const [email, setEmail] = useState("prefilled.email");
-const [address, setAddress] = useState("prefilled.address");
-const [city, setCity] = useState("prefilled.city");
-const [state, setState] = useState("prefilled.state");
-const [country, setCountry] = useState("prefilled.country");
-const [zipCode, setZipCode] = useState("prefilled.zip_code");
-const [description, setDescription] = useState("prefilled.description");
-const [price, setPrice] = useState("prefilled.price");
-const [previewImage, setPreviewImage] = useState("prefilled.image_url");
+const [businessName, setBusinessName] = useState(prefilledBizInfo.business_name);
+const [phoneNumber, setPhoneNumber] = useState(prefilledBizInfo.phone_number);
+const [email, setEmail] = useState(prefilledBizInfo.email);
+const [address, setAddress] = useState(prefilledBizInfo.address);
+const [city, setCity] = useState(prefilledBizInfo.city);
+const [state, setState] = useState(prefilledBizInfo.state);
+const [country, setCountry] = useState(prefilledBizInfo.country);
+const [zipCode, setZipCode] = useState(prefilledBizInfo.zip_code);
+const [description, setDescription] = useState(prefilledBizInfo.description);
+const [price, setPrice] = useState(prefilledBizInfo.price);
+const [previewImage, setPreviewImage] = useState(prefilledBizInfo.preview_image);
 
 const [errors, setErrors] = useState([]);
 const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -62,7 +62,7 @@ async function onSubmit(e) {
     return previewImage;
   }
   if(loadImage(previewImage)){
-    dispatch(updateBusinessThunk(ownerId,businessName,phoneNumber,email,address,city,state,country,zipCode,description,price,previewImage))
+    dispatch(updateBusinessThunk(businessId,ownerId,businessName,phoneNumber,email,address,city,state,country,zipCode,description,price,previewImage))
   }
     setShowUpdate(false);
 }

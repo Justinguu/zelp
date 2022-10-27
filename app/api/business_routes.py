@@ -67,7 +67,7 @@ def new_business():
 
 
 
-# edit an existing business if the current user is the owner
+
 @business_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def edit_business(id):
@@ -75,22 +75,53 @@ def edit_business(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         business = Business.query.get(id)
-        business.owner_id = form.data['owner_id']
-        business.business_name = form.data['business_name']
-        business.phone_number = form.data['phone_number']
-        business.email = form.data['email']
-        business.address = form.data['address']
-        business.city = form.data['city']
-        business.state = form.data['state']
-        business.country = form.data['country']
-        business.zip_code = form.data['zip_code']
-        business.description = form.data['description']
-        business.price = form.data['price']
-        business.preview_image = form.data['preview_image']
-        db.session.commit()
-        return business.to_dict()
+        if not business:
+            return {'errors': ['Business not found']}, 404
+        if business.owner_id != current_user.id:
+            return {'errors': ['You are not authorized to edit this business']}, 401
+        business.owner_id = form.data['owner_id'],
+        business.business_name=form.data['business_name'],
+        business.phone_number=form.data['phone_number'],
+        business.email = form.data['email'],
+        business.address=form.data['address'],
+        business.city=form.data['city'],
+        business.state=form.data['state'],
+        business.country=form.data['country'],
+        business.zip_code=form.data['zip_code'],
+        business.description=form.data['description'],
+        business.price=form.data['price'],
+        business.preview_image=form.data['preview_image'],
+        # db.session.commit()
+        # return business.to_dict()
+        return form.data
     if form.errors:
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return form.data
+   
+
+# @business_routes.route('/<int:id>/edit', methods=['PUT'])
+# @login_required
+# def edit_business(id):
+#     form = BusinessForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         business = Business.query.get(id)
+#         data = form.data
+#         business.owner_id = data['owner_id']
+#         business.business_name = data['business_name']
+#         business.phone_number = data['phone_number']
+#         business.email = data['email']
+#         business.address = data['address']
+#         business.city = data['city']
+#         business.state = data['state']
+#         business.country = data['country']
+#         business.zip_code = data['zip_code']
+#         business.description = data['description']
+#         business.price = data['price']
+#         business.preview_image = data['preview_image']
+#         db.session.commit()
+#         return business.to_dict()
+#     if form.errors:
+#         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
         
     # delete a business
 # delete an existing business if you are the owner

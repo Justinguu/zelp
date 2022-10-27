@@ -19,7 +19,7 @@ const BusinessDetails = () => {
 
 
   const user = useSelector((state) => state.session.user.id); 
-  const currBusiness = useSelector((state) => state.business[businessId]);
+  const currBusiness = useSelector((state) => state.business);
   console.log(currBusiness)
 //   const allReviews = useSelector((state) => state.review);
 //   const getAllReviewsArr = Object.values(allReviews);
