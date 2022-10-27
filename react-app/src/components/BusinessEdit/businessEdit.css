@@ -1,0 +1,37 @@
+.spot-form-update{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 35em;
+    padding: 1.8em;
+    max-width: 33em;
+  }
+  
+  
+  .submit-button-edit {
+    background: linear-gradient(0.25turn, #E61E4D, #D70666);
+      color: white;
+      border: none;
+      height: 2.6em;
+      border-radius: .5em;
+      min-width: 39em;
+      cursor: pointer;
+      padding-bottom: -20px;
+   
+    }
+  
+    .form-input-description {
+    min-width: 35rem;
+    
+    }
+  
+    .edit-errors {
+      color:#ea1547;
+      list-style: none;
+      margin-left: -14px;
+    }
+  
+    .edit-form-temp {
+      margin-bottom: 40px;
+    }
+  

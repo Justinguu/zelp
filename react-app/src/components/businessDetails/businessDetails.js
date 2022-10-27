@@ -4,8 +4,9 @@ import { useParams, useHistory } from "react-router-dom";
 import { getOneBusinessThunk, getAllBusinessesThunk } from "../../store/business";
 import { getOneReviewThunk } from "../../store/review";
 import { Modal } from "../../context/Modal";
-import "./businessDetails.css";
 import BusinessDelete from "../BusinessDelete/businessDelete";
+import EditBusinessForm from "../BusinessEdit/businessEdit.js";
+import "./businessDetails.css";
 
 const BusinessDetails = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -112,14 +113,14 @@ const dispatch = useDispatch();
                   >
                     Delete Spot
                   </button>
-                  {/* {showUpdate && (
+                  {showUpdate && (
                     <Modal onClose={() => setShowUpdate(false)}>
-                      <EditSpotForm
-                        spotId={spotId}
+                      <EditBusinessForm
+                        businessId={businessId}
                         setShowUpdate={setShowUpdate}
                       />
                     </Modal>
-                  )} */}
+                  )}
                   {showDelete && (
                     <Modal onClose={() => setShowDelete(false)}>
                       <BusinessDelete
