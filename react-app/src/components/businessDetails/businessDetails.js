@@ -19,7 +19,7 @@ const BusinessDetails = () => {
 
 
   const user = useSelector((state) => state.session.user.id); 
-  const currBusiness = useSelector((state) => state.business);
+  const currBusiness = useSelector((state) => state.business[businessId]);
   console.log(currBusiness)
 //   const allReviews = useSelector((state) => state.review);
 //   const getAllReviewsArr = Object.values(allReviews);
@@ -41,7 +41,7 @@ const dispatch = useDispatch();
   };
 
   useEffect(() => {
-    dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
+    dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true))
   }, [dispatch, businessId]);
 
   if (!isLoaded) {

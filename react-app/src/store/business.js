@@ -93,6 +93,12 @@ export const createBusinessThunk = (owner_id,business_name,phone_number,email,ad
 
 //update business thunk with fetch including  business id
 export const updateBusinessThunk = (businessId,owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
+    zip_code = parseInt(zip_code)
+    
+    // console.log(typeof zip_code)
+    console.log("inside thunkkkkkkk")
+    console.log(businessId,owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image)
+
     const response = await fetch(`/api/businesses/${businessId}/edit`, {
         method: 'PUT',
         headers: {
@@ -139,15 +145,17 @@ const initialState = {};
 const businessReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_BUSINESSES: {
-            const newState = {...action.businesses}
-            return newState;
+           const newState = {}
+           action.businesses.forEach((business) =>
+           newState[business.id] = business
+           )
+           return newState
     }
         case GET_ONE_BUSINESS: {
             const newState = {...state};
             newState[action.business.id] = action.business;
             return newState;
-            // const newState = {...action.business}
-            // return newState;
+           
     }
         case CREATE_BUSINESS: {
             const newState = { ...state };
