@@ -91,9 +91,9 @@ def edit_business(id):
         business.description=form.data['description'],
         business.price=form.data['price'],
         business.preview_image=form.data['preview_image'],
-        # db.session.commit()
-        # return business.to_dict()
-        return form.data
+        db.session.commit()
+        return business.to_dict()
+        # return form.data
     if form.errors:
         return form.data
    

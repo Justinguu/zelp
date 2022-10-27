@@ -143,11 +143,11 @@ const businessReducer = (state = initialState, action) => {
             return newState;
     }
         case GET_ONE_BUSINESS: {
-            // const newState = {...state};
-            // newState[action.business.id] = action.business;
-            // return newState;
-            const newState = {...action.business}
+            const newState = {...state};
+            newState[action.business.id] = action.business;
             return newState;
+            // const newState = {...action.business}
+            // return newState;
     }
         case CREATE_BUSINESS: {
             const newState = { ...state };
