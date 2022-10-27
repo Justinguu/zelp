@@ -69,17 +69,13 @@ def new_business():
 
 
 @business_routes.route('/<int:id>/edit', methods=['PUT'])
-@login_required
+# @login_required
 def edit_business(id):
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         business = Business.query.get(id)
-        if not business:
-            return {'errors': ['Business not found']}, 404
-        if business.owner_id != current_user.id:
-            return {'errors': ['You are not authorized to edit this business']}, 401
-        business.owner_id = form.data['owner_id'],
+        business.owner_id=form.data['owner_id'],
         business.business_name=form.data['business_name'],
         business.phone_number=form.data['phone_number'],
         business.email = form.data['email'],
@@ -95,7 +91,7 @@ def edit_business(id):
         return business.to_dict()
         # return form.data
     if form.errors:
-        return form.data
+        return form.data['owner_id']
    
 
 # @business_routes.route('/<int:id>/edit', methods=['PUT'])

@@ -8,7 +8,7 @@ class Business(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     business_name = db.Column(db.String(40), nullable=False)
-    phone_number = db.Column(db.Integer, nullable=False)
+    phone_number = db.Column(db.String(12), nullable=False)
     email = db.Column(db.String(60), nullable=False)
     address = db.Column(db.String(60), nullable=False)
     city = db.Column(db.String(50), nullable=False)

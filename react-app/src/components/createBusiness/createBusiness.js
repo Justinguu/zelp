@@ -7,7 +7,9 @@ import "./createBusiness.css";
 
 export default function CreateBusinessForm() {
 
-const ownerId = useSelector(state => state.session.user.id);
+const owner = useSelector(state => state.session.user);
+const ownerId = owner.id
+console.log(ownerId)
 // const businesses = useSelector((state) => state.business);
 // const Allbusinesses = Object.values(businesses);
 // console.log(Allbusinesses)

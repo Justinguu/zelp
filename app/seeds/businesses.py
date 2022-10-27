@@ -5,7 +5,7 @@ def seed_businesses():
     business_1 = Business(
         owner_id= 1,
         business_name= "JustDaLoi",
-        phone_number= 678,
+        phone_number= "111-222-3333",
         email= "justinspho@gmail.com",
         address= "321 Pho Park Avenue",
         city = "Atlanta",
