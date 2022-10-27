@@ -18,8 +18,10 @@
 .best-resturants-text{
    
     margin-top: 6rem;
-    margin-left:7rem;
-    height:2rem;
+    margin-left:20rem;
+    height:3rem;
+    width: 20rem;
+    
    
     /* border: solid 1rem  red; */
 
@@ -40,8 +42,8 @@
 }
 
 .single-image{
-    height: 15rem;
-    width: 20rem;
+    height: 20rem;
+    width: 25rem;
     
 }
 .business-name-caption{
