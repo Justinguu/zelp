@@ -10,7 +10,7 @@ const BusinessDelete = ({businessId, setShowDelete}) => {
     const deleteHandle = async (e) => {
         dispatch(deleteBusinessThunk(businessId)).then(() => setShowDelete(false)).then(() => history.push('/'))
     }
-
+//
 return (
     <>
     <div className='delete-container'>
