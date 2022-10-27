@@ -71,7 +71,7 @@ export const getOneBusinessThunk = (businessId) => async (dispatch) => {
     const business = await response.json();
     dispatch(getOneBusiness(business));
     }
-}
+};
 
 // create business thunk
 export const createBusinessThunk = (owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
@@ -88,7 +88,7 @@ export const createBusinessThunk = (owner_id,business_name,phone_number,email,ad
         dispatch(createBusiness(data));
         return data;
       }
-    }
+    };
 
 
 //update business thunk with fetch including  business id

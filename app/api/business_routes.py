@@ -34,7 +34,7 @@ def one_business(id):
 # create a new business if you are logged in user and current user
 
 
-@business_routes.route('/new', methods=['POST'])
+@business_routes.route("/new", methods=['POST'])
 @login_required
 def new_business():
     form = BusinessForm()
@@ -58,10 +58,10 @@ def new_business():
 
         db.session.add(business)
         db.session.commit()
-        return(business.to_dict())
+        return business.to_dict()
     if form.errors:
-        # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-        return form.errors
+       return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+       
 
 
 
