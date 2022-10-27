@@ -1,0 +1,62 @@
+.homepage-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%
+
+}
+
+.business-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 12rem;
+    border: solid 1rem  red;
+    margin-right: 30rem;
+}
+
+.best-resturants-text{
+   
+    margin-top: 6rem;
+    margin-left:7rem;
+    height:2rem;
+   
+    /* border: solid 1rem  red; */
+
+}
+
+.business-wrapper{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border: solid 1rem blue;
+    width:60rem;
+}
+
+.singleBusinessContainer{
+    display:flex;
+    flex-direction: row;
+    border: solid .5rem green;;
+}
+
+.single-image{
+    height: 15rem;
+    width: 20rem;
+    
+}
+.business-name-caption{
+    margin-left: 7px;
+    padding: 4px;
+    font-size:30px;
+    font-weight: 550 
+}
+.business-name-caption:hover{
+    text-decoration: underline;
+}
+.business-captions {
+margin-bottom: 5px;
+margin-left: 10px;
+font-size: 20px;
+font-weight: 400;
+
+}

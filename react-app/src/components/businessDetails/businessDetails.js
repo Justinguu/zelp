@@ -64,12 +64,12 @@ const dispatch = useDispatch();
   return (
     isLoaded && (
       <>
-      
+       {/* have a left side for half image detail & right with address and stuff */}
         <div className="whole-page-container">
           <div className="whole-page-wrapper">
             <div className="currSpot-header">
             </div>
-            <div>
+            <div className="whole-details-container">
                 <img className="img-currSpots"
                 src={currBusiness.preview_image} alt="business image" />
                     {/* {Number(rating).toFixed(2)}{" "} */}

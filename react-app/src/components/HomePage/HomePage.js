@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link, useParams } from "react-router-dom";
+import { useHistory, NavLink, useParams } from "react-router-dom";
 import { getAllBusinessesThunk } from "../../store/business";
 import { getAllUsersThunk } from "../../store/AllUsers";
 import "./HomePage.css";
@@ -42,20 +42,27 @@ useEffect(() => {
 
     return (
         <div className="homepage-container">
+            <div className="best-resturants-text">Best resturants to eat at</div>
             <div className="business-container"> 
             <div className="business-wrapper">
                 {allbusinessesArr.map((business) => {
                     return (
                         <>
                         <div className="singleBusinessContainer" key={business.id}>
-                            <Link to={`/businesses/${business.id}`}> 
-                            <img
-                                className="single-image"
-                                src={business.preview_image}
-                                alt=""
-                                ></img>
-                            </Link>
-                            <div className="hide">{business.business_name}</div>
+                            <div className="main-left-side-container">
+                            <NavLink to={`/businesses/${business.id}`}> 
+                            <img className="single-image"src={business.preview_image}alt=""></img>
+                            </NavLink>
+                            </div>
+                            <div className="main-right-side-container">
+                                <NavLink to={`/businesses/${business.id}`}><div className="business-name-caption">{business.business_name}</div></NavLink>
+                                <div className="business-captions">{business.address} {business.city} {business.state} {business.zip_code}</div>
+                                <div className="business-captions">Average Cost = ${business.price}.00</div>
+                                <div className="business-captions">{business.description}</div>
+
+
+                            </div>
+                           
 
                         </div>
                         </>

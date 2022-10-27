@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import loginPic from '../icons/loginPic.png';
 import './LoginForm.css';
@@ -35,22 +35,27 @@ const LoginForm = () => {
   return (
     <>
       <div className='login-container'>
-        <div className='inner-login'>
-          <form className='login-form' onSubmit={onLogin} autoComplete="off">
+        <div className='login-wrapper'>
+          <div className='login-right'>
             <div id='login-banner'>
-              <div id="circles-container">
-                <img src={loginPic} alt='' id='circles'></img>
+           
+              
               </div>
-              <div className='login-font'>
-                Log in to zelp
-              </div>
+              
             </div>
+          <form className='login-form' onSubmit={onLogin}>
+             <div className='login-font'>
+                Log in to zelp 
+              </div> 
+              <div className="new-to-zelp">New to Zelp? 
+              <NavLink className='signup-redirect' to='/sign-up'>Sign up</NavLink>
+              </div>
             <div className='login-errors'>
             {errors.length ? "Email or Password is incorrect" : <></>}
             </div>
             <div className='label-input'>
               <label></label>
-              <input
+              <input className='login-input'
                 name='email'
                 type='text'
                 value={email}
@@ -60,7 +65,7 @@ const LoginForm = () => {
             </div>
             <div className='label-input'>
               <label id="password"></label>
-              <input
+              <input className='login-input'
                 name='password'
                 type='password'
                 value={password}
@@ -77,8 +82,12 @@ const LoginForm = () => {
               }}>Demo Login
               </button>
             </div>
-          </form>
+          </form> 
+          <div className='circles-container'>
+                <img src={loginPic} alt='' id='circles'></img>
+              </div>
         </div>
+       
       </div>
     </>
 
