@@ -1,5 +1,5 @@
 import { createBusinessThunk, getAllBusinessesThunk } from "../../store/business";
-import { createImageThunk } from "../../store/image";
+
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";

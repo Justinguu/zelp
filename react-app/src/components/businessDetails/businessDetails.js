@@ -5,8 +5,10 @@ import {
   getOneBusinessThunk,
 
 } from "../../store/business";
-import { getOneReviewThunk, createReviewThunk } from "../../store/review";
+import { getCurrReviewThunk, createReviewThunk } from "../../store/review";
 import { Modal } from "../../context/Modal";
+import GetBusinessReviews from "../Review/ReviewGet/getReviews";
+import CreateReviewForm from "../Review/CreateForm/createForm";
 import BusinessDelete from "../BusinessDelete/businessDelete";
 import EditBusinessForm from "../BusinessEdit/businessEdit.js";
 import "./businessDetails.css";
@@ -15,10 +17,10 @@ const BusinessDetails = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-
+  const [showReview, setShowReview] = useState(false)
   const [disabled, setDisabled] = useState(true);
 
-  const { businessId } = useParams();
+  const { businessId, reviewId } = useParams();
 
   const user = useSelector((state) => state.session.user.id);
   const currBusiness = useSelector((state) => state.business[businessId]);
@@ -38,12 +40,9 @@ const BusinessDetails = () => {
 
   const dispatch = useDispatch();
 
-  const addReview = (e, businessId) => {
-    e.preventDefault();
-    history.push(`/business/${businessId}/review`);
-  };
 
   useEffect(() => {
+    dispatch(getCurrReviewThunk(businessId))
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
 
@@ -85,7 +84,7 @@ const BusinessDetails = () => {
               </div>
             </div>
 
-            {!user
+            {/* {!user
               ? null
               : currBusiness.owner_id === user.id && (
                   <button
@@ -95,7 +94,7 @@ const BusinessDetails = () => {
                   >
                     Review Business
                   </button>
-                )}
+                )} */}
 
             {/* {disabled && (
                 <div className="review-text-disabled"> Thanks for leaving a review for this spot! </div>
@@ -132,6 +131,25 @@ const BusinessDetails = () => {
                     />
                   </Modal>
                 )}
+                <div>
+                  <GetBusinessReviews businessId={businessId}sessionUser={user} />
+                  
+                  </div>
+                  <div>
+                    <button
+                    onClick={() => setShowReview(true)}
+                    >
+                        Create Review
+                    </button>
+                    {showReview && (
+                      <Modal onClose={() => setShowReview(false)}>
+                        <CreateReviewForm
+                        reviewId={reviewId}
+                        setShowReview={setShowReview}
+                        />
+                      </Modal>
+                    )}
+                    </div>
               </div>
             )}
           </div>

@@ -1,6 +1,6 @@
 //TYPES
 const GET_ALL_REVIEWS = 'reviews/GET_ALL_REVIEWS';
-const GET_ONE_REVIEW = 'reviews/GET_ONE_REVIEW';
+const GET_CURR_REVIEW = 'reviews/GET_ONE_REVIEW';
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const UPDATE_REVIEW = 'reviews/UPDATE_REVIEW';
 const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
@@ -14,17 +14,17 @@ const getAllReviews = (reviews) => {
     };
 }
 
-const getOneReview = (review) => {
+const getCurrReviews = (businessId) => {
     return {
-        type: GET_ONE_REVIEW,
-        review
+        type: GET_CURR_REVIEW,
+        businessId
     };
 }
 
-const createReview = (reviewId) => {
+const createReview = (review) => {
     return {
         type: CREATE_REVIEW,
-        reviewId
+        review
     };
 }
 
@@ -52,27 +52,29 @@ export const getAllReviewsThunk = () => async (dispatch) => {
     }
 }
 
-export const getOneReviewThunk = (reviewId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId}`);
+export const getCurrReviewThunk = (businessId) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}/reviews`);
 
     if (response.ok) {
     const review = await response.json();
-    dispatch(getOneReview(review));
+    dispatch(getCurrReviews(review));
+    return review
     }
 }
 
-export const createReviewThunk = (review) => async (dispatch) => {
-    const response = await fetch('/api/reviews/new', {
+export const createReviewThunk = (user_id,businessId,review,avg_rating) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}/reviews/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(review)
+        body: JSON.stringify({user_id,businessId,review,avg_rating})
     });
 
     if (response.ok) {
     const review = await response.json();
     dispatch(createReview(review));
+    return review
     }
 }
 
@@ -111,14 +113,13 @@ const reviewReducer = (state = initialState, action) => {
             const newState = {...action.reviews}
             return newState;
     }
-        case GET_ONE_REVIEW: {
-            const newState = {...state};
-            newState[action.review.id] = action.review;
+        case GET_CURR_REVIEW: {
+            const newState = {...action.businessId};
             return newState;
     }
         case CREATE_REVIEW: {
             const newState = {...state};
-            newState[action.reviewId] = action.review;
+            newState[action.review.id] = action.review;
             return newState;
     }
         case UPDATE_REVIEW: {

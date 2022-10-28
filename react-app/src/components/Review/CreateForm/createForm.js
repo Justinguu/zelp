@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createReviewThunk } from "../../store/review";
+import {useParams} from "react-router-dom";
+import { createReviewThunk } from "../../../store/review";
 
 
-function CreateReviewForm({userId, imageId}) {
-    const dispatch = useDispatch();
+function CreateReviewForm({setShowReview}) {
 
-    const [review, setReview] = useState("")
-    const [errors, setErrors] = useState([]);
+  const [isLoaded, setLoaded] = useState(false)
+  
+  const [review, setReview] = useState("")
+  const [rating, setRating] = useState(0)
+  const [errors, setErrors] = useState([]);
+  
+  const sessionUser = useSelector(state => state.session.user)
+  const userId = sessionUser.id
 
 
+  const {businessId} = useParams()
+  const dispatch = useDispatch();
+
+
+
+   //add rating validation and add below
     useEffect(() => {
         const formValidationErrors = []
 
@@ -22,20 +34,21 @@ function CreateReviewForm({userId, imageId}) {
 
         setErrors(formValidationErrors);
 
-    }, [comment]);
+    },[review]);
+
+    useEffect(() => {
+      dispatch(createReviewThunk(userId,businessId,review,rating)).then(()=> setLoaded(true))
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (errors.length <= 0) {
-            return dispatch(
-              createACommentThunk(userId, imageId, comment )
-            ).catch(async (res) => {
-              const data = await res.json();
-              if (data && data.errors) setErrors(data.errors);
-            });
+        if(errors.length > 0){
+          return alert("Invalid Submission, Please Check Inputs")
+        }
+        dispatch(createReviewThunk(userId,businessId,review,rating))
+
+        setShowReview(false)
     }
-    return errors;
-};
 
 return (
     <div className="CreateComment-outer">
@@ -63,8 +76,17 @@ return (
         placeholder="review..."
         type="text"
         autoComplete="off"
-        value={comment}
+        value={review}
         onChange={(e) => setReview(e.target.value)}
+        required
+        />
+        <input
+        className="descriptionCreateComment"
+        placeholder="rating..."
+        type="number"
+        autoComplete="off"
+        value={rating}
+        onChange={(e) => setRating(e.target.value)}
         required
         />
         <div className="createCommentButton">

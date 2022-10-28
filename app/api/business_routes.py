@@ -94,31 +94,6 @@ def edit_business(id):
         return form.data
    
 
-# @business_routes.route('/<int:id>/edit', methods=['PUT'])
-# @login_required
-# def edit_business(id):
-#     form = BusinessForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         business = Business.query.get(id)
-#         data = form.data
-#         business.owner_id = data['owner_id']
-#         business.business_name = data['business_name']
-#         business.phone_number = data['phone_number']
-#         business.email = data['email']
-#         business.address = data['address']
-#         business.city = data['city']
-#         business.state = data['state']
-#         business.country = data['country']
-#         business.zip_code = data['zip_code']
-#         business.description = data['description']
-#         business.price = data['price']
-#         business.preview_image = data['preview_image']
-#         db.session.commit()
-#         return business.to_dict()
-#     if form.errors:
-#         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-        
     # delete a business
 # delete an existing business if you are the owner
 @business_routes.route('/<int:id>/delete', methods=['DELETE'])
@@ -172,4 +147,67 @@ def delete_business_image(businessId,imageId):
         "statusCode": 200
     }
 
+ # get curr review
+@business_routes.route('/<int:businessId>/reviews', methods=['GET'])
+@login_required
+def get_review_by_businessId(businessId):
+    reviews = Review.query.filter(businessId == businessId).all()
+    if reviews == None:
+        return "business has no reviews"
+    return {"reviews": [review.to_dict() for review in reviews]}
 
+
+
+# create a new review
+@business_routes.route('/<int:businessId>/reviews/new', methods=['POST'])
+@login_required
+def new_review(businessId):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review(
+            user_id = form.data['user_id'],
+            business_id=form.data['business_id'],
+            review=form.data['review'],
+            avg_rating=form.data['avg_rating'],
+        )
+
+        db.session.add(review)
+        db.session.commit()
+        return(review.to_dict())
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    
+    # edit a review if you have the same user_id as the one who created the review
+@business_routes.route('/<int:businessId>/reviews/<int:id>/edit', methods=['PUT'])
+@login_required
+def edit_review(reviewId):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review.query.get(reviewId)
+        if review.user_id == current_user.id:
+            review.review = form.data['review']
+            review.avg_rating = form.data['avg_rating']
+            db.session.commit()
+            return(review.to_dict())
+        else:
+            return {'errors': ['You are not authorized to edit this review']}, 401
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
+    # delete a review
+@business_routes.route('/<int:businessId>/reviews/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_review(businessId,id):
+    review = Review.query.get(id)
+    db.session.delete(review)
+    db.session.commit()
+    return {
+        "message": "Review has been deleted",
+        "statusCode": 200
+    }
+    
+    
