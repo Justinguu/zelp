@@ -44,7 +44,6 @@ const BusinessDetails = () => {
   };
 
   useEffect(() => {
-    dispatch(getOneReviewThunk(businessId));
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
 

@@ -142,17 +142,15 @@ const initialState = {};
 const businessReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_BUSINESSES: {
-           const newState = {}
-           action.businesses.forEach((business) =>
-           newState[business.id] = business
-           )
-           return newState
+            const newState = {...action.businesses}
+            return newState;
     }
         case GET_ONE_BUSINESS: {
             const newState = {...state};
             newState[action.business.id] = action.business;
             return newState;
-           
+            // const newState = {...action.business}
+            // return newState;
     }
         case CREATE_BUSINESS: {
             const newState = { ...state };

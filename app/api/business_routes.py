@@ -69,28 +69,29 @@ def new_business():
 
 
 @business_routes.route('/<int:id>/edit', methods=['PUT'])
-@login_required
+# @login_required
 def edit_business(id):
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    business = db.session.query(Business).get(id)
     if form.validate_on_submit():
-        business.business_name=form.data['business_name']
-        business.phone_number=form.data['phone_number']
-        business.email = form.data['email']
-        business.address=form.data['address']
-        business.city=form.data['city']
-        business.state=form.data['state']
-        business.country=form.data['country']
-        business.zip_code=form.data['zip_code']
-        business.description=form.data['description']
-        business.price=form.data['price']
-        business.preview_image=form.data['preview_image']
+        business = Business.query.get(id)
+        business.owner_id=form.data['owner_id'],
+        business.business_name=form.data['business_name'],
+        business.phone_number=form.data['phone_number'],
+        business.email = form.data['email'],
+        business.address=form.data['address'],
+        business.city=form.data['city'],
+        business.state=form.data['state'],
+        business.country=form.data['country'],
+        business.zip_code=form.data['zip_code'],
+        business.description=form.data['description'],
+        business.price=form.data['price'],
+        business.preview_image=form.data['preview_image'],
         db.session.commit()
         return business.to_dict()
         # return form.data
     if form.errors:
-        return form.data
+        return form.data['owner_id']
    
 
 # @business_routes.route('/<int:id>/edit', methods=['PUT'])
