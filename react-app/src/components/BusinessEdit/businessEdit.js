@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
-import { updateBusinessThunk } from "../../store/business";
+import { updateBusinessThunk,getOneBusinessThunk } from "../../store/business";
 import "./businessEdit.css";
 
 function BusinessEditForm({ setShowUpdate }){
     const ownerId = useSelector(state => state.session.user.id);
 
 const { businessId } = useParams();
-const prefilledBizInfo = useSelector(state => state.business);
+const prefilledBizInfo = useSelector(state => state.business[businessId]);
 
 const [businessName, setBusinessName] = useState(prefilledBizInfo.business_name);
 const [phoneNumber, setPhoneNumber] = useState(prefilledBizInfo.phone_number);
