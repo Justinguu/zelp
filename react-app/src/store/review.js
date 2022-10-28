@@ -63,6 +63,11 @@ export const getCurrReviewThunk = (businessId) => async (dispatch) => {
 }
 
 export const createReviewThunk = (user_id,businessId,review,avg_rating) => async (dispatch) => {
+    console.log("user_id", user_id)
+    console.log("businessId", businessId)
+    console.log("review",review)
+    console.log("avg_rating", avg_rating)
+
     const response = await fetch(`/api/businesses/${businessId}/reviews/new`, {
         method: 'POST',
         headers: {

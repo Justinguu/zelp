@@ -159,7 +159,7 @@ def get_review_by_businessId(businessId):
 
 
 # create a new review
-@business_routes.route('/<int:businessId>/reviews/new', methods=['POST'])
+@business_routes.route('/<int:business_Id>/reviews/new', methods=['POST'])
 @login_required
 def new_review(businessId):
     form = ReviewForm()
@@ -174,7 +174,7 @@ def new_review(businessId):
 
         db.session.add(review)
         db.session.commit()
-        return(review.to_dict())
+        return review.to_dict()
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     
