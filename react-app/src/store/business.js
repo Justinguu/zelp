@@ -95,9 +95,6 @@ export const createBusinessThunk = (owner_id,business_name,phone_number,email,ad
 export const updateBusinessThunk = (businessId,owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
     zip_code = parseInt(zip_code)
     
-    // console.log(typeof zip_code)
-    console.log("inside thunkkkkkkk")
-    console.log(businessId,owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image)
 
     const response = await fetch(`/api/businesses/${businessId}/edit`, {
         method: 'PUT',

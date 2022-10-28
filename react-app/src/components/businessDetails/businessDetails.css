@@ -75,7 +75,7 @@ img.img-currSpots {
         background: linear-gradient( #f6083f, #d42a79);
         color:white;
         border: none;
-        height: 2.0em;
+        height: 2.5em;
         border-radius: .6em;
         width: 100px;
         cursor: pointer;
@@ -86,11 +86,12 @@ img.img-currSpots {
         background: linear-gradient( #f6083f, #d42a79);
         color:white;
         border: none;
-        height: 2.0em;
+        height: 2.5em;
         border-radius: .6em;
         width: 100px;
         cursor: pointer;
-        margin-top: 20px;
+        margin-top: 23px;
+        padding-bottom: 5px;
     }
 
     p.price-text {
@@ -109,12 +110,12 @@ img.img-currSpots {
         background: linear-gradient( #f6083f, #d42a79);
         color:white;
         border: none;
-        height: 2.2em;
-        width: 2.2em;
+        height: 2.5em;
         border-radius: .6em;
         width: 100px;
         cursor: pointer;
-        margin-top: 20px;
+        margin-top: 23px;
+        padding-bottom: 5px;
        
     }
     button.review-spot-button:disabled {

@@ -5,14 +5,14 @@ from app.models import db, User
 def seed_users():
     demo = User(
         first_name="Demo", last_name="lition", username="Demolition", email="demo@aa.io", password="password", profileImage="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png")
-    # marnie = User(
-    #     username='marnie', email='marnie@aa.io', password='password')
-    # bobbie = User(
-    #     username='bobbie', email='bobbie@aa.io', password='password')
+    marnie = User(
+        first_name="marnie", last_name="lition", username="marnielition", email="marnie@aa.io", password="password", profileImage="https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png")
+    bobbie = User(
+        first_name="bob", last_name="lition", username="boblition", email="bob@aa.io", password="password", profileImage="https://cdn-icons-png.flaticon.com/512/16/16363.png")
 
     db.session.add(demo)
-    # db.session.add(marnie)
-    # db.session.add(bobbie)
+    db.session.add(marnie)
+    db.session.add(bobbie)
 
     db.session.commit()
 
