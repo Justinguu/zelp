@@ -36,7 +36,7 @@ const GetBusinessReviews = ({ businessId }) => {
 
   return (
     isLoaded && (
-      <ul className="review-border">
+      <div className="review-border">
         {getAllReviewsArr.map((review) => {
           return ( 
             <>
@@ -47,7 +47,7 @@ const GetBusinessReviews = ({ businessId }) => {
               {review.review}
               {review.avg_rating}
               <div>
-                <button
+                <button className="deleteButtonReview"
                   onClick={() => {
                     {
                       setShowUpdateReview(true);
@@ -84,7 +84,7 @@ const GetBusinessReviews = ({ businessId }) => {
             </>
           );
         })}
-      </ul>
+      </div>
     )
   );
 };

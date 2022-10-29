@@ -1,19 +1,20 @@
-img.review-icon {
-    display:flex;
-    justify-content:left;
-    height: 40px;
-    width: 40px;
-    padding-bottom: 10px;
-}
-
+/* img.review-icon {
+display:flex;
+justify-content:left;
+height: 40px;
+width: 40px;
+padding-bottom: 10px;
+} */
 div.reviewe-box {
-  
+    
     display: flex;
     align-items: center;
-    padding-bottom: 10px;
+    
 }
 div.review-box {
-    padding: 20px;
+    padding-top: 2rem;
+    box-sizing: border-box;
+    border: 1px solid #d3d3d3;
 }
 
 ul.review-border{
@@ -29,22 +30,26 @@ div.review-text {
 }
 
 .deleteButtonReview{
-    
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient( #f6083f, #d42a79);
     color:white;
     border: none;
     height: 1.9em;
-    width: 1.9em;
+    /* width: 1.9em; */
     border-radius: .6em;
     width: 100px;
     cursor: pointer;
-    margin-top: 20px;
-      
+    margin-top: 10px;
+    
 }
 
+/*
 .create-review-errors {
     padding-top: 17px;
 }
 .single-error{
     margin-bottom: 10px;
-}
+} */

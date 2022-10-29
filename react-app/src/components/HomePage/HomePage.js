@@ -6,6 +6,7 @@ import { getAllUsersThunk } from "../../store/AllUsers";
 import image1 from "../icons/image1.avif"
 import image2 from "../icons/image2.avif"
 import image3 from "../icons/image3.avif"
+import githubIcon from '../icons/githubIcon.png'
 import "./HomePage.css";
 
 
@@ -94,8 +95,16 @@ useEffect(() => {
                 }
                 )}
             </div>
-            
             </div>
+            <footer className="parentFooter">
+    <div class="footer-home">
+    Copyright 2022.  &nbsp; Zelp. All Rights Reserved.  &nbsp; &nbsp; &nbsp;
+    <img className="ourRepo" src={githubIcon} alt="ourRepo"/>
+    <div className="footer-home-wrap-containers">
+      <a className="text-for-github" href="https://github.com/Justinguu/zelp"> https://github.com/Justinguu/zelp</a>
+    </div>
+      </div>
+  </footer>
         </div>
     )
 

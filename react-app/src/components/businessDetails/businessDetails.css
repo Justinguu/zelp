@@ -2,167 +2,133 @@
   height: 65px;
 } */
 
-div.whole-page-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-div.whole-page-wrapper {
-  width: 100%;
-  height: 100%;
-  margin-top: 4rem;
+ div.whole-page-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  
-}
-.business-bottom-half{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 15px;
-    border: solid .5rem green
-
-}
-
-.details-container {
-   display:flex;
-   flex-direction: column;
-   justify-content: center;
-
-
-}
-/* .business-info-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: rem;
-  align-items: center;
-  border: solid .5 green
-}
-.business-information-container {
-  margin-right: 38rem;
-  border: solid 0.4rem rgb(0, 255, 94);
-  margin-bottom: 10rem;
-  font-weight: 500;
-  padding: 1rem;
-} */
-
-/* .detailss-container{
-    width: 90%;
-    height: 100%;
-    border: solid .5 green;
-}
-.currSpot-name {
-  display: flex;
-  font-weight: 500;
-  font-size: 3rem;
-}
-
-.create-review-button {
-  background: linear-gradient(#f6083f, #d42a79);
-  color: white;
-  border: none;
-  height: 3.0em;
-  border-radius: 0.6em;
-  width: 10rem;
-  cursor: pointer;
-  margin-right: 20rem;
-}
-div.spot-hosted-by {
-  font-size: 23px;
-  font-weight: 500;
-  padding-top: 20px;
-  padding-bottom: 30px;
+  height: 100%;
 }
 
 img.img-currSpots {
-
-  height: 26rem;
-  width: 100%;
-  object-fit: cover;
-  z-index: -1;
-} */
-
-/* p.numReview-star {
-  display: flex;
-  border-top: 1px solid rgb(235, 228, 228);
-  padding-top: 10px;
-
-  font-size: 20px;
-  font-weight: 500;
+    display:flex;
+    justify-content: center;
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+} 
+.details-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 3px solid blue */
+    
 }
-.review-star-icon {
-  display: inline-flex;
-  padding-top: 2px;
-  height: 18px;
-  width: 16px;
-  padding-right: 4px;
+.currSpot-name{
+    font-size: 35px;
+    margin-left: -1px;
 }
-
-button.EditSpot-button {
-  background: ( #d42a79);
-  color: white;
-  border: none;
-  height: 2.5em;
-  border-radius: 0.6em;
-  width: 100px;
-  cursor: pointer;
-  margin-top: 20px;
-} */
-
-/* button.DeleteSpot-button {
-  background: linear-gradient(#f6083f, #d42a79);
-  color: white;
-  border: none;
-  height: 2.5em;
-  border-radius: 0.6em;
-  width: 100px;
-  cursor: pointer;
-  margin-top: 23px;
-  padding-bottom: 5px;
+.details-price {
+    font-size:20px;
+    padding-top: 5px;
 }
 
-p.price-text {
-  font-weight: 450;
-  font-size: larger;
+.business-info-container {
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    margin-top: -8rem;
+    margin-left: 8rem;
+    color: white;
+    z-index: 2;
 }
 
-button.review-spot-button {
-  background: linear-gradient(#f6083f, #d42a79);
-  color: white;
-  border: none;
-  height: 2.5em;
-  border-radius: 0.6em;
-  width: 100px;
-  cursor: pointer;
-  margin-top: 23px;
-  padding-bottom: 5px;
+.business-details-bottom-container{
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 1.5rem;
+    /* border: .5rem solid red; */
 }
-button.review-spot-button:disabled {
-  background: linear-gradient(#6d6567, #6d6567);
-  color: white;
-  border: none;
-  height: 1.9em;
-  width: 1.9em;
-  border-radius: 0.6em;
-  width: 100px;
-  margin-top: 20px;
-  pointer-events: none;
+.business-details-bottom-wrapper{
+    display:flex;
+    flex-direction: row;
+    width: 70rem;
+    height: 100%;
+    border: .5rem solid blue;
 }
-.review-text-disabled {
-  font-size: small;
-  color: gray;
-  padding-top: 10px;
+.create-review-button{
+    font-weight: 600;
+    font-size: 15px;
+    color: #fff;
+    background-color: #e00707;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    width: 175px;
+    height: 45px;
+    transition: 1s;
+    cursor: pointer;
+      
+}
+.business-details-left{
+display:flex;
+flex-direction: column;
+width: 45rem;
+height:50rem;
 }
 
-.currSpot-description {
-  border-top: 1px solid rgb(235, 228, 228);
-  font-size: 17px;
-  font-weight: 350;
-  padding-top: 30px;
-  padding-bottom: 10px;
+.business-details-right{
+display: flex;
+flex-direction: column;
+margin-left: 13rem;
+border: .5rem solid green;
 }
- */
+
+.Editbiz-button{
+    background-color: #E00707;
+    color: white;
+    border: none;
+    height: 2.6em;
+    border-radius: .4em;
+    min-width: 10em;
+    cursor: pointer;
+    margin-right: 2em;
+    margin-top: .5rem;
+    margin-bottom: 0.7em;
+    margin-left: 2em;
+    
+}
+
+.Deletebiz-button {
+    background-color: #E00707;
+    color: white;
+    border: none;
+    height: 2.6em;
+    border-radius: .4em;
+    min-width: 9em;
+    cursor: pointer;
+    margin-right: 2em;
+    margin-bottom: 0.7em;
+    margin-left: 2em;
+}
+.star{
+    width: 17px;
+    height:17px;
+}
+
+.phoneNumberBox{
+    display: flex;
+    align-items: center;
+    width: 15rem;
+    margin-top:5rem;
+    padding-top: .4rem;
+    padding-bottom:.5rem;
+    box-sizing: border-box;
+    border: 1px solid #d3d3d3;
+    font-weight: 500;
+
+}
+
+
+
+
