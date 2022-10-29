@@ -1,29 +1,57 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, NavLink, useParams } from "react-router-dom";
+import { useHistory, NavLink, useParams, Redirect } from "react-router-dom";
 import { getAllBusinessesThunk } from "../../store/business";
 import { getAllUsersThunk } from "../../store/AllUsers";
+import image1 from "../icons/image1.avif"
+import image2 from "../icons/image2.avif"
+import image3 from "../icons/image3.avif"
 import "./HomePage.css";
 
 
+
 const GetAllTheBusinesses = () => {
+    
+
+
     const history= useHistory();
     const dispatch = useDispatch();
     const {businessId} = useParams();
-    const [imageState, setImageState] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
     const business = useSelector(state => state.business);
     const allbusinessesArr = Object.values(business);
-    // console.log("business", allbusinessesArr);
-
-    // const businesses = useSelector(state => state.businesses);
     const allusers = useSelector(state => state.allUsers);
-    const user = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user)
+
+
+    if (!sessionUser){
+        <Redirect to="/login"></Redirect>
+    }
+
 
 
 let allbusinessesArray;
 let allUsersArray;
+
+   
+
+ const slideShowPic = [image1,image2,image3]
+    const [pictures, setPictures] = useState(slideShowPic[0]);
+    const [counter, setCounter] = useState(0)
+
+
+useEffect(() => {
+    setPictures(slideShowPic[counter])
+}, [counter])
+
+useEffect(() => {
+    const timer = setInterval(() => {
+        setCounter((counter) => counter === 2 ? 0 : counter + 1)
+    }, 4000)
+
+    return () => clearInterval(timer)
+}, [])
 
 useEffect(() => {
     dispatch(getAllBusinessesThunk())}, [dispatch, allUsersArray, allbusinessesArray, submitted]);
@@ -32,18 +60,14 @@ useEffect(() => {
     dispatch(getAllUsersThunk())},[dispatch, allUsersArray]);
 
 
-    // if (!user) {
-    //     return (
-    //       <>
-    //         <div>{history.push('/404')}</div>
-    //       </>
-    //     );
-    //   }
+
 
     return (
         <div className="homepage-container">
-            <div className="best-resturants-text">Best resturants to eat at</div>
+            <img className="hp-slideShowPic" alt='slideShow' src={pictures}/>
+            <div className="best-resturants-text"></div>
             <div className="business-container"> 
+            <div className="hp-header">Recent Actvity</div>
             <div className="business-wrapper">
                 {allbusinessesArr.map((business) => {
                     return (
@@ -56,9 +80,9 @@ useEffect(() => {
                             </div>
                             <div className="main-right-side-container">
                                 <NavLink to={`/businesses/${business.id}`}><div className="business-name-caption">{business.business_name}</div></NavLink>
-                                <div className="business-captions">{business.address} {business.city} {business.state} {business.zip_code}</div>
-                                <div className="business-captions">Average Cost = ${business.price}.00</div>
-                                <div className="business-captions">{business.description}</div>
+                                <div className="business-captions"> {business.city} {business.state}</div>
+                                {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
+                                {/* <div className="business-captions">{business.description}</div> */}
 
 
                             </div>

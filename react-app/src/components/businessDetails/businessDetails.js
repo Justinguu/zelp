@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import {
-  getOneBusinessThunk,
-
-} from "../../store/business";
+import { getOneBusinessThunk } from "../../store/business";
 import { getCurrReviewThunk, createReviewThunk } from "../../store/review";
 import { Modal } from "../../context/Modal";
 import GetBusinessReviews from "../Review/ReviewGet/getReviews";
@@ -18,18 +15,18 @@ const BusinessDetails = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  const [showReview, setShowReview] = useState(false)
+  const [showReview, setShowReview] = useState(false);
 
   const [disabled, setDisabled] = useState(true);
 
-  const { businessId} = useParams();
+  const { businessId } = useParams();
 
   const user = useSelector((state) => state.session.user.id);
   const currBusiness = useSelector((state) => state.business[businessId]);
   // console.log(currBusiness);
   const allReviews = useSelector((state) => state.review);
   const getAllReviewsArr = Object.values(allReviews);
-  //   console.log(allReviews)
+  // console.log(allReviews)
 
   const history = useHistory();
 
@@ -42,9 +39,8 @@ const BusinessDetails = () => {
 
   const dispatch = useDispatch();
 
-
   useEffect(() => {
-    dispatch(getCurrReviewThunk(businessId))
+    dispatch(getCurrReviewThunk(businessId));
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
 
@@ -66,55 +62,65 @@ const BusinessDetails = () => {
         {/* have a left side for half image detail & right with address and stuff */}
         <div className="whole-page-container">
           <div className="whole-page-wrapper">
-            <div className="currSpot-header"></div>
-            <div className="whole-details-container">
               <img
                 className="img-currSpots"
                 src={currBusiness.preview_image}
                 alt="business image"
-              />
-              {/* {Number(rating).toFixed(2)}{" "} */}
-
+              ></img>
+              <div className="business-info-container"></div>
+              <div className="business-info-wrapper">
+            <div className="business-bottom-half">
               <div>
-                <h2 className="currSpot-name">{currBusiness.business_name}</h2>
-                <p className="price-text"> ${currBusiness.price}</p>
-                {currBusiness.address} {currBusiness.city}, {currBusiness.state}
-                ,{currBusiness.country} {currBusiness.zip}
-                <p className="numReview-star">
-                  {/* {Number(rating).toFixed(2)}{" "} {currBusiness.num_reviews} Reviews */}
-                </p>
+                <button
+                  className="create-review-button"
+                  onClick={() => setShowReview(true)}
+                >
+                  Create Review
+                </button>
+                {showReview && (
+                  <Modal onClose={() => setShowReview(false)}>
+                    <CreateReviewForm setShowReview={setShowReview} />
+                  </Modal>
+                )}
               </div>
+                <div className="business-information-container">
+
+
+                  <div className="currSpot-name">
+                    {currBusiness.business_name}
+                  </div>
+                  <div></div>
+                  <div>Claimed ● ${currBusiness.price}</div>
+                  <div> {currBusiness.address} </div> {currBusiness.city},{" "}
+                  {currBusiness.state},{currBusiness.country}{" "}
+                  {currBusiness.zip_code}
+                </div>
+              
+
+            <div>
+              <p className="numReview-star">
+                {/* {Number(rating).toFixed(2)}{" "} {currBusiness.num_reviews} Reviews */}
+              </p>
+            </div>
+            <div className="currSpot-header"></div>
+            <div className="whole-details-container">
+                    <div className="detailss-container">
+              {/* {Number(rating).toFixed(2)}{" "} */}
             </div>
 
-            {/* {!user
-              ? null
-              : currBusiness.owner_id === user.id && (
-                  <button
-                    className="review-spot-button"
-                    // disabled={disabled}
-                    onClick={(e) => addReview(e, currBusiness.id)}
-                  >
-                    Review Business
-                  </button>
-                )} */}
-
-            {/* {disabled && (
-                <div className="review-text-disabled"> Thanks for leaving a review for this spot! </div>
-            )} */}
-            {/* if they are the business owner equals user.id*/}
             {currBusiness.ownerId === user?.id && (
-              <div>
+              <div className="details-container">
                 <button
                   className="EditSpot-button"
                   onClick={() => setShowUpdate(true)}
-                >
+                  >
                   Edit Business{" "}
                 </button>{" "}
                 &nbsp;&nbsp;&nbsp;
                 <button
                   className="DeleteSpot-button"
                   onClick={() => setShowDelete(true)}
-                >
+                  >
                   Delete Busineess
                 </button>
                 {showUpdate && (
@@ -122,7 +128,7 @@ const BusinessDetails = () => {
                     <EditBusinessForm
                       businessId={businessId}
                       setShowUpdate={setShowUpdate}
-                    />
+                      />
                   </Modal>
                 )}
                 {showDelete && (
@@ -130,33 +136,22 @@ const BusinessDetails = () => {
                     <BusinessDelete
                       businessId={businessId}
                       setShowDelete={setShowDelete}
-                    />
+                      />
                   </Modal>
                 )}
                 <div>
-                  <GetBusinessReviews businessId={businessId}sessionUser={user} />
-                  
-                  </div>
-                  <div>
-                    <button
-                    onClick={() => setShowReview(true)}
-                    >
-                        Create Review
-                    </button>
-                    {showReview && (
-                      <Modal onClose={() => setShowReview(false)}>
-                        <CreateReviewForm
-            
-                        setShowReview={setShowReview}
-                        />
-                      </Modal>
-                    )}
-                   
-                    </div>
+                  <GetBusinessReviews
+                    businessId={businessId}
+                    sessionUser={user}
+                    />
+                </div>
               </div>
             )}
           </div>
+            </div>
+            </div>
         </div>
+            </div>
       </>
     )
   );

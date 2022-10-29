@@ -1,145 +1,168 @@
+/* div.currSpot-header {
+  height: 65px;
+} */
 
-
-div.currSpot-header {
-    height: 65px;
+div.whole-page-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
-
-div.whole-page-container{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%
-
-    
-}
-div.whole-page-wrapper{
-    margin-top: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: solid .4rem blue;
+div.whole-page-wrapper {
+  width: 100%;
+  height: 100%;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   
 }
+.business-bottom-half{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+    border: solid .5rem green
+
+}
+
+.details-container {
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
 
 
-/* .getCurr-star-icon{
- display:inline-flex;
-    height: 14px;
-    width: 14px;
-    padding-right: 4px;
+}
+/* .business-info-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: rem;
+  align-items: center;
+  border: solid .5 green
+}
+.business-information-container {
+  margin-right: 38rem;
+  border: solid 0.4rem rgb(0, 255, 94);
+  margin-bottom: 10rem;
+  font-weight: 500;
+  padding: 1rem;
 } */
 
-/* .img-currSpots{
-    display:flex;
-    align-items: center;
-    height: 400px;
-    width: 200px
+/* .detailss-container{
+    width: 90%;
+    height: 100%;
+    border: solid .5 green;
+}
+.currSpot-name {
+  display: flex;
+  font-weight: 500;
+  font-size: 3rem;
+}
 
-} */
-
+.create-review-button {
+  background: linear-gradient(#f6083f, #d42a79);
+  color: white;
+  border: none;
+  height: 3.0em;
+  border-radius: 0.6em;
+  width: 10rem;
+  cursor: pointer;
+  margin-right: 20rem;
+}
 div.spot-hosted-by {
-    font-size: 23px;
-    font-weight: 500;
-    padding-top: 20px;
-    padding-bottom: 30px
+  font-size: 23px;
+  font-weight: 500;
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 img.img-currSpots {
-    display: flex;
-    align-items: center;
-    border-radius: .8em;
-    height:35rem;
-    width: 70rem;
-    object-fit: cover;
-    z-index: 1;
 
-    }
+  height: 26rem;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+} */
 
-    p.numReview-star {
-    display:flex;
-    border-top: 1px solid rgb(235, 228, 228);
-    padding-top: 10px;
-    
-    font-size: 20px;
-    font-weight: 500;
-    }
-    .review-star-icon{
-    display:inline-flex;
-    padding-top: 2px;
-    height: 18px;
-    width: 16px;
-    padding-right: 4px;
-    }
+/* p.numReview-star {
+  display: flex;
+  border-top: 1px solid rgb(235, 228, 228);
+  padding-top: 10px;
 
-    button.EditSpot-button {
-        background: linear-gradient( #f6083f, #d42a79);
-        color:white;
-        border: none;
-        height: 2.5em;
-        border-radius: .6em;
-        width: 100px;
-        cursor: pointer;
-        margin-top: 20px;
-    }
+  font-size: 20px;
+  font-weight: 500;
+}
+.review-star-icon {
+  display: inline-flex;
+  padding-top: 2px;
+  height: 18px;
+  width: 16px;
+  padding-right: 4px;
+}
 
-    button.DeleteSpot-button {
-        background: linear-gradient( #f6083f, #d42a79);
-        color:white;
-        border: none;
-        height: 2.5em;
-        border-radius: .6em;
-        width: 100px;
-        cursor: pointer;
-        margin-top: 23px;
-        padding-bottom: 5px;
-    }
+button.EditSpot-button {
+  background: ( #d42a79);
+  color: white;
+  border: none;
+  height: 2.5em;
+  border-radius: 0.6em;
+  width: 100px;
+  cursor: pointer;
+  margin-top: 20px;
+} */
 
-    p.price-text {
-        font-weight: 450;
-        font-size:larger;
-        
-    } 
+/* button.DeleteSpot-button {
+  background: linear-gradient(#f6083f, #d42a79);
+  color: white;
+  border: none;
+  height: 2.5em;
+  border-radius: 0.6em;
+  width: 100px;
+  cursor: pointer;
+  margin-top: 23px;
+  padding-bottom: 5px;
+}
 
-    h2.currSpot-name {
-        display: flex;
-        padding-bottom: 100px;
-        margin-top: none;
-        font-size: 30px;
-    }
-    button.review-spot-button {
-        background: linear-gradient( #f6083f, #d42a79);
-        color:white;
-        border: none;
-        height: 2.5em;
-        border-radius: .6em;
-        width: 100px;
-        cursor: pointer;
-        margin-top: 23px;
-        padding-bottom: 5px;
-       
-    }
-    button.review-spot-button:disabled {
-        background: linear-gradient( #6d6567, #6d6567);
-        color:white;
-        border: none;
-        height: 1.9em;
-        width: 1.9em;
-        border-radius: .6em;
-        width: 100px;
-        margin-top: 20px;
-        pointer-events: none;
-    }
-    .review-text-disabled{
-        font-size: small;
-        color:gray;
-        padding-top: 10px;
-        
-    }
+p.price-text {
+  font-weight: 450;
+  font-size: larger;
+}
 
-    .currSpot-description{
-        border-top: 1px solid rgb(235, 228, 228);
-        font-size: 17px;
-        font-weight: 350;
-        padding-top: 30px;
-        padding-bottom:10px;
-    }
+button.review-spot-button {
+  background: linear-gradient(#f6083f, #d42a79);
+  color: white;
+  border: none;
+  height: 2.5em;
+  border-radius: 0.6em;
+  width: 100px;
+  cursor: pointer;
+  margin-top: 23px;
+  padding-bottom: 5px;
+}
+button.review-spot-button:disabled {
+  background: linear-gradient(#6d6567, #6d6567);
+  color: white;
+  border: none;
+  height: 1.9em;
+  width: 1.9em;
+  border-radius: 0.6em;
+  width: 100px;
+  margin-top: 20px;
+  pointer-events: none;
+}
+.review-text-disabled {
+  font-size: small;
+  color: gray;
+  padding-top: 10px;
+}
+
+.currSpot-description {
+  border-top: 1px solid rgb(235, 228, 228);
+  font-size: 17px;
+  font-weight: 350;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+ */
