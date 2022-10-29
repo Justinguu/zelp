@@ -28,10 +28,10 @@ const createReview = (review) => {
     };
 }
 
-const updateReview = (payload) => {
+const updateReview = (review) => {
     return {
         type: UPDATE_REVIEW,
-        payload
+        review
     };
 }
 
@@ -62,18 +62,15 @@ export const getCurrReviewThunk = (businessId) => async (dispatch) => {
     }
 }
 
-export const createReviewThunk = (user_id,businessId,review,avg_rating) => async (dispatch) => {
-    console.log("user_id", user_id)
-    console.log("businessId", businessId)
-    console.log("review",review)
-    console.log("avg_rating", avg_rating)
+export const createReviewThunk = (user_id,business_id,review,avg_rating) => async (dispatch) => {
 
-    const response = await fetch(`/api/businesses/${businessId}/reviews/new`, {
+    const response = await fetch(`/api/businesses/${business_id}/reviews/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({user_id,businessId,review,avg_rating})
+        body: JSON.stringify({user_id,business_id,review,avg_rating}),
+        
     });
 
     if (response.ok) {
@@ -83,13 +80,13 @@ export const createReviewThunk = (user_id,businessId,review,avg_rating) => async
     }
 }
 
-export const updateReviewThunk = (review) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${review.id}/edit`, {
+export const updateReviewThunk = (id,user_id,business_id,review,avg_rating) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${business_id}/reviews/${id}/edit`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(review)
+        body: JSON.stringify({business_id,id,user_id,review,avg_rating})
     });
 
     if (response.ok) {
@@ -98,13 +95,14 @@ export const updateReviewThunk = (review) => async (dispatch) => {
     }
 }
 
-export const deleteReviewThunk = (reviewId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId}/delete`, {
+export const deleteReviewThunk = (businessId,reviewId) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}/reviews/${reviewId}/delete`, {
         method: 'DELETE'
     });
 
     if (response.ok) {
-    dispatch(deleteReview(reviewId));
+    const deleted = await response.json();
+    dispatch(deleteReview(deleted));
     }
 }
 
@@ -119,7 +117,7 @@ const reviewReducer = (state = initialState, action) => {
             return newState;
     }
         case GET_CURR_REVIEW: {
-            const newState = {...action.businessId};
+            const newState = {...action.businessId.reviews};
             return newState;
     }
         case CREATE_REVIEW: {
@@ -129,7 +127,7 @@ const reviewReducer = (state = initialState, action) => {
     }
         case UPDATE_REVIEW: {
             const newState = {...state};
-            newState[action.payload.review.id] = action.payload.review;
+            newState[action.review.id] = action.review;
             return newState;
     }
         case DELETE_REVIEW: {

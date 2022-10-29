@@ -10,6 +10,7 @@ import { Modal } from "../../context/Modal";
 import GetBusinessReviews from "../Review/ReviewGet/getReviews";
 import CreateReviewForm from "../Review/CreateForm/createForm";
 import BusinessDelete from "../BusinessDelete/businessDelete";
+import DeleteReviewForm from "../Review/reviewDelete/deleteReview";
 import EditBusinessForm from "../BusinessEdit/businessEdit.js";
 import "./businessDetails.css";
 
@@ -18,9 +19,10 @@ const BusinessDetails = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [showReview, setShowReview] = useState(false)
+
   const [disabled, setDisabled] = useState(true);
 
-  const { businessId, reviewId } = useParams();
+  const { businessId} = useParams();
 
   const user = useSelector((state) => state.session.user.id);
   const currBusiness = useSelector((state) => state.business[businessId]);
@@ -144,11 +146,12 @@ const BusinessDetails = () => {
                     {showReview && (
                       <Modal onClose={() => setShowReview(false)}>
                         <CreateReviewForm
-                        reviewId={reviewId}
+            
                         setShowReview={setShowReview}
                         />
                       </Modal>
                     )}
+                   
                     </div>
               </div>
             )}

@@ -36,9 +36,9 @@ function CreateReviewForm({setShowReview}) {
 
     },[review]);
 
-    useEffect(() => {
-      dispatch(createReviewThunk(userId,businessId,review,rating)).then(()=> setLoaded(true))
-    })
+    // useEffect(() => {
+    //   dispatch(createReviewThunk(userId,businessId,review,rating)).then(()=> setLoaded(true))
+    // })
 
     const handleSubmit = (e) => {
         e.preventDefault();

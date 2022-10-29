@@ -159,11 +159,13 @@ def get_review_by_businessId(businessId):
 
 
 # create a new review
-@business_routes.route('/<int:business_Id>/reviews/new', methods=['POST'])
+@business_routes.route('/<int:business_id>/reviews/new', methods=['POST'])
 @login_required
-def new_review(businessId):
+def new_review(business_id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('fewfwefefwefwfewfwfwe')
+    print(form.data)
     if form.validate_on_submit():
         review = Review(
             user_id = form.data['user_id'],
@@ -179,20 +181,20 @@ def new_review(businessId):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     
     # edit a review if you have the same user_id as the one who created the review
-@business_routes.route('/<int:businessId>/reviews/<int:id>/edit', methods=['PUT'])
+@business_routes.route('/<int:business_id>/reviews/<int:id>/edit', methods=['PUT'])
 @login_required
-def edit_review(reviewId):
+def edit_review(business_id, id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        review = Review.query.get(reviewId)
-        if review.user_id == current_user.id:
-            review.review = form.data['review']
-            review.avg_rating = form.data['avg_rating']
-            db.session.commit()
-            return(review.to_dict())
-        else:
-            return {'errors': ['You are not authorized to edit this review']}, 401
+        review = Review.query.get(id)
+        review.user_id == form.data['user_id']
+        review.review = form.data['review']
+        review.avg_rating = form.data['avg_rating']
+        db.session.commit()
+        return review.to_dict()
+        # else:
+        #     return {'errors': ['You are not authorized to edit this review']}, 401
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
