@@ -69,7 +69,7 @@ async function onSubmit(e) {
 return (
 <form onSubmit={onSubmit} className="spot-form-update">
 <div>
-  <h3>Edit Spot Form</h3>
+  <h3>Edit Busineess Form</h3>
 </div>
 {hasSubmitted && errors.length > 0 && (
         <ul className="edit-errors">
@@ -88,8 +88,9 @@ return (
         />
         <input
         className="form-input mid edit"
-        type="text"
-        placeholder="Phone Number"
+        type="tel"
+        placeholder="678-211-4443"
+        pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
         value={phoneNumber}
         onChange={(e) => setPhoneNumber(e.target.value)}
         required
@@ -97,8 +98,8 @@ return (
 
         <input
         className="form-input mid edit"
-        type="text"
-        placeholder="Email"
+        type="email"
+        placeholder="Business@gmail.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -108,6 +109,8 @@ return (
         className="form-input mid edit"
         type="text"
         placeholder="Address"
+        maxLength="60"
+        minLength="10"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
         required
@@ -117,6 +120,8 @@ return (
         className="form-input mid edit"
         type="text"
         placeholder="City"
+        maxLength="20"
+        minLength="2"
         value={city}
         onChange={(e) => setCity(e.target.value)}
         required
@@ -125,6 +130,8 @@ return (
         <input
         className="form-input mid edit"
         type="text"
+        maxLength="20"
+        minLength="2"
         placeholder="State"
         value={state}
         onChange={(e) => setState(e.target.value)}
@@ -135,6 +142,8 @@ return (
         className="form-input mid edit"
         type="text"
         placeholder="Country"
+        maxLength="20"
+        minLength="2"
         value={country}
         onChange={(e) => setCountry(e.target.value)}
         required
@@ -142,7 +151,9 @@ return (
 
         <input
         className="form-input mid edit"
-        type="text"
+        type="number"
+        maxLength="5"
+        minLength="5"
         placeholder="Zip Code"
         value={zipCode}
         onChange={(e) => setZipCode(e.target.value)}
@@ -153,6 +164,8 @@ return (
         className="form-input mid edit"
         type="text"
         placeholder="Description"
+        maxLength="400"
+        minLength="2"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         required
@@ -160,8 +173,12 @@ return (
 
         <input
         className="form-input mid edit"
-        type="text"
+        type="number"
         placeholder="Price"
+        max="200"
+        min="2"
+        minLength="1"
+        maxLength="3"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         required
@@ -169,7 +186,7 @@ return (
 
         <input
         className="form-input last edit"
-        type="text"
+        type="url"
         placeholder="Image URL"
         value={previewImage}
         onChange={(e) => setPreviewImage(e.target.value)}

@@ -33,6 +33,8 @@
 
 .all-input-business{
     display:flex;
+    /* align-items: center; */
+    /* justify-content: center; */
     flex-direction: column;
     padding: 10px;
     color: black;
@@ -40,6 +42,12 @@
     border-color: black;
 }
 
+.create-business-form{
+    display:flex;
+    justify-content: column;
+    align-items: center;
+    flex-direction: row;
+}
 
 
 

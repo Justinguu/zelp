@@ -104,8 +104,9 @@ return (
                     <input 
                     
                     className="business-input-field"
-                    type="text"
-                    placeholder="Phone Number"
+                    type="tel"
+                    placeholder="678-211-4443"
+                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     required
@@ -114,8 +115,8 @@ return (
                    
                     <input
                     className="business-input-field"
-                    type="text"
-                    placeholder="Email"
+                    type="email"
+                    placeholder="Business@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -196,16 +197,16 @@ return (
                    
                     <input 
                     className="business-input-field"
-                    type="text"
+                    type="number"
                     placeholder="Price"
-                    maxLength="100"
-                    minLength="2"
+                    minLength="1"
+                    maxLength="3"
+                    max="200"
+                    min="2"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     required
                     />
-
-                  
                     <input 
                     className="business-input-field"
                     type="url"
@@ -216,12 +217,9 @@ return (
                     />
 
 
-
-
-
-                </div>
                 <button className="business-submit-button" type="submit">Submit</button>
-                {/* <button onClick={() =>{dispatch(createBusinessThunk(ownerId,"chang",1112223333,"randy@gmail.com","addresssssss","cityyyyyyyyyy","stateeeeeeee","countryyyyyyyyy",33333,"fwfefwefwefwefwfwefwefwefwefwefwfwef",22,"https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"))}}>test</button> */}
+                </div>
+
                 </form>
         </div>
         </div>
