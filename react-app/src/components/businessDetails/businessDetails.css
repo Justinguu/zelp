@@ -134,9 +134,9 @@ margin-left: 13rem;
 
 .get-directions{
     display: flex;
-    align-items: center;
-    width: 17rem;
-    /* margin-top:2rem; */
+   
+    width: 25rem;
+    flex-direction: column;
     padding-left:6px;
     padding-top: 1.2rem;
     padding-bottom:1.2rem;

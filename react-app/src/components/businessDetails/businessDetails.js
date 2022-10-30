@@ -144,9 +144,10 @@ const BusinessDetails = () => {
                       <div className="phoneNumberBox">
                       {dashedNumber(currBusiness.phone_number)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img className="phone" src={phone} alt="phone"/>
                       </div>
-                      <div className="get-directions">Get Directions
+                      {/* <div className="get-directions">Get Directions
+                      <div>{currBusiness.address} {currBusiness.city} {currBusiness.state} {currBusiness.zip_code} </div>
                       <img className="directions-image" src={directions}/>
-                      </div>
+                      </div> */}
 
                     {showDelete && (
                       <Modal onClose={() => setShowDelete(false)}>
