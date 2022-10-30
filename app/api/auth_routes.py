@@ -68,7 +68,7 @@ def sign_up():
             first_name=form.data['first_name'],
             last_name=form.data['last_name'],
             email=form.data['email'],
-            profileImage=form.data['profileImage'] or "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png",
+            profileImage=form.data['profileImage'] or   "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png",
             password=form.data['password']
         )
         db.session.add(user)

@@ -197,10 +197,8 @@ return (
                    
                     <input 
                     className="business-input-field"
-                    type="number"
-                    placeholder="Price"
-                    minLength="1"
-                    maxLength="3"
+                    type="tele"
+                    placeholder="21"
                     max="200"
                     min="2"
                     value={price}

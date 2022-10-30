@@ -32,8 +32,11 @@ useEffect(() => {
     if (review.length < 1) {
         errors.push("Review body must be more than 1 character");
     }
+    if (rating.rating < 0 ||rating.rating > 5){
+        errors.push("Rating must be between 0 and 5")
+      }
     return setErrors(errors);
-}, [review])
+}, [review,rating])
 
 
 

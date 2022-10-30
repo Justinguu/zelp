@@ -149,10 +149,10 @@ return (
 
         <input
         className="form-input mid edit"
-        type="number"
+        type="text"
         maxLength="5"
         minLength="5"
-        placeholder="Zip Code"
+        placeholder="30056"
         value={zipCode}
         onChange={(e) => setZipCode(e.target.value)}
         required
@@ -171,7 +171,7 @@ return (
 
         <input
         className="form-input mid edit"
-        type="number"
+        type="tele"
         placeholder="21"
         max="200"
         min="2"

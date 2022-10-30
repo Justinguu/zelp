@@ -27,6 +27,14 @@ const GetBusinessReviews = ({ businessId }) => {
 
   
   const allUsersArr = Object.values(allUsers);
+
+
+  // const createdAtObject = getAllReviewsArr.created_at
+  //   const createdAtString = JSON.stringify(createdAtObject)
+  //   const date = createdAtString.slice(5, 8)
+  //   const month = createdAtString.slice(9, 12)
+  //   const year = createdAtString.slice(13, 17)
+  //   createdAtDate = `${month} ${date}, ${year}`
   
   const deleteReview = (e, id) => {
     e.preventDefault();
@@ -39,6 +47,7 @@ const GetBusinessReviews = ({ businessId }) => {
   useEffect(() => {
     dispatch(getCurrReviewThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId, showReviewDelete]);
+
 
   return (
     isLoaded && (
@@ -59,7 +68,7 @@ const GetBusinessReviews = ({ businessId }) => {
                           <div className="reviews-get-firstName">{users.username}</div>
                         <div className="reviews-get-greyed-name"> Elite Grumbler</div>
                         <div className="stars-go-here">
-                         555555 {new Date(review.created_at).toString().slice(4, 15)}
+                         {/* 555555 {createdAtDate} */}
                         </div>
                         </div>
                         

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
 import { createReviewThunk } from "../../../store/review";
+import './createReviewForm.css'
 
 
 function CreateReviewForm({setShowReview}) {
@@ -9,7 +10,7 @@ function CreateReviewForm({setShowReview}) {
   const [isLoaded, setLoaded] = useState(false)
   
   const [review, setReview] = useState("")
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState(1)
   const [errors, setErrors] = useState([]);
   
   const sessionUser = useSelector(state => state.session.user)
@@ -23,18 +24,21 @@ function CreateReviewForm({setShowReview}) {
 
    //add rating validation and add below
     useEffect(() => {
-        const formValidationErrors = []
+        const errors = []
 
         if (review.length > 200) {
-            formValidationErrors.push("Review body must be no more than 200 characters");
+            errors.push("Review body must be no more than 200 characters");
         }
         if (review.length < 1) {
-            formValidationErrors.push("Review body must be more than 1 character");
+            errors.push("Review body must be more than 1 character");
         }
 
-        setErrors(formValidationErrors);
+        if (rating.rating < 0 || rating.rating > 5){
+          errors.push("Rating must be between 0 and 5")
+        }
 
-    },[review]);
+        return setErrors(errors);
+    },[review,rating]);
 
     // useEffect(() => {
     //   dispatch(createReviewThunk(userId,businessId,review,rating)).then(()=> setLoaded(true))
@@ -60,13 +64,13 @@ return (
         <div className="errorHandlingContainer">
           {errors.length > 0 && (
             <div className="HeaderErrorStyling">
-              <ul className="UlBulletErrorStyling">
+              <div className="UlBulletErrorStyling">
                 {errors.map((error, idx) => (
-                  <li className="ErrorPoints" key={idx}>
+                  <div className="ErrorPoints" key={idx}>
                     {error}
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
         </div>
@@ -81,7 +85,7 @@ return (
         required
         />
         <input
-        className="descriptionCreateComment"
+        className="ratingCreateComment"
         placeholder="rating..."
         type="number"
         autoComplete="off"

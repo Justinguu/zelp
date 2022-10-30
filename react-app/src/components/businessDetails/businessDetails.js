@@ -9,10 +9,10 @@ import CreateReviewForm from "../Review/CreateForm/createForm";
 import BusinessDelete from "../BusinessDelete/businessDelete";
 import DeleteReviewForm from "../Review/reviewDelete/deleteReview";
 import EditBusinessForm from "../BusinessEdit/businessEdit.js";
-import star from '../icons/star.png'
-import phone from '../icons/phone.png'
-import highlights from "../icons/highlights.png"
-import directions from"../icons/directions.png"
+import star from "../icons/star.png";
+import phone from "../icons/phone.png";
+import highlights from "../icons/highlights.png";
+import directions from "../icons/directions.png";
 import "./businessDetails.css";
 
 const BusinessDetails = () => {
@@ -60,16 +60,18 @@ const BusinessDetails = () => {
   //   const rating = currBusiness.rating == 0 ? "New" : currBusiness.rating;
   //show business reviews
 
-  function dashedNumber(value){
-    const afterIndices = [3,6]; 
-    const length = value.length;
-    let newValue = '' 
-    for(let i=0; i<length; i++){
-      if(afterIndices.includes(i))
-        newValue+='-'
-      newValue+=value[i];
-    }
-    return newValue;
+  function dashedNumber(number) {
+    const numWithoutDashes = number.replace(/[^0-9]/g, "");
+    if (numWithoutDashes.length > 10) return number.slice(0, -1);
+    const dashPlaces = [3, 6];
+    return numWithoutDashes
+      .split("")
+      .reduce(
+        (acc, curr, i) =>
+          dashPlaces.includes(i) ? [...acc, "-", curr] : [...acc, curr],
+        []
+      )
+      .join("");
   }
   return (
     isLoaded && (
@@ -84,8 +86,11 @@ const BusinessDetails = () => {
           <div className="business-info-container">
             <div className="currSpot-name">{currBusiness.business_name}</div>
             <div className="details-price">Claimed ● ${currBusiness.price}</div>
-            <div className="details-price"> {currBusiness.address} {currBusiness.city},{" "}
-            {currBusiness.state},{currBusiness.country} {currBusiness.zip_code}</div> 
+            <div className="details-price">
+              {" "}
+              {currBusiness.address} {currBusiness.city}, {currBusiness.state},
+              {currBusiness.country} {currBusiness.zip_code}
+            </div>
           </div>
           <div className="business-details-bottom-container">
             <div className="business-details-bottom-wrapper">
@@ -95,15 +100,18 @@ const BusinessDetails = () => {
                     className="create-review-button"
                     onClick={() => setShowReview(true)}
                   >
-                      <img className="star" src={star} alt="star"/>
-                   &nbsp; Write A Review
+                    <img className="star" src={star} alt="star" />
+                    &nbsp; Write A Review
                   </button>
                   <div>
-                    <img className="highlights" src={highlights}/>
+                    <img className="highlights" src={highlights} />
                   </div>
-                  <div> About the Business </div>
+                  {/* <div> About the Business </div> */}
                   <div className="blue-review-box">
-                    <div className="blue-box-bold-text">Your trust is our top concern,</div> so businesses can't pay to alter or remove their reviews.
+                    <div className="blue-box-bold-text">
+                      Your trust is our top concern,
+                    </div>{" "}
+                    so businesses can't pay to alter or remove their reviews.
                   </div>
                   {showReview && (
                     <Modal onClose={() => setShowReview(false)}>
@@ -141,10 +149,12 @@ const BusinessDetails = () => {
                         />
                       </Modal>
                     )}
-                      <div className="phoneNumberBox">
-                      {dashedNumber(currBusiness.phone_number)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img className="phone" src={phone} alt="phone"/>
-                      </div>
-                      {/* <div className="get-directions">Get Directions
+                    <div className="phoneNumberBox">
+                      {dashedNumber(currBusiness.phone_number)}
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <img className="phone" src={phone} alt="phone" />
+                    </div>
+                    {/* <div className="get-directions">Get Directions
                       <div>{currBusiness.address} {currBusiness.city} {currBusiness.state} {currBusiness.zip_code} </div>
                       <img className="directions-image" src={directions}/>
                       </div> */}

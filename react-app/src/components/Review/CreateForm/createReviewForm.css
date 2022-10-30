@@ -1,0 +1,49 @@
+.CreateComment-outer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 28rem;
+    height:20rem;
+    flex-direction: column;
+}
+
+.submitCreateComment{
+    background-color: #E00707;
+    color: white;
+    border: none;
+    height: 2.6em;
+    border-radius: .4em;
+    min-width: 9em;
+    cursor: pointer;
+    margin-top: 3.5rem;
+    margin-right: 10em;
+    /* margin-bottom: 0.7em; */
+    /* margin-left: 2em; */
+}
+
+.descriptionCreateComment{
+/* margin-top: .5rem; */
+display:flex;
+/* margin-bottom: 3rem; */
+width: 22rem;
+height: 4rem;
+/* padding-top: 1rem; */
+
+}
+
+.ratingCreateComment{
+margin-top: .5rem;
+display:flex;
+justify-content: center;
+flex-direction: column;
+width: 10rem;
+height:auto;
+/* padding-top: 1rem; */
+}
+
+.ErrorPoints {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
