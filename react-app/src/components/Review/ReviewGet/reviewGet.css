@@ -15,7 +15,12 @@ div.review-box {
     padding-top: 2rem;
     box-sizing: border-box;
     border: 1px solid #d3d3d3;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
+    
 }
+
 
 ul.review-border{
     padding: 0px 0px 0px 0px
@@ -26,7 +31,9 @@ div.review-name{
     font-weight: 450;
 }
 div.review-text {
+    display:flex;
     font-weight: 320;
+    flex-direction: column;
 }
 
 .deleteButtonReview{
@@ -44,6 +51,72 @@ div.review-text {
     cursor: pointer;
     margin-top: 10px;
     
+}
+
+
+.users-review-info{
+    display:flex;
+    align-items: center;
+    
+}
+
+.user-profile-image{
+    height: 30px;
+    width: 30px;
+    display:flex;
+    margin-bottom: 2.2rem;
+    
+}
+
+.reviews-get-firstName{
+    font-weight: 500;
+}
+
+.reviews-get-greyed-name{
+    color:gray;
+    margin-bottom: 1rem;
+}
+
+.stars-go-here{
+margin-left: -3.2rem;
+}
+.three-items-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.highlights{
+    border-top: 1px solid rgb(203, 203, 203);
+    border-bottom: 1px solid rgb(203, 203, 203);
+}
+.blue-review-box{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    /* border-radius: 4px; */
+    gap: 8px;
+    align-content: normal;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: normal;
+    margin-left: -2px;
+    min-height: 72px;
+    padding-bottom: 14px;
+    padding-left: 16px;
+    padding-top: 14px;
+    width: 100%;
+    padding-right: 12px;
+    background: padding-box rgb(235, 246, 255);
+    border-left: 8px solid rgb(31, 142, 255);
+    border-right: 4px solid rgb(235, 246, 255);
+}
+
+.blue-box-bold-text{
+    font-weight: 500;
+    margin-bottom:1px;
 }
 
 /*

@@ -11,6 +11,8 @@ import DeleteReviewForm from "../Review/reviewDelete/deleteReview";
 import EditBusinessForm from "../BusinessEdit/businessEdit.js";
 import star from '../icons/star.png'
 import phone from '../icons/phone.png'
+import highlights from "../icons/highlights.png"
+import directions from"../icons/directions.png"
 import "./businessDetails.css";
 
 const BusinessDetails = () => {
@@ -25,7 +27,7 @@ const BusinessDetails = () => {
 
   const user = useSelector((state) => state.session.user.id);
   const currBusiness = useSelector((state) => state.business[businessId]);
-  // console.log(currBusiness);
+
   const allReviews = useSelector((state) => state.review);
   const getAllReviewsArr = Object.values(allReviews);
   // console.log(allReviews)
@@ -96,6 +98,13 @@ const BusinessDetails = () => {
                       <img className="star" src={star} alt="star"/>
                    &nbsp; Write A Review
                   </button>
+                  <div>
+                    <img className="highlights" src={highlights}/>
+                  </div>
+                  <div> About the Business </div>
+                  <div className="blue-review-box">
+                    <div className="blue-box-bold-text">Your trust is our top concern,</div> so businesses can't pay to alter or remove their reviews.
+                  </div>
                   {showReview && (
                     <Modal onClose={() => setShowReview(false)}>
                       <CreateReviewForm setShowReview={setShowReview} />
@@ -134,6 +143,9 @@ const BusinessDetails = () => {
                     )}
                       <div className="phoneNumberBox">
                       {dashedNumber(currBusiness.phone_number)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img className="phone" src={phone} alt="phone"/>
+                      </div>
+                      <div className="get-directions">Get Directions
+                      <img className="directions-image" src={directions}/>
                       </div>
 
                     {showDelete && (
