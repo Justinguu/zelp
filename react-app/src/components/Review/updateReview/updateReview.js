@@ -42,6 +42,7 @@ useEffect(() => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
+    setHasSubmitted(true)
     if(errors.length > 0){
       return alert("Invalid Submission, Please Check Inputs")
     }
