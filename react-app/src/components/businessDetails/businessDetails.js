@@ -73,6 +73,8 @@ const BusinessDetails = () => {
       )
       .join("");
   }
+
+
   return (
     isLoaded && (
       <>
