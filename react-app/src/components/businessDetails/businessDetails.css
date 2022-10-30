@@ -117,12 +117,13 @@ margin-left: 13rem;
 .star{
     width: 17px;
     height:17px;
+   
 }
 
 .phoneNumberBox{
     display: flex;
     align-items: center;
-    width: 17rem;
+    width: 20rem;
     margin-top:5rem;
     padding-left:6px;
     padding-top: .4rem;
@@ -131,28 +132,40 @@ margin-left: 13rem;
     border: 1px solid #d3d3d3;
     font-weight: 500;
 
+
+}
+img.phone{
+margin-left: 4.2rem;
 }
 
-.get-directions{
+.get-email{
     display: flex;
-   
-    width: 25rem;
-    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    height:4rem;
+    padding-top: .2rem;
     padding-left:6px;
-    padding-top: 1.2rem;
-    padding-bottom:1.2rem;
+    padding-bottom:.5rem;
     box-sizing: border-box;
     border: 1px solid #d3d3d3;
     font-weight: 500;
-    color: rgba(2,122,151,1);
+    color: rgba(2,122,151);
 }
-.directions-image {
-    margin-left:5.1rem;
-    margin-bottom:1rem;
-    width:55px;
-    height:50px;
+.email-image {
+    margin-left:9rem;
+    width:28px;
+    height:28px;
+    object-fit: fill;
+}
+.price-claim{
+display:flex;
+align-items: center;
 }
 
-
+.claimed {
+    color: rgb(88,180,255);
+   font-weight:bold;
+   padding-right: 3px;
+}
 
 

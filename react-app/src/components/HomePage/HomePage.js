@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, useParams, Redirect } from "react-router-dom";
 import { getAllBusinessesThunk } from "../../store/business";
 import { getAllUsersThunk } from "../../store/AllUsers";
-import image1 from "../icons/image1.avif"
-import image2 from "../icons/image2.avif"
-import image3 from "../icons/image3.avif"
+import img1 from "../icons/image1.avif"
+import img2 from "../icons/image2.avif"
+import img3 from "../icons/image3.avif"
 import githubIcon from '../icons/githubIcon.png'
 import "./HomePage.css";
 
@@ -37,7 +37,7 @@ let allUsersArray;
 
    
 
- const slideShowPic = [image1,image2,image3]
+ const slideShowPic = [img1,img2,img3]
     const [pictures, setPictures] = useState(slideShowPic[0]);
     const [counter, setCounter] = useState(0)
 

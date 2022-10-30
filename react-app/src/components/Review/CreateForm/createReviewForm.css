@@ -47,3 +47,55 @@ height:auto;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
+
+
+.star-wrapper {
+    top: 50%;
+    left: 50%;
+    direction: rtl;
+}
+
+.star-wrapper a {
+    font-size: 1em;
+    color: rgba(0, 0, 0, .4);
+    text-decoration: none;
+    transition: all 0.5s;
+    margin: 0 .2rem;
+}
+
+.star-wrapper a:hover {
+    color: gold;
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.s1:hover~a {
+    color: gold;
+}
+
+.s1::after~a {
+    color: gold;
+}
+
+.s2:hover~a {
+    color: gold;
+}
+
+.s3:hover~a {
+    color: gold;
+}
+
+.s4:hover~a {
+    color: gold;
+}
+
+.s5:hover~a {
+    color: gold;
+}
+
+.wraper {
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+}

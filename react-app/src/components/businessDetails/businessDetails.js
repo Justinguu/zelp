@@ -12,7 +12,8 @@ import EditBusinessForm from "../BusinessEdit/businessEdit.js";
 import star from "../icons/star.png";
 import phone from "../icons/phone.png";
 import highlights from "../icons/highlights.png";
-import directions from "../icons/directions.png";
+import email from "../icons/email.png";
+import checkmark from "../icons/checkmark.png"
 import "./businessDetails.css";
 
 const BusinessDetails = () => {
@@ -87,7 +88,12 @@ const BusinessDetails = () => {
           ></img>
           <div className="business-info-container">
             <div className="currSpot-name">{currBusiness.business_name}</div>
-            <div className="details-price">Claimed ● ${currBusiness.price}</div>
+            <div className="price-claim">
+              <img className="blue-checkmark" src={checkmark} alt="checkmark"/>
+               <div className="claimed">Claimed</div>
+            <div className="details-price"> ● ${currBusiness.price}</div>
+            </div>
+           
             <div className="details-price">
               {" "}
               {currBusiness.address} {currBusiness.city}, {currBusiness.state},
@@ -156,10 +162,10 @@ const BusinessDetails = () => {
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <img className="phone" src={phone} alt="phone" />
                     </div>
-                    {/* <div className="get-directions">Get Directions
-                      <div>{currBusiness.address} {currBusiness.city} {currBusiness.state} {currBusiness.zip_code} </div>
-                      <img className="directions-image" src={directions}/>
-                      </div> */}
+                    <div className="get-email">
+                      {currBusiness.email} 
+                      <img className="email-image" src={email} alt="email"/>
+                      </div>
 
                     {showDelete && (
                       <Modal onClose={() => setShowDelete(false)}>

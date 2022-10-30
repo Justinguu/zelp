@@ -13,11 +13,11 @@ const dispatch = useDispatch()
     }
 
     return (
-        <div>
-            <h2> Are you sure you want to delete this review?</h2>
+        <div className="delete-container">
+            <h2 className="delete-review-text"> Are you sure you want to delete this review?</h2>
             <div className="delete-review-button">
-                <button onClick={deleteReviewHandle}>Yes</button>
-                <button onClick={() => setShowReviewDelete(false)}>No</button>
+                <button className="delete-button" onClick={deleteReviewHandle}>Yes</button>
+                <button className="delete-button" onClick={() => setShowReviewDelete(false)}>No</button>
 
             </div>
         </div>
