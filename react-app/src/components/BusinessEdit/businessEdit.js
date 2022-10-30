@@ -30,18 +30,16 @@ const dispatch = useDispatch();
 useEffect(() => {
     const errors = [];
     if (businessName.length > 50 || businessName.length < 2) errors.push("Business name must be between 2 and 50 characters");
-    if (phoneNumber.length !== 10) errors.push("Phone number must be 10 digits");
     if (!email.includes("@")) errors.push("Please enter a valid email address");
     if (address.length > 60 || address.length < 10) errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2) errors.push("City must be between 2 and 20 characters");
     if (state.length > 20 || state.length < 2) errors.push("State must be between 2 and 20 characters");
     if (country.length > 20 || country.length < 2) errors.push("Country must be between 2 and 20 characters");
-    if (zipCode.length !== 5) errors.push("Zip code must be 5 digits");
     if (description.length > 400 || description.length < 2) errors.push("Description must be between 2 and 400 characters");
     if (price.length > 100 || price.length < 2) errors.push("Price must be between $2 - $100 numbers");
     
     return setErrors(errors);
-}, [businessName, phoneNumber, email, address, city, state, country, zipCode, description, price]);
+}, [businessName, email, address, city, state, country, description, price]);
     
 if (ownerId === null) {
     alert("Please log in to create a business");
@@ -87,10 +85,10 @@ return (
         onChange={(e) => setBusinessName(e.target.value)}
         />
         <input
-        className="form-input mid edit"
+        className="form-input-mid-edit"
         type="tel"
         placeholder="678-211-4443"
-        pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
         value={phoneNumber}
         onChange={(e) => setPhoneNumber(e.target.value)}
         required
@@ -174,11 +172,9 @@ return (
         <input
         className="form-input mid edit"
         type="number"
-        placeholder="Price"
+        placeholder="21"
         max="200"
         min="2"
-        minLength="1"
-        maxLength="3"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         required

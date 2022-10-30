@@ -106,7 +106,7 @@ return (
                     className="business-input-field"
                     type="tel"
                     placeholder="678-211-4443"
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     required

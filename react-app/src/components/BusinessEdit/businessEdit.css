@@ -2,16 +2,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 35em;
+    height: 35em;
     padding: 1.8em;
-    max-width: 33em;
+    width: 33em;
   }
   
   
   .submit-button-edit {
     background: linear-gradient(0.25turn, #E61E4D, #D70666);
       color: white;
-      border: none;
+      border: solid .1rem black;
       height: 2.6em;
       border-radius: .5em;
       min-width: 39em;
@@ -20,6 +20,7 @@
    
     }
   
+   
     .form-input-description {
     min-width: 35rem;
     
