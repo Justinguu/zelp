@@ -27,37 +27,37 @@ def seed_reviews():
         avg_rating= 5
     )
     review_5 = Review(
-        user_id=5,
+        user_id=4,
         business_id=2,
         review= "Feel like i'm going to explode too much food!",
         avg_rating= 5
     )
     review_6 = Review(
-        user_id=6,
+        user_id=3,
         business_id=2,
         review= "Unlimited beef, chicken,pork, and seafood? Count me in!!",
         avg_rating= 5
     )
     review_7 = Review(
-        user_id=7,
+        user_id=2,
         business_id=2,
         review= "Had too wait on a list for over an hour!! How dare they!",
         avg_rating= 5
     )
     review_8 = Review(
-        user_id=8,
+        user_id=1,
         business_id=3,
         review= "The creativity of everything blew my mind!",
         avg_rating= 5
     )
     review_9 = Review(
-        user_id=9,
+        user_id=4,
         business_id=3,
         review= "Staff was friendly, but i couldn't get myself to like it",
         avg_rating= 3
     )
     review_10 = Review(
-        user_id=10,
+        user_id=4,
         business_id=3,
         review= "Better then my mom's cooking!!!",
         avg_rating= 5
