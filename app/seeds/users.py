@@ -9,10 +9,13 @@ def seed_users():
         first_name="marnie", last_name="lition", username="marnielition", email="marnie@aa.io", password="password", profileImage="https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png")
     bobbie = User(
         first_name="bob", last_name="lition", username="boblition", email="bob@aa.io", password="password", profileImage="https://cdn-icons-png.flaticon.com/512/16/16363.png")
+    sam = User(
+        first_name="sam", last_name="duong", username="samduong", email="samduong@aa.io", password="password", profileImage="https://cdn-icons-png.flaticon.com/512/16/16363.png")
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(sam)
 
     db.session.commit()
 
