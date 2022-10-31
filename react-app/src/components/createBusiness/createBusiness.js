@@ -16,6 +16,7 @@ export default function CreateBusinessForm() {
   // const Allbusinesses = Object.values(businesses);
   // console.log(Allbusinesses)
   // console.log(ownerId)
+  //
 
   const [businessName, setBusinessName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
