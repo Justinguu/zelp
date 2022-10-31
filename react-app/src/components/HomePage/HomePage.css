@@ -75,6 +75,7 @@
   height:5rem;
   margin-left: .4rem;
   color: rgb(125,127,129);
+  word-wrap: break-word;
 }
 .detailsAndComment{
   display:flex;

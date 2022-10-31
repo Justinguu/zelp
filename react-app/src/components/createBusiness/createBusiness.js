@@ -40,17 +40,17 @@ export default function CreateBusinessForm() {
     const errors = [];
     if (businessName.length > 50 || businessName.length < 2)
       errors.push("Business name must be between 2 and 50 characters");
-    if (phoneNumber.length !== 12)
+    if (phoneNumber.length !== 12 &&  typeof phoneNumber != 'number')
       errors.push("Phone number must be 10 digits & resemble the placeholder format");
     if (!email.includes("@")) errors.push("Please enter a valid email address");
     if (address.length > 60 || address.length < 10)
       errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2)
       errors.push("City must be between 2 and 20 characters");
-    if (zipCode.length !== 5 || NaN) errors.push("Zip code must be 5 digits");
+    if (zipCode.length != 5 && typeof zipCode != 'number') errors.push("Zip code must be 5 digits");
     if (description.length > 300 || description.length < 50)
       errors.push("Description must be between 100 and 300 characters");
-    if (price.length > 100 || price.length < 2)
+    if (price.length > 100 || price.length < 2 && typeof price != 'number')
       errors.push("Price must be between $2 - $100 numbers");
 
     return setErrors(errors);
@@ -241,7 +241,7 @@ export default function CreateBusinessForm() {
 
             <input
               className="business-input-field"
-              type="text"
+              type="tel"
               placeholder="Zip Code"
               maxLength="5"
               minLength="5"
