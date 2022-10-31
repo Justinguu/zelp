@@ -71,7 +71,8 @@
 }
 
 .business-descriptions-hp{
- 
+  width:40rem;
+  height:5rem;
   margin-left: .4rem;
   color: rgb(125,127,129);
 }
@@ -87,7 +88,7 @@
   width:.7rem;
   object-fit:fill;
   margin-left:2px;
-  margin-top:-2.1rem;
+  margin-bottom:3.6rem;
 }
 .home-takeout-pic{
   padding-top: .5rem;

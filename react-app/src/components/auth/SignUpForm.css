@@ -68,5 +68,10 @@ background-color: red;
 
 .signup-errors{
     color:red;
-    padding: .5rem;
+    margin-left: .5rem;
+   
+}
+.signup-individual{
+    padding-top: .2rem;
+    padding-bottom: .2rem;
 }

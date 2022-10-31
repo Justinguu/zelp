@@ -41,21 +41,15 @@ export default function CreateBusinessForm() {
     if (businessName.length > 50 || businessName.length < 2)
       errors.push("Business name must be between 2 and 50 characters");
     if (phoneNumber.length !== 12)
-      errors.push(
-        "Phone number must be 10 digits & resemble the placeholder format"
-      );
+      errors.push("Phone number must be 10 digits & resemble the placeholder format");
     if (!email.includes("@")) errors.push("Please enter a valid email address");
     if (address.length > 60 || address.length < 10)
       errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2)
       errors.push("City must be between 2 and 20 characters");
-    if (state.length > 20 || state.length < 2)
-      errors.push("State must be between 2 and 20 characters");
-    // if (country.length > 20 || country.length < 2)
-    //   errors.push("Country must be between 2 and 20 characters");
-    if (zipCode.length !== 5) errors.push("Zip code must be 5 digits");
-    if (description.length > 500 || description.length < 300)
-      errors.push("Description must be between 175 and 300 characters");
+    if (zipCode.length !== 5 || NaN) errors.push("Zip code must be 5 digits");
+    if (description.length > 300 || description.length < 50)
+      errors.push("Description must be between 100 and 300 characters");
     if (price.length > 100 || price.length < 2)
       errors.push("Price must be between $2 - $100 numbers");
 
@@ -66,7 +60,6 @@ export default function CreateBusinessForm() {
     email,
     address,
     city,
-    state,
     zipCode,
     description,
     price,
@@ -119,9 +112,9 @@ export default function CreateBusinessForm() {
           {hasSubmitted && errors.length > 0 && (
             <ul>
               {errors.map((error) => (
-                <li className="upload-img-errors-list" key={error}>
+                <div className="upload-img-errors-list" key={error}>
                   {error}
-                </li>
+                </div>
               ))}
             </ul>
           )}
@@ -178,7 +171,11 @@ export default function CreateBusinessForm() {
               required
             />
 
-            <select className="business-input-field-select">
+            <select className="business-input-field-select"
+             value={state}
+             onChange={(e) => setState(e.target.value)}
+             
+            >
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -230,21 +227,17 @@ export default function CreateBusinessForm() {
               <option value="WV">West Virginia</option>
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              
+             
             </select>
 
-            <input
-              className="business-input-field"
-              type="hidden"
-              placeholder="Country"
-              maxLength="20"
-              minLength="2"
+            <select
+              className="business-input-field-select"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              required
-            />
+              placeholder="Only Available in USA right now"
+            >
+              <option value="USA">United States</option>
+              </select>
 
             <input
               className="business-input-field"
@@ -261,8 +254,8 @@ export default function CreateBusinessForm() {
               className="business-input-field"
               type="text"
               placeholder="Description"
-              maxLength="400"
-              minLength="2"
+              maxLength="300"
+              minLength="50"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
@@ -270,7 +263,7 @@ export default function CreateBusinessForm() {
 
             <input
               className="business-input-field"
-              type="tele"
+              type="tel"
               placeholder="21"
               max="200"
               min="2"

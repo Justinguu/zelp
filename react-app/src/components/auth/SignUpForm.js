@@ -114,7 +114,7 @@ const SignUpForm = () => {
             <form className="signup-form" onSubmit={onSignUp}>
               <div className="signup-errors">
                 {errors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
+                  <div className="signup-individual" key={ind}>{error}</div>
                 ))}
               </div>
 
@@ -148,6 +148,7 @@ const SignUpForm = () => {
                 onChange={updateUsername}
                 value={username}
                 required={true}
+                autoComplete={false}
               ></input>
 
               
@@ -168,6 +169,7 @@ const SignUpForm = () => {
                   placeholder="Password"
                   onChange={updatePassword}
                   value={password}
+                  autoComplete={false}
                   required={true}
                 ></input>
               </div>
@@ -205,7 +207,7 @@ const SignUpForm = () => {
                   placeholder="Profile Image"
                   onChange={updateProfileImage}
                   value={profileImage}
-                  required={true}
+                  
                 ></input>
               </div>
               <button className="signup-button" type="submit">

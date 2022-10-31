@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, IntegerField, SubmitField
+from wtforms import StringField, TextAreaField, IntegerField, SelectField, SubmitField
 from wtforms.validators import DataRequired
 
 
@@ -13,7 +13,7 @@ class BusinessForm(FlaskForm):
     address = StringField('address', validators=[DataRequired()])
     city = StringField('city', validators=[DataRequired()])
     state = StringField('state', validators=[DataRequired()])
-    country = StringField('country', validators=[DataRequired()])
+    country = StringField('country')
     zip_code = IntegerField('zip_code', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
     price = IntegerField('price', validators=[DataRequired()])
