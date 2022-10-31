@@ -34,10 +34,9 @@ useEffect(() => {
     if (address.length > 60 || address.length < 10) errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2) errors.push("City must be between 2 and 20 characters");
     if (state.length > 20 || state.length < 2) errors.push("State must be between 2 and 20 characters");
-    // if (country.length > 20 || country.length < 2) errors.push("Country must be between 2 and 20 characters");
     if (description.length > 400 || description.length < 2) errors.push("Description must be between 2 and 400 characters");
-    if (price.length > 100 || price.length < 2) errors.push("Price must be between $2 - $100 numbers");
-    
+    if (zipCode.length != 5 && typeof zipCode != 'number') errors.push("Zip code must be 5 digits & be a number");
+    if (price.length > 100 || price.length < 2 && typeof price != 'number') errors.push("Price must be between $2 - $100 numbers");
     return setErrors(errors);
 }, [businessName, email, address, city, state, description, price]);
     
@@ -195,7 +194,7 @@ return (
 
         <input
         className="form-input-bizedit"
-        type="text"
+        type="number"
         maxLength="5"
         minLength="5"
         placeholder="30056"
@@ -217,7 +216,7 @@ return (
 
         <input
         className="form-input-bizedit"
-        type="tele"
+        type="number"
         placeholder="21"
         max="200"
         min="2"

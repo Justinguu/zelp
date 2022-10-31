@@ -47,7 +47,7 @@ export default function CreateBusinessForm() {
       errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2)
       errors.push("City must be between 2 and 20 characters");
-    if (zipCode.length != 5 && typeof zipCode != 'number') errors.push("Zip code must be 5 digits");
+    if (zipCode.length != 5 && typeof zipCode != 'number') errors.push("Zip code must be 5 digits & be a number");
     if (description.length > 300 || description.length < 50)
       errors.push("Description must be between 100 and 300 characters");
     if (price.length > 100 || price.length < 2 && typeof price != 'number')
@@ -241,7 +241,7 @@ export default function CreateBusinessForm() {
 
             <input
               className="business-input-field"
-              type="tel"
+              type="number"
               placeholder="Zip Code"
               maxLength="5"
               minLength="5"
@@ -263,7 +263,7 @@ export default function CreateBusinessForm() {
 
             <input
               className="business-input-field"
-              type="tel"
+              type="number"
               placeholder="21"
               max="200"
               min="2"
