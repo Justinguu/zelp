@@ -12,9 +12,9 @@
 }
 .header-message {
     /* margin-left: 3rem; */
-    color: rgb(12, 11, 11);
+    /* color: rgb(12, 11, 11); */
     font-weight: 400;
-    padding-top: 20px;
+    padding-top: 4rem;
     margin-bottom: -5px;;
 }
 .business-Container {
@@ -114,6 +114,7 @@
     height: 35px;
     width: 98%;
     margin-left: 20px;
+    margin-top: 1rem;
     cursor: pointer;
 }
 

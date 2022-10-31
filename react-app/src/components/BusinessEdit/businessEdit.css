@@ -2,19 +2,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 20em;
+    height: 32em;
     padding: 1.8em;
-    width: 33em;
+    width: 35em;
   }
   
   
-  .submit-button-edit {
-    background: linear-gradient(0.25turn, #E61E4D, #D70666);
+  .submit-button-edits {
+    background: red;
       color: white;
       border: solid .1rem black;
-      height: 2.6em;
+      height: 2.2rem;
       border-radius: .5em;
-      width: 35em;
+      width: 34em;
       cursor: pointer;
       padding-bottom: -20px;
    
@@ -39,4 +39,19 @@
       color:black;
       /* margin:.4rem; */
     }
-  
+
+    .form-input-bizedit{
+    border-color: black;
+    color:black;
+    border: solid 2px black;
+    width: 520px;
+    margin: .4rem;
+    }
+    
+    .select-form-input-bizedit{
+    border-color: black;
+    color:black;
+    border: solid 2px black;
+    width: 528px;
+    margin: .4rem;
+    }

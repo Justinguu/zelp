@@ -58,6 +58,7 @@
   padding: 4px;
   font-size: 30px;
   font-weight: 550;
+  color:black;
 }
 .business-name-caption:hover {
   text-decoration: underline;
