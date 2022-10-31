@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import CreateBusinessForm from './components/createBusiness/createBusiness';
 import GetAllTheBusinesses from './components/HomePage/HomePage.js';
 import BusinessDetails from './components/businessDetails/businessDetails.js';
+import {PageNotFound} from "./components/PageNotFound/PageNotFound.js"
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -51,6 +52,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route>
+          <PageNotFound />
+        </Route>
        
       </Switch>
     </BrowserRouter>
