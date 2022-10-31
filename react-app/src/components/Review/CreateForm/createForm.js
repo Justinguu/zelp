@@ -7,9 +7,7 @@ import "./createReviewForm.css";
 function CreateReviewForm({ setShowReview }) {
   const [isLoaded, setLoaded] = useState(false);
 
-
-  const [clickReview, setClickReview] = useState(false)
-
+  const [clickReview, setClickReview] = useState(false);
 
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(1);
@@ -25,8 +23,8 @@ function CreateReviewForm({ setShowReview }) {
   useEffect(() => {
     const errors = [];
 
-    if (review.length > 200) {
-      errors.push("Review body must be no more than 200 characters");
+    if (review.length > 300) {
+      errors.push("Review body must be no more than 300 characters");
     }
     if (review.length < 1) {
       errors.push("Review body must be more than 1 character");
@@ -75,70 +73,62 @@ function CreateReviewForm({ setShowReview }) {
         </div>
         <h1 className="CreateCommentHeader">Create a Review</h1>
 
-
-
         <div className="combined-line-rating">
           <div className="text-rating">Select your rating</div>
           <div className="rating-stars">
-          <div class="star-wrapper">
-            <a
-              onClick={() => setRating(5)}
-              value={rating}
-              class="fas fa-star s1"
-            ></a>
-            <a
-              onClick={() => setRating(4)}
-              value={rating}
-              class="fas fa-star s2"
-            ></a>
-            <a
-              onClick={() => setRating(3)}
-              value={rating}
-              class="fas fa-star s3"
-            ></a>
-            <a
-              onClick={() => setRating(2)}
-              value={rating}
-              class="fas fa-star s4"
-            ></a>
-            <a
-              onClick={() => setRating(1)}
-              value="5"
-              class="fas fa-star s5"
-            ></a>
+            <div class="star-container">
+              <div
+                onClick={() => setRating(5)}
+                value={rating}
+                className={
+                  rating >= 5 ? "fa-regular fa-star s1-checked " : "fa-regular fa-star s1"
+                }
+              ></div>
+              <div
+                onClick={() => setRating(4)}
+                value={rating}
+                className={
+                  rating >= 4 ? "fa-regular fa-star s2-checked" : "fa-regular fa-star s2"
+                }
+              ></div>
+              <div
+                onClick={() => setRating(3)}
+                value={rating}
+                className={
+                  rating >= 3 ? "fa-regular fa-star s3-checked" : "fa-regular fa-star s3"
+                }
+              ></div>
+              <div
+                onClick={() => setRating(2)}
+                value={rating}
+                className={
+                  rating >= 2 ? "fa-regular fa-star s4-checked" : "fa-regular fa-star s4"
+                }
+              ></div>
+              <div
+                onClick={() => setRating(1)}
+                value={rating}
+                className={
+                  rating >= 1 ? "fa-regular fa-star s5-checked" : "fa-regular fa-star s5"
+                }
+              ></div>
+            </div>
+            
+      
           </div>
-          <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
-          <div class="wraper">
-            <script
-              type="text/javascript"
-              src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-              data-name="bmc-button"
-              data-slug="gitlabBilal"
-              data-color="#FFDD00"
-              data-emoji=""
-              data-font="Cookie"
-              data-text="Buy me a coffee"
-              data-outline-color="#000000"
-              data-font-color="#000000"
-              data-coffee-color="#ffffff"
-            ></script>
-          </div>
-        </div>
         </div>
         {
-         <input
-         className="descriptionCreateComment"
-         placeholder="review..."
-         type="text"
-         autoComplete="off"
-         value={review}
-         onChange={(e) => setReview(e.target.value)}
-         required
-       />
-        
-        
-        
-        /* <input
+          <input
+            className="descriptionCreateComment"
+            placeholder="review..."
+            type="text"
+            autoComplete="off"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            required
+          />
+
+          /* <input
         className="ratingCreateComment"
         placeholder="rating..."
         type="number"
@@ -147,7 +137,8 @@ function CreateReviewForm({ setShowReview }) {
         value={rating}
         onChange={(e) => setRating(e.target.value)}
         required
-        /> */}
+        /> */
+        }
         <div className="createCommentButton">
           <button className="submitCreateComment" type="submit">
             Post Review

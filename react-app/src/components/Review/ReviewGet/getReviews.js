@@ -57,6 +57,21 @@ const GetBusinessReviews = ({ businessId }) => {
   };
 
 
+  const ratingIncrementer = (int) => {
+    let forRatings = []
+
+    for (let num = 0; num < int; num++) {
+        forRatings.push(<div class="fa-regular fa-star" style={{ color: "gold", margin: "0 5px" }}></div>)
+    }
+
+    for (let num = 0; num < (5 - int); num++) {
+        forRatings.push(<div class="fa-regular fa-star" style={{ color: "rgba(0, 0, 0, .5)", margin: "0 .2rem" }}></div>)
+    }
+
+    return forRatings.map(ratings => {
+        return ratings
+    })
+}
 
   return (
     isLoaded && (
@@ -90,7 +105,7 @@ const GetBusinessReviews = ({ businessId }) => {
                   <div className="details-pagestars">
                   <span className=""> {review.avg_rating} (stars will go here soon)</span> &nbsp;<span className="reviewed-date">{new Date(review.created_at).toString().slice(4, 15)}</span>
                   </div>
-                  <div className="details-page-reviews">{review.review} </div>
+                  <div className="details-page-reviews">{ratingIncrementer(review.review)} </div>
                   
                  <div className="both-review-bttns">
                   <div>

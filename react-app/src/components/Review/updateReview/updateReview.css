@@ -1,8 +1,8 @@
 form.edit-form-update {
    display:flex;
    align-items: center;
-    height: 15rem;
-    width: 30rem;
+    height: 17rem;
+    width: 33rem;
     flex-direction: column;
 }
 
@@ -44,7 +44,7 @@ form.edit-form-update {
     border-radius: .4em;
     height: 2rem;
     width: 10rem;
-    margin-left: 9rem;
+    margin-left: 11rem;
     cursor: pointer;
 
 
