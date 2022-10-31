@@ -7,6 +7,10 @@ import "./createReviewForm.css";
 function CreateReviewForm({ setShowReview }) {
   const [isLoaded, setLoaded] = useState(false);
 
+
+  const [clickReview, setClickReview] = useState(false)
+
+
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(1);
   const [errors, setErrors] = useState([]);

@@ -60,6 +60,7 @@ const LoginForm = () => {
                 type='text'
                 value={email}
                 onChange={updateEmail}
+                placeholder= "Email"
                 autoFocus
               />
             </div>
@@ -69,6 +70,7 @@ const LoginForm = () => {
                 name='password'
                 type='password'
                 value={password}
+                placeholder="Password"
                 onChange={updatePassword}
               />
             </div>

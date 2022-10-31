@@ -103,7 +103,8 @@ const BusinessDetails = () => {
           <div className="business-details-bottom-container">
             <div className="business-details-bottom-wrapper">
               <div className="business-details-left">
-                <div>
+                {!user ? null : currBusiness.owner_id && (
+                  <div>
                   <button
                     className="create-review-button"
                     onClick={() => setShowReview(true)}
@@ -127,6 +128,8 @@ const BusinessDetails = () => {
                     </Modal>
                   )}
                 </div>
+                )}
+                
                 <div>
                   <GetBusinessReviews
                     businessId={businessId}

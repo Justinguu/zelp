@@ -83,6 +83,7 @@ font-weight:450;
     cursor: pointer;
 }
 
+
 .s1:hover~a {
     color: gold;
 }
@@ -111,4 +112,8 @@ font-weight:450;
     position: absolute;
     bottom: 30px;
     right: 50px;
+}
+
+.testing:active{
+    color: gold;
 }

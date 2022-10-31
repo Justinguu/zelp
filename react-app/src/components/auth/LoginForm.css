@@ -91,6 +91,11 @@
 }
 
 #circles{
-    height:30rem;
-    width:30rem;
+    height:26rem;
+    width:27rem;
+}
+
+.login-errors {
+    padding: .5rem;
+    color: red;
 }

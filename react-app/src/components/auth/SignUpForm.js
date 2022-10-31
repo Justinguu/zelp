@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [profileImage, setProfileImage] = useState("");
-  const [errorValidation, setErrorValidation] = useState([]);
+  // const [errorValidation, setErrorValidation] = useState([]);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -26,11 +26,11 @@ const SignUpForm = () => {
       errors.push("First name must be between 2 and 25 characters");
     if (last_name.length > 25 || last_name.length < 2)
       errors.push("Last name must be between 2 and 25 characters");
-    if (zip_code.length !== 5) errors.push("Zip code must be 5 digits");
+    if (zip_code.length !== 5 || NaN) errors.push("Zip code must be 5 digits");
     if (!password.length) errors.push("Password is required");
-    if (!repeatPassword.length) errors.push("Please repeat the password");
+    if (!repeatPassword.length) errors.push("Passwords must match");
 
-    setErrorValidation(errors);
+    setErrors(errors);
   }, [
     first_name,
     last_name,
@@ -46,7 +46,7 @@ const SignUpForm = () => {
     e.preventDefault();
 
     if (!email.includes("@")) {
-      return setErrorValidation(["Please enter a valid email address"]);
+      return setErrors(["Please enter a valid email address"]);
     }
 
     if (password === repeatPassword) {
@@ -112,7 +112,7 @@ const SignUpForm = () => {
           <div className="signup-form-left">
             <div className="zelp-signup">Sign up for Zelp</div>
             <form className="signup-form" onSubmit={onSignUp}>
-              <div>
+              <div className="signup-errors">
                 {errors.map((error, ind) => (
                   <div key={ind}>{error}</div>
                 ))}
@@ -190,6 +190,8 @@ const SignUpForm = () => {
                   name="profileImage"
                   placeholder="Zip Code"
                   onChange={updateZipCode}
+                  maxLength="5"
+                  minLength="5"
                   value={zip_code}
                   required={true}
                 ></input>

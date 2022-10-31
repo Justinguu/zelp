@@ -65,3 +65,8 @@ margin: .5rem;
 cursor:pointer;
 background-color: red;
 }
+
+.signup-errors{
+    color:red;
+    padding: .5rem;
+}
