@@ -6,6 +6,8 @@ import { getAllUsersThunk } from "../../../store/AllUsers";
 import UpdateReviewForm from "../updateReview/updateReview";
 import DeleteReviewForm from "../reviewDelete/deleteReview";
 import { Modal } from "../../../context/Modal";
+import editreviewbttn from "../../icons/edit-icon.png"
+import deleteicon from "../../icons/delete-icon.png"
 import "./reviewGet.css";
 
 const GetBusinessReviews = ({ businessId }) => {
@@ -75,7 +77,7 @@ const GetBusinessReviews = ({ businessId }) => {
                           <div className="reviews-get-firstName">{users.username}</div>
                         <div className="reviews-get-greyed-name"> Elite Grumbler</div>
                         <div className="stars-go-here">
-                         {/* 555555 {createdAtDate} */}
+                        
                         </div>
                         </div>
                         
@@ -85,11 +87,15 @@ const GetBusinessReviews = ({ businessId }) => {
                       </>
                     );
                   })}
-                  {review.review}
-                  {review.avg_rating}
+                  <div>STARS will go here soon!!!</div>
+                  <div>{review.review} </div>
+                  <span> {review.avg_rating} stars</span> &nbsp;<span className="reviewed-date">{new Date(review.created_at).toString().slice(4, 15)}</span>
+                  
+                 <div className="both-review-bttns">
                   <div>
-                    <button className="deleteButtonReview"
-                      onClick={() => {setShowUpdateReview(true); setNowReview(review) }}>Edit Review</button>
+                    <button className="edit-review-bttns"
+                    
+                      onClick={() => {setShowUpdateReview(true); setNowReview(review) }}><img className="editreviewbttnicon" src={editreviewbttn} alt=""></img></button> &nbsp;
                       
                     {showUpdateReview && (
                      <Modal onClose={() => setShowUpdateReview(false)}>
@@ -110,14 +116,15 @@ const GetBusinessReviews = ({ businessId }) => {
                     </Modal>
                   )}
                   <button
-                    className="deleteButtonReview"
+                    className="edit-review-bttns"
                     onClick={() => {
                       setNowReview(review);
                       setShowReviewDelete(true);
                     }}
                   >
-                    Delete Review
-                  </button>
+                   {<img className="editreviewbttnicon" src={deleteicon} alt=""></img>}
+                  </button></div>
+                  
                 </div>
               ) : (
                 ""

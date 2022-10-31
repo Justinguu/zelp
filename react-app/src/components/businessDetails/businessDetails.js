@@ -136,6 +136,7 @@ const BusinessDetails = () => {
               </div>
               <div className="business-details-right">
                 {currBusiness.ownerId === user?.id && (
+                  
                   <div className="details-container">
                     <button
                       className="Editbiz-button"

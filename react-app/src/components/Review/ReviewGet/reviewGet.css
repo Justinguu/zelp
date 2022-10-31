@@ -57,6 +57,7 @@ div.review-text {
 .users-review-info{
     display:flex;
     align-items: center;
+    margin-bottom: -1rem;
     
 }
 
@@ -74,6 +75,7 @@ div.review-text {
 
 .reviews-get-greyed-name{
     color:gray;
+    font-size:13px;
     margin-bottom: 1rem;
 }
 
@@ -117,6 +119,21 @@ margin-left: -3.2rem;
 .blue-box-bold-text{
     font-weight: 500;
     margin-bottom:1px;
+}
+
+.reviewed-date{
+    color:rgb(179,180,181);
+    font-size:15px;
+
+}
+.both-review-bttns{
+    display:flex;
+    margin-right:1rem;
+}
+.editreviewbttnicon{
+    
+    height:12px;
+    width:12px;
 }
 
 /*
