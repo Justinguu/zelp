@@ -87,9 +87,10 @@ const GetBusinessReviews = ({ businessId }) => {
                       </>
                     );
                   })}
-                  <div>STARS will go here soon!!!</div>
-                  <div>{review.review} </div>
-                  <span> {review.avg_rating} stars</span> &nbsp;<span className="reviewed-date">{new Date(review.created_at).toString().slice(4, 15)}</span>
+                  <div className="details-pagestars">
+                  <span className=""> {review.avg_rating} (stars will go here soon)</span> &nbsp;<span className="reviewed-date">{new Date(review.created_at).toString().slice(4, 15)}</span>
+                  </div>
+                  <div className="details-page-reviews">{review.review} </div>
                   
                  <div className="both-review-bttns">
                   <div>

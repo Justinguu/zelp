@@ -41,7 +41,7 @@ def seed_businesses():
         state = "Georgia",
         country = "United States",
         zip_code = 30312,
-        description= "Next level sushi in your area",
+        description= "Next level sushi in your area with all the flavors you could imagine! Our chefs have perfected the art of all sushi including Rolls, Nigri, Sashimi and more! We have it all!, Don't think about it, Run!",
         price = 21,
         preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/2F4ibCZaFL9_kRXQIO6Tfg/o.jpg"
 

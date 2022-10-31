@@ -43,7 +43,7 @@ useEffect(() => {
     if (state.length > 20 || state.length < 2) errors.push("State must be between 2 and 20 characters");
     if (country.length > 20 || country.length < 2) errors.push("Country must be between 2 and 20 characters");
     if (zipCode.length !== 5) errors.push("Zip code must be 5 digits");
-    if (description.length > 400 || description.length < 2) errors.push("Description must be between 2 and 400 characters");
+    if (description.length > 500 || description.length < 300) errors.push("Description must be between 175 and 300 characters");
     if (price.length > 100 || price.length < 2) errors.push("Price must be between $2 - $100 numbers");
     
     return setErrors(errors);
@@ -147,16 +147,16 @@ return (
                     />
 
                    
-                    <input 
-                    className="business-input-field"
+                    <input className="business-input-field"
                     type="text"
-                    placeholder="State"
+                    placeholder="state"
                     maxLength="20"
                     minLength="2"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     required
                     />
+                   
 
                    
                     <input 

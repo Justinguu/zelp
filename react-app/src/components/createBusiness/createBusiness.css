@@ -54,6 +54,7 @@
 
 
 .business-input-field {
+    
     border-color: black;
     color:black;
     width: 500px;
@@ -64,6 +65,20 @@
 
 }
 
+.business-input-field-select{
+    border-color: black;
+    color:black;
+    border: solid 2px black;
+    width: 512px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
+    margin: 10px;
+}
+.business-input-field-select:after{
+    border-color:black;
+    color:black
+}
 .business-input-field:active {
     border-color: #348fdc;
 }

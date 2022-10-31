@@ -72,7 +72,7 @@
 .business-descriptions-hp{
  
   margin-left: .4rem;
-  color: rgb(227,228,228)
+  color: rgb(125,127,129);
 }
 .detailsAndComment{
   display:flex;
@@ -86,9 +86,11 @@
   width:.7rem;
   object-fit:fill;
   margin-left:2px;
+  margin-top:-2.1rem;
 }
 .home-takeout-pic{
-  margin-bottom:-1.8rem;
+  padding-top: .5rem;
+  margin-bottom:-.7rem;
 }
 
 
