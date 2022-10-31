@@ -6,10 +6,10 @@
     font-size: 26px;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,0.6629026610644257) 75%, rgba(0,0,0,0.18391106442577032) 100%);    
-    position: absolute;
-    top: 0;
+    position: sticky;
+    /* top: 0;
     left: 0;
-    right: 0;
+    right: 0; */
     z-index: 5;
     height: 64px;
     width: 100%;
@@ -85,7 +85,8 @@ a i {
 
 .navbar-explore-container {
     display: flex;
-    justify-content: center;
+    /* justify-content: space-between;
+    gap:30px; */
     align-items: center;
 }
 
@@ -194,6 +195,7 @@ justify-content: center;
     height: 30px;
     margin-right: 2rem;
     border-radius: 25px;
+    cursor:pointer;
   }
 
   

@@ -1,7 +1,7 @@
 form.edit-form-update {
    display:flex;
    align-items: center;
-    height: 12rem;
+    height: 15rem;
     width: 30rem;
     flex-direction: column;
 }
@@ -12,11 +12,29 @@ form.edit-form-update {
     margin-bottom: -3rem;
     border-color: black;
     color:black;
-    width: 20rem;
+    width: 23rem;
     margin-left: 5rem;
-    margin-top: .2rem;
-    margin-bottom: .3rem;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+  
+       
+      
     
+}
+.edit-review-input2{
+    margin-bottom: -3rem;
+    border-color: black;
+    color:black;
+    width: 23rem;
+    margin-left: 5rem;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    word-wrap:break-word
+  
 }
 
 .submit-button-edit-review{

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import logoutLogo from "../icons/logoutLogo.png"
+import "./ProfileButton.css"
 
 export default function ProfileButton() {
   const dispatch = useDispatch();
@@ -50,12 +52,12 @@ export default function ProfileButton() {
             <div className="profile-list">
               <div className="user-name-li">
                 Bonjour&nbsp;
-                <NavLink
+                <div
                   className="profile-page-reroute"
                   to={`/users/${sessionUser.id}`}
                 >
                   {sessionUser.username}!{" "}
-                </NavLink>
+                </div>
               </div>
               <div upload-photo-dropdown>
                 <div className="three-item-container">
@@ -66,7 +68,12 @@ export default function ProfileButton() {
                 </div>
               </div>
               <div className="hover-link logout-li" onClick={logout}>
-                Log Out &nbsp; &nbsp; &nbsp; &nbsp;
+                <div className="logout-container">
+                  <img className="logout-logo-pic" src={logoutLogo}></img>
+                  <div className="logout-text">  Log Out  &nbsp; &nbsp;</div>
+                
+                </div>
+                
               </div>
             </div>
           )}

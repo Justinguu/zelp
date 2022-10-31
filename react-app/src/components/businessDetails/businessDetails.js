@@ -26,8 +26,11 @@ const BusinessDetails = () => {
 
   const { businessId } = useParams();
 
-  const user = useSelector((state) => state.session.user.id);
+  const user = useSelector((state) => state.session.user);
   const currBusiness = useSelector((state) => state.business[businessId]);
+
+  const theBusiness = useSelector((state) => state.business)
+
 
   const allReviews = useSelector((state) => state.review);
   const getAllReviewsArr = Object.values(allReviews);
@@ -35,12 +38,11 @@ const BusinessDetails = () => {
 
   const history = useHistory();
 
-  const sessionReview = !user
-    ? null
-    : getAllReviewsArr.find((review) => review.userId === user.id);
-  useEffect(() => {
-    setDisabled(!!sessionReview);
-  });
+  // const sessionReview = !user? null
+  //   : getAllReviewsArr.find((review) => review.userId === user.id);
+  // useEffect(() => {
+  //   setDisabled(!!sessionReview);
+  // });
 
   const dispatch = useDispatch();
 
@@ -103,7 +105,7 @@ const BusinessDetails = () => {
           <div className="business-details-bottom-container">
             <div className="business-details-bottom-wrapper">
               <div className="business-details-left">
-                {!user ? null : currBusiness.owner_id && (
+                {/* {!user ? null : theBusiness.owner_id && ( */}
                   <div>
                   <button
                     className="create-review-button"
@@ -115,7 +117,6 @@ const BusinessDetails = () => {
                   <div>
                     <img className="highlights" src={highlights} />
                   </div>
-                  {/* <div> About the Business </div> */}
                   <div className="blue-review-box">
                     <div className="blue-box-bold-text">
                       Your trust is our top concern,
@@ -128,7 +129,7 @@ const BusinessDetails = () => {
                     </Modal>
                   )}
                 </div>
-                )}
+                 {/* )} */}
                 
                 <div>
                   <GetBusinessReviews
@@ -138,8 +139,7 @@ const BusinessDetails = () => {
                 </div>
               </div>
               <div className="business-details-right">
-                {currBusiness.ownerId === user?.id && (
-                  
+                {currBusiness.owner_id === user.id  &&  (
                   <div className="details-container">
                     <button
                       className="Editbiz-button"
@@ -161,6 +161,20 @@ const BusinessDetails = () => {
                         />
                       </Modal>
                     )}
+
+                    {showDelete && (
+                      <Modal onClose={() => setShowDelete(false)}>
+                        <BusinessDelete
+                          businessId={businessId}
+                          setShowDelete={setShowDelete}
+                        />
+                      </Modal>
+                    )}
+                    </div>
+                )
+                    }
+                  
+                
                     <div className="phoneNumberBox">
                       {dashedNumber(currBusiness.phone_number)}
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -171,16 +185,8 @@ const BusinessDetails = () => {
                       <img className="email-image" src={email} alt="email"/>
                       </div>
 
-                    {showDelete && (
-                      <Modal onClose={() => setShowDelete(false)}>
-                        <BusinessDelete
-                          businessId={businessId}
-                          setShowDelete={setShowDelete}
-                        />
-                      </Modal>
-                    )}
-                  </div>
-                )}
+                    
+                  
               </div>
             </div>
           </div>

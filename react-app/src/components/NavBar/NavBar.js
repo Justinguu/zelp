@@ -57,12 +57,12 @@ NavBar = () => {
             <NavLink  to="/new">
               <div className='create-business-hp'>For Business</div>
             </NavLink>
-            <div className="logout-business-hp" onClick={logout}>
+            {/* <div className="logout-business-hp" onClick={logout}>
                Log Out 
-              </div>
+              </div> */}
               {/* <div className='logout-business-hp'>Logout</div> */}
             
-            {/* <ProfileButton user={user} /> */}
+            <ProfileButton user={user} />
           </div>
         </div>
       </nav>

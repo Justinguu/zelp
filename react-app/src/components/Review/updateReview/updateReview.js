@@ -15,10 +15,6 @@ const sessionUser = useSelector(state => state.session.user)
 const userId = sessionUser.id
 
 
-
-
-
-
 const [review, setReview] = useState(nowReview.review)
 const [rating, setRating] = useState(nowReview.rating)
 const [errors, setErrors] = useState([])
@@ -63,7 +59,7 @@ return (
 {hasSubmitted && errors.length > 0 && (
     <ul className="edit-errors">
         {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <div key={idx}>{error}</div>
         ))}
     
     </ul>
@@ -77,14 +73,15 @@ return (
             placeholder="Rating"
             />
         <input
-            className="edit-review-input"
+            className="edit-review-input2"
             type="text"
             value={review}
             onChange={(e) => setReview(e.target.value)}
             placeholder="Review"
             />
             <div className="">
-                <button className="submit-button-edit-review" type="button">Update Review</button>
+                <button onClick={handleSubmit}className="submit-button-edit-review" type="button">Update Review</button>
+                
             </div>
             </div>
 
