@@ -64,10 +64,51 @@
 }
 .business-captions {
   margin-bottom: 5px;
-  margin-left: 10px;
-  font-size: 20px;
+  margin-left: 11px;
+  font-size: 16px;
   font-weight: 400;
 }
+
+.business-descriptions-hp{
+ 
+  margin-left: .4rem;
+  color: rgb(227,228,228)
+}
+.detailsAndComment{
+  display:flex;
+  align-items: center;
+  margin-left:.6rem;
+  margin-bottom:.5rem;
+  margin-top:.5rem;
+}
+.descriptionAndComment{
+  height:.8rem;
+  width:.7rem;
+  object-fit:fill;
+  margin-left:2px;
+}
+.home-takeout-pic{
+  margin-bottom:-1.8rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .footer-home {
     display: flex;
@@ -106,3 +147,9 @@
     padding-right: 4px;
   
   }
+
+
+
+  
+
+

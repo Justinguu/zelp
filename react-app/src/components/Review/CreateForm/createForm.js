@@ -70,17 +70,12 @@ function CreateReviewForm({ setShowReview }) {
           )}
         </div>
         <h1 className="CreateCommentHeader">Create a Review</h1>
-        <input
-          className="descriptionCreateComment"
-          placeholder="review..."
-          type="text"
-          autoComplete="off"
-          value={review}
-          onChange={(e) => setReview(e.target.value)}
-          required
-        />
-        <div id="rating-stars">
-          <div id="rating">Rating</div>
+
+
+
+        <div className="combined-line-rating">
+          <div className="text-rating">Select your rating</div>
+          <div className="rating-stars">
           <div class="star-wrapper">
             <a
               onClick={() => setRating(5)}
@@ -125,7 +120,21 @@ function CreateReviewForm({ setShowReview }) {
             ></script>
           </div>
         </div>
-        {/* <input
+        </div>
+        {
+         <input
+         className="descriptionCreateComment"
+         placeholder="review..."
+         type="text"
+         autoComplete="off"
+         value={review}
+         onChange={(e) => setReview(e.target.value)}
+         required
+       />
+        
+        
+        
+        /* <input
         className="ratingCreateComment"
         placeholder="rating..."
         type="number"
@@ -137,7 +146,7 @@ function CreateReviewForm({ setShowReview }) {
         /> */}
         <div className="createCommentButton">
           <button className="submitCreateComment" type="submit">
-            Submit new review
+            Post Review
           </button>
         </div>
       </form>

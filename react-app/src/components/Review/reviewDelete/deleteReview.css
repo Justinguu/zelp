@@ -1,10 +1,8 @@
-div.delete-container{
+/* div.delete-container{
     display: flex;
-    flex-direction: column;
     align-items: center;
-   
     height: 8em;
-    width: 28em;
+    width: 25em;
   }
 
   strong {
@@ -12,26 +10,27 @@ div.delete-container{
   }
 
   .delete-button {
-    background: linear-gradient(0.25turn, #E61E4D, #D70666);
+    background: red;
     color: white;
     border: none;
     height: 2.6em;
     border-radius: .5em;
     min-width: 9em;
     cursor: pointer;
-    margin-right: 2em;
-    margin-bottom: 0.7em;
-    margin-left: 2em;
+   
   }
 
-
-  .delete-buttons {
-    margin-top: 1.5em;
-    display: flex;
+  .delete-review-buttonss{
+    display:flex;
+    flex-direction: row;
   }
+
+*/
 
   .delete-review-text{
     display:flex;
     align-items: center;
     justify-content: center;
+    font-weight: 450;
+    margin-bottom: 2.0rem;
   }

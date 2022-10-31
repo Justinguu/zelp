@@ -90,7 +90,7 @@ const BusinessDetails = () => {
             <div className="currSpot-name">{currBusiness.business_name}</div>
             <div className="price-claim">
               <img className="blue-checkmark" src={checkmark} alt="checkmark"/>
-               <div className="claimed">Claimed</div>
+               &nbsp;<div className="claimed">Claimed</div>
             <div className="details-price"> ● ${currBusiness.price}</div>
             </div>
            

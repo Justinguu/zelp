@@ -6,9 +6,9 @@ div.delete-container{
     min-height: 6em;
   }
 
-  strong {
+  /* strong {
     font-weight: 700;
-  }
+  } */
 
   .delete-button {
     background-color: #E00707;

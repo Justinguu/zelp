@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 35em;
+    height: 20em;
     padding: 1.8em;
     width: 33em;
   }
@@ -14,7 +14,7 @@
       border: solid .1rem black;
       height: 2.6em;
       border-radius: .5em;
-      min-width: 39em;
+      width: 35em;
       cursor: pointer;
       padding-bottom: -20px;
    
@@ -33,6 +33,10 @@
     }
   
     .edit-form-temp {
+      margin-left:2rem;
       margin-bottom: 40px;
+      border-color: black;
+      color:black;
+      /* margin:.4rem; */
     }
   

@@ -2,170 +2,165 @@
   height: 65px;
 } */
 
- div.whole-page-container {
+div.whole-page-container {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 img.img-currSpots {
-    display:flex;
-    justify-content: center;
-    height: 20rem;
-    width: 100%;
-    object-fit: cover;
-    z-index: 1;
-} 
-.details-container {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    /* border: 3px solid blue */
-    
+  display: flex;
+  justify-content: center;
+  height: 20rem;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
-.currSpot-name{
-    font-size: 35px;
-    margin-left: -1px;
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border: 3px solid blue */
+}
+.currSpot-name {
+  font-size: 35px;
+  margin-left: -1px;
 }
 .details-price {
-    font-size:20px;
-    padding-top: 5px;
+  font-size: 20px;
+  padding-top: 5px;
 }
 
 .business-info-container {
-    display: flex;
-    flex-direction: column;
-    position:relative;
-    margin-top: -8rem;
-    margin-left: 8rem;
-    color: white;
-    z-index: 2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: -8rem;
+  margin-left: 8rem;
+  color: white;
+  z-index: 2;
 }
 
-.business-details-bottom-container{
-    display:flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    margin-top: 1.5rem;
-    /* border: .5rem solid red; */
+.business-details-bottom-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 1.5rem;
+  /* border: .5rem solid red; */
 }
-.business-details-bottom-wrapper{
-    display:flex;
-    flex-direction: row;
-    width: 70rem;
-    height: 100%;
-    
+.business-details-bottom-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 70rem;
+  height: 100%;
 }
-.create-review-button{
-    font-weight: 600;
-    font-size: 15px;
-    color: #fff;
-    background-color: #e00707;
-    border: 1px solid #d3d3d3;
-    border-radius: 5px;
-    width: 175px;
-    height: 45px;
-    transition: 1s;
-    cursor: pointer;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-      
+.create-review-button {
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  background-color: #e00707;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  width: 175px;
+  height: 45px;
+  transition: 1s;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
-.business-details-left{
-display:flex;
-flex-direction: column;
-width: 45rem;
-height:50rem;
+.business-details-left {
+  display: flex;
+  flex-direction: column;
+  width: 45rem;
+  height: 50rem;
 }
 
-.business-details-right{
-display: flex;
-flex-direction: column;
-margin-left: 13rem;
-
+.business-details-right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 13rem;
 }
 
-.Editbiz-button{
-    
-    background-color: #E00707;
-    color: white;
-    border: none;
-    height: 2.6em;
-    border-radius: .4em;
-    min-width: 10em;
-    cursor: pointer;
-    margin-right: 2em;
-    margin-top: 1rem;
-    margin-bottom: 0.7em;
-    margin-left: 2em;
-    
+.Editbiz-button {
+  background-color: #e00707;
+  color: white;
+  border: none;
+  height: 2.6em;
+  border-radius: 0.4em;
+  min-width: 10em;
+  cursor: pointer;
+  margin-right: 2em;
+  margin-top: 1rem;
+  margin-bottom: 0.7em;
+  margin-left: 2em;
 }
 
 .Deletebiz-button {
-    background-color: #E00707;
-    color: white;
-    border: none;
-    height: 2.6em;
-    border-radius: .4em;
-    min-width: 9em;
-    cursor: pointer;
-    margin-right: 2em;
-    margin-bottom: 0.7em;
-    margin-left: 2em;
-}
-.star{
-    width: 17px;
-    height:17px;
-   
+  background-color: #e00707;
+  color: white;
+  border: none;
+  height: 2.6em;
+  border-radius: 0.4em;
+  min-width: 9em;
+  cursor: pointer;
+  margin-right: 2em;
+  margin-bottom: 0.7em;
+  margin-left: 2em;
 }
 
-.phoneNumberBox{
-    display: flex;
-    align-items: center;
-    width: 20rem;
-    margin-top:5rem;
-    padding-left:6px;
-    padding-top: .4rem;
-    padding-bottom:.5rem;
-    box-sizing: border-box;
-    border: 1px solid #d3d3d3;
-    font-weight: 500;
 
-
+.phoneNumberBox {
+  display: flex;
+  align-items: center;
+  width: 20rem;
+  margin-top: 5rem;
+  padding-left: 6px;
+  padding-top: 0.4rem;
+  padding-bottom: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid #d3d3d3;
+  font-weight: 500;
 }
-img.phone{
-margin-left: 4.2rem;
+img.phone {
+  margin-left: 4.2rem;
 }
-
-.get-email{
-    display: flex;
-    align-items: center;
-    width: 20rem;
-    height:4rem;
-    padding-top: .2rem;
-    padding-left:6px;
-    padding-bottom:.5rem;
-    box-sizing: border-box;
-    border: 1px solid #d3d3d3;
-    font-weight: 500;
-    color: rgba(2,122,151);
+.star {
+  width: 17px;
+  height: 17px;
 }
 .email-image {
-    margin-left:9rem;
-    width:28px;
-    height:28px;
-    object-fit: fill;
+  margin-left: 6.6rem;
+  width: 28px;
+  height: 28px;
+  object-fit: fill;
 }
-.price-claim{
-display:flex;
-align-items: center;
+.blue-checkmark {
+    width: 17px;
+    height: 17px;
+}
+
+.get-email {
+  display: flex;
+  align-items: center;
+  width: 20rem;
+  height: 4rem;
+  padding-top: 0.2rem;
+  padding-left: 6px;
+  padding-bottom: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid #d3d3d3;
+  font-weight: 500;
+  color: rgba(2, 122, 151);
+}
+
+.price-claim {
+  display: flex;
+  align-items: center;
 }
 
 .claimed {
-    color: rgb(88,180,255);
-   font-weight:bold;
-   padding-right: 3px;
+  color: rgb(88, 180, 255);
+  font-weight: bold;
+  padding-right: 3px;
 }
-
-

@@ -6,6 +6,8 @@ import { getAllUsersThunk } from "../../store/AllUsers";
 import img1 from "../icons/image1.avif"
 import img2 from "../icons/image2.avif"
 import img3 from "../icons/image3.avif"
+import options from "../icons/options.png"
+import commentbox from "../icons/commentbox.png"
 import githubIcon from '../icons/githubIcon.png'
 import "./HomePage.css";
 
@@ -81,7 +83,14 @@ useEffect(() => {
                             </div>
                             <div className="main-right-side-container">
                                 <NavLink to={`/businesses/${business.id}`}><div className="business-name-caption">{business.business_name}</div></NavLink>
-                                <div className="business-captions"> {business.city} {business.state}</div>
+                                <div className="business-captions"> {business.city}, {business.state}</div>
+                               <div className="detailsAndComment">
+                                <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img>
+                               <div className="business-descriptions-hp"> {business.description}</div>
+                                </div>
+                                 <div>
+                                    <img className="home-takeout-pic" src={options}/>
+                                </div>
                                 {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
                                 {/* <div className="business-captions">{business.description}</div> */}
 

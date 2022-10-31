@@ -1,0 +1,34 @@
+form.edit-form-update {
+   display:flex;
+   align-items: center;
+    height: 12rem;
+    width: 30rem;
+    flex-direction: column;
+}
+
+
+
+.edit-review-input{
+    margin-bottom: -3rem;
+    border-color: black;
+    color:black;
+    width: 20rem;
+    margin-left: 5rem;
+    margin-top: .2rem;
+    margin-bottom: .3rem;
+    
+}
+
+.submit-button-edit-review{
+    margin-top:1rem;
+    color: white;
+    background-color: red;
+    border-radius: .4em;
+    height: 2rem;
+    width: 10rem;
+    margin-left: 9rem;
+    cursor: pointer;
+
+
+}
+

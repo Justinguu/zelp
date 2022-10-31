@@ -14,8 +14,8 @@ const dispatch = useDispatch()
 
     return (
         <div className="delete-container">
-            <h2 className="delete-review-text"> Are you sure you want to delete this review?</h2>
-            <div className="delete-review-button">
+            <div className="delete-review-text"> Are you sure you want to delete this review?</div>
+            <div className="delete-review-buttonss">
                 <button className="delete-button" onClick={deleteReviewHandle}>Yes</button>
                 <button className="delete-button" onClick={() => setShowReviewDelete(false)}>No</button>
 

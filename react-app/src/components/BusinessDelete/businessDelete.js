@@ -14,9 +14,13 @@ const BusinessDelete = ({businessId, setShowDelete}) => {
 return (
     <>
     <div className='delete-container'>
-      <p className="delete-spot-text"> &nbsp;&nbsp;&nbsp;&nbsp; Are you sure you want to delete this business? </p>
-      <button className="delete-button" onClick={() => deleteHandle()}>YES</button>
+              <div className="delete-review-text"> &nbsp;&nbsp;&nbsp;&nbsp; Are you sure you want to delete this business? </div>
+      <div className="delete-buttons-container">
+          <button className="delete-button" onClick={() => deleteHandle()}>YES</button>
       <button className="delete-button" onClick={() => setShowDelete(false)}>NO</button>
+      </div>
+
+    
       </div>
     </>
   );

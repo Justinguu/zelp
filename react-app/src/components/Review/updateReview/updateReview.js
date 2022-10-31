@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useParams, Redirect} from "react-router-dom";
 import { updateReviewThunk } from "../../../store/review";
+import "./updateReview.css"
 
 function UpdateReviewForm({nowReview,setShowUpdateReview}){
 
@@ -43,9 +44,11 @@ useEffect(() => {
 const handleSubmit = (e) => {
     e.preventDefault();
     setHasSubmitted(true)
+
     if(errors.length > 0){
       return alert("Invalid Submission, Please Check Inputs")
     }
+
     dispatch(updateReviewThunk(nowReview.id,userId,businessId,review,rating))
     setShowUpdateReview(false)
 
@@ -53,9 +56,9 @@ const handleSubmit = (e) => {
 
 return (
     
-<form onSubmit={handleSubmit}className="spot-form-update"> 
+    <form className="edit-form-update" onSubmit={handleSubmit}> 
+    <h2>Edit Review Form</h2>
 <div>
-    <h3>Edit Review Form</h3>
 </div>
 {hasSubmitted && errors.length > 0 && (
     <ul className="edit-errors">
@@ -65,21 +68,23 @@ return (
     
     </ul>
     )}
-    <div className="edit-form-container">
+    <div className="edit-form-container-review">
         <input
-            type="text"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-            placeholder="Review"
-            />
-        <input
+            className="edit-review-input"
             type="number"
             value={rating}
             onChange={(e) => setRating(e.target.value)}
             placeholder="Rating"
             />
-            <div>
-                <button type="submit-button-edit">Update Review</button>
+        <input
+            className="edit-review-input"
+            type="text"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            placeholder="Review"
+            />
+            <div className="">
+                <button className="submit-button-edit-review" type="button">Update Review</button>
             </div>
             </div>
 

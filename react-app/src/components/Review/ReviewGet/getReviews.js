@@ -36,17 +36,17 @@ const GetBusinessReviews = ({ businessId }) => {
   //   const year = createdAtString.slice(13, 17)
   //   createdAtDate = `${month} ${date}, ${year}`
   
-  const deleteReview = (e, id) => {
-    e.preventDefault();
-    dispatch(deleteReviewThunk(id)).then(() =>
-    dispatch(getOneBusinessThunk(businessId))
-    );
-  };
+  // const deleteReview = (e, id) => {
+  //   e.preventDefault();
+  //   dispatch(deleteReviewThunk(id)).then(() =>
+  //   dispatch(getOneBusinessThunk(businessId))
+  //   );
+  // };
   const localDate = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
 
   useEffect(() => {
     dispatch(getCurrReviewThunk(businessId)).then(() => setIsLoaded(true));
-  }, [dispatch, businessId, showReviewDelete]);
+  }, [dispatch, businessId, showReviewDelete,showUpdateReview]);
 
   // if theres no users profileImage, return a default image
   const defaultImage = "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png";
@@ -88,22 +88,16 @@ const GetBusinessReviews = ({ businessId }) => {
                   {review.review}
                   {review.avg_rating}
                   <div>
-                    <button
-                      className="deleteButtonReview"
-                      onClick={() => {
-                        {
-                          setShowUpdateReview(true);
-                        }
-                        setNowReview(review);
-                      }}
-                    >
-                      Edit Review
-                    </button>
+                    <button className="deleteButtonReview"
+                      onClick={() => {setShowUpdateReview(true); setNowReview(review) }}>Edit Review</button>
+                      
                     {showUpdateReview && (
+                     <Modal onClose={() => setShowUpdateReview(false)}>
                       <UpdateReviewForm
                         nowReview={nowReview}
                         setShowUpdateReview={setShowUpdateReview}
                       />
+                     </Modal>
                     )}
                   </div>
                   {showReviewDelete && (
