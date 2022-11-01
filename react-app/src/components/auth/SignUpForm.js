@@ -102,9 +102,10 @@ const SignUpForm = () => {
     setProfileImage(e.target.value);
   };
 
+// if successful, redirect to home page
 
-  if (user){
-    <Redirect to="/"/>;
+  if (user) {
+    return <Redirect to="/" />;
   }
   return (
     <>
