@@ -1,6 +1,3 @@
-/* div.currSpot-header {
-  height: 65px;
-} */
 
 div.whole-page-container {
   display: flex;
@@ -22,24 +19,29 @@ img.img-currSpots {
   justify-content: center;
   /* border: 3px solid blue */
 }
+.business-info-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: -10rem;
+  margin-left: 8rem;
+  color: white;
+  z-index: 3;
+}
+
 .currSpot-name {
+  margin-bottom: .5rem;
   font-size: 35px;
   margin-left: -1px;
+}
+.total-review{
+  z-index:3;
 }
 .details-price {
   font-size: 20px;
   padding-top: 5px;
 }
 
-.business-info-container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: -8rem;
-  margin-left: 8rem;
-  color: white;
-  z-index: 2;
-}
 
 .business-details-bottom-container {
   display: flex;

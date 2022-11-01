@@ -120,7 +120,7 @@ def seed_businesses():
         zip_code = 30324,
         description= "We started this place to keep peoples smiles alive, and to experiment with a multitude of flavors that everyone will love",
         price = 10,
-        preview_image="https://images.unsplash.com/photo-1625758600922-4085dd859395?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+        preview_image="https://images.unsplash.com/photo-1560008581-09826d1de69e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=444&q=80"
     )
 
         

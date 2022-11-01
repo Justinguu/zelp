@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { getOneBusinessThunk } from "../../store/business";
+import { getOneBusinessThunk,getAllReviewsArr } from "../../store/business";
 import { getCurrReviewThunk, createReviewThunk } from "../../store/review";
 import { Modal } from "../../context/Modal";
 import GetBusinessReviews from "../Review/ReviewGet/getReviews";
 import CreateReviewForm from "../Review/CreateForm/createForm";
 import BusinessDelete from "../BusinessDelete/businessDelete";
-import DeleteReviewForm from "../Review/reviewDelete/deleteReview";
 import EditBusinessForm from "../BusinessEdit/businessEdit.js";
+
 import star from "../icons/star.png";
 import phone from "../icons/phone.png";
 import highlights from "../icons/highlights.png";
@@ -24,21 +24,20 @@ const BusinessDetails = () => {
 
   const [disable, setDisable] = useState(true);
 
-  const { businessId } = useParams();
+  const { businessId, sessionUser } = useParams();
 
   const user = useSelector((state) => state.session.user);
   const currBusiness = useSelector((state) => state.business[businessId]);
 
-  const theBusiness = useSelector((state) => state.business)
-
-
   const allReviews = useSelector((state) => state.review);
   const getAllReviewsArr = Object.values(allReviews);
-  // console.log(allReviews)
+ 
+  
+
 
   const history = useHistory();
 
- // if youre the owner of the business, you can't review it and if youre not the owner you can review it tern
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,20 +45,23 @@ const BusinessDetails = () => {
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
 
-useEffect(() => {
-  if (user) {
-    if (user.id === currBusiness.owner_id) { 
-      setDisable(true) 
-    } else {
-      setDisable(false);
-    }
-  }
-}, [setDisable , user, currBusiness.owner_id]);
+// useEffect(() => {
+//   const checker = async () => {
+//   if (user) {
+//       if (user.id === currBusiness.owner_id) { 
+//       setDisable(true) 
+//     } else {
+//       setDisable(false);
+//     }
+//   }
+// };
+// checker();
+// }, []);
 
   if (currBusiness === undefined) {
     return <div>Business not found</div>; // if currBusiness is undefined, return this
   }
-  //added
+
   if (isLoaded && currBusiness.owner_id === undefined) {
     dispatch(getOneBusinessThunk(businessId));
     return <div></div>;
@@ -90,6 +92,36 @@ useEffect(() => {
     return '$$$'
   }
 }
+const ratingIncrementer = (int) => {
+  let forRatings = []
+
+  for (let num = 0; num < int; num++) {
+      forRatings.push(<div class="fa-regular fa-star" style={{ color: "gold", margin: "0 5px" }}></div>)
+  }
+
+  for (let num = 0; num < (5 - int); num++) {
+      forRatings.push(<div class="fa-regular fa-star" style={{ color: "rgba(0, 0, 0, .3)", margin: "0 .2rem" }}></div>)
+  }
+
+  return forRatings.map(ratings => {
+      return ratings
+  })
+}
+// shows the businesses reviews info for this details page
+  const thebusinessReviews = getAllReviewsArr.filter((review) => {
+    return review.business_id === parseInt(businessId);
+  });
+ 
+  //  the average of thebusinessReviews avg_rating
+  const avgRating = thebusinessReviews.reduce((acc, review) => {
+    return acc + review.avg_rating;
+  }, 0);
+  const avgRatingFinal = avgRating / thebusinessReviews.length;
+  const avgRatingFinalWhole = Math.round(avgRatingFinal);
+
+
+// number of reviews per business
+const numOfReviews = thebusinessReviews.length
 
 
 // const reviewButton = () => {
@@ -101,7 +133,8 @@ useEffect(() => {
 // };
 
 
-// if you are the business owner disable the review button and if youre not the owner
+
+
 
 
 
@@ -118,6 +151,7 @@ useEffect(() => {
           ></img>
           <div className="business-info-container">
             <div className="currSpot-name">{currBusiness.business_name}</div>
+              <div className="total-review">{ratingIncrementer(avgRatingFinalWhole)} {numOfReviews} Reviews</div>
             <div className="price-claim">
               <img className="blue-checkmark" src={checkmark} alt="checkmark"/>
                &nbsp;<div className="claimed">Claimed</div>
@@ -138,7 +172,7 @@ useEffect(() => {
                     
                   <button
                     className="create-review-button"
-                    disabled={disable}
+                    // disabled={disable}
                   
                     onClick={() => setShowReview(true)}
                   >

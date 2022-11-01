@@ -67,7 +67,7 @@ const GetBusinessReviews = ({ businessId }) => {
           return (
             
             <>
-            {console.log(review)}
+            
               {businessId == review.business_id ? (
                 <div className="review-box" key={review.id}>
                   {allUsersArr.map((users) => {
