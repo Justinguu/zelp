@@ -76,8 +76,17 @@ const BusinessDetails = () => {
       )
       .join("");
   }
+  function priceToDollar(price) {
+    if (price <= 15 ){
+      return '$'
+    } else if (price >= 16 && price <= 30){
+      return '$$'
+  } else if (price >= 31){
+    return '$$$'
+  }
+}
 
-
+  //convert prices th
   return (
     isLoaded && (
       <>
@@ -93,7 +102,7 @@ const BusinessDetails = () => {
             <div className="price-claim">
               <img className="blue-checkmark" src={checkmark} alt="checkmark"/>
                &nbsp;<div className="claimed">Claimed</div>
-            <div className="details-price"> ● ${currBusiness.price}</div>
+            <div className="details-price"> ● {priceToDollar(currBusiness.price)}</div>
             </div>
            
             <div className="details-price">
@@ -181,7 +190,7 @@ const BusinessDetails = () => {
                       <img className="phone" src={phone} alt="phone" />
                     </div>
                     <div className="get-email">
-                      {currBusiness.email} 
+                      <div className="email-info">{currBusiness.email} </div>
                       <img className="email-image" src={email} alt="email"/>
                       </div>
 

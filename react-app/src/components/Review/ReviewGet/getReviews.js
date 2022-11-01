@@ -30,20 +30,6 @@ const GetBusinessReviews = ({ businessId }) => {
   
   const allUsersArr = Object.values(allUsers);
 
-
-  // const createdAtObject = getAllReviewsArr.created_at
-  //   const createdAtString = JSON.stringify(createdAtObject)
-  //   const date = createdAtString.slice(5, 8)
-  //   const month = createdAtString.slice(9, 12)
-  //   const year = createdAtString.slice(13, 17)
-  //   createdAtDate = `${month} ${date}, ${year}`
-  
-  // const deleteReview = (e, id) => {
-  //   e.preventDefault();
-  //   dispatch(deleteReviewThunk(id)).then(() =>
-  //   dispatch(getOneBusinessThunk(businessId))
-  //   );
-  // };
   const localDate = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
 
   useEffect(() => {
@@ -65,7 +51,7 @@ const GetBusinessReviews = ({ businessId }) => {
     }
 
     for (let num = 0; num < (5 - int); num++) {
-        forRatings.push(<div class="fa-regular fa-star" style={{ color: "rgba(0, 0, 0, .5)", margin: "0 .2rem" }}></div>)
+        forRatings.push(<div class="fa-regular fa-star" style={{ color: "rgba(0, 0, 0, .3)", margin: "0 .2rem" }}></div>)
     }
 
     return forRatings.map(ratings => {
@@ -73,12 +59,15 @@ const GetBusinessReviews = ({ businessId }) => {
     })
 }
 
+
   return (
     isLoaded && (
       <div className="review-border">
         {getAllReviewsArr.map((review) => {
           return (
+            
             <>
+            {console.log(review)}
               {businessId == review.business_id ? (
                 <div className="review-box" key={review.id}>
                   {allUsersArr.map((users) => {
@@ -103,9 +92,9 @@ const GetBusinessReviews = ({ businessId }) => {
                     );
                   })}
                   <div className="details-pagestars">
-                  <span className=""> {review.avg_rating} (stars will go here soon)</span> &nbsp;<span className="reviewed-date">{new Date(review.created_at).toString().slice(4, 15)}</span>
+                  <span className=""> {ratingIncrementer(review.avg_rating)} </span> &nbsp;<span className="reviewed-date">{new Date(review.created_at).toString().slice(4, 15)}</span>
                   </div>
-                  <div className="details-page-reviews">{ratingIncrementer(review.review)} </div>
+                  <div className="details-page-reviews"> {review.review}</div>
                   
                  <div className="both-review-bttns">
                   <div>

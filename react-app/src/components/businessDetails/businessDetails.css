@@ -113,7 +113,7 @@ img.img-currSpots {
 .phoneNumberBox {
   display: flex;
   align-items: center;
-  width: 20rem;
+  width: 24rem;
   margin-top: 5rem;
   padding-left: 6px;
   padding-top: 0.4rem;
@@ -123,27 +123,30 @@ img.img-currSpots {
   font-weight: 500;
 }
 img.phone {
-  margin-left: 4.2rem;
+  margin-left: 7.2rem;
 }
 .star {
   width: 17px;
   height: 17px;
 }
+.blue-checkmark {
+  width: 17px;
+  height: 17px;
+}
 .email-image {
-  margin-left: 6.6rem;
+  margin-left: 1.8rem;
   width: 28px;
   height: 28px;
   object-fit: fill;
 }
-.blue-checkmark {
-    width: 17px;
-    height: 17px;
+.email-info{
+width:18rem;
 }
 
 .get-email {
   display: flex;
   align-items: center;
-  width: 20rem;
+  width: 24rem;
   height: 4rem;
   padding-top: 0.2rem;
   padding-left: 6px;
