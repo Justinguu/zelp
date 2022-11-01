@@ -47,11 +47,11 @@ const GetBusinessReviews = ({ businessId }) => {
     let forRatings = []
 
     for (let num = 0; num < int; num++) {
-        forRatings.push(<div class="fa-regular fa-star" style={{ color: "gold", margin: "0 5px" }}></div>)
+        forRatings.push(<div class="fa-regular fa-star" style={{ color: "orange", margin: " .2rem;" }}></div>)
     }
 
     for (let num = 0; num < (5 - int); num++) {
-        forRatings.push(<div class="fa-regular fa-star" style={{ color: "rgba(0, 0, 0, .3)", margin: "0 .2rem" }}></div>)
+        forRatings.push(<div class="fa-regular fa-star" style={{ color: "lightgrey", margin: " .2rem" }}></div>)
     }
 
     return forRatings.map(ratings => {

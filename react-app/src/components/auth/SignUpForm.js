@@ -19,6 +19,8 @@ const SignUpForm = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
+ 
+
   useEffect(() => {
     let errors = [];
 
@@ -47,6 +49,10 @@ const SignUpForm = () => {
 
     if (!email.includes("@")) {
       return setErrors(["Please enter a valid email address"]);
+    }
+
+    if (user){
+      <Redirect to="/" />;
     }
 
     if (password === repeatPassword) {

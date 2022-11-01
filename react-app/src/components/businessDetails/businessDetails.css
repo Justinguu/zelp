@@ -36,6 +36,8 @@ img.img-currSpots {
 }
 .total-review{
   z-index:3;
+  padding-bottom: .3rem;
+  margin-right:.5rem;
 }
 .details-price {
   font-size: 20px;
@@ -82,9 +84,9 @@ img.img-currSpots {
   width: 175px;
   height: 45px;
   transition: 1s;
-  cursor: pointer;
   margin-top: 1rem;
   margin-bottom: 2rem;
+  cursor:none
 }
 .business-details-left {
   display: flex;
@@ -183,4 +185,8 @@ width:18rem;
   color: rgb(88, 180, 255);
   font-weight: bold;
   padding-right: 3px;
+}
+.cantreview{
+  font-size: .7rem;
+  
 }

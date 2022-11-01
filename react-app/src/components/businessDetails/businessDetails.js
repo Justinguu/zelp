@@ -95,7 +95,7 @@ const BusinessDetails = () => {
       forRatings.push(
         <div
           class="fa-regular fa-star"
-          style={{ color: "yellow", margin: "0 5px" }}
+          style={{ color: "orange", margin: "0 5px" }}
         ></div>
       );
     }
@@ -104,7 +104,7 @@ const BusinessDetails = () => {
       forRatings.push(
         <div
           class="fa-regular fa-star"
-          style={{ color: "grey", margin: "0 .2rem" }}
+          style={{ color: "lightgrey", margin: "0 .2rem" }}
         ></div>
       );
     }
@@ -177,9 +177,11 @@ const BusinessDetails = () => {
                     <button
                       className="create-review-button"
                       disabled={disable}
+                     
                     >
-                      <img className="star" src={star} alt="star" />
-                      &nbsp; Write A Review
+                      {/* <img className="star" src={star} alt="star" /> */}
+                      <div className="cantreview"> &nbsp; Owner's can't review their own business</div>
+                     
                     </button>
                   )}
                   <div>
