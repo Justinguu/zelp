@@ -78,52 +78,52 @@ height:auto;
 }
 
 .star-container div:hover {
-    color: gold;
+    color: rgb(255, 173, 21);
     transform: scale(1.3);
     cursor: pointer;
 }
 
 
 .s1:hover~div {
-    color: gold;
+    color: rgb(255, 173, 21);
 }
 
 .s1::after~div {
-    color: gold;
+    color: rgb(255, 173, 21);
 }
 
 .s1-checked {
-  color: gold !important;
+  color: rgb(255, 173, 21) !important;
 }
 
 .s2:hover~div {
-    color: gold;
+    color: rgb(255, 173, 21);
 }
 
 .s2-checked {
-  color: gold !important;
+  color: rgb(255, 173, 21) !important;
 }
 
 .s3:hover~div {
-    color: gold;
+    color: rgb(255, 173, 21);
 }
 
 .s3-checked {
-  color: gold !important;
+  color: rgb(255, 173, 21) !important;
 }
 
 .s4:hover~div {
-    color: gold;
+    color: rgb(255, 173, 21);
 }
 
 .s4-checked {
-  color: gold !important;
+  color: rgb(255, 173, 21) !important;
 }
 
 .s5:hover~div {
-    color: gold;
+    color: rgb(255, 173, 21);
 }
 
 .s5-checked {
-  color: gold !important;
+  color: rgb(255, 173, 21) !important;
 }

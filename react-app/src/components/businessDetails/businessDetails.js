@@ -95,7 +95,7 @@ const BusinessDetails = () => {
       forRatings.push(
         <div
           class="fa-regular fa-star"
-          style={{ color: "gold", margin: "0 5px" }}
+          style={{ color: "yellow", margin: "0 5px" }}
         ></div>
       );
     }
@@ -104,7 +104,7 @@ const BusinessDetails = () => {
       forRatings.push(
         <div
           class="fa-regular fa-star"
-          style={{ color: "rgba(0, 0, 0, .3)", margin: "0 .2rem" }}
+          style={{ color: "grey", margin: "0 .2rem" }}
         ></div>
       );
     }
