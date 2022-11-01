@@ -6,6 +6,8 @@ import { getAllUsersThunk } from "../../store/AllUsers";
 import img1 from "../icons/image1.avif"
 import img2 from "../icons/image2.avif"
 import img3 from "../icons/image3.avif"
+import img4 from "../icons/image4.avif"
+import img5 from "../icons/image5.avif"
 import options from "../icons/options.png"
 import commentbox from "../icons/commentbox.png"
 import githubIcon from '../icons/githubIcon.png'
@@ -39,7 +41,7 @@ let allUsersArray;
 
    
 
- const slideShowPic = [img1,img2,img3]
+ const slideShowPic = [img1,img2,img3,img4,img5]
     const [pictures, setPictures] = useState(slideShowPic[0]);
     const [counter, setCounter] = useState(0)
 
@@ -50,7 +52,7 @@ useEffect(() => {
 
 useEffect(() => {
     const timer = setInterval(() => {
-        setCounter((counter) => counter === 2 ? 0 : counter + 1)
+        setCounter((counter) => counter === 4 ? 0 : counter + 1)
     }, 4000)
 
     return () => clearInterval(timer)

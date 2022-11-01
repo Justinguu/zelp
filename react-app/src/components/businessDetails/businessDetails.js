@@ -190,7 +190,7 @@ const BusinessDetails = () => {
                     <div className="blue-box-bold-text">
                       Your trust is our top concern,
                     </div>{" "}
-                    so businesses can't pay to alter or remove their reviews.
+                    so everyones review reflect the integrity of the business .
                   </div>
                   {showReview && (
                     <Modal onClose={() => setShowReview(false)}>
