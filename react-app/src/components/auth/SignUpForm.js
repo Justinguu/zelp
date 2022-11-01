@@ -51,9 +51,7 @@ const SignUpForm = () => {
       return setErrors(["Please enter a valid email address"]);
     }
 
-    if (user){
-      <Redirect to="/" />;
-    }
+    
 
     if (password === repeatPassword) {
       const data = await dispatch(
@@ -104,10 +102,10 @@ const SignUpForm = () => {
     setProfileImage(e.target.value);
   };
 
-  // if (user) {
-  //   return <Redirect to='/' />;
-  // }
 
+  if (user){
+    <Redirect to="/" />;
+  }
   return (
     <>
       {/* <div className='signup-pic-container'>
@@ -195,7 +193,7 @@ const SignUpForm = () => {
                
                 <input className="signup-input"
                   type="text"
-                  name="profileImage"
+                  name="zip Code"
                   placeholder="Zip Code"
                   onChange={updateZipCode}
                   maxLength="5"
@@ -208,7 +206,7 @@ const SignUpForm = () => {
               <div>
                
                 <input className="signup-input"
-                  type="profileImage"
+                  type="text"
                   name="profileImage"
                   placeholder="Profile Image"
                   onChange={updateProfileImage}
@@ -216,7 +214,7 @@ const SignUpForm = () => {
                   
                 ></input>
               </div>
-              <button className="signup-button" type="submit">
+              <button className="signup-button" type="submit"disabled={errors.length} >
                 Sign Up
               </button>
             </form>
