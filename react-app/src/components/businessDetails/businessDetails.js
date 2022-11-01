@@ -41,18 +41,7 @@ const BusinessDetails = () => {
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
 
-  // useEffect(() => {
-  //   const checker = async () => {
-  //   if (user) {
-  //       if (user.id === currBusiness.owner_id) {
-  //       setDisable(true)
-  //     } else {
-  //       setDisable(false);
-  //     }
-  //   }
-  // };
-  // checker();
-  // }, []);
+  
 
   if (currBusiness === undefined) {
     return <div>Business not found</div>; // if currBusiness is undefined, return this

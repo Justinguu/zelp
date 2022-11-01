@@ -104,7 +104,7 @@ const SignUpForm = () => {
 
 
   if (user){
-    <Redirect to="/" />;
+    <Redirect to="/"/>;
   }
   return (
     <>
@@ -208,7 +208,7 @@ const SignUpForm = () => {
                 <input className="signup-input"
                   type="text"
                   name="profileImage"
-                  placeholder="Profile Image"
+                  placeholder="Profile Image(Optional)"
                   onChange={updateProfileImage}
                   value={profileImage}
                   
