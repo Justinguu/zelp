@@ -69,6 +69,21 @@ img.img-currSpots {
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
+
+.create-review-button:disabled{
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  background: linear-gradient( #6d6567, #6d6567);
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  width: 175px;
+  height: 45px;
+  transition: 1s;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
 .business-details-left {
   display: flex;
   flex-direction: column;

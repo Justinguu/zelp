@@ -22,7 +22,7 @@ const BusinessDetails = () => {
   const [showDelete, setShowDelete] = useState(false);
   const [showReview, setShowReview] = useState(false);
 
-  const [disabled, setDisabled] = useState(true);
+  const [disable, setDisable] = useState(true);
 
   const { businessId } = useParams();
 
@@ -38,18 +38,23 @@ const BusinessDetails = () => {
 
   const history = useHistory();
 
-  // const sessionReview = !user? null
-  //   : getAllReviewsArr.find((review) => review.userId === user.id);
-  // useEffect(() => {
-  //   setDisabled(!!sessionReview);
-  // });
-
+ // if youre the owner of the business, you can't review it and if youre not the owner you can review it tern
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCurrReviewThunk(businessId));
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
+
+useEffect(() => {
+  if (user) {
+    if (user.id === currBusiness.owner_id) { 
+      setDisable(true) 
+    } else {
+      setDisable(false);
+    }
+  }
+}, [setDisable , user, currBusiness.owner_id]);
 
   if (currBusiness === undefined) {
     return <div>Business not found</div>; // if currBusiness is undefined, return this
@@ -86,7 +91,21 @@ const BusinessDetails = () => {
   }
 }
 
-  //convert prices th
+
+// const reviewButton = () => {
+//   if (user.id === currBusiness.owner_id) {
+//     setDisable(true);
+//   } else {
+//     setDisable(false);
+//   }
+// };
+
+
+// if you are the business owner disable the review button and if youre not the owner
+
+
+
+ 
   return (
     isLoaded && (
       <>
@@ -114,15 +133,20 @@ const BusinessDetails = () => {
           <div className="business-details-bottom-container">
             <div className="business-details-bottom-wrapper">
               <div className="business-details-left">
-                {/* {!user ? null : theBusiness.owner_id && ( */}
+                
                   <div>
+                    
                   <button
                     className="create-review-button"
+                    disabled={disable}
+                  
                     onClick={() => setShowReview(true)}
                   >
                     <img className="star" src={star} alt="star" />
                     &nbsp; Write A Review
                   </button>
+
+
                   <div>
                     <img className="highlights" src={highlights} />
                   </div>
