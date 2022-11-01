@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { getOneBusinessThunk,getAllReviewsArr } from "../../store/business";
+import { getOneBusinessThunk, getAllReviewsArr } from "../../store/business";
 import { getCurrReviewThunk, createReviewThunk } from "../../store/review";
 import { Modal } from "../../context/Modal";
 import GetBusinessReviews from "../Review/ReviewGet/getReviews";
@@ -13,7 +13,7 @@ import star from "../icons/star.png";
 import phone from "../icons/phone.png";
 import highlights from "../icons/highlights.png";
 import email from "../icons/email.png";
-import checkmark from "../icons/checkmark.png"
+import checkmark from "../icons/checkmark.png";
 import "./businessDetails.css";
 
 const BusinessDetails = () => {
@@ -31,12 +31,8 @@ const BusinessDetails = () => {
 
   const allReviews = useSelector((state) => state.review);
   const getAllReviewsArr = Object.values(allReviews);
- 
-  
-
 
   const history = useHistory();
-
 
   const dispatch = useDispatch();
 
@@ -45,18 +41,18 @@ const BusinessDetails = () => {
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
 
-// useEffect(() => {
-//   const checker = async () => {
-//   if (user) {
-//       if (user.id === currBusiness.owner_id) { 
-//       setDisable(true) 
-//     } else {
-//       setDisable(false);
-//     }
-//   }
-// };
-// checker();
-// }, []);
+  // useEffect(() => {
+  //   const checker = async () => {
+  //   if (user) {
+  //       if (user.id === currBusiness.owner_id) {
+  //       setDisable(true)
+  //     } else {
+  //       setDisable(false);
+  //     }
+  //   }
+  // };
+  // checker();
+  // }, []);
 
   if (currBusiness === undefined) {
     return <div>Business not found</div>; // if currBusiness is undefined, return this
@@ -84,34 +80,44 @@ const BusinessDetails = () => {
       .join("");
   }
   function priceToDollar(price) {
-    if (price <= 15 ){
-      return '$'
-    } else if (price >= 16 && price <= 30){
-      return '$$'
-  } else if (price >= 31){
-    return '$$$'
+    if (price <= 15) {
+      return "$";
+    } else if (price >= 16 && price <= 30) {
+      return "$$";
+    } else if (price >= 31) {
+      return "$$$";
+    }
   }
-}
-const ratingIncrementer = (int) => {
-  let forRatings = []
+  const ratingIncrementer = (int) => {
+    let forRatings = [];
 
-  for (let num = 0; num < int; num++) {
-      forRatings.push(<div class="fa-regular fa-star" style={{ color: "gold", margin: "0 5px" }}></div>)
-  }
+    for (let num = 0; num < int; num++) {
+      forRatings.push(
+        <div
+          class="fa-regular fa-star"
+          style={{ color: "gold", margin: "0 5px" }}
+        ></div>
+      );
+    }
 
-  for (let num = 0; num < (5 - int); num++) {
-      forRatings.push(<div class="fa-regular fa-star" style={{ color: "rgba(0, 0, 0, .3)", margin: "0 .2rem" }}></div>)
-  }
+    for (let num = 0; num < 5 - int; num++) {
+      forRatings.push(
+        <div
+          class="fa-regular fa-star"
+          style={{ color: "rgba(0, 0, 0, .3)", margin: "0 .2rem" }}
+        ></div>
+      );
+    }
 
-  return forRatings.map(ratings => {
-      return ratings
-  })
-}
-// shows the businesses reviews info for this details page
+    return forRatings.map((ratings) => {
+      return ratings;
+    });
+  };
+  // shows the businesses reviews info for this details page
   const thebusinessReviews = getAllReviewsArr.filter((review) => {
     return review.business_id === parseInt(businessId);
   });
- 
+
   //  the average of thebusinessReviews avg_rating
   const avgRating = thebusinessReviews.reduce((acc, review) => {
     return acc + review.avg_rating;
@@ -119,26 +125,11 @@ const ratingIncrementer = (int) => {
   const avgRatingFinal = avgRating / thebusinessReviews.length;
   const avgRatingFinalWhole = Math.round(avgRatingFinal);
 
+  // number of reviews per business
+  const numOfReviews = thebusinessReviews.length;
 
-// number of reviews per business
-const numOfReviews = thebusinessReviews.length
+  // const reviewButton = () => {
 
-
-// const reviewButton = () => {
-//   if (user.id === currBusiness.owner_id) {
-//     setDisable(true);
-//   } else {
-//     setDisable(false);
-//   }
-// };
-
-
-
-
-
-
-
- 
   return (
     isLoaded && (
       <>
@@ -151,13 +142,18 @@ const numOfReviews = thebusinessReviews.length
           ></img>
           <div className="business-info-container">
             <div className="currSpot-name">{currBusiness.business_name}</div>
-              <div className="total-review">{ratingIncrementer(avgRatingFinalWhole)} {numOfReviews} Reviews</div>
-            <div className="price-claim">
-              <img className="blue-checkmark" src={checkmark} alt="checkmark"/>
-               &nbsp;<div className="claimed">Claimed</div>
-            <div className="details-price"> ● {priceToDollar(currBusiness.price)}</div>
+            <div className="total-review">
+              {ratingIncrementer(avgRatingFinalWhole)} {numOfReviews} Reviews
             </div>
-           
+            <div className="price-claim">
+              <img className="blue-checkmark" src={checkmark} alt="checkmark" />
+              &nbsp;<div className="claimed">Claimed</div>
+              <div className="details-price">
+                {" "}
+                ● {priceToDollar(currBusiness.price)}
+              </div>
+            </div>
+
             <div className="details-price">
               {" "}
               {currBusiness.address} {currBusiness.city}, {currBusiness.state},
@@ -167,21 +163,27 @@ const numOfReviews = thebusinessReviews.length
           <div className="business-details-bottom-container">
             <div className="business-details-bottom-wrapper">
               <div className="business-details-left">
-                
-                  <div>
-                    
-                  <button
-                    className="create-review-button"
-                    // disabled={disable}
-                  
-                    onClick={() => setShowReview(true)}
-                  >
-                    <img className="star" src={star} alt="star" />
-                    &nbsp; Write A Review
-                  </button>
+                <div>
 
-
+                  {user.id !== currBusiness.owner_id ? (
+                    <button
+                      className="create-review-button"
+                      onClick={() => setShowReview(true)}
+                    >
+                      <img className="star" src={star} alt="star" />
+                      &nbsp; Write A Review
+                    </button>
+                  ) : (
+                    <button
+                      className="create-review-button"
+                      disabled={disable}
+                    >
+                      <img className="star" src={star} alt="star" />
+                      &nbsp; Write A Review
+                    </button>
+                  )}
                   <div>
+
                     <img className="highlights" src={highlights} />
                   </div>
                   <div className="blue-review-box">
@@ -196,8 +198,8 @@ const numOfReviews = thebusinessReviews.length
                     </Modal>
                   )}
                 </div>
-                 {/* )} */}
-                
+                {/* )} */}
+
                 <div>
                   <GetBusinessReviews
                     businessId={businessId}
@@ -206,7 +208,7 @@ const numOfReviews = thebusinessReviews.length
                 </div>
               </div>
               <div className="business-details-right">
-                {currBusiness.owner_id === user.id  &&  (
+                {currBusiness.owner_id === user.id && (
                   <div className="details-container">
                     <button
                       className="Editbiz-button"
@@ -237,23 +239,18 @@ const numOfReviews = thebusinessReviews.length
                         />
                       </Modal>
                     )}
-                    </div>
-                )
-                    }
-                  
-                
-                    <div className="phoneNumberBox">
-                      {dashedNumber(currBusiness.phone_number)}
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <img className="phone" src={phone} alt="phone" />
-                    </div>
-                    <div className="get-email">
-                      <div className="email-info">{currBusiness.email} </div>
-                      <img className="email-image" src={email} alt="email"/>
-                      </div>
+                  </div>
+                )}
 
-                    
-                  
+                <div className="phoneNumberBox">
+                  {dashedNumber(currBusiness.phone_number)}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <img className="phone" src={phone} alt="phone" />
+                </div>
+                <div className="get-email">
+                  <div className="email-info">{currBusiness.email} </div>
+                  <img className="email-image" src={email} alt="email" />
+                </div>
               </div>
             </div>
           </div>
