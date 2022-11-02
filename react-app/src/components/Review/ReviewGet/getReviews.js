@@ -37,10 +37,10 @@ const GetBusinessReviews = ({ businessId }) => {
   }, [dispatch, businessId, showReviewDelete,showUpdateReview]);
 
   // if theres no users profileImage, return a default image
-  const defaultImage = "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png";
-  const defaultProfileImage = (image) => {
-    return image === null ? defaultImage : image;
-  };
+  // const defaultImage = "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png";
+  // const defaultProfileImage = (image) => {
+  //   return image === null ? defaultImage : image;
+  // };
 
 
   const ratingIncrementer = (int) => {
@@ -75,7 +75,7 @@ const GetBusinessReviews = ({ businessId }) => {
                       <>
                         {review.user_id === users.id ? (
                           <div className="users-review-info">
-                        <img  className="user-profile-image"src={users.profileImage || defaultProfileImage} alt="profile-image"/>
+                        <img  className="user-profile-image"src={users.profileImage} alt="profile-image"/>
                         &nbsp; &nbsp; &nbsp; 
                         <div className="three-items-container">
                           <div className="reviews-get-firstName">{users.username}</div>

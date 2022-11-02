@@ -40,7 +40,7 @@ const SignUpForm = () => {
     password,
     repeatPassword,
     zip_code,
-    profileImage,
+    
   ]);
 
   const onSignUp = async (e) => {
@@ -209,7 +209,7 @@ const SignUpForm = () => {
                   type="text"
                   name="profileImage"
                   placeholder="Profile Image(Optional)"
-                  onChange={updateProfileImage}
+                  onChange={setProfileImage}
                   value={profileImage}
                   
                 ></input>
