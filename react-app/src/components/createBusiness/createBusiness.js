@@ -47,12 +47,13 @@ export default function CreateBusinessForm() {
       errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2)
       errors.push("City must be between 2 and 20 characters");
-    if (zipCode.length != 5 && typeof zipCode != 'number') errors.push("Zip code must be 5 digits & be a number");
+      if (country.length >= 30 || country.length < 2)errors.push("Country must be between 2 and 30 characters");
+    if (zipCode.length !== 5 || NaN ) errors.push("Zip code must be 5 digits ");
     if (description.length > 300 || description.length < 50)
       errors.push("Description must be between 100 and 300 characters");
     if (price.length > 100 || price.length < 2 && typeof price != 'number')
       errors.push("Price must be between $2 - $100 numbers");
-
+    // 
     return setErrors(errors);
   }, [
     businessName,
@@ -60,6 +61,7 @@ export default function CreateBusinessForm() {
     email,
     address,
     city,
+    country,
     zipCode,
     description,
     price,
@@ -230,14 +232,17 @@ export default function CreateBusinessForm() {
              
             </select>
 
-            <select
-              className="business-input-field-select"
+            
+               <input
+              className="business-input-field"
+              type="text"
+              placeholder="Country"
+              maxLength="30"
+              minLength="2"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              placeholder="Only Available in USA right now"
-            >
-              <option value="USA">United States</option>
-              </select>
+              required
+            />
 
             <input
               className="business-input-field"
@@ -264,7 +269,7 @@ export default function CreateBusinessForm() {
             <input
               className="business-input-field"
               type="number"
-              placeholder="21"
+              placeholder="21 (Price will be automtically converted to '$' signs after business sign up)"
               max="200"
               min="2"
               value={price}
@@ -274,13 +279,13 @@ export default function CreateBusinessForm() {
             <input
               className="business-input-field"
               type="url"
-              placeholder="Image"
+              placeholder="Image URL"
               value={previewImage}
               onChange={(e) => setPreviewImage(e.target.value)}
               required
             />
 
-            <button className="business-submit-button" type="submit">
+            <button className="business-submit-button" type="submit" disabled={errors.length}>
               Submit
             </button>
           </div>

@@ -11,6 +11,7 @@ import img5 from "../icons/image5.avif"
 import options from "../icons/options.png"
 import commentbox from "../icons/commentbox.png"
 import githubIcon from '../icons/githubIcon.png'
+import linkedIn from "../icons/linkedIn.png"
 import "./HomePage.css";
 
 
@@ -72,6 +73,7 @@ useEffect(() => {
             <img className="hp-slideShowPic" alt='slideShow' src={pictures}/>
             <div className="best-resturants-text"></div>
             <div className="business-container"> 
+            <div className="about-details">Welcome Food Lovers to Zelp an App Clone based off Yelp.com</div>
             <div className="hp-header">Recent Actvity</div>
             <div className="business-wrapper">
                 {allbusinessesArr.map((business) => {
@@ -109,10 +111,12 @@ useEffect(() => {
             </div>
             <footer className="parentFooter">
     <div class="footer-home">
-    Copyright 2022.  &nbsp; Zelp. All Rights Reserved.  &nbsp; &nbsp; &nbsp;
     <img className="ourRepo" src={githubIcon} alt="ourRepo"/>
     <div className="footer-home-wrap-containers">
-      <a className="text-for-github" href="https://github.com/Justinguu/zelp"> https://github.com/Justinguu/zelp</a>
+      <a className="text-for-github" href="https://github.com/Justinguu/zelp"> https://github.com/Justinguu/zelp</a>&nbsp; &nbsp; &nbsp;
+      <img className="linkedin" src={linkedIn} alt="linkedin"></img>
+      <a className="text-for-github" href="https://www.linkedin.com/in/jung-gu-b69b98154/"> https://www.linkedin.com/in/jung-gu-b69b98154/</a>
+      &nbsp; &nbsp; &nbsp;Copyright 2022. All Rights Reserved.  
     </div>
       </div>
   </footer>

@@ -29,8 +29,7 @@ const SignUpForm = () => {
     if (last_name.length > 25 || last_name.length < 2)
       errors.push("Last name must be between 2 and 25 characters");
     if (zip_code.length !== 5 || NaN) errors.push("Zip code must be 5 digits");
-    if (!password.length) errors.push("Password is required");
-    if (!repeatPassword.length) errors.push("Passwords must match");
+     if (password !== repeatPassword) errors.push("Passwords must match");
 
     setErrors(errors);
   }, [
@@ -193,7 +192,7 @@ const SignUpForm = () => {
               <div>
                
                 <input className="signup-input"
-                  type="text"
+                  type="number"
                   name="zip Code"
                   placeholder="Zip Code"
                   onChange={updateZipCode}

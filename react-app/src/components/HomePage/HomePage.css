@@ -28,6 +28,17 @@
   flex-direction: column;
   /* border: solid .2rem  red; */
 }
+.about-details{
+  height:3rem;
+  width: 30rem;
+  color: orange;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  margin-top: 2rem;
+}
 
 
 .business-wrapper {
@@ -152,6 +163,15 @@
     margin-bottom:2px;
     text-decoration: underline;
     padding-right: 4px;
+  
+  }
+  .linkedin{
+    background-color: black;
+    height:13.5px;
+    width:14px;
+    color:white;
+    text-decoration: underline;
+    margin-top: -10px;
   
   }
 

@@ -33,12 +33,13 @@ useEffect(() => {
     if (!email.includes("@")) errors.push("Please enter a valid email address");
     if (address.length > 60 || address.length < 10) errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2) errors.push("City must be between 2 and 20 characters");
+    if (country.length >= 30 || country.length < 2)errors.push("Country must be between 2 and 30 characters");
     if (state.length > 20 || state.length < 2) errors.push("State must be between 2 and 20 characters");
     if (description.length > 400 || description.length < 2) errors.push("Description must be between 2 and 400 characters");
-    if (zipCode.length != 5 && typeof zipCode != 'number') errors.push("Zip code must be 5 digits & be a number");
+    if (zipCode.length !== 5 ) errors.push("Zip code must be 5 digits & be a number");
     if (price.length > 100 || price.length < 2 && typeof price != 'number') errors.push("Price must be between $2 - $100 numbers");
     return setErrors(errors);
-}, [businessName, email, address, city, state, description, price]);
+}, [businessName, email, address, city, country, state, description, price]);
     
 if (ownerId === null) {
     alert("Please log in to create a business");
@@ -183,9 +184,9 @@ return (
 
         <input
         className="form-input-bizedit"
-        type="hidden"
+        type="text"
         placeholder="Country"
-        maxLength="20"
+        maxLength="30"
         minLength="2"
         value={country}
         onChange={(e) => setCountry(e.target.value)}
@@ -197,7 +198,6 @@ return (
         type="number"
         maxLength="5"
         minLength="5"
-        placeholder="30056"
         value={zipCode}
         onChange={(e) => setZipCode(e.target.value)}
         required
@@ -207,8 +207,8 @@ return (
         className="form-input-bizedit"
         type="text"
         placeholder="Description"
-        maxLength="400"
-        minLength="2"
+        maxLength="300"
+        minLength="50"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         required
@@ -217,7 +217,6 @@ return (
         <input
         className="form-input-bizedit"
         type="number"
-        placeholder="21"
         max="200"
         min="2"
         value={price}
@@ -238,7 +237,7 @@ return (
 
     </div>
 
-    <button className="submit-button-edits" type="submit">Update Business</button>
+    <button className="submit-button-edits" type="submit" disabled={errors.length}>Update Business</button>
 
 </form>
 

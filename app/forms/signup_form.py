@@ -22,7 +22,7 @@ def username_exists(form, field):
     
 def valid_image(form, field):
     profileImage = field.data
-    if profileImage == None or not profileImage.startswith("https://") or not profileImage.startswith("http://"):
+    if not profileImage.startswith('http'):
         field.data = "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png"
 
 
