@@ -40,7 +40,9 @@ img.img-currSpots {
   margin-right:.5rem;
 }
 .details-price {
-  font-size: 20px;
+  display:flex;
+  align-items: center;
+  font-size: 17px;
   padding-top: 5px;
 }
 

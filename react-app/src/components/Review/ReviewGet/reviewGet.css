@@ -145,6 +145,7 @@ margin-left: -3.2rem;
 .details-page-reviews{
     padding-top: .5rem;
     margin-bottom: .5rem;
+    word-wrap: break-word;
 }
 /*
 .create-review-errors {
