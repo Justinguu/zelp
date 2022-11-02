@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import logoutLogo from "../icons/logoutLogo.png"
+import brokenImage from "../icons/brokenImage.png"
 import "./ProfileButton.css"
 
 export default function ProfileButton() {
@@ -44,7 +45,9 @@ export default function ProfileButton() {
   return (
     <div>
       <div className="profile-button-border" onClick={openMenu}>
-        <img className="profile-btn-icon" src={sessionUser.profileImage} alt="" />
+        <img className="profile-btn-icon" src={sessionUser.profileImage} alt={brokenImage}
+          onError={e => { e.currentTarget.src = brokenImage }}/>
+        
       </div>
       {showMenu && (
         <div className="profile-hp-dropdown">

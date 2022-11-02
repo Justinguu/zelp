@@ -264,7 +264,7 @@ export default function CreateBusinessForm() {
             <input
               className="business-input-field"
               type="number"
-              placeholder="21 (Price will be automtically converted to '$' signs after business sign up)"
+              placeholder="(Average Menu Price) Example = 12 will be automtically converted to '$' signs)"
               max="200"
               min="2"
               value={price}

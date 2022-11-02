@@ -14,6 +14,7 @@ import phone from "../icons/phone.png";
 import highlights from "../icons/highlights.png";
 import email from "../icons/email.png";
 import checkmark from "../icons/checkmark.png";
+import brokenBanner from "../icons/brokenBanner.jpeg";
 import "./businessDetails.css";
 
 const BusinessDetails = () => {
@@ -127,7 +128,8 @@ const BusinessDetails = () => {
           <img
             className="img-currSpots"
             src={currBusiness.preview_image}
-            alt="business image"
+            alt={brokenBanner}
+            onError={e => { e.currentTarget.src = brokenBanner }} 
           ></img>
           <div className="business-info-container">
             <div className="currSpot-name">{currBusiness.business_name}</div>

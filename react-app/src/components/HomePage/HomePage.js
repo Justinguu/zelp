@@ -12,6 +12,7 @@ import options from "../icons/options.png"
 import commentbox from "../icons/commentbox.png"
 import githubIcon from '../icons/githubIcon.png'
 import linkedIn from "../icons/linkedIn.png"
+import brokenImage from "../icons/brokenImage.png"
 import "./HomePage.css";
 
 
@@ -82,7 +83,9 @@ useEffect(() => {
                         <div className="singleBusinessContainer" key={business.id}>
                             <div className="main-left-side-container">
                             <NavLink to={`/businesses/${business.id}`}> 
-                            <img className="single-image"src={business.preview_image}alt=""></img>
+                            <img className="single-image"src={business.preview_image}alt={brokenImage}
+                            onError={e => { e.currentTarget.src = brokenImage }}
+                            ></img>
                             </NavLink>
                             </div>
                             <div className="main-right-side-container">

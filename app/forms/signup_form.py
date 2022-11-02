@@ -23,7 +23,7 @@ def username_exists(form, field):
 def valid_image(form, field):
     profileImage = field.data
     if not profileImage.startswith('http'):
-        field.data="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png"
+        field.data="https://cdn-icons-png.flaticon.com/512/2395/2395608.png"
 
 
 class SignUpForm(FlaskForm):

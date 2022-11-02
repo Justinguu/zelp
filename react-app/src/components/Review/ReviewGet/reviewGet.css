@@ -132,9 +132,11 @@ margin-left: -3.2rem;
     margin-right:1rem;
 }
 .editreviewbttnicon{
-    
     height:12px;
     width:12px;
+}
+.edit-review-bttns{
+    background-color: orange;
 }
 .details-pagestars{
     padding-top:1.2rem;

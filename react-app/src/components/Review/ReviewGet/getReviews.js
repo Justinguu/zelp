@@ -8,6 +8,7 @@ import DeleteReviewForm from "../reviewDelete/deleteReview";
 import { Modal } from "../../../context/Modal";
 import editreviewbttn from "../../icons/edit-icon.png"
 import deleteicon from "../../icons/delete-icon.png"
+import brokenImage from "../../icons/brokenImage.png"
 import "./reviewGet.css";
 
 const GetBusinessReviews = ({ businessId }) => {
@@ -75,7 +76,9 @@ const GetBusinessReviews = ({ businessId }) => {
                       <>
                         {review.user_id === users.id ? (
                           <div className="users-review-info">
-                        <img  className="user-profile-image"src={users.profileImage} alt="profile-image"/>
+                        <img  className="user-profile-image"src={users.profileImage} alt={brokenImage}
+                            onError={e => { e.currentTarget.src = brokenImage }}
+                             />
                         &nbsp; &nbsp; &nbsp; 
                         <div className="three-items-container">
                           <div className="reviews-get-firstName">{users.username}</div>

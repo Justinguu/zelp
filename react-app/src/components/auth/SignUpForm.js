@@ -60,7 +60,6 @@ const SignUpForm = () => {
           username,
           email,
           password,
-          repeatPassword,
           profileImage
         )
       );
