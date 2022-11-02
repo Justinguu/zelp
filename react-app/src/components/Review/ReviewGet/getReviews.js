@@ -59,6 +59,20 @@ const GetBusinessReviews = ({ businessId }) => {
         return ratings
     })
 }
+// const ratingIncrementer = (int) => {
+//   let forRatings = []
+
+//   for (let num = 1; num <= 5; int++){
+//     if (num <= int){
+//       forRatings.push(<div class="fa-regular fa-star" style={{ color: "orange", margin: " .2rem;" }}></div>)
+//     } else {
+//       forRatings.push((<div class="fa-regular fa-star" style={{ color: "lightgrey", margin: " .2rem;" }}></div>))
+//     }
+//   }
+//   return forRatings.map(ratings => {
+//     return ratings
+//   })
+// }
 
 
   return (

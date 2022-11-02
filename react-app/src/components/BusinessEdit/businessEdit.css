@@ -18,10 +18,11 @@
     background: red;
     display:flex;
     align-items: center;
-    padding-top:.5rem;
+    justify-content: center;
+   
       color: white;
       border: solid .1rem black;
-      height: 2.2rem;
+      height: 3.2rem;
       border-radius: .5em;
       width: 12em;
       cursor: pointer;
