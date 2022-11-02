@@ -22,6 +22,7 @@ const [description, setDescription] = useState(prefilledBizInfo.description);
 const [price, setPrice] = useState(prefilledBizInfo.price);
 const [previewImage, setPreviewImage] = useState(prefilledBizInfo.preview_image);
 
+
 const [errors, setErrors] = useState([]);
 const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -35,12 +36,12 @@ useEffect(() => {
     if (city.length > 20 || city.length < 2) errors.push("City must be between 2 and 20 characters");
     if (country.length >= 30 || country.length < 2)errors.push("Country must be between 2 and 30 characters");
     if (state.length > 20 || state.length < 2) errors.push("State must be between 2 and 20 characters");
-    if (description.length > 400 || description.length < 2) errors.push("Description must be between 2 and 400 characters");
-    if (zipCode.length !== 5 ) errors.push("Zip code must be 5 digits & be a number");
+    if (description.length > 300 || description.length < 50) errors.push("Description must be between 50 and 300 characters");
+    if (zipCode.toString().length != 5 ) errors.push("Zip code must be 5 digits");
     if (price.length > 100 || price.length < 2) errors.push("Price must be between $2 - $100 numbers");
     return setErrors(errors);
-}, [businessName, email, address, city, country, state, description, price]);
-    
+}, [businessName, email, address, city, country, state, description,zipCode, price]);
+    console.log(zipCode.length)
 
 
 async function onSubmit(e) {
@@ -62,16 +63,17 @@ async function onSubmit(e) {
     setShowUpdate(false);
 }
 return (
-<form onSubmit={onSubmit} className="spot-form-update">
-{ errors.length > 0 && (
+  <form onSubmit={onSubmit} className="spot-form-update">
+  <h2 className="Edit-biz-text">Edit Your Business</h2>
+  <div className="edit-error-box">{errors.length > 0 && (
         <ul>
           {errors.map((error) => (
             <div className="edit-error-lst" key={error}>{error}</div>
           ))}
         </ul>
-      )}
+      )}</div>
+
 <div>
-  <h3>Edit Your Busineess</h3>
 </div>
     <div className="edit-form-temp">
         <input

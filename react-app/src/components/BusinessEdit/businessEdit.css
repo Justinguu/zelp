@@ -1,24 +1,31 @@
 .spot-form-update{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    
     padding: 1.8em;
-    width: 35em;
+    width: 65em;
     height:100%
     
   }
   
-  
+  .Edit-biz-text{
+    margin-top: 2rem;
+    display:flex;
+    justify-content: center;
+    margin-top: -4rem;
+  }
   .submit-button-edits {
+    flex-direction: column;
     background: red;
+    display:flex;
+    align-items: center;
+    padding-top:.5rem;
       color: white;
       border: solid .1rem black;
       height: 2.2rem;
       border-radius: .5em;
-      width: 34em;
+      width: 12em;
       cursor: pointer;
-      padding-bottom: -20px;
+      
    
     }
   
@@ -35,11 +42,12 @@
     }
   
     .edit-form-temp {
-      margin-left:2rem;
+     
       margin-bottom: 40px;
       border-color: black;
+      width: 40rem;
       color:black;
-      /* margin:.4rem; */
+      margin-left:1.5rem;
     }
 
     .form-input-bizedit{
@@ -64,6 +72,7 @@
       padding-top:.2rem;
       padding-bottom: .3rem;
       color:red;
+      width: 11rem;
       
     }
     
