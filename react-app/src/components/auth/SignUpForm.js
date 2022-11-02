@@ -24,10 +24,12 @@ const SignUpForm = () => {
   useEffect(() => {
     let errors = [];
 
-    if (first_name.length > 25 || first_name.length < 2)
+    if (first_name.length > 20 || first_name.length < 2)
       errors.push("First name must be between 2 and 25 characters");
-    if (last_name.length > 25 || last_name.length < 2)
+    if (last_name.length > 20 || last_name.length < 2)
       errors.push("Last name must be between 2 and 25 characters");
+      if(username.length > 15 || username.length <2)
+      errors.push("username must be between 2 and 15 characters");
     if (zip_code.length !== 5 || NaN) errors.push("Zip code must be 5 digits");
      if (password !== repeatPassword) errors.push("Passwords must match");
 
