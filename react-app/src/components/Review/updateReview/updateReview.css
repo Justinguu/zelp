@@ -1,7 +1,7 @@
 form.edit-form-update {
    display:flex;
    align-items: center;
-    height: 17rem;
+    height: 100%;
     width: 33rem;
     flex-direction: column;
 }
@@ -19,8 +19,6 @@ form.edit-form-update {
     padding-top: .4rem;
     padding-bottom: .4rem;
   
-       
-      
     
 }
 .edit-review-input2{
@@ -37,6 +35,13 @@ form.edit-form-update {
   
 }
 
+.edit-review-errors{
+    padding-top:.2rem;
+    padding-bottom: .2rem;
+    color: red;
+
+}
+
 .submit-button-edit-review{
     margin-top:1rem;
     color: white;
@@ -45,6 +50,7 @@ form.edit-form-update {
     height: 2rem;
     width: 10rem;
     margin-left: 11rem;
+    margin-bottom: .7rem;
     cursor: pointer;
 
 

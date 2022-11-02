@@ -16,21 +16,21 @@ const userId = sessionUser.id
 
 
 const [review, setReview] = useState(nowReview.review)
-const [rating, setRating] = useState(nowReview.rating)
+const [rating, setRating] = useState(nowReview.avg_rating)
 const [errors, setErrors] = useState([])
 const [hasSubmitted, setHasSubmitted] = useState(false)
 
 useEffect(() => {
     const errors = [];
 
-    if (review.length > 200) {
-        errors.push("Review body must be no more than 200 characters");
+    if (review.length > 300) {
+        errors.push("Review body must be no more than 300 characters");
     }
     if (review.length < 1) {
         errors.push("Review body must be more than 1 character");
     }
-    if (rating < 0 ||rating > 5){
-        errors.push("Rating must be between 0 and 5")
+    if (rating < 1 ||rating > 5){
+        errors.push("Rating must be between 1 and 5")
       }
     return setErrors(errors);
 }, [review,rating])
@@ -56,10 +56,10 @@ return (
     <h2>Edit Review Form</h2>
 <div>
 </div>
-{hasSubmitted && errors.length > 0 && (
-    <ul className="edit-errors">
+{errors.length > 0 && (
+    <ul className="edit-review-errors">
         {errors.map((error, idx) => (
-            <div key={idx}>{error}</div>
+            <div className="edit-review-errors" key={idx}>{error}</div>
         ))}
     
     </ul>
@@ -80,7 +80,7 @@ return (
             placeholder="Review"
             />
             <div className="">
-                <button onClick={handleSubmit}className="submit-button-edit-review" type="button">Update Review</button>
+                <button onClick={handleSubmit}className="submit-button-edit-review" type="button" >Update Review</button>
                 
             </div>
             </div>

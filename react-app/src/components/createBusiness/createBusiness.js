@@ -40,7 +40,7 @@ export default function CreateBusinessForm() {
     const errors = [];
     if (businessName.length > 50 || businessName.length < 2)
       errors.push("Business name must be between 2 and 50 characters");
-    if (phoneNumber.length !== 12 &&  typeof phoneNumber != 'number')
+    if (phoneNumber.length !== 12)
       errors.push("Phone number must be 10 digits & resemble the placeholder format");
     if (!email.includes("@")) errors.push("Please enter a valid email address");
     if (address.length > 60 || address.length < 10)
@@ -48,12 +48,11 @@ export default function CreateBusinessForm() {
     if (city.length > 20 || city.length < 2)
       errors.push("City must be between 2 and 20 characters");
       if (country.length >= 30 || country.length < 2)errors.push("Country must be between 2 and 30 characters");
-    if (zipCode.length !== 5 || NaN ) errors.push("Zip code must be 5 digits ");
+    if (zipCode.length !== 5  ) errors.push("Zip code must be 5 digits ");
     if (description.length > 300 || description.length < 50)
       errors.push("Description must be between 100 and 300 characters");
-    if (price.length > 100 || price.length < 2 && typeof price != 'number')
-      errors.push("Price must be between $2 - $100 numbers");
-    // 
+    if (price.length > 100 || price.length < 2)
+      errors.push("Price must be between 2 - 100 numbers");
     return setErrors(errors);
   }, [
     businessName,
@@ -67,19 +66,15 @@ export default function CreateBusinessForm() {
     price,
   ]);
 
-  if (ownerId === null) {
-    alert("Please log in to create a business");
-    return <Redirect to="/" />;
-  }
 
   async function onSubmit(e) {
     e.preventDefault();
-    setHasSubmitted(true);
     if (errors.length > 0) {
+      setHasSubmitted(true);
       return alert(
         "Please fix the following errors before submitting the form: "
-      );
-    }
+        );
+      }
 
     function loadImage(previewImage) {
       return previewImage;
@@ -112,7 +107,7 @@ export default function CreateBusinessForm() {
         <h2 className="header-message">Create Your Business</h2>
         <div className="business-errors">
           {hasSubmitted && errors.length > 0 && (
-            <ul>
+            <ul className="edit-errors">
               {errors.map((error) => (
                 <div className="upload-img-errors-list" key={error}>
                   {error}
@@ -129,7 +124,7 @@ export default function CreateBusinessForm() {
               placeholder="Business Name"
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
-              required
+              
             />
 
             <input
@@ -139,7 +134,7 @@ export default function CreateBusinessForm() {
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              required
+              
             />
 
             <input
@@ -148,7 +143,7 @@ export default function CreateBusinessForm() {
               placeholder="Business@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
+              
             />
 
             <input
@@ -159,7 +154,7 @@ export default function CreateBusinessForm() {
               minLength="10"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              required
+              
             />
 
             <input
@@ -170,7 +165,7 @@ export default function CreateBusinessForm() {
               minLength="2"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              required
+              
             />
 
             <select className="business-input-field-select"
@@ -241,7 +236,7 @@ export default function CreateBusinessForm() {
               minLength="2"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              required
+              
             />
 
             <input
@@ -252,7 +247,7 @@ export default function CreateBusinessForm() {
               minLength="5"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
-              required
+              
             />
 
             <input
@@ -263,7 +258,7 @@ export default function CreateBusinessForm() {
               minLength="50"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              required
+              
             />
 
             <input
@@ -274,7 +269,7 @@ export default function CreateBusinessForm() {
               min="2"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              required
+              
             />
             <input
               className="business-input-field"
@@ -282,10 +277,10 @@ export default function CreateBusinessForm() {
               placeholder="Image URL"
               value={previewImage}
               onChange={(e) => setPreviewImage(e.target.value)}
-              required
+              
             />
 
-            <button className="business-submit-button" type="submit" disabled={errors.length}>
+            <button className="business-submit-button" type="submit" disabled={ hasSubmitted && errors.length > 0}>
               Submit
             </button>
           </div>

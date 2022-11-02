@@ -37,45 +37,42 @@ useEffect(() => {
     if (state.length > 20 || state.length < 2) errors.push("State must be between 2 and 20 characters");
     if (description.length > 400 || description.length < 2) errors.push("Description must be between 2 and 400 characters");
     if (zipCode.length !== 5 ) errors.push("Zip code must be 5 digits & be a number");
-    if (price.length > 100 || price.length < 2 && typeof price != 'number') errors.push("Price must be between $2 - $100 numbers");
+    if (price.length > 100 || price.length < 2) errors.push("Price must be between $2 - $100 numbers");
     return setErrors(errors);
 }, [businessName, email, address, city, country, state, description, price]);
     
-if (ownerId === null) {
-    alert("Please log in to create a business");
-    return <Redirect to="/" />;
-}
+
 
 async function onSubmit(e) {
     e.preventDefault();
-    setHasSubmitted(true);
     if (errors.length > 0) {
-        return alert(
-            "Please fix the following errors before submitting the form: " 
+      return alert(
+        "Please fix the following errors before submitting the form: " 
         );
-    }
-
-
-  function loadImage(previewImage) {
-    return previewImage;
-  }
-  if(loadImage(previewImage)){
-    dispatch(updateBusinessThunk(businessId,ownerId,businessName,phoneNumber,email,address,city,state,country,zipCode,description,price,previewImage))
+      }
+      setHasSubmitted(true);
+      
+      
+      function loadImage(previewImage) {
+        return previewImage;
+      }
+      if(loadImage(previewImage)){
+        dispatch(updateBusinessThunk(businessId,ownerId,businessName,phoneNumber,email,address,city,state,country,zipCode,description,price,previewImage))
   }
     setShowUpdate(false);
 }
 return (
 <form onSubmit={onSubmit} className="spot-form-update">
-<div>
-  <h3>Edit Your Busineess</h3>
-</div>
-{hasSubmitted && errors.length > 0 && (
-        <ul className="edit-errors">
+{ errors.length > 0 && (
+        <ul>
           {errors.map((error) => (
-            <li key={error}>{error}</li>
+            <div className="edit-error-lst" key={error}>{error}</div>
           ))}
         </ul>
       )}
+<div>
+  <h3>Edit Your Busineess</h3>
+</div>
     <div className="edit-form-temp">
         <input
         className="form-input-bizedit"
@@ -91,7 +88,7 @@ return (
         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
         value={phoneNumber}
         onChange={(e) => setPhoneNumber(e.target.value)}
-        required
+        
         />
 
         <input
@@ -100,7 +97,7 @@ return (
         placeholder="Business@gmail.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        required
+        
         />
 
         <input
@@ -111,7 +108,7 @@ return (
         minLength="10"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        required
+        
         />
 
         <input
@@ -122,7 +119,7 @@ return (
         minLength="2"
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        required
+        
         />
 
 <select className="select-form-input-bizedit">
@@ -190,7 +187,7 @@ return (
         minLength="2"
         value={country}
         onChange={(e) => setCountry(e.target.value)}
-        required
+        
         />
 
         <input
@@ -200,7 +197,7 @@ return (
         minLength="5"
         value={zipCode}
         onChange={(e) => setZipCode(e.target.value)}
-        required
+        
         />
 
         <input
@@ -211,7 +208,7 @@ return (
         minLength="50"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        required
+        
         />
 
         <input
@@ -221,7 +218,7 @@ return (
         min="2"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
-        required
+        
         />
 
         <input
@@ -230,14 +227,14 @@ return (
         placeholder="Image URL"
         value={previewImage}
         onChange={(e) => setPreviewImage(e.target.value)}
-        required
+        
         />
 
        
 
     </div>
 
-    <button className="submit-button-edits" type="submit" disabled={errors.length}>Update Business</button>
+    <button className="submit-button-edits" type="submit" disabled={hasSubmitted && errors.length > 0}>Update Business</button>
 
 </form>
 

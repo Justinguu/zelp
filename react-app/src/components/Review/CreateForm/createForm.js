@@ -30,8 +30,8 @@ function CreateReviewForm({ setShowReview }) {
       errors.push("Review body must be more than 1 character");
     }
 
-    if (rating.rating < 0 || rating.rating > 5) {
-      errors.push("Rating must be between 0 and 5");
+    if (rating.rating < 1 || rating.rating > 5) {
+      errors.push("Rating must be between 1 and 5");
     }
 
     return setErrors(errors);

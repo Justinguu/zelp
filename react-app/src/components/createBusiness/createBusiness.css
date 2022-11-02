@@ -25,10 +25,12 @@
 
 }
 
-.business-errors{
-    color: red;
-    list-style: none;
-    padding-top: 10px;
+
+
+.upload-img-errors-list{
+color: red;
+padding-top:.3rem;
+padding-bottom: .2rem;
 }
 
 .all-input-business{

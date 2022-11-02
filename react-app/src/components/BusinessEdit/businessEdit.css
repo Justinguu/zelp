@@ -2,9 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 41em;
+    
     padding: 1.8em;
     width: 35em;
+    height:100%
+    
   }
   
   
@@ -58,4 +60,10 @@
     padding: .5rem;
     }
 
+    .edit-error-lst{
+      padding-top:.2rem;
+      padding-bottom: .3rem;
+      color:red;
+      
+    }
     
