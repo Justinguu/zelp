@@ -120,7 +120,7 @@ function CreateReviewForm({ setShowReview }) {
         {
           <input
             className="descriptionCreateComment"
-            placeholder="review..."
+            placeholder="How was the business?"
             type="text"
             autoComplete="off"
             value={review}
