@@ -14,7 +14,7 @@
     /* margin-left: 3rem; */
     /* color: rgb(12, 11, 11); */
     font-weight: 400;
-    padding-top: 4rem;
+    /* padding-top: 2rem; */
     margin-bottom: -5px;;
 }
 .business-Container {
@@ -129,13 +129,13 @@ padding-bottom: .2rem;
 
 
 .business-input-create-description{
-    border-color: black;
+    border: solid 2px black;
     color:black;
     width: 535px;
     padding-bottom: 10px;
     padding-top: 10px;
     padding-left: 5px;
     margin: 10px;
-    resize: vertical;
-    height: 100px;
+    resize: none;
+    height: 80px;
 }

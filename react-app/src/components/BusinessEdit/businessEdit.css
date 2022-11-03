@@ -1,89 +1,81 @@
-.spot-form-update{
-    display: flex;
-    align-items: center;
-    padding: 1.8em;
-    width: 65em;
-    height:100%
-    
-  }
-  
-  .Edit-biz-text{
-    margin-top: 2rem;
-    display:flex;
-    justify-content: center;
-    margin-top: -4rem;
-  }
-  .submit-button-edits {
-    flex-direction: column;
-    background: red;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-   
-      color: white;
-      border: solid .1rem black;
-      height: 3.2rem;
-      border-radius: .5em;
-      width: 12em;
-      cursor: pointer;
-      
-   
-    }
-  
-   
-    .form-input-description {
-    min-width: 35rem;
-    
-    }
-    .form-input-textarea-edit{
-      border-color: black;
-      color:black;
-      width: 532px;
-      padding-bottom: 10px;
-      padding-top: 10px;
-      margin-left: 8px;
-      resize: none;
-      height: 100px;
-    }
-  
-    .edit-errors {
-      color:#ea1547;
-      list-style: none;
-      margin-left: -14px;
-    }
-  
-    .edit-form-temp {
-     
-      margin-bottom: 40px;
-      border-color: black;
-      width: 40rem;
-      color:black;
-      margin-left:1.5rem;
-    }
+.spot-form-update {
+  display: flex;
+  align-items: center;
+  padding: 1.8em;
+  width: 65em;
+  height: 100%;
+}
 
-    .form-input-bizedit{
-    border-color: black;
-    color:black;
-    border: solid 2px black;
-    width: 520px;
-    margin: .5rem;
-    padding: .5rem;
-    }
-    
-    .select-form-input-bizedit{
-    border-color: black;
-    color:black;
-    border: solid 2px black;
-    width: 537px;
-    margin: .5rem;
-    padding: .5rem;
-    }
+.Edit-biz-text {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: -4rem;
+}
+.submit-button-edits {
+  flex-direction: column;
+  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    .edit-error-lst{
-      padding-top:.2rem;
-      padding-bottom: .3rem;
-      color:red;
-      width: 11rem;
-      
-    }
-    
+  color: white;
+  border: solid 0.1rem black;
+  height: 3.2rem;
+  border-radius: 0.5em;
+  width: 12em;
+  cursor: pointer;
+}
+
+.form-input-description {
+  min-width: 35rem;
+}
+.form-input-textarea-edit {
+  border: solid 2px black;
+  border-color: black;
+  color: black;
+  width: 532px;
+  align-items: none;
+  margin-left: 8px;
+  resize: none;
+  height: 100px;
+}
+
+.edit-errors {
+  color: #ea1547;
+  list-style: none;
+  margin-left: -14px;
+}
+
+.edit-form-temp {
+  margin-bottom: 40px;
+  border-color: black;
+  width: 40rem;
+  color: black;
+  margin-left: 1.5rem;
+}
+
+.form-input-bizedit {
+  border-color: black;
+  color: black;
+  border: solid 2px black;
+  width: 520px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.select-form-input-bizedit {
+  border-color: black;
+  color: black;
+  border: solid 2px black;
+  width: 537px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.edit-error-lst {
+  padding-top: 0.2rem;
+  padding-bottom: 0.3rem;
+  color: red;
+  width: 11rem;
+}

@@ -239,7 +239,7 @@ function BusinessEditForm({ setShowUpdate }) {
           onChange={(e) => setZipCode(e.target.value)}
         />
 
-        <input
+        <textarea
           className="form-input-textarea-edit"
           type="text"
           placeholder="Description"
