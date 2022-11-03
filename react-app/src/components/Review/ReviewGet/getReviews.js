@@ -6,9 +6,9 @@ import { getAllUsersThunk } from "../../../store/AllUsers";
 import UpdateReviewForm from "../updateReview/updateReview";
 import DeleteReviewForm from "../reviewDelete/deleteReview";
 import { Modal } from "../../../context/Modal";
-import editreviewbttn from "../../icons/edit-icon.png"
-import deleteicon from "../../icons/delete-icon.png"
-import brokenImage from "../../icons/brokenImage.png"
+import editreviewbttn from "../../icons/edit-icon.png";
+import deleteicon from "../../icons/delete-icon.png";
+import brokenImage from "../../icons/brokenImage.png";
 import "./reviewGet.css";
 
 const GetBusinessReviews = ({ businessId }) => {
@@ -28,14 +28,18 @@ const GetBusinessReviews = ({ businessId }) => {
 
   const dispatch = useDispatch();
 
-  
   const allUsersArr = Object.values(allUsers);
 
-  const localDate = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+  const localDate = new Date().toLocaleDateString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 
   useEffect(() => {
     dispatch(getCurrReviewThunk(businessId)).then(() => setIsLoaded(true));
-  }, [dispatch, businessId, showReviewDelete,showUpdateReview]);
+  }, [dispatch, businessId, showReviewDelete, showUpdateReview]);
 
   // if theres no users profileImage, return a default image
   // const defaultImage = "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/55737/grinning-face-with-big-eyes-emoji-clipart-xl.png";
@@ -43,46 +47,52 @@ const GetBusinessReviews = ({ businessId }) => {
   //   return image === null ? defaultImage : image;
   // };
 
-
   const ratingIncrementer = (int) => {
-    let forRatings = []
+    let forRatings = [];
 
     for (let num = 0; num < int; num++) {
-        forRatings.push(<div class="fa-regular fa-star" style={{ color: "orange", margin: " .2rem;" }}></div>)
+      forRatings.push(
+        <div
+          class="fa-regular fa-star"
+          style={{ color: "orange", margin: " .2rem;" }}
+        ></div>
+      );
     }
 
-    for (let num = 0; num < (5 - int); num++) {
-        forRatings.push(<div class="fa-regular fa-star" style={{ color: "lightgrey", margin: " .2rem" }}></div>)
+    for (let num = 0; num < 5 - int; num++) {
+      forRatings.push(
+        <div
+          class="fa-regular fa-star"
+          style={{ color: "lightgrey", margin: " .2rem" }}
+        ></div>
+      );
     }
 
-    return forRatings.map(ratings => {
-        return ratings
-    })
-}
-// const ratingIncrementer = (int) => {
-//   let forRatings = []
+    return forRatings.map((ratings) => {
+      return ratings;
+    });
+  };
+  // const ratingIncrementer = (int) => {
+  //   let forRatings = []
 
-//   for (let num = 1; num <= 5; int++){
-//     if (num <= int){
-//       forRatings.push(<div class="fa-regular fa-star" style={{ color: "orange", margin: " .2rem;" }}></div>)
-//     } else {
-//       forRatings.push((<div class="fa-regular fa-star" style={{ color: "lightgrey", margin: " .2rem;" }}></div>))
-//     }
-//   }
-//   return forRatings.map(ratings => {
-//     return ratings
-//   })
-// }
-
+  //   for (let num = 1; num <= 5; int++){
+  //     if (num <= int){
+  //       forRatings.push(<div class="fa-regular fa-star" style={{ color: "orange", margin: " .2rem;" }}></div>)
+  //     } else {
+  //       forRatings.push((<div class="fa-regular fa-star" style={{ color: "lightgrey", margin: " .2rem;" }}></div>))
+  //     }
+  //   }
+  //   return forRatings.map(ratings => {
+  //     return ratings
+  //   })
+  // }
 
   return (
     isLoaded && (
       <div className="review-border">
         {getAllReviewsArr.map((review) => {
           return (
-            
             <>
-            
               {businessId == review.business_id ? (
                 <div className="review-box" key={review.id}>
                   {allUsersArr.map((users) => {
@@ -90,63 +100,95 @@ const GetBusinessReviews = ({ businessId }) => {
                       <>
                         {review.user_id === users.id ? (
                           <div className="users-review-info">
-                        <img  className="user-profile-image"src={users.profileImage} alt={brokenImage}
-                            onError={e => { e.currentTarget.src = brokenImage }}
-                             />
-                        &nbsp; &nbsp; &nbsp; 
-                        <div className="three-items-container">
-                          <div className="reviews-get-firstName">{users.username}</div>
-                        <div className="reviews-get-greyed-name"> Elite Grumbler</div>
-                        <div className="stars-go-here">
-                        
-                        </div>
-                        </div>
-                        
-                        </div>
-                        
-                        ): ""}
+                            <img
+                              className="user-profile-image"
+                              src={users.profileImage}
+                              alt={brokenImage}
+                              onError={(e) => {
+                                e.currentTarget.src = brokenImage;
+                              }}
+                            />
+                            &nbsp; &nbsp; &nbsp;
+                            <div className="three-items-container">
+                              <div className="reviews-get-firstName">
+                                {users.username}
+                              </div>
+                              <div className="reviews-get-greyed-name">
+                                {" "}
+                                Elite Grumbler
+                              </div>
+                              <div className="stars-go-here"></div>
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </>
                     );
                   })}
                   <div className="details-pagestars">
-                  <span className=""> {ratingIncrementer(review.avg_rating)} </span> &nbsp;<span className="reviewed-date">{new Date(review.created_at).toString().slice(4, 15)}</span>
+                    <span className="">
+                      {" "}
+                      {ratingIncrementer(review.avg_rating)}{" "}
+                    </span>{" "}
+                    &nbsp;
+                    <span className="reviewed-date">
+                      {new Date(review.created_at).toString().slice(4, 15)}
+                    </span>
                   </div>
                   <div className="details-page-reviews"> {review.review}</div>
-                  
-                 <div className="both-review-bttns">
-                  <div>
-                    <button className="edit-review-bttns"
-                    
-                      onClick={() => {setShowUpdateReview(true); setNowReview(review) }}><img className="editreviewbttnicon" src={editreviewbttn} alt=""></img></button> &nbsp;
-                      
-                    {showUpdateReview && (
-                     <Modal onClose={() => setShowUpdateReview(false)}>
-                      <UpdateReviewForm
-                        nowReview={nowReview}
-                        setShowUpdateReview={setShowUpdateReview}
-                      />
-                     </Modal>
+
+                  {!sessionUser ? null : sessionUser.id === review.user_id &&
+                    (<div className="both-review-bttns">
+                    <div>
+                      <button
+                        className="edit-review-bttns"
+                        onClick={() => {
+                          setShowUpdateReview(true);
+                          setNowReview(review);
+                        }}
+                      >
+                        <img
+                          className="editreviewbttnicon"
+                          src={editreviewbttn}
+                          alt=""
+                        ></img>
+                      </button>{" "}
+                      &nbsp;
+                      {showUpdateReview && (
+                        <Modal onClose={() => setShowUpdateReview(false)}>
+                          <UpdateReviewForm
+                            nowReview={nowReview}
+                            setShowUpdateReview={setShowUpdateReview}
+                          />
+                        </Modal>
+                      )}
+                    </div>
+                    {showReviewDelete && (
+                      <Modal onClose={() => setShowReviewDelete(false)}>
+                        <DeleteReviewForm
+                          businessId={businessId}
+                          reviewId={nowReview.id}
+                          setShowReviewDelete={setShowReviewDelete}
+                        />
+                      </Modal>
                     )}
-                  </div>
-                  {showReviewDelete && (
-                    <Modal onClose={() => setShowReviewDelete(false)}>
-                      <DeleteReviewForm
-                        businessId={businessId}
-                        reviewId={nowReview.id}
-                        setShowReviewDelete={setShowReviewDelete}
-                      />
-                    </Modal>
-                  )}
-                  <button
-                    className="edit-review-bttns"
-                    onClick={() => {
-                      setNowReview(review);
-                      setShowReviewDelete(true);
-                    }}
-                  >
-                   {<img className="editreviewbttnicon" src={deleteicon} alt=""></img>}
-                  </button></div>
-                  
+                    <button
+                      className="edit-review-bttns"
+                      onClick={() => {
+                        setNowReview(review);
+                        setShowReviewDelete(true);
+                      }}
+                    >
+                      {
+                        <img
+                          className="editreviewbttnicon"
+                          src={deleteicon}
+                          alt=""
+                        ></img>
+                      }
+                    </button>
+                  </div>)}
                 </div>
               ) : (
                 ""

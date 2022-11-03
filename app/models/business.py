@@ -7,7 +7,7 @@ class Business(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    business_name = db.Column(db.String(40), nullable=False)
+    business_name = db.Column(db.String(60), nullable=False)
     phone_number = db.Column(db.String(12), nullable=False)
     email = db.Column(db.String(60), nullable=False)
     address = db.Column(db.String(60), nullable=False)
@@ -15,9 +15,9 @@ class Business(db.Model):
     state = db.Column(db.String(50), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(400), nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    preview_image = db.Column(db.String(255), nullable=False)
+    preview_image = db.Column(db.String(600), nullable=False)
 
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
