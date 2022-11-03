@@ -242,7 +242,7 @@ export default function CreateBusinessForm() {
             <input
               className="business-input-field"
               type="number"
-              placeholder="Zip Code"
+              placeholder="Zip Code (Must be 5 digits)"
               maxLength="5"
               minLength="5"
               value={zipCode}
