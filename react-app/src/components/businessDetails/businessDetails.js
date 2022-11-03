@@ -70,7 +70,7 @@ const BusinessDetails = () => {
       .join("");
   }
   function priceToDollar(price) {
-    if (price <= 15) {
+    if (price > 2 || price <= 15) {
       return "$";
     } else if (price >= 16 && price <= 30) {
       return "$$";

@@ -35,6 +35,16 @@
     min-width: 35rem;
     
     }
+    .form-input-textarea-edit{
+      border-color: black;
+      color:black;
+      width: 532px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      margin-left: 8px;
+      resize: none;
+      height: 100px;
+    }
   
     .edit-errors {
       color:#ea1547;

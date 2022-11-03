@@ -56,6 +56,7 @@ function BusinessEditForm({ setShowUpdate }) {
       errors.push("Zip code must be 5 digits");
     if (price.length > 100 || price.length < 2)
       errors.push("Price must be between 2 and 100 integer");
+    if (!previewImage)errors.push("Please provide a PreviewImage")
     return setErrors(errors);
   }, [
     businessName,
@@ -68,6 +69,7 @@ function BusinessEditForm({ setShowUpdate }) {
     zipCode,
     description,
     price,
+    previewImage
   ]);
   // console.log(zipCode.length)
 
@@ -233,11 +235,12 @@ function BusinessEditForm({ setShowUpdate }) {
           className="form-input-bizedit"
           type="number"
           value={zipCode}
+          min="1"
           onChange={(e) => setZipCode(e.target.value)}
         />
 
         <input
-          className="form-input-bizedit"
+          className="form-input-textarea-edit"
           type="text"
           placeholder="Description"
           value={description}
@@ -248,6 +251,7 @@ function BusinessEditForm({ setShowUpdate }) {
           className="form-input-bizedit"
           type="number"
           value={price}
+          min="2"
           onChange={(e) => setPrice(e.target.value)}
         />
 

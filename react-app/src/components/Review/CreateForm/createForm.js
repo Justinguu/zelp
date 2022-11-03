@@ -81,14 +81,14 @@ function CreateReviewForm({ setShowReview }) {
                 onClick={() => setRating(5)}
                 value={rating}
                 className={
-                  rating >= 5 ? "fa-regular fa-star s1-checked " : "fa-regular fa-star s1"
+                  rating >= 5 ? "fa-regular fa-star s5-checked " : "fa-regular fa-star s5"
                 }
               ></div>
               <div
                 onClick={() => setRating(4)}
                 value={rating}
                 className={
-                  rating >= 4 ? "fa-regular fa-star s2-checked" : "fa-regular fa-star s2"
+                  rating >= 4 ? "fa-regular fa-star s4-checked" : "fa-regular fa-star s4"
                 }
               ></div>
               <div
@@ -102,14 +102,14 @@ function CreateReviewForm({ setShowReview }) {
                 onClick={() => setRating(2)}
                 value={rating}
                 className={
-                  rating >= 2 ? "fa-regular fa-star s4-checked" : "fa-regular fa-star s4"
+                  rating >= 2 ? "fa-regular fa-star s2-checked" : "fa-regular fa-star s2"
                 }
               ></div>
               <div
                 onClick={() => setRating(1)}
                 value={rating}
                 className={
-                  rating >= 1 ? "fa-regular fa-star s5-checked" : "fa-regular fa-star s5"
+                  rating >= 1 ? "fa-regular fa-star s1-checked" : "fa-regular fa-star s1"
                 }
               ></div>
             </div>
@@ -118,7 +118,7 @@ function CreateReviewForm({ setShowReview }) {
           </div>
         </div>
         {
-          <input
+          <textarea
             className="descriptionCreateComment"
             placeholder="How was the business?"
             type="text"

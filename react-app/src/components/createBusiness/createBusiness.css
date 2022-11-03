@@ -52,9 +52,6 @@ padding-bottom: .2rem;
 }
 
 
-
-
-
 .business-input-field {
     
     border-color: black;
@@ -128,4 +125,17 @@ padding-bottom: .2rem;
 .business-submit-button:active {
     transform: scale(.98);
     cursor: pointer;
+}
+
+
+.business-input-create-description{
+    border-color: black;
+    color:black;
+    width: 535px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
+    margin: 10px;
+    resize: vertical;
+    height: 100px;
 }

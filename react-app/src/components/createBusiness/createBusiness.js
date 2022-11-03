@@ -48,6 +48,7 @@ export default function CreateBusinessForm() {
     if (zipCode.length !== 5  ) errors.push("Zip code must be 5 digits ");
     if (description.length > 300 || description.length < 50)errors.push("Description must be between 50 and 300 characters");
     if (price.length > 200 || price.length < 2)errors.push("Price must be between 2 and 100 integer");
+    if (!previewImage)errors.push("Please provide a PreviewImage")
     return setErrors(errors);
   }, [
     businessName,
@@ -60,6 +61,7 @@ export default function CreateBusinessForm() {
     zipCode,
     description,
     price,
+    previewImage
   ]);
 
 
@@ -225,6 +227,7 @@ export default function CreateBusinessForm() {
               type="text"
               placeholder="Country"
               value={country}
+              
               onChange={(e) => setCountry(e.target.value)}
               
             />
@@ -235,14 +238,14 @@ export default function CreateBusinessForm() {
               placeholder="Zip Code (Must be 5 digits)"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
-              
+              min="1"
+              id="zipcodeId" 
             />
 
-            <input
-              className="business-input-field"
+            <textarea
+              className="business-input-create-description"
               type="text"
               placeholder="Description"
-              
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               
@@ -253,6 +256,7 @@ export default function CreateBusinessForm() {
               type="number"
               placeholder="(Example=12) (Insert Average Menu Price) will be automatically converted to '$' signs"
               value={price}
+              min="2"
               onChange={(e) => setPrice(e.target.value)}
               
             />
@@ -262,6 +266,7 @@ export default function CreateBusinessForm() {
               placeholder="Image URL "
               value={previewImage}
               onChange={(e) => setPreviewImage(e.target.value)}
+              required
               
             />
 
