@@ -164,8 +164,9 @@ function BusinessEditForm({ setShowUpdate }) {
         <select
             value={state}
             onChange={(e) => setState(e.target.value)} 
-            className="select-form-input-bizedit">
-          <option value="Select a state">Select a state</option>
+            className="select-form-input-bizedit"
+        >
+          <option disabled selected value="">Select a state</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
@@ -217,8 +218,7 @@ function BusinessEditForm({ setShowUpdate }) {
           <option value="WV">West Virginia</option>
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
-          {/* value={state}
-              onChange={(e) => setState(e.target.value)} */}
+          
         </select>
 
         <input
