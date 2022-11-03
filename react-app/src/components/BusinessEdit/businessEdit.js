@@ -41,7 +41,7 @@ useEffect(() => {
     if (price.length > 100 || price.length < 2) errors.push("Price must be between $2 - $100 numbers");
     return setErrors(errors);
 }, [businessName, email, address, city, country, state, description,zipCode, price]);
-    console.log(zipCode.length)
+    // console.log(zipCode.length)
 
 
 async function onSubmit(e) {

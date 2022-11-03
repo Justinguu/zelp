@@ -72,11 +72,6 @@ useEffect(() => {
 
 
 
-        
-
-
-
-
 
     return (
         <div className="homepage-container">
