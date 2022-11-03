@@ -38,21 +38,16 @@ export default function CreateBusinessForm() {
 
   useEffect(() => {
     const errors = [];
-    if (businessName.length > 50 || businessName.length < 2)
-      errors.push("Business name must be between 2 and 50 characters");
-    if (phoneNumber.length !== 12)
-      errors.push("Phone number must be 10 digits & resemble the placeholder format");
-    if (!email.includes("@") && email.length < 60) errors.push("Please enter a valid email address & must be less then 60 characters");
-    if (address.length > 60 || address.length < 10)
-      errors.push("Address must be between 10 and 60 characters");
-    if (city.length > 20 || city.length < 2)
-      errors.push("City must be between 2 and 20 characters");
-      if (country.length > 30 || country.length < 2)errors.push("Country must be between 2 and 30 characters");
+    if (businessName.length > 50 || businessName.length < 2)errors.push("Business name must be between 2 and 50 characters");
+    if (phoneNumber.length !== 12)errors.push("Phone number must be 10 digits & resemble the placeholder format");
+    if (!email.includes("@") && email.length < 50) errors.push("Please enter a valid email address & can't be over 50 characters");
+    if (address.length > 60 || address.length < 10)errors.push("Address must be between 10 and 60 characters");
+    if (city.length > 20 || city.length < 2)errors.push("City must be between 2 and 20 characters");
+    if (!state)errors.push("Please provide a state")
+    if (country.length > 30 || country.length < 2)errors.push("Country must be between 2 and 30 characters");
     if (zipCode.length !== 5  ) errors.push("Zip code must be 5 digits ");
-    if (description.length > 300 || description.length < 50)
-      errors.push("Description must be between 50 and 300 characters");
-    if (price.length > 200 || price.length < 2)
-      errors.push("Price must be between 2 - 100 numbers");
+    if (description.length > 300 || description.length < 50)errors.push("Description must be between 50 and 300 characters");
+    if (price.length > 200 || price.length < 2)errors.push("Price must be between 2 and 100 integer");
     return setErrors(errors);
   }, [
     businessName,
@@ -60,6 +55,7 @@ export default function CreateBusinessForm() {
     email,
     address,
     city,
+    state,
     country,
     zipCode,
     description,
@@ -150,8 +146,6 @@ export default function CreateBusinessForm() {
               className="business-input-field"
               type="text"
               placeholder="Address"
-              maxLength="60"
-              minLength="10"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               
@@ -161,8 +155,6 @@ export default function CreateBusinessForm() {
               className="business-input-field"
               type="text"
               placeholder="City"
-              maxLength="20"
-              minLength="2"
               value={city}
               onChange={(e) => setCity(e.target.value)}
               
@@ -171,8 +163,8 @@ export default function CreateBusinessForm() {
             <select className="business-input-field-select"
              value={state}
              onChange={(e) => setState(e.target.value)}
-             
-            >
+             >
+              <option disabled selected value="">Select a state</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -232,8 +224,6 @@ export default function CreateBusinessForm() {
               className="business-input-field"
               type="text"
               placeholder="Country"
-              maxLength="30"
-              minLength="2"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               
@@ -243,8 +233,6 @@ export default function CreateBusinessForm() {
               className="business-input-field"
               type="number"
               placeholder="Zip Code (Must be 5 digits)"
-              maxLength="5"
-              minLength="5"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
               
@@ -254,8 +242,7 @@ export default function CreateBusinessForm() {
               className="business-input-field"
               type="text"
               placeholder="Description"
-              maxLength="300"
-              minLength="50"
+              
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               
@@ -264,9 +251,7 @@ export default function CreateBusinessForm() {
             <input
               className="business-input-field"
               type="number"
-              placeholder="Example=12 (Insert Average Menu Price) will be automatically converted to '$' signs"
-              max="200"
-              min="2"
+              placeholder="(Example=12) (Insert Average Menu Price) will be automatically converted to '$' signs"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               
@@ -274,7 +259,7 @@ export default function CreateBusinessForm() {
             <input
               className="business-input-field"
               type="url"
-              placeholder="Image URL Here (Please make sure its a valid image & starts with https:// ) "
+              placeholder="Image URL "
               value={previewImage}
               onChange={(e) => setPreviewImage(e.target.value)}
               
