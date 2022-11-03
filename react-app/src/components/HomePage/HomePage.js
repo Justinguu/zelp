@@ -78,8 +78,8 @@ useEffect(() => {
             <img className="hp-slideShowPic" alt='slideShow' src={pictures}/>
             <div className="best-resturants-text"></div>
             <div className="business-container"> 
-            <div className="about-details">Welcome Food Lovers to Zelp an App Clone based off Yelp.com</div>
-            <div className="hp-header">Quickly Zelp To A Resturant</div>
+            <div className="about-details">Welcome Food Lovers! Quickly Scope Out Where to Eat </div>
+            <div className="hp-header"> Zelp To A Resturant</div>
             <div className="business-wrapper">
                 {allbusinessesArr.map((business) => {
                     return (
