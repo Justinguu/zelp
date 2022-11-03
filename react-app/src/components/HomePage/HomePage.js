@@ -79,7 +79,7 @@ useEffect(() => {
             <div className="best-resturants-text"></div>
             <div className="business-container"> 
             <div className="about-details">Welcome Food Lovers to Zelp an App Clone based off Yelp.com</div>
-            <div className="hp-header">Recent Actvity</div>
+            <div className="hp-header">Quickly Zelp To A Resturant</div>
             <div className="business-wrapper">
                 {allbusinessesArr.map((business) => {
                     return (
