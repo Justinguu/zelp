@@ -264,7 +264,7 @@ export default function CreateBusinessForm() {
             <input
               className="business-input-field"
               type="number"
-              placeholder="(Average Menu Price) Example = 12 will be automtically converted to '$' signs"
+              placeholder="Example=12 (Insert Average Menu Price) will be automatically converted to '$' signs"
               max="200"
               min="2"
               value={price}
@@ -274,7 +274,7 @@ export default function CreateBusinessForm() {
             <input
               className="business-input-field"
               type="url"
-              placeholder="Image URL"
+              placeholder="Image URL Here (Please make sure its a valid image & starts with https:// ) "
               value={previewImage}
               onChange={(e) => setPreviewImage(e.target.value)}
               
