@@ -48,7 +48,8 @@ export default function CreateBusinessForm() {
     if (zipCode.length !== 5  ) errors.push("Zip code must be 5 digits ");
     if (description.length > 300 || description.length < 50)errors.push("Description must be between 50 and 300 characters");
     if (price > 200 || price < 2)errors.push("Price must be between 2 and 100 integer");
-    if (!previewImage && !previewImage.endsWith(".png") && !previewImage.endsWith(".gif") && !previewImage.endsWith(".jpg") )errors.push("Please provide a valid PreviewImage that ends with .png, .gif, .jpg")
+    if (!previewImage.endsWith(".png") && !previewImage.endsWith(".gif") && !previewImage.endsWith(".jpg"))errors.push("Please provide a valid Preview Image that ends with .png, .gif, .jpg")
+    console.log("fefefesfsefsef",previewImage)
     return setErrors(errors);
   }, [
     businessName,
@@ -73,6 +74,7 @@ export default function CreateBusinessForm() {
         "Please fix the following errors before submitting the form: "
         );
       }
+      
 
     function loadImage(previewImage) {
       return previewImage;
