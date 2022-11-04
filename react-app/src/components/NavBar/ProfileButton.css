@@ -32,7 +32,7 @@
     flex-direction: column;
     z-index: 5;
     position: absolute;
-    width: 6.5em;
+    width: 7.7em;
     height: 3.0em;
     background-color: rgb(239, 239, 239);
     border: 1px solid black;
@@ -82,7 +82,7 @@
     background-color: rgb(216, 207, 207);
     margin-bottom: 20px;
     padding-bottom: 5px;
-    width: 10.2rem;
+    width: 13.2rem;
     opacity: 0.8;
   }
   

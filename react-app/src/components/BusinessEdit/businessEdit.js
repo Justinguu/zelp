@@ -33,10 +33,10 @@ function BusinessEditForm({ setShowUpdate }) {
 
   useEffect(() => {
     const errors = [];
-    if (businessName.length > 50 || businessName.length < 2)
-      errors.push("Business name must be between 2 and 50 characters");
+    if (businessName.length > 30 || businessName.length < 2)
+      errors.push("Business name must be between 2 and 30 characters");
     if (phoneNumber.length !== 12)errors.push("Phone number must be 10 digits & resemble the placeholder format");
-    if (!email.includes("@") && email.length < 50)errors.push("Please enter a valid email address & can't be over 50 characters");
+    if (!email.includes("@") && email.length > 30)errors.push("Please enter a valid email address & can't be over 30 characters");
     if (address.length > 60 || address.length < 10)
       errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2)
@@ -138,6 +138,7 @@ function BusinessEditForm({ setShowUpdate }) {
           type="email"
           placeholder="Business@gmail.com"
           value={email}
+          maxLength="30"
           onChange={(e) => setEmail(e.target.value)}
         />
 
