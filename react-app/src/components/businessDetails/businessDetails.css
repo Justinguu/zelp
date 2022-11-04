@@ -88,7 +88,7 @@ img.img-currSpots {
   transition: 1s;
   margin-top: 1rem;
   margin-bottom: 2rem;
-  cursor:none
+  cursor: not-allowed
 }
 .business-details-left {
   display: flex;

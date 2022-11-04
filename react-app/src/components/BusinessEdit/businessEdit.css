@@ -37,7 +37,7 @@
   height: 3.2rem;
   border-radius: 0.5em;
   width: 12em;
-  cursor: none;
+  cursor: not-allowed;
 }
 
 .form-input-description {

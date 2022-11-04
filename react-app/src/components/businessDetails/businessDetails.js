@@ -22,6 +22,7 @@ const BusinessDetails = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [showReview, setShowReview] = useState(false);
+  // const [preventReview, setpreventReview] = useState(true);
 
   const [disable, setDisable] = useState(true);
 
@@ -158,7 +159,7 @@ const BusinessDetails = () => {
             <div className="business-details-bottom-wrapper">
               <div className="business-details-left">
                 <div>
-
+                  
                   {user.id !== currBusiness.owner_id ? (
                     <button
                       className="create-review-button"
@@ -171,7 +172,6 @@ const BusinessDetails = () => {
                     <button
                       className="create-review-button"
                       disabled={disable}
-                     
                     >
                       {/* <img className="star" src={star} alt="star" /> */}
                       <div className="cantreview"> &nbsp; Owner's can't review their own business</div>

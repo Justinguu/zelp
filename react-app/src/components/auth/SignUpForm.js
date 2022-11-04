@@ -24,14 +24,14 @@ const SignUpForm = () => {
   useEffect(() => {
     let errors = [];
 
-    if (first_name.length > 20 || first_name.length < 2)
-      errors.push("First name must be between 2 and 25 characters");
-    if (last_name.length > 20 || last_name.length < 2)
-      errors.push("Last name must be between 2 and 25 characters");
-      if(username.length > 15 || username.length <2)
-      errors.push("Username must be between 2 and 15 characters");
+    if (first_name.length > 20 || first_name.length < 2)errors.push("First name must be between 2 and 25 characters");
+    if (last_name.length > 20 || last_name.length < 2)errors.push("Last name must be between 2 and 25 characters");
+    if(username.length > 15 || username.length <2) errors.push("Username must be between 2 and 15 characters");
     if (zip_code.length !== 5 || NaN) errors.push("Zip code must be 5 digits");
-     if (password !== repeatPassword) errors.push("Passwords must match");
+    if (password !== repeatPassword) errors.push("Passwords must match");
+    if (!profileImage.endsWith(".png") && !profileImage.endsWith(".gif") && !profileImage.endsWith(".jpg")) errors.push("ProfileImage must end with png, jpg, or gif")
+    
+
 
     setErrors(errors);
   }, [
@@ -42,6 +42,7 @@ const SignUpForm = () => {
     password,
     repeatPassword,
     zip_code,
+    profileImage,
     
   ]);
 

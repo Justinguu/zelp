@@ -72,7 +72,7 @@ background-color: red;
     border: solid .1rem black;
     margin: .5rem;
     background-color: red;
-    cursor: none;
+    cursor: not-allowed;
     }
 
 .signup-errors{

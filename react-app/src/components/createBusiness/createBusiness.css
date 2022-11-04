@@ -124,7 +124,7 @@ padding-bottom: .2rem;
     width: 98%;
     margin-left: 20px;
     margin-top: 1rem;
-    cursor: none;
+    cursor: not-allowed;
 }
 
 .business-submit-button:hover {
