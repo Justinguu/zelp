@@ -70,11 +70,11 @@ const BusinessDetails = () => {
       .join("");
   }
   function priceToDollar(price) {
-    if (price > 2 || price <= 15) {
+    if (price > 2 || price < 15) {
       return "$";
-    } else if (price >= 16 && price <= 30) {
+    } else if (price >= 16 && price < 30) {
       return "$$";
-    } else if (price >= 31) {
+    } else if (price > 31) {
       return "$$$";
     }
   }

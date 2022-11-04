@@ -116,6 +116,16 @@ padding-bottom: .2rem;
     margin-top: 1rem;
     cursor: pointer;
 }
+.business-submit-button:disabled {
+    color: white;
+    background-color: red;
+    border-radius: .4em;
+    height: 35px;
+    width: 98%;
+    margin-left: 20px;
+    margin-top: 1rem;
+    cursor: none;
+}
 
 .business-submit-button:hover {
     transform: scale(1.1);

@@ -26,6 +26,19 @@
   width: 12em;
   cursor: pointer;
 }
+.submit-buttom-edits:disabled{
+  flex-direction: column;
+  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: solid 0.1rem black;
+  height: 3.2rem;
+  border-radius: 0.5em;
+  width: 12em;
+  cursor: none;
+}
 
 .form-input-description {
   min-width: 35rem;

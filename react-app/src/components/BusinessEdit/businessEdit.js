@@ -35,14 +35,8 @@ function BusinessEditForm({ setShowUpdate }) {
     const errors = [];
     if (businessName.length > 50 || businessName.length < 2)
       errors.push("Business name must be between 2 and 50 characters");
-    if (phoneNumber.length !== 12)
-      errors.push(
-        "Phone number must be 10 digits & resemble the placeholder format"
-      );
-    if (!email.includes("@") && email.length < 50)
-      errors.push(
-        "Please enter a valid email address & can't be over 50 characters"
-      );
+    if (phoneNumber.length !== 12)errors.push("Phone number must be 10 digits & resemble the placeholder format");
+    if (!email.includes("@") && email.length < 50)errors.push("Please enter a valid email address & can't be over 50 characters");
     if (address.length > 60 || address.length < 10)
       errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2)
@@ -54,8 +48,8 @@ function BusinessEditForm({ setShowUpdate }) {
       errors.push("Description must be between 50 and 300 characters");
     if (zipCode.toString().length != 5)
       errors.push("Zip code must be 5 digits");
-    if (price.length > 100 || price.length < 2)
-      errors.push("Price must be between 2 and 100 integer");
+    if (price.length > 100 || price.length < 10)
+      errors.push("Price must be between 10 and 100 integer");
     if (!previewImage)errors.push("Please provide a PreviewImage")
     return setErrors(errors);
   }, [
