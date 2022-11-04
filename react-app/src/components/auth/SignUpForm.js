@@ -197,8 +197,7 @@ const SignUpForm = () => {
                   name="zip Code"
                   placeholder="Zip Code"
                   onChange={updateZipCode}
-                  maxLength="5"
-                  minLength="5"
+                  min="1"
                   value={zip_code}
                   required={true}
                 ></input>
