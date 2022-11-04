@@ -65,4 +65,8 @@ Inside react-app create another .env and add     REACT_APP_BASE_URL=http://local
 * I am most proud of the create review. Users can hover over the review, and click the star rating they thought about the resturant
 
 
+## Future features to come:
 
+* Add Categories for each resturant.
+
+* Add a search bar that will correspond with the Categories and the business names.
