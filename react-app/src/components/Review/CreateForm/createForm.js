@@ -74,7 +74,7 @@ function CreateReviewForm({ setShowReview }) {
         <h1 className="CreateCommentHeader">Create a Review</h1>
 
         <div className="combined-line-rating">
-          <div className="text-rating">Select your rating</div>
+          <div className="text-rating-edit">Select your rating</div>
           <div className="rating-stars">
             <div class="star-container">
               <div

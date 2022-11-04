@@ -1,11 +1,17 @@
 form.edit-form-update {
    display:flex;
    align-items: center;
-    height: 100%;
+   flex-direction: column;
+   justify-content: center;
+    height: 20rem;
     width: 33rem;
-    flex-direction: column;
 }
 
+.text-rating-edit{
+display:flex;
+align-items: center;
+
+}
 
 
 .edit-review-input{
@@ -55,4 +61,16 @@ form.edit-form-update {
 
 
 }
+.submitEditComment{
+    background-color: #E00707;
+    color: white;
+    border: none;
+    height: 2.6em;
+    border-radius: .4em;
+    width: 9rem;
+    cursor: pointer;
+    margin-top: 2.0rem;
+   
+}
+
 
