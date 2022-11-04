@@ -69,7 +69,7 @@ const BusinessDetails = () => {
       )
       .join("");
   }
-
+//
 
   const priceConverter = (price) => {
     if (price > 2 && price < 15) {
