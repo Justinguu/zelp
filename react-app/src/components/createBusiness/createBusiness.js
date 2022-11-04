@@ -47,7 +47,7 @@ export default function CreateBusinessForm() {
     if (country.length > 30 || country.length < 2)errors.push("Country must be between 2 and 30 characters");
     if (zipCode.length !== 5  ) errors.push("Zip code must be 5 digits ");
     if (description.length > 300 || description.length < 50)errors.push("Description must be between 50 and 300 characters");
-    if (price.length > 200 || price.length < 10)errors.push("Price must be between 10 and 100 integer");
+    if (price > 200 || price < 2)errors.push("Price must be between 2 and 100 integer");
     if (!previewImage)errors.push("Please provide a PreviewImage")
     return setErrors(errors);
   }, [

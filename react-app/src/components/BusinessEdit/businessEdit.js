@@ -48,8 +48,8 @@ function BusinessEditForm({ setShowUpdate }) {
       errors.push("Description must be between 50 and 300 characters");
     if (zipCode.toString().length != 5)
       errors.push("Zip code must be 5 digits");
-    if (price.length > 100 || price.length < 10)
-      errors.push("Price must be between 10 and 100 integer");
+    if (price > 100 || price < 2)
+      errors.push("Price must be between 2 and 100 integer");
     if (!previewImage)errors.push("Please provide a PreviewImage")
     return setErrors(errors);
   }, [
