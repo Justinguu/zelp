@@ -18,7 +18,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: white;
   border: solid 0.1rem black;
   height: 3.2rem;
@@ -26,13 +25,13 @@
   width: 12em;
   cursor: pointer;
 }
-.submit-buttom-edits:disabled{
+.submit-button-edits:disabled {
   flex-direction: column;
   background: red;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgb(133, 122, 122);
   border: solid 0.1rem black;
   height: 3.2rem;
   border-radius: 0.5em;

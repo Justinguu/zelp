@@ -112,7 +112,7 @@ padding-bottom: .2rem;
     border-radius: .4em;
     height: 35px;
     width: 98%;
-    margin-left: 20px;
+    margin-left: 30px;
     margin-top: 1rem;
     cursor: pointer;
 }
@@ -122,16 +122,16 @@ padding-bottom: .2rem;
     border-radius: .4em;
     height: 35px;
     width: 98%;
-    margin-left: 20px;
+    margin-left: 30px;
     margin-top: 1rem;
     cursor: not-allowed;
 }
 
-.business-submit-button:hover {
-    transform: scale(1.1);
+/* .business-submit-button:hover {
+   
     opacity: 0.8;
     cursor: pointer;
-}
+} */
 .business-submit-button:active {
     transform: scale(.98);
     cursor: pointer;
