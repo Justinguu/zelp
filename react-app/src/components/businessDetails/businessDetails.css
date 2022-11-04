@@ -130,6 +130,9 @@ img.img-currSpots {
   margin-left: 2em;
 }
 
+.phoneNemailbox{
+margin-right: 1.5rem;
+}
 
 .phoneNumberBox {
   display: flex;

@@ -237,15 +237,17 @@ const BusinessDetails = () => {
                     )}
                   </div>
                 )}
-
+                 <div className="phoneNemailbox">
                 <div className="phoneNumberBox">
                   {dashedNumber(currBusiness.phone_number)}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   
                   <img className="phone" src={phone} alt="phone" />
                 </div>
                 <div className="get-email">
                   <div className="email-info">{currBusiness.email} </div>
                   <img className="email-image" src={email} alt="email" />
+                  </div>
                 </div>
               </div>
             </div>
