@@ -209,7 +209,7 @@ const SignUpForm = () => {
                 <input className="signup-input"
                   type="text"
                   name="profileImage"
-                  placeholder="Profile Image(Optional)"
+                  placeholder="Profile Image"
                   onChange={updateProfileImage}
                   value={profileImage}
                   
