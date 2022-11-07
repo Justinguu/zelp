@@ -16,7 +16,7 @@ const GetBusinessReviews = ({ businessId }) => {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  // console.log(getAllReviewsArr)
+
   //   const allUsers = useSelector((state) => state.users);
   //   const allUsersArr = Object.values(allUsers);
   const [showUpdateReview, setShowUpdateReview] = useState(false);

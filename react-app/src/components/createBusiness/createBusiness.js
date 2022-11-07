@@ -14,8 +14,7 @@ export default function CreateBusinessForm() {
 
   // const businesses = useSelector((state) => state.business);
   // const Allbusinesses = Object.values(businesses);
-  // console.log(Allbusinesses)
-  // console.log(ownerId)
+  
   //
 
   const [businessName, setBusinessName] = useState("");

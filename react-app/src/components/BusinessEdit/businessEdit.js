@@ -65,7 +65,7 @@ function BusinessEditForm({ setShowUpdate }) {
     price,
     previewImage
   ]);
-  // console.log(zipCode.length)
+ 
 
   async function onSubmit(e) {
     e.preventDefault();
