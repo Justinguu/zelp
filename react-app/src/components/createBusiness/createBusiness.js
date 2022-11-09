@@ -1,11 +1,8 @@
-import {
-  createBusinessThunk,
-  getAllBusinessesThunk,
-} from "../../store/business";
-
+import {createBusinessThunk,getAllBusinessesThunk,} from "../../store/business";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
+import coupleeating from "../icons/coupleeating.jpeg"
 import "./createBusiness.css";
 
 export default function CreateBusinessForm() {
@@ -104,17 +101,7 @@ export default function CreateBusinessForm() {
       <div className="create-biz-container-left">
         <div className="create-biz-form-title">
         <h2 className="header-message">Create Your Business</h2>
-        <div className="business-errors">
-          {hasSubmitted && errors.length > 0 && (
-            <ul className="edit-errors">
-              {errors.map((error) => (
-                <div className="upload-img-errors-list" key={error}>
-                  {error}
-                </div>
-              ))}
-            </ul>
-          )}
-        </div>
+        
         <form onSubmit={onSubmit}>
           <div className="create-biz-input-field">
             <input
@@ -278,7 +265,23 @@ export default function CreateBusinessForm() {
             </button>
           </div>
         </form>
+        <div className="business-errors">
+          {hasSubmitted && errors.length > 0 && (
+            <ul className="edit-errors">
+              {errors.map((error) => (
+                <div className="upload-img-errors-list" key={error}>
+                  {error}
+                </div>
+              ))}
+            </ul>
+          )}
+        </div>
           </div>
+      </div>
+      <div className="create-biz-right-container">
+        <img className="biz-picture" src={coupleeating}></img>
+
+
       </div>
     </div>
   );

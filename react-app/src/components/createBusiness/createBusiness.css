@@ -26,11 +26,7 @@
 
 
 
-.upload-img-errors-list{
-color: red;
-padding-top:.3rem;
-padding-bottom: .2rem;
-}
+
 
 .all-input-business{
     display:flex;
@@ -235,4 +231,22 @@ padding-bottom: .2rem;
   padding-top: 25px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.upload-img-errors-list{
+color: red;
+padding-top:.3rem;
+padding-bottom: .2rem;
+}
+
+.create-biz-right-container{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+.biz-picture{
+  margin-top: 6.5rem;
+  width: 27rem;
+  height: 23rem;
+  object-fit: cover;
+  border-radius: 1rem;
 }
