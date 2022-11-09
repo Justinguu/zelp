@@ -101,7 +101,8 @@ export default function CreateBusinessForm() {
 
   return (
     <div className="create-business-container">
-      <div className="Whole-container">
+      <div className="create-biz-container-left">
+        <div className="create-biz-form-title">
         <h2 className="header-message">Create Your Business</h2>
         <div className="business-errors">
           {hasSubmitted && errors.length > 0 && (
@@ -114,8 +115,8 @@ export default function CreateBusinessForm() {
             </ul>
           )}
         </div>
-        <form onSubmit={onSubmit} className="create-business-form">
-          <div className="all-input-business">
+        <form onSubmit={onSubmit}>
+          <div className="create-biz-input-field">
             <input
               className="business-input-field"
               type="text"
@@ -153,9 +154,9 @@ export default function CreateBusinessForm() {
               onChange={(e) => setAddress(e.target.value)}
               
             />
-
+            <span>
             <input
-              className="business-input-field"
+              className="city-input-field"
               type="text"
               placeholder="City"
               value={city}
@@ -221,28 +222,28 @@ export default function CreateBusinessForm() {
               <option value="WY">Wyoming</option>
              
             </select>
-
             
                <input
-              className="business-input-field"
+              className="country-input-field"
               type="text"
               placeholder="Country"
               value={country}
               
               onChange={(e) => setCountry(e.target.value)}
               
-            />
+              />
+            
 
             <input
-              className="business-input-field"
+              className="zip-input-field"
               type="number"
-              placeholder="Zip Code (Must be 5 digits)"
+              placeholder="5 Digit Zip Code "
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
               min="1"
               id="zipcodeId" 
             />
-
+  </span>
             <textarea
               className="business-input-create-description"
               type="text"
@@ -270,12 +271,14 @@ export default function CreateBusinessForm() {
               required
               
             />
+      <div className="create-biz-form-wrapper"></div>
 
             <button className="business-submit-button" type="submit" disabled={ hasSubmitted && errors.length > 0}>
-              Submit
+              Register Business
             </button>
           </div>
         </form>
+          </div>
       </div>
     </div>
   );

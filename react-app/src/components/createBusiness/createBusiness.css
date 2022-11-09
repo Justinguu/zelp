@@ -1,4 +1,4 @@
-.EntireContainerForUploadForm {
+/* .EntireContainerForUploadForm {
     height: 100%;
     width: 100%;
     
@@ -11,17 +11,16 @@
     
 }
 .header-message {
-    /* margin-left: 3rem; */
-    /* color: rgb(12, 11, 11); */
+   
     font-weight: 400;
-    /* padding-top: 2rem; */
+   
     margin-bottom: -5px;;
 }
 .business-Container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: black; */
+
 
 }
 
@@ -35,8 +34,7 @@ padding-bottom: .2rem;
 
 .all-input-business{
     display:flex;
-    /* align-items: center; */
-    /* justify-content: center; */
+    
     flex-direction: column;
     padding: 10px;
     color: black;
@@ -84,23 +82,7 @@ padding-bottom: .2rem;
 
 
 
-.business-error{
-    border: 2px solid rgb(251, 77, 106);
-    background-color: rgb(41, 40, 40);
-    height:3rem;
 
-    font-weight: 200;
-    font-size: 20px;
-    color: white;
-    margin-left: 65px;
-    width: 40rem;
-    display:flex;
-    justify-content: center;
-
-    padding-top: 25px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 
 .business-bttn{
     padding-top: 20px;
@@ -127,15 +109,7 @@ padding-bottom: .2rem;
     cursor: not-allowed;
 }
 
-/* .business-submit-button:hover {
-   
-    opacity: 0.8;
-    cursor: pointer;
-} */
-.business-submit-button:active {
-    transform: scale(.98);
-    cursor: pointer;
-}
+
 
 
 .business-input-create-description{
@@ -148,4 +122,117 @@ padding-bottom: .2rem;
     margin: 10px;
     resize: none;
     height: 80px;
+} */
+
+.create-business-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.create-biz-container-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50rem;
+  height: 100%;
+}
+
+.create-biz-form-title {
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
+  height: 25rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+.header-message {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.business-input-field {
+  border: solid 0.1rem black;
+  height: 1.3rem;
+}
+
+.create-biz-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.city-input-field {
+  width: 8.3rem;
+  height: 1.2rem;
+  border-radius: 3px;
+  font-size: 1rem;
+  border: solid 0.1rem black;
+}
+.business-input-field-select {
+  width: 7.6rem;
+  height: 1.6rem;
+  border-radius: 3px;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  border: solid 0.1rem black;
+}
+.country-input-field {
+  width: 8rem;
+  height: 1.2rem;
+  border-radius: 3px;
+  font-size: 1rem;
+  border: solid 0.1rem black;
+  margin-left: 0.5rem;
+}
+
+.zip-input-field {
+  width: 8.2rem;
+  height: 1.2rem;
+  border-radius: 3px;
+  font-size: 1rem;
+  border: solid 0.1rem black;
+  margin-left: 0.5rem;
+}
+.business-input-create-description {
+  height: 5rem;
+  resize: none;
+  border: solid 0.1rem black;
+}
+.business-submit-button {
+  background-color: red;
+  color: white;
+  border-radius: 0.4em;
+  height: 2.2rem;
+  width: 9rem;
+  cursor: pointer;
+}
+.business-submit-button:active {
+  transform: scale(0.98);
+  cursor: pointer;
+}
+.business-submit-button:disabled {
+  background-color: red;
+  color: black;
+  border-radius: 0.4em;
+  height: 2.2rem;
+  width: 9rem;
+  cursor: not-allowed;
+}
+
+.business-error {
+  border: 2px solid rgb(251, 77, 106);
+  background-color: rgb(41, 40, 40);
+  height: 3rem;
+
+  font-weight: 200;
+  font-size: 20px;
+  color: white;
+  margin-left: 65px;
+  width: 40rem;
+  display: flex;
+  justify-content: center;
+
+  padding-top: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
