@@ -1,16 +1,30 @@
+.edit-biz-container{
+  display: flex;
+    justify-content: center;
+    width: 50rem;
+    height: 100%;
+    padding-top: -1rem;
+    padding-bottom: 2rem;
+    overflow-y: auto;
+}
+.edit-biz-wrapper{
+  display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
 .spot-form-update {
   display: flex;
-  align-items: center;
-  padding: 1.8em;
-  width: 65em;
-  height: 100%;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: -5px;
 }
 
 .Edit-biz-text {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  margin-top: -4rem;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: 11rem;
 }
 .submit-button-edits {
   flex-direction: column;
@@ -20,10 +34,12 @@
   justify-content: center;
   color: white;
   border: solid 0.1rem black;
-  height: 3.2rem;
+  height: 2.8rem;
   border-radius: 0.5em;
   width: 12em;
+  margin-left: 2rem;
   cursor: pointer;
+  margin-top: -2rem;
 }
 .submit-button-edits:disabled {
   flex-direction: column;
@@ -31,13 +47,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(133, 122, 122);
+  color: white;
   border: solid 0.1rem black;
-  height: 3.2rem;
+  height: 2.8rem;
   border-radius: 0.5em;
   width: 12em;
+  margin-left: 2rem;
   cursor: not-allowed;
+  margin-top: -2rem;
 }
+
+
+
+
+
+
+
+
+.form-input-tel-edit{
+  border-color: black;
+  color: black;
+  border: solid 2px black;
+  width: 15.1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.form-input-state-edit{
+  border-color: black;
+  color: black;
+  border: solid 2px black;
+  width: 16.4rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
 
 .form-input-description {
   min-width: 35rem;
@@ -89,5 +133,5 @@
   padding-top: 0.2rem;
   padding-bottom: 0.3rem;
   color: red;
-  width: 11rem;
+  
 }
