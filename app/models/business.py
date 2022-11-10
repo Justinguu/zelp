@@ -20,7 +20,7 @@ class Business(db.Model):
     country = db.Column(db.String(50), nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(400), nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.String, nullable=False)
     preview_image = db.Column(db.String(600), nullable=False)
 
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

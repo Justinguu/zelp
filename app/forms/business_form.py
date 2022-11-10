@@ -16,6 +16,6 @@ class BusinessForm(FlaskForm):
     country = StringField('country')
     zip_code = IntegerField('zip_code', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
-    price = IntegerField('price', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
     preview_image = StringField('preview_image', validators=[DataRequired()])
     submit = SubmitField('Submit')

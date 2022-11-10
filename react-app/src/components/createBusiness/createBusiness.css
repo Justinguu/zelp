@@ -125,6 +125,8 @@
   flex-direction: row;
   width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 .create-biz-container-left {
   display: flex;
@@ -150,41 +152,41 @@
 .business-input-field {
   border: solid 0.1rem black;
   height: 1.5rem;
+  
 }
 
 .create-biz-input-field {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  
 }
 .city-input-field {
   width: 8.3rem;
   height: 1.2rem;
-  border-radius: 3px;
   font-size: 1rem;
   border: solid 0.1rem black;
 }
 .business-input-field-select {
-  width: 7.6rem;
+  width: 7.8rem;
   height: 1.6rem;
-  border-radius: 3px;
   margin-left: 0.5rem;
   font-size: 1rem;
   border: solid 0.1rem black;
+  color: rgb(132,132,132)
 }
 .country-input-field {
-  width: 8rem;
+  width: 7.6rem;
   height: 1.2rem;
-  border-radius: 3px;
+
   font-size: 1rem;
   border: solid 0.1rem black;
   margin-left: 0.5rem;
 }
 
 .zip-input-field {
-  width: 8.2rem;
+  width: 8.4rem;
   height: 1.2rem;
-  border-radius: 3px;
   font-size: 1rem;
   border: solid 0.1rem black;
   margin-left: 0.5rem;
@@ -193,6 +195,11 @@
   height: 5rem;
   resize: none;
   border: solid 0.1rem black;
+}
+.price-input-field-create {
+  border: solid 0.1rem black;
+  height: 2.0rem;
+  color: rgb(132,132,132)
 }
 .business-submit-button {
   background-color: red;
@@ -232,21 +239,22 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.upload-img-errors-list{
-color: red;
-padding-top:.3rem;
-padding-bottom: .2rem;
+.upload-img-errors-list {
+  color: red;
+  padding-top: 0.3rem;
+  padding-bottom: 0.2rem;
 }
 
-.create-biz-right-container{
+.create-biz-right-container {
   display: flex;
   flex-direction: column;
   align-items: left;
 }
-.biz-picture{
-  margin-top: 6.5rem;
-  width: 27rem;
+.biz-picture {
+  margin-left: 3rem;
+  margin-bottom: -11.0rem;
+  width: 32rem;
   height: 23rem;
   object-fit: cover;
-  border-radius: 1rem;
+  border-radius: .5rem;
 }

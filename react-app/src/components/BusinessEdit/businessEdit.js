@@ -31,6 +31,8 @@ function BusinessEditForm({ setShowUpdate }) {
 
   const dispatch = useDispatch();
 
+  const PRICES = ["$", "$$", "$$$"];
+
   useEffect(() => {
     const errors = [];
     if (businessName.length > 30 || businessName.length < 2)
@@ -40,7 +42,9 @@ function BusinessEditForm({ setShowUpdate }) {
         "Phone number must be 10 digits & resemble the placeholder format"
       );
     if (!email.includes("@") && email.length > 30)
-      errors.push("Please enter a valid email address & can't be over 30 characters");
+      errors.push(
+        "Please enter a valid email address & can't be over 30 characters"
+      );
     if (address.length > 60 || address.length < 10)
       errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2)
@@ -52,8 +56,7 @@ function BusinessEditForm({ setShowUpdate }) {
       errors.push("Description must be between 50 and 300 characters");
     if (zipCode.toString().length != 5)
       errors.push("Zip code must be 5 digits");
-    if (price > 100 || price < 2)
-      errors.push("Price must be between 2 and 100 integer");
+    if (!price) errors.push("Please select a average price field");
     if (
       !previewImage &&
       !previewImage.endsWith(".png") &&
@@ -61,7 +64,7 @@ function BusinessEditForm({ setShowUpdate }) {
       !previewImage.endsWith(".jpg")
     )
       errors.push(
-        "Please provide a valid PreviewImage that ends with .png, .gif, .jpg"
+        "Please provide a valid Preview Image that ends with .png, .gif, .jpg"
       );
     return setErrors(errors);
   }, [
@@ -256,13 +259,20 @@ function BusinessEditForm({ setShowUpdate }) {
               onChange={(e) => setDescription(e.target.value)}
             />
 
-            <input
-              className="form-input-bizedit"
-              type="number"
+            <select
+              className="price-input-field"
               value={price}
-              min="2"
               onChange={(e) => setPrice(e.target.value)}
-            />
+            >
+              <option selected disabled value="">
+                Select a Price Range
+              </option>
+              {PRICES.map((price) => (
+                <option key={price} value={price}>
+                  {price}
+                </option>
+              ))}
+            </select>
 
             <input
               className="form-input-bizedit"

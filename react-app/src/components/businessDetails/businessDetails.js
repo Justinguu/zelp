@@ -72,15 +72,15 @@ const BusinessDetails = () => {
   }
 //
 
-  const priceConverter = (price) => {
-    if (price > 2 && price < 15) {
-      return "$";
-    } else if (price >= 16 && price < 30) {
-      return "$$";
-    } else if (price > 31 && price < 100) {
-      return "$$$";
-    }
-  };
+  // const priceConverter = (price) => {
+  //   if (price > 2 && price < 15) {
+  //     return "$";
+  //   } else if (price >= 16 && price < 30) {
+  //     return "$$";
+  //   } else if (price > 31 && price < 100) {
+  //     return "$$$";
+  //   }
+  // };
 
   const ratingIncrementer = (int) => {
     let forRatings = [];
@@ -145,7 +145,7 @@ const BusinessDetails = () => {
               &nbsp;<div className="claimed">Claimed</div>
               <div className="details-price">
                 {" "}
-                ● {priceConverter(currBusiness.price)}
+                ● {currBusiness.price}
               </div>
             </div>
 
