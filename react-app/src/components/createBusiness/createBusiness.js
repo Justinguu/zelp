@@ -12,12 +12,15 @@ export default function CreateBusinessForm() {
   const owner = useSelector((state) => state.session.user);
   const ownerId = owner.id;
 
+
+
   // const businesses = useSelector((state) => state.business);
   // const Allbusinesses = Object.values(businesses);
 
   //
 
   const [businessName, setBusinessName] = useState("");
+  const [category, setCategory] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -45,14 +48,9 @@ export default function CreateBusinessForm() {
     const errors = [];
     if (businessName.length > 30 || businessName.length < 2)
       errors.push("Business name must be between 2 and 30 characters");
-    if (phoneNumber.length !== 12)
-      errors.push(
-        "Phone number must be 10 digits & resemble the placeholder format"
-      );
-    if (!email.includes("@") && email.length > 30)
-      errors.push(
-        "Please enter a valid email address & can't be over 30 characters"
-      );
+    if (!category) errors.push("Please select a category");
+    if (phoneNumber.length !== 12)errors.push("Phone number must be 10 digits & resemble the placeholder format");
+    if (!email.includes("@") && email.length > 30)errors.push("Please enter a valid email address & can't be over 30 characters");
     if (address.length > 60 || address.length < 10)
       errors.push("Address must be between 10 and 60 characters");
     if (city.length > 20 || city.length < 2)
@@ -75,6 +73,7 @@ export default function CreateBusinessForm() {
     return setErrors(errors);
   }, [
     businessName,
+    category,
     phoneNumber,
     email,
     address,
@@ -105,6 +104,7 @@ export default function CreateBusinessForm() {
         createBusinessThunk(
           ownerId,
           businessName,
+          category,
           phoneNumber,
           email,
           address,
@@ -136,15 +136,35 @@ export default function CreateBusinessForm() {
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
               />
+<span>
+<select
+                  className="business-input-field-cat-select"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option disabled selected value="">
+                    Select a Category
+                  </option>
+                  <option value="American">American</option>
+                  <option value="Mexican">Mexican</option>
+                  <option value="Korean">Korean</option>
+                  <option value="Italian">Italian</option>
+                  <option value="African">African</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Chinese">Chinese</option>
+                  <option value="Desert">Desert</option>
+                  
+                </select>
 
               <input
-                className="business-input-field"
+                className="business-input-field-tele"
                 type="tel"
                 placeholder="678-211-4443"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
-              />
+                />
+                </span>
 
               <input
                 className="business-input-field"

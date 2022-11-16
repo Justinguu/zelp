@@ -63,6 +63,14 @@
   margin: 0.5rem;
   padding: 0.5rem;
 }
+.form-input-bizedit-address{
+  border-color: black;
+  color: black;
+  border: solid 2px black;
+  width: 15.1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
 
 .form-input-state-edit {
   border-color: black;

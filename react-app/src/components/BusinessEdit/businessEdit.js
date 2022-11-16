@@ -14,6 +14,8 @@ function BusinessEditForm({ setShowUpdate }) {
     prefilledBizInfo.business_name
   );
   const [phoneNumber, setPhoneNumber] = useState(prefilledBizInfo.phone_number);
+  const [category, setCategory] = useState(prefilledBizInfo.category);
+  console.log("category", category);
   const [email, setEmail] = useState(prefilledBizInfo.email);
   const [address, setAddress] = useState(prefilledBizInfo.address);
   const [city, setCity] = useState(prefilledBizInfo.city);
@@ -37,6 +39,7 @@ function BusinessEditForm({ setShowUpdate }) {
     const errors = [];
     if (businessName.length > 30 || businessName.length < 2)
       errors.push("Business name must be between 2 and 30 characters");
+    if (!category) errors.push("Please select a category");
     if (phoneNumber.length !== 12)
       errors.push(
         "Phone number must be 10 digits & resemble the placeholder format"
@@ -69,6 +72,7 @@ function BusinessEditForm({ setShowUpdate }) {
     return setErrors(errors);
   }, [
     businessName,
+    category,
     phoneNumber,
     email,
     address,
@@ -99,6 +103,7 @@ function BusinessEditForm({ setShowUpdate }) {
           businessId,
           ownerId,
           businessName,
+          category,
           phoneNumber,
           email,
           address,
@@ -138,6 +143,25 @@ function BusinessEditForm({ setShowUpdate }) {
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
             />
+            <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="form-input-state-edit"
+              >
+                <option disabled selected value="">
+                  Select a state
+                </option>
+                <option value="American">American</option>
+                  <option value="Mexican">Mexican</option>
+                  <option value="Korean">Korean</option>
+                  <option value="Italian">Italian</option>
+                  <option value="African">African</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Chinese">Chinese</option>
+                  <option value="Desert">Desert</option>
+
+              </select>
+
             <span className="phone-email-edit">
               <input
                 className="form-input-tel-edit"
@@ -158,7 +182,7 @@ function BusinessEditForm({ setShowUpdate }) {
               />
             </span>
             <input
-              className="form-input-bizedit"
+              className="form-input-bizedit-address"
               type="text"
               placeholder="Address"
               value={address}

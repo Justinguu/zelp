@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import CreateBusinessForm from './components/createBusiness/createBusiness';
 import GetAllTheBusinesses from './components/HomePage/HomePage.js';
 import BusinessDetails from './components/businessDetails/businessDetails.js';
+import GetCategories from './components/categories/categories';
 import {PageNotFound} from "./components/PageNotFound/PageNotFound.js"
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +34,7 @@ function App() {
       <Switch> 
         <Route path='/' exact={true} >
          <GetAllTheBusinesses />
+         {/* <GetCategories /> */}
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />

@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as sessionActions from "../../store/session";
 import { getAllUsersThunk } from '../../store/AllUsers';
 import { getAllBusinessesThunk } from '../../store/business';
+import { SearchBar } from '../SearchBar/searchBar.js';
 
 import klickrImage from "../icons/klickr-logo-title.png";
 import uploadImage from '../icons/upload-icon.png'
@@ -50,6 +51,7 @@ NavBar = () => {
   
         </div>
         <div className="loggedInNav">
+          <SearchBar/>
     
         </div>
         <div className="navbar-explore-container">

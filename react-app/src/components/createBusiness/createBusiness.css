@@ -154,6 +154,19 @@
   height: 1.5rem;
   
 }
+.business-input-field-cat-select{
+  width: 17rem;
+  height: 1.74rem;
+  font-size: 1rem;
+  border: solid 0.1rem black;
+  color: rgb(132,132,132)
+}
+.business-input-field-tele{
+  border: solid 0.1rem black;
+  height: 1.5rem;
+  width: 16.9rem;
+  margin-left: 0.6rem;
+}
 
 .create-biz-input-field {
   display: flex;

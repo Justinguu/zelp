@@ -13,6 +13,7 @@ class Business(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     business_name = db.Column(db.String(60), nullable=False)
     phone_number = db.Column(db.String(12), nullable=False)
+    category = db.Column(db.String, nullable=False)
     email = db.Column(db.String(60), nullable=False)
     address = db.Column(db.String(60), nullable=False)
     city = db.Column(db.String(50), nullable=False)
@@ -32,6 +33,9 @@ class Business(db.Model):
     review = db.relationship('Review', backref='business', cascade="all, delete")
     images = db.relationship('Image', backref='business')
 
+    
+    
+
 
 
     def to_dict(self):
@@ -39,6 +43,7 @@ class Business(db.Model):
        "id" : self.id,
        "owner_id" : self.owner_id,
         "business_name": self.business_name,
+        "category": self.category,
         "phone_number": self.phone_number,
         "email": self.email,
         "address": self.address,

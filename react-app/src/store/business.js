@@ -74,13 +74,13 @@ export const getOneBusinessThunk = (businessId) => async (dispatch) => {
 };
 
 // create business thunk
-export const createBusinessThunk = (owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
+export const createBusinessThunk = (owner_id,business_name,category,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
     const response = await fetch("/api/businesses/new", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image})
+        body: JSON.stringify({owner_id,business_name,category,phone_number,email,address,city,state,country,zip_code,description,price,preview_image})
       });
     
       if (response.ok) {
@@ -92,7 +92,7 @@ export const createBusinessThunk = (owner_id,business_name,phone_number,email,ad
 
 
 //update business thunk with fetch including  business id
-export const updateBusinessThunk = (businessId,owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
+export const updateBusinessThunk = (businessId,owner_id,business_name,category,phone_number,email,address,city,state,country,zip_code,description,price,preview_image) => async (dispatch) => {
     zip_code = parseInt(zip_code)
     
 
@@ -101,7 +101,7 @@ export const updateBusinessThunk = (businessId,owner_id,business_name,phone_numb
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({owner_id,business_name,phone_number,email,address,city,state,country,zip_code,description,price,preview_image})
+        body: JSON.stringify({owner_id,business_name,category,phone_number,email,address,city,state,country,zip_code,description,price,preview_image})
     });
     if (response.ok) {
         const data = await response.json();

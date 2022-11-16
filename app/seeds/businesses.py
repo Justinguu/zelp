@@ -5,6 +5,7 @@ def seed_businesses():
     business_1 = Business(
         owner_id= 1,
         business_name= "Kamakaze",
+        category = "Japanese",
         phone_number= "111-222-3333",
         email= "Kamakaze@gmail.com",
         address= "321 Pho Park Avenue",
@@ -19,6 +20,7 @@ def seed_businesses():
     business_2 = Business(
         owner_id= 2,
         business_name= "GenMeat",
+        category = "Korean",
         phone_number= "678-974-5075",
         email= "GenMeat@.com",
         address= "5600 Roswell Rd F290",
@@ -34,6 +36,7 @@ def seed_businesses():
     business_3 = Business(
         owner_id= 3,
         business_name= "Budi's Sushi",
+        category = "Japanese",
         phone_number= "404-907-4500",
         email= "Budissushi@gmail.com",
         address= "349 Decatur St SE",
@@ -50,6 +53,7 @@ def seed_businesses():
     business_4= Business(
         owner_id= 4,
         business_name= "Fresh Bowl",
+        category = "American",
         phone_number= "678-322-8222",
         email= "FreshBowl@gmail.com",
         address= "31812 N Brown Rd Ste",
@@ -66,6 +70,7 @@ def seed_businesses():
     business_5= Business(
         owner_id= 5,
         business_name= "Alma Cocina",
+        category = "Mexican",
         phone_number= "678-999-1212",
         email= "AlmaCocina@gmail.com",
         address= "4182 N Tread Ste",
@@ -81,6 +86,7 @@ def seed_businesses():
     business_6 = Business(
         owner_id= 6,
         business_name= "Nonis",
+        category = "Italian",
         phone_number= "672-999-1212",
         email= "Nonis@gmail.com",
         address= "4182 N Sweet Rd",
@@ -96,6 +102,7 @@ def seed_businesses():
     business_7 = Business(
         owner_id= 7,
         business_name= "The Lawrence",
+        category = "American",
         phone_number= "672-943-5512",
         email= "Lawrence@gmail.com",
         address= "4182 Mooville lane",
@@ -111,6 +118,7 @@ def seed_businesses():
     business_8 = Business(
         owner_id= 8,
         business_name= "Four Fat Cows",
+        category = "Desert",
         phone_number= "672-943-1212",
         email= "FatCows@gmail.com",
         address= "4182 Memory Sweet lane",

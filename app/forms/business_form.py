@@ -8,6 +8,7 @@ from wtforms.validators import DataRequired
 class BusinessForm(FlaskForm):
     owner_id = IntegerField('owner_id', validators=[DataRequired()])
     business_name = StringField('name', validators=[DataRequired()])
+    category = SelectField ('category', choices=[('1', 'American'), ('2', 'Mexican'), ('3', 'Italian'), ('4', 'African'), ('5', 'Japanese'), ('6', 'Chinese'), ('7', 'Desert')], validators=[DataRequired()])
     phone_number = StringField('phone_number', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired()])
     address = StringField('address', validators=[DataRequired()])

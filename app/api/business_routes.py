@@ -43,6 +43,7 @@ def new_business():
         business = Business(
             owner_id = form.data['owner_id'],
             business_name=form.data['business_name'],
+            category = form.data['category'],
             phone_number=form.data['phone_number'],
             email = form.data['email'],
             address=form.data['address'],
@@ -77,6 +78,7 @@ def edit_business(id):
         business = db.session.query(Business).get(id)
         business.owner_id=form.data['owner_id']
         business.business_name=form.data['business_name']
+        business.category=form.data['category']
         business.phone_number=form.data['phone_number']
         business.email = form.data['email']
         business.address=form.data['address']

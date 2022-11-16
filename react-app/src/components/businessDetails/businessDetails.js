@@ -145,7 +145,7 @@ const BusinessDetails = () => {
               &nbsp;<div className="claimed">Claimed</div>
               <div className="details-price">
                 {" "}
-                ● {currBusiness.price}
+                ● {currBusiness.price}  ● {currBusiness.category}
               </div>
             </div>
 
