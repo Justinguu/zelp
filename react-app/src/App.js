@@ -13,6 +13,7 @@ import GetAllTheBusinesses from './components/HomePage/HomePage.js';
 import BusinessDetails from './components/businessDetails/businessDetails.js';
 import GetCategories from './components/categories/categories';
 import {PageNotFound} from "./components/PageNotFound/PageNotFound.js"
+import SearchPage from "../src/components/searchPage/searchPage.js"
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -35,6 +36,10 @@ function App() {
         <Route path='/' exact={true} >
          <GetAllTheBusinesses />
          {/* <GetCategories /> */}
+        </Route>
+        <Route path='/search/:searchTerm' exact={true} >
+         <SearchPage />
+        
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
