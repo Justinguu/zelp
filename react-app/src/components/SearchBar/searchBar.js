@@ -32,7 +32,7 @@ export const SearchBar = () => {
             className="SearchBarNav"
             type="search"
             value={searchTerm}
-            placeholder={"Search..."}
+            placeholder={"Search By Resturant Name"}
             //   placeholder={"Search for Images or Users..." || searchTitle}
             onChange={changeSearchTerm}
           />

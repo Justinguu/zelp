@@ -67,8 +67,8 @@ useEffect(() => {
     dispatch(getAllUsersThunk())},[dispatch, allUsersArray]);
 
    
-    // allbusinessesArray = allbusinessesArr.sort((a,b) => b.id - a.id)
-    // allUsersArray = Object.values(allusers)
+    allbusinessesArray = allbusinessesArr.sort((a,b) => b.id - a.id)
+    allUsersArray = Object.values(allusers)
 
 
 
