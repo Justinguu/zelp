@@ -14,7 +14,7 @@ import BusinessDetails from './components/businessDetails/businessDetails.js';
 import GetCategories from './components/categories/categories';
 import {PageNotFound} from "./components/PageNotFound/PageNotFound.js"
 import SearchPage from "../src/components/searchPage/searchPage.js"
-import UserProfile from './components/UserProf/userProfile';
+// import UserProfile from './components/UserProf/userProfile';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ function App() {
           <LoginForm />
         </Route>
         <Route path='/user' exact={true}>
-          <UserProfile />
+          {/* <UserProfile /> */}
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
