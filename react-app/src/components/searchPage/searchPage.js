@@ -16,7 +16,7 @@ export default function SearchPage() {
   const allbusinessesArr = Object.values(business);
 
   let filteredBusinesses;
-
+//
   if (allbusinessesArr != null) {
     filteredBusinesses = allbusinessesArr.filter((business) =>
       business.business_name.toLowerCase().includes(searchTerm.toLowerCase())
