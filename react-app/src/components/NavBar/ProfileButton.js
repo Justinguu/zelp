@@ -56,20 +56,13 @@ export default function ProfileButton() {
               <div className="user-name-li">
                 Bonjour&nbsp;
                 <div
-                  className="profile-page-reroute"
-                  to={`/users/${sessionUser.id}`}
-                >
+                  className="profile-page-reroute">
+                  <NavLink to={`/users/${sessionUser.id}`}></NavLink>
+                
                   {sessionUser.username}!{" "}
                 </div>
               </div>
-              <div upload-photo-dropdown>
-                <div className="three-item-container">
-                  <div className="numOfImages">
-                    {/* {userImagesArr.length} of 1,000 items */}
-                  </div>
-                 
-                </div>
-              </div>
+              
               <div className="hover-link logout-li" onClick={logout}>
                 <div className="logout-container">
                   <img className="logout-logo-pic" src={logoutLogo}></img>

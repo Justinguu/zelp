@@ -6,7 +6,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
+import User from './components/User/User';
 import { authenticate } from './store/session';
 import CreateBusinessForm from './components/createBusiness/createBusiness';
 import GetAllTheBusinesses from './components/HomePage/HomePage.js';
@@ -14,6 +14,7 @@ import BusinessDetails from './components/businessDetails/businessDetails.js';
 import GetCategories from './components/categories/categories';
 import {PageNotFound} from "./components/PageNotFound/PageNotFound.js"
 import SearchPage from "../src/components/searchPage/searchPage.js"
+import UserProfile from './components/UserProf/userProfile';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ function App() {
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+        <Route path='/user' exact={true}>
+          <UserProfile />
+        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
@@ -58,6 +62,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+         {/* < UserProfile /> */}
         </ProtectedRoute>
         <Route>
           <PageNotFound />
