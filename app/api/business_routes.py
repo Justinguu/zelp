@@ -35,7 +35,7 @@ def one_business(id):
 
 
 @business_routes.route("/new", methods=['POST'])
-@login_required
+# @login_required
 def new_business():
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
