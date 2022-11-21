@@ -126,7 +126,8 @@ def add_business_image(businessId):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         image = Image(
-            businessId = businessId,
+            owner_id = form.data['owner_id'],
+            businessId = form.data['businessId'],
             imageUrl=form.data['imageUrl'],
             description=form.data['description'],
         )

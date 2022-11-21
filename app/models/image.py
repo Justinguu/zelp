@@ -9,8 +9,10 @@ class Image(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     business_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('businesses.id')), nullable=False)
-    url = db.Column(db.String(255), nullable=False)
+    imageUrl = db.Column(db.String(), nullable=False)
+    description = db.Column(db.String(), nullable=False)
 
 
 
@@ -18,8 +20,10 @@ class Image(db.Model):
     def to_dict(self):
         return {
         "id": self.id,
+        "owner_id": self.owner_id,
         "business_id": self.business_id,
-        "url": self.url
+        "imageUrl": self.imageUrl,
+        "description": self.description,
         }
 
 
