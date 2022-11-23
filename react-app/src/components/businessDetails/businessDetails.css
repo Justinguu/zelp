@@ -1,16 +1,35 @@
-
 div.whole-page-container {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.images-header-container{
+.images-header-container {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 30rem;
-  background-color: black
+  background-color: black;
+}
+
+.all-photos-bttn {
+  display: flex;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background: rgba(0, 0, 0, .2);
+    text-decoration: none;
+    color: white;
+    margin-left: 67rem;
+    margin-top: -1.5rem;
+
+}
+
+.all-photos-bttn:hover {
+  cursor: pointer;
+  background: rgb(255, 255, 255, .2);
 }
 
 img.img-currSpots {
@@ -38,22 +57,21 @@ img.img-currSpots {
 }
 
 .currSpot-name {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   font-size: 35px;
   margin-left: -1px;
 }
-.total-review{
-  z-index:3;
-  padding-bottom: .3rem;
-  margin-right:.5rem;
+.total-review {
+  z-index: 3;
+  padding-bottom: 0.3rem;
+  margin-right: 0.5rem;
 }
 .details-price {
-  display:flex;
+  display: flex;
   align-items: center;
   font-size: 17px;
   padding-top: 5px;
 }
-
 
 .business-details-bottom-container {
   display: flex;
@@ -84,11 +102,11 @@ img.img-currSpots {
   margin-bottom: 2rem;
 }
 
-.create-review-button:disabled{
+.create-review-button:disabled {
   font-weight: 600;
   font-size: 15px;
   color: #fff;
-  background: linear-gradient( #6d6567, #6d6567);
+  background: linear-gradient(#6d6567, #6d6567);
   border: 1px solid #d3d3d3;
   border-radius: 5px;
   width: 175px;
@@ -96,7 +114,7 @@ img.img-currSpots {
   transition: 1s;
   margin-top: 1rem;
   margin-bottom: 2rem;
-  cursor: not-allowed
+  cursor: not-allowed;
 }
 .business-details-left {
   display: flex;
@@ -138,8 +156,8 @@ img.img-currSpots {
   margin-left: 2em;
 }
 
-.phoneNemailbox{
-margin-right: 1.5rem;
+.phoneNemailbox {
+  margin-right: 1.5rem;
 }
 
 .phoneNumberBox {
@@ -171,8 +189,8 @@ img.phone {
   height: 28px;
   object-fit: fill;
 }
-.email-info{
-width:18rem;
+.email-info {
+  width: 18rem;
 }
 
 .get-email {
@@ -199,7 +217,6 @@ width:18rem;
   font-weight: bold;
   padding-right: 3px;
 }
-.cantreview{
-  font-size: .7rem;
-  
+.cantreview {
+  font-size: 0.7rem;
 }

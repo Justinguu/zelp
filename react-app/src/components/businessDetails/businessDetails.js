@@ -9,6 +9,7 @@ import GetBusinessReviews from "../Review/ReviewGet/getReviews";
 import CreateReviewForm from "../Review/CreateForm/createForm";
 import BusinessDelete from "../BusinessDelete/businessDelete";
 import EditBusinessForm from "../BusinessEdit/businessEdit.js";
+import BusinessImages from "../businessImages/businessImages.js";
 
 import star from "../icons/star.png";
 import phone from "../icons/phone.png";
@@ -23,6 +24,7 @@ const BusinessDetails = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [showReview, setShowReview] = useState(false);
+  const [showAllBusinessImages, setShowAllBusinessImages] = useState(false);
   // const [preventReview, setpreventReview] = useState(true);
 
   const [disable, setDisable] = useState(true);
@@ -74,7 +76,6 @@ const BusinessDetails = () => {
       )
       .join("");
   }
-  
 
   const ratingIncrementer = (int) => {
     let forRatings = [];
@@ -121,7 +122,6 @@ const BusinessDetails = () => {
   return (
     isLoaded && (
       <>
-        {/* have a left side for half image detail & right with address and stuff */}
         <div className="whole-page-container">
           <div className="images-header-container">
             {" "}
@@ -160,6 +160,22 @@ const BusinessDetails = () => {
               {currBusiness.address} {currBusiness.city}, {currBusiness.state},
               {currBusiness.country} {currBusiness.zip_code}
             </div>
+            <div>
+              <button
+                className="all-photos-bttn"
+                onClick={() => setShowAllBusinessImages(true)}
+              >
+                See All Photos
+              </button>
+              {showAllBusinessImages && (
+                <Modal onClose={() => setShowAllBusinessImages(false)}>
+                  <BusinessImages
+                    businessId={businessId}
+                    setShowAllBusinessImages={setShowAllBusinessImages}
+                  />
+                </Modal>
+              )}
+            </div>
           </div>
           <div className="business-details-bottom-container">
             <div className="business-details-bottom-wrapper">
@@ -197,7 +213,6 @@ const BusinessDetails = () => {
                     </Modal>
                   )}
                 </div>
-                {/* )} */}
 
                 <div>
                   <GetBusinessReviews
