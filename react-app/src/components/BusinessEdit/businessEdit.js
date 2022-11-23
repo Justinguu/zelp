@@ -15,7 +15,6 @@ function BusinessEditForm({ setShowUpdate }) {
   );
   const [phoneNumber, setPhoneNumber] = useState(prefilledBizInfo.phone_number);
   const [category, setCategory] = useState(prefilledBizInfo.category);
-  console.log("category", category);
   const [email, setEmail] = useState(prefilledBizInfo.email);
   const [address, setAddress] = useState(prefilledBizInfo.address);
   const [city, setCity] = useState(prefilledBizInfo.city);

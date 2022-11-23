@@ -5,10 +5,18 @@ div.whole-page-container {
   height: 100%;
 }
 
+.images-header-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 30rem;
+  background-color: black
+}
+
 img.img-currSpots {
   display: flex;
   justify-content: center;
-  height: 20rem;
+  height: 30rem;
   width: 100%;
   object-fit: cover;
   z-index: 1;

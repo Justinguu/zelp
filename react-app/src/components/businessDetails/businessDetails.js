@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getOneBusinessThunk, getAllReviewsArr } from "../../store/business";
 import { getCurrReviewThunk, createReviewThunk } from "../../store/review";
+import { getOneImageThunk } from "../../store/image";
 import { Modal } from "../../context/Modal";
 import GetBusinessReviews from "../Review/ReviewGet/getReviews";
 import CreateReviewForm from "../Review/CreateForm/createForm";
@@ -34,16 +35,19 @@ const BusinessDetails = () => {
   const allReviews = useSelector((state) => state.review);
   const getAllReviewsArr = Object.values(allReviews);
 
+  const allImages = useSelector((state) => state.image);
+  const getAllImagesArr = Object.values(allImages);
+  console.log(getAllImagesArr);
+
   const history = useHistory();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCurrReviewThunk(businessId));
+    dispatch(getOneImageThunk(businessId));
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
-
-  
 
   if (currBusiness === undefined) {
     return <div>Business not found</div>; // if currBusiness is undefined, return this
@@ -70,17 +74,7 @@ const BusinessDetails = () => {
       )
       .join("");
   }
-//
-
-  // const priceConverter = (price) => {
-  //   if (price > 2 && price < 15) {
-  //     return "$";
-  //   } else if (price >= 16 && price < 30) {
-  //     return "$$";
-  //   } else if (price > 31 && price < 100) {
-  //     return "$$$";
-  //   }
-  // };
+  
 
   const ratingIncrementer = (int) => {
     let forRatings = [];
@@ -129,12 +123,24 @@ const BusinessDetails = () => {
       <>
         {/* have a left side for half image detail & right with address and stuff */}
         <div className="whole-page-container">
-          <img
-            className="img-currSpots"
-            src={currBusiness.preview_image}
-            alt={brokenBanner}
-            onError={e => { e.currentTarget.src = brokenBanner }} 
-          ></img>
+          <div className="images-header-container">
+            {" "}
+            {getAllImagesArr.map((image) => {
+              return (
+                <div>
+                  <img
+                    className="img-currSpots"
+                    src={image.imageUrl}
+                    alt={brokenBanner}
+                    onError={(e) => {
+                      e.currentTarget.src = brokenBanner;
+                    }}
+                  ></img>
+                </div>
+              );
+            })}
+          </div>
+
           <div className="business-info-container">
             <div className="currSpot-name">{currBusiness.business_name}</div>
             <div className="total-review">
@@ -145,7 +151,7 @@ const BusinessDetails = () => {
               &nbsp;<div className="claimed">Claimed</div>
               <div className="details-price">
                 {" "}
-                ● {currBusiness.price}  ● {currBusiness.category}
+                ● {currBusiness.price} ● {currBusiness.category}
               </div>
             </div>
 
@@ -159,7 +165,6 @@ const BusinessDetails = () => {
             <div className="business-details-bottom-wrapper">
               <div className="business-details-left">
                 <div>
-                  
                   {user.id !== currBusiness.owner_id ? (
                     <button
                       className="create-review-button"
@@ -169,17 +174,15 @@ const BusinessDetails = () => {
                       &nbsp; Write A Review
                     </button>
                   ) : (
-                    <button
-                      className="create-review-button"
-                      disabled={disable}
-                    >
+                    <button className="create-review-button" disabled={disable}>
                       {/* <img className="star" src={star} alt="star" /> */}
-                      <div className="cantreview"> &nbsp; Owner's can't review their own business</div>
-                     
+                      <div className="cantreview">
+                        {" "}
+                        &nbsp; Owner's can't review their own business
+                      </div>
                     </button>
                   )}
                   <div>
-
                     <img className="highlights" src={highlights} />
                   </div>
                   <div className="blue-review-box">
@@ -237,16 +240,15 @@ const BusinessDetails = () => {
                     )}
                   </div>
                 )}
-                 <div className="phoneNemailbox">
-                <div className="phoneNumberBox">
-                  {dashedNumber(currBusiness.phone_number)}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   
-                  <img className="phone" src={phone} alt="phone" />
-                </div>
-                <div className="get-email">
-                  <div className="email-info">{currBusiness.email} </div>
-                  <img className="email-image" src={email} alt="email" />
+                <div className="phoneNemailbox">
+                  <div className="phoneNumberBox">
+                    {dashedNumber(currBusiness.phone_number)}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img className="phone" src={phone} alt="phone" />
+                  </div>
+                  <div className="get-email">
+                    <div className="email-info">{currBusiness.email} </div>
+                    <img className="email-image" src={email} alt="email" />
                   </div>
                 </div>
               </div>

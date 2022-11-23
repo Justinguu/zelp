@@ -15,10 +15,10 @@ const getAllImages = (images) => {
     };
 }
 
-const getOneImage = (image) => {
+const getOneImage = (businessId) => {
     return {
         type: GET_ONE_IMAGE,
-        image
+        businessId
     };
 }
 
@@ -39,7 +39,7 @@ const deleteImage = (imageId) => {
 //thunks
 
 export const getAllImagesThunk = () => async (dispatch) => {
-    const response = await fetch('/api/images');
+    const response = await fetch('/api/businesses/');
 
     if (response.ok) {
     const images = await response.json();
@@ -47,17 +47,18 @@ export const getAllImagesThunk = () => async (dispatch) => {
     }
 }
 
-export const getOneImageThunk = (imageId) => async (dispatch) => {
-    const response = await fetch(`/api/images/${imageId}`);
+export const getOneImageThunk = (businessId) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}/images`);
 
     if (response.ok) {
     const image = await response.json();
     dispatch(getOneImage(image));
+    return image;
     }
 }       
 
 export const createImageThunk = (owner_id,business_id,imageUrl,description) => async (dispatch) => {
-    const response = await fetch('/api/images/new', {
+    const response = await fetch(`/api/businesses/${business_id}/images/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -91,8 +92,7 @@ const imageReducer = (state = initialState, action) => {
             return newState;
     }
         case GET_ONE_IMAGE: {
-            const newState = {...state};
-            newState[action.image.id] = action.image;
+            const newState = {...action.businessId.images};
             return newState;
     }
         case CREATE_IMAGE: {

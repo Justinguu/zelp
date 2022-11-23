@@ -113,7 +113,7 @@ def delete_business(id):
 # get all images by businessId      
 @business_routes.route('/<int:businessId>/images', methods=['GET'])
 def get_all_images(businessId):
-    images = Image.query.filter(Image.businessId == businessId).all()
+    images = Image.query.filter_by(business_id = businessId).all()
     if images == None:
         return {'errors': ['Images not found']}, 404
     return {"images": [image.to_dict() for image in images]}
