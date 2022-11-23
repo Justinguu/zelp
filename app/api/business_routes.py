@@ -127,7 +127,7 @@ def add_business_image(businessId):
     if form.validate_on_submit():
         image = Image(
             owner_id = form.data['owner_id'],
-            businessId = form.data['businessId'],
+            business_id = form.data['business_id'],
             imageUrl=form.data['imageUrl'],
             description=form.data['description'],
         )

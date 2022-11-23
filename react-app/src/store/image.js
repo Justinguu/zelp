@@ -63,7 +63,7 @@ export const createImageThunk = (owner_id,business_id,imageUrl,description) => a
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(owner_id,business_id,imageUrl,description)
+        body: JSON.stringify({owner_id,business_id,imageUrl,description})
     });
 
     if (response.ok) {
@@ -97,7 +97,7 @@ const imageReducer = (state = initialState, action) => {
     }
         case CREATE_IMAGE: {
             const newState = {...state};
-            newState[action.image.id] = action.image;
+            newState[action.imageId.id] = action.imageId;
             return newState;
     }
         case DELETE_IMAGE: {
