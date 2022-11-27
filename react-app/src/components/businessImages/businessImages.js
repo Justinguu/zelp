@@ -1,6 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Modal } from "../../context/Modal";
+
+import ImageDelete from "./ImageDelete/imageDelete";
 
 import { getOneImageThunk } from "../../store/image";
 import { getOneBusinessThunk } from "../../store/business";
@@ -9,6 +12,7 @@ import { getAllUsersThunk } from "../../store/AllUsers";
 import brokenBanner from "../icons/brokenBanner.jpeg";
 import cameraIcon from "../icons/cameraIcon.png";
 import deleteIcon from "../icons/delete-icon.png"
+import deleteicon from "../icons/delete-icon.png";
 import "./businessImages.css";
 
 const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
@@ -17,11 +21,15 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
 
   const currBusiness = useSelector((state) => state.business[businessId]);
   const sessionUser = useSelector((state) => state.session.user);
+  
+
+// delete last uploaded image from getAllImagesArr when you click on delete icon
 
 
 
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currImage, setCurrImage] = useState(false);
+  // const [currImage, setCurrImage] = useState(false);
+  const [showImageDelete, setShowImageDelete] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -32,7 +40,9 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
   useEffect(() => {
     dispatch(getOneImageThunk(businessId));
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
-  }, [dispatch, businessId]);
+  }, [dispatch, businessId, showImageDelete]);
+
+ 
 
   return (
     isLoaded && (
@@ -61,6 +71,8 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
                 Add photo
               </button>
             </Link>
+            
+          
           </div>{" "}
           {getAllImagesArr.map((image) => {
             return (
@@ -73,6 +85,22 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
                     e.currentTarget.src = brokenBanner;
                   }}
                 ></img>
+
+                {showImageDelete && (
+              <Modal onClose={() => setShowImageDelete(true)}>
+                <ImageDelete
+                  businessId={businessId}
+                  id={image.id}
+                  setShowImageDelete={setShowImageDelete}
+                />
+              </Modal>
+            )}
+            <button
+            className="edit-review-bttns"pro
+            onClick={() => setShowImageDelete(true)}
+          >
+            <img className="editreviewbttnicon" src={deleteicon}></img>
+            </button>
               </div>
             );
           })}

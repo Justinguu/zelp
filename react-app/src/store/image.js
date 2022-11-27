@@ -72,15 +72,26 @@ export const createImageThunk = (owner_id,business_id,imageUrl,description) => a
     }
 }
 
-export const deleteImageThunk = (imageId) => async (dispatch) => {
-    const response = await fetch(`/api/images/${imageId}`, {
-        method: 'DELETE',
-    });
+// export const deleteImageThunk = (businessId,id) => async (dispatch) => {
+//     const response = await fetch(`/api/businesses/${businessId}/images/${id}/delete`, {
+//         method: 'DELETE',
+//     })
 
+//     if (response.ok) {
+//         dispatch(deleteImage(id))
+        
+//     }
+// }
+//delete image thunk
+export const deleteImageThunk = (businessId,id) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}/images/${id}/delete`, {
+        method: 'DELETE',
+    })
     if (response.ok) {
-        dispatch(deleteImage(imageId));
+        dispatch(deleteImage(id))
     }
 }
+
 
 //reducer
 
@@ -100,10 +111,11 @@ const imageReducer = (state = initialState, action) => {
             newState[action.imageId.id] = action.imageId;
             return newState;
     }
-        case DELETE_IMAGE: {
-            const newState = {...state};
-            delete newState[action.imageId];
-            return newState;
+ 
+    case DELETE_IMAGE: {
+        const newState = {...state};
+        delete newState[action.imageId];
+        return newState;
     }
         default:
             return state;

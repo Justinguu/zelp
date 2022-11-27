@@ -6,6 +6,7 @@ from app.models import db, Business, Review,User,Image
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
 from app.forms.business_image_form import BusinessImageForm
+from app.api.aws_routes import (upload_file_to_s3,allowed_file, get_unique_filename)
 
 
 business_routes = Blueprint('businesses', __name__)
@@ -109,7 +110,7 @@ def delete_business(id):
         "statusCode": 200
     }
 
-
+# ----------------------Images Routes----------------------
 # get all images by businessId      
 @business_routes.route('/<int:businessId>/images', methods=['GET'])
 def get_all_images(businessId):
@@ -138,11 +139,11 @@ def add_business_image(businessId):
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-    # from a businessId delete one image by imageId
-@business_routes.route('/<int:businessId>/images/<int:imageId>/delete', methods=['DELETE'])
+    # from a businessId delete one image by id
+@business_routes.route('/<int:businessId>/images/<int:id>/delete', methods=['DELETE'])
 @login_required
-def delete_business_image(businessId,imageId):
-    image = Image.query.filter(Image.businessId == businessId, Image.id == imageId).first()
+def delete_image(businessId,id):
+    image = Image.query.get(id)
     db.session.delete(image)
     db.session.commit()
     return {
@@ -150,6 +151,38 @@ def delete_business_image(businessId,imageId):
         "statusCode": 200
     }
 
+
+
+# ----------------------aws Routes----------------------
+
+@business_routes.route('/<int:businessId>/images/new', methods=['POST'])
+@login_required
+def upload_image():
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
+
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+    
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
+    # flask_login allows us to get the current user from the request
+    new_image = Image(user=current_user, url=url)
+    db.session.add(new_image)
+    db.session.commit()
+    return {"url": url}
+#------------------------------------Review Routes--------------------------------------------
  # get curr review
 @business_routes.route('/<int:businessId>/reviews', methods=['GET'])
 @login_required

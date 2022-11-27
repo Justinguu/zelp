@@ -39,7 +39,7 @@ const BusinessDetails = () => {
 
   const allImages = useSelector((state) => state.image);
   const getAllImagesArr = Object.values(allImages);
-  console.log(getAllImagesArr);
+
 
   const history = useHistory();
 

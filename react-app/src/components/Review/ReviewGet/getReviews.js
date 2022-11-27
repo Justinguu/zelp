@@ -21,6 +21,7 @@ const GetBusinessReviews = ({ businessId }) => {
   //   const allUsersArr = Object.values(allUsers);
   const [showUpdateReview, setShowUpdateReview] = useState(false);
   const [nowReview, setNowReview] = useState(false);
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [currReview, setCurrReview] = useState(false);
   const allUsers = useSelector((state) => state.allUsers);
