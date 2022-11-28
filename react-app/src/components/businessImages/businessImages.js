@@ -56,7 +56,7 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
           ></img>
         </div>
         <div className="all-images-business-title">
-          <span>
+    
             Photos from {currBusiness.business_name}
             <Link to={`/businesses/${businessId}/images/new`}>
               <button className="add-photo-bttn-modal">
@@ -64,7 +64,7 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
                 Add photos
               </button>
             </Link>
-          </span>
+        
         </div>
         <div className="images-headerr-container">
           <div className="all-images-header-container"></div>{" "}
@@ -79,15 +79,17 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
                     e.currentTarget.src = brokenBanner;
                   }}
                 ></img>
-                  <div className="delete-bttn-imagesss">{image.owner_id === sessionUser?.id && (
-                  <button
-                    className="delete-icon-images"
-                    onClick={() => setShowImageDelete(true)}
-                  >
-                    <img className="deleteimageIcon" src={trashIcon}></img>
-                  </button>
-                )}</div>
-                
+                <div className="delete-bttn-imagesss">
+                  {image.owner_id === sessionUser?.id && (
+                    <button
+                      className="delete-icon-images"
+                      onClick={() => setShowImageDelete(true)}
+                    >
+                      <img className="deleteimageIcon" src={trashIcon}></img>
+                    </button>
+                  )}
+                </div>
+
                 {showImageDelete && (
                   <Modal onClose={() => setShowImageDelete(true)}>
                     <ImageDelete
