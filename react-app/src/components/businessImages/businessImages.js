@@ -57,21 +57,20 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
         </div>
         <div className="all-images-business-title">
           <span>
-          Photos from {currBusiness.business_name}
-        <Link to={`/businesses/${businessId}/images/new`}>
-          <button className="add-photo-bttn-modal">
-            <img className="camera-icon" src={cameraIcon}></img>
-            Add photos
-          </button>
-        </Link>
-
+            Photos from {currBusiness.business_name}
+            <Link to={`/businesses/${businessId}/images/new`}>
+              <button className="add-photo-bttn-modal">
+                <img className="camera-icon" src={cameraIcon}></img>
+                Add photos
+              </button>
+            </Link>
           </span>
         </div>
         <div className="images-headerr-container">
           <div className="all-images-header-container"></div>{" "}
           {getAllImagesArr.map((image) => {
             return (
-              <div>
+              <div className="single-images-container">
                 <img
                   className="img-currSpots-images"
                   src={image.imageUrl}
@@ -80,6 +79,15 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
                     e.currentTarget.src = brokenBanner;
                   }}
                 ></img>
+                  <div className="delete-bttn-imagesss">{image.owner_id === sessionUser?.id && (
+                  <button
+                    className="delete-icon-images"
+                    onClick={() => setShowImageDelete(true)}
+                  >
+                    <img className="deleteimageIcon" src={trashIcon}></img>
+                  </button>
+                )}</div>
+                
                 {showImageDelete && (
                   <Modal onClose={() => setShowImageDelete(true)}>
                     <ImageDelete
@@ -89,13 +97,6 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
                     />
                   </Modal>
                 )}
-                <button
-                  className="delete-icon-images"
-                  onClick={() => setShowImageDelete(true)}
-                >
-                  <img className="deleteimageIcon" src={trashIcon}></img>
-                </button>
-
               </div>
             );
           })}
