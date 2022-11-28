@@ -2,125 +2,148 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, Redirect, useParams } from "react-router-dom";
 
-
 import { createImageThunk } from "../../store/image";
 import { getOneBusinessThunk } from "../../store/business";
 
-import foodPhoto from "../icons/foodPhoto.webp"
+import foodPhoto from "../icons/foodPhoto.webp";
 
-import "./createBizImages.css"
-
+import "./createBizImages.css";
 
 const CreateBizImageForm = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
 
+  const { businessId } = useParams();
+  const currBusiness = useSelector((state) => state.business[businessId]);
 
-    const dispatch = useDispatch();
-    const history = useHistory();
+  const sessionUser = useSelector((state) => state.session.user);
+  const owner_id = sessionUser.id;
 
-    const { businessId } = useParams();
-    const currBusiness = useSelector((state) => state.business[businessId])
-    
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+  const [description, setDescription] = useState("");
 
-    const sessionUser = useSelector((state) => state.session.user);
-    const owner_id = sessionUser.id;
+  const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [imageUrl, setImageUrl] = useState("");
-    const [description, setDescription] = useState('');
+  useEffect(() => {
+    dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
+  }, [dispatch, businessId]);
 
+  useEffect(() => {
+    const errors = [];
 
-    const [errors, setErrors] = useState([])
-    const [hasSubmitted, setHasSubmitted] = useState(false)
+    if (!imageUrl) errors.push("Please provide a image");
+    if (description.length > 100)
+      errors.push("Description cannot be over 300 characters long");
 
+    setErrors(errors);
+  }, [imageUrl, description]);
 
-    useEffect(() => {
-        dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true))
-    }, [dispatch, businessId])
+  if (sessionUser === null) {
+    alert("You must be logged in to make add a photo");
+    return <Redirect to="/" />;
+  }
 
-    useEffect(() => {
-        const errors = [];
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-        if (!imageUrl) errors.push("Please provide a image");
-        if (description.length > 100) errors.push("Description cannot be over 300 characters long");
+    setHasSubmitted(true);
 
-        setErrors(errors);
-    }, [imageUrl, description]);
-
-
-    if (sessionUser === null) {
-        alert("You must be logged in to make add a photo");
-        return <Redirect to="/" />;
+    if (errors.length > 0) {
+      return alert(
+        "There was an error with your submission, Please recheck your inputs"
+      );
     }
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (errors.length <= 0) {
+    //       const formData = new FormData()
+    //       formData.append("channel_id", channel_id);
+    //       formData.append("title", title);
+    //       formData.append("description", description);
+    //       formData.append("video_url", video_url);
+    //       formData.append("video_views", video_Views);
+    
+    //       return dispatch(
+    //         newVideoThunk(formData)
+    //       )
 
-        setHasSubmitted(true)
+    // const formData = new FormData()
+    // formData
 
-        if (errors.length > 0) {
-            return alert("There was an error with your submission, Please recheck your inputs");
-        }
+    const createdImage = dispatch(
+      createImageThunk(owner_id, businessId, imageUrl, description)
+    );
 
-        const createdImage = dispatch(createImageThunk(owner_id, businessId, imageUrl, description));
+    if (createdImage) {
+      history.push(`/businesses/${businessId}`);
+    }
+  };
 
-        if (createdImage) {
-            history.push(`/businesses/${businessId}`);
-        }
-    };
+  const errorList = errors.map((error) => (
+    <p className="create-review-single-error" key={error}>
+      {error}
+    </p>
+  ));
 
-    const errorList = errors.map((error) => (
-        <p className='create-review-single-error' key={error}>{error}</p>
-    ))
+  const imageSet = (e) => {
+    const file = e.target.files[0]
+    console.log(file)
+    setImageUrl(file)
+  }
 
-
-    return (
-        isLoaded && (
-            <div className="create-image-container">
-                <div className="create-image-wrapper">
-                    <div className="create-image-header">
-                        <NavLink to={`/businesses/${businessId}`}>
-                            <div className="create-image-business-title">{currBusiness.name}</div>
-                        </NavLink>
-                        <div className="title-add-photo">Add Photos To Your Business</div>
-                    </div>
-                    <div className="create-review-errors">
-                        {hasSubmitted && errorList}
-                    </div>
-                    <div className="create-image-form-container">
-                        <img className="photo-frame" src={foodPhoto}></img>
-                        <form className="create-image-form" onSubmit={onSubmit}>
-                            <div className="">
-                                <input
+  return (
+    isLoaded && (
+      <div className="create-image-container">
+        <div className="create-image-wrapper">
+          <div className="create-image-header">
+            <NavLink to={`/businesses/${businessId}`}>
+              <div className="create-image-business-title">
+                {currBusiness.name}
+              </div>
+            </NavLink>
+            <div className="title-add-photo">Add Photos To Your Business</div>
+          </div>
+          <div className="create-review-errors">
+            {hasSubmitted && errorList}
+          </div>
+          <div className="create-image-form-container">
+            <img className="photo-frame" src={foodPhoto}></img>
+            <form className="create-image-form" onSubmit={onSubmit}>
+              <div className="">
+                {/* <input
                                     className="imageUrl-field"
                                     type="text"
                                     placeholder="Image Url"
                                     value={imageUrl}
                                     onChange={(e) => setImageUrl(e.target.value)}
-                                />
-                                <textarea
-                                    className="descriptionCreateImage"
-                                    type="text"
-                                    placeholder="Description"
-                                    value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                />
-                            </div>
-                            <div className="create-review-submit-container">
-                                <button
-                                    className="submitCreateComment"
-                                    type="submit"
-                                    disabled={hasSubmitted && errors.length > 0}
-                                >
-                                    Submit Image
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        )
+                                /> */}
+                <input type="file" accept="image/*" onChange={imageSet} />
+                <textarea
+                  className="descriptionCreateImage"
+                  type="text"
+                  placeholder="Description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+              <div className="create-review-submit-container">
+                <button
+                  className="submitCreateComment"
+                  type="submit"
+                  disabled={hasSubmitted && errors.length > 0}
+                >
+                  Submit Image
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     )
-}
+  );
+};
 
-
-export default CreateBizImageForm
+export default CreateBizImageForm;

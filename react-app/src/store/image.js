@@ -111,7 +111,6 @@ const imageReducer = (state = initialState, action) => {
             newState[action.imageId.id] = action.imageId;
             return newState;
     }
- 
     case DELETE_IMAGE: {
         const newState = {...state};
         delete newState[action.imageId];

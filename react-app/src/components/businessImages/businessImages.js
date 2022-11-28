@@ -11,8 +11,8 @@ import { getAllUsersThunk } from "../../store/AllUsers";
 
 import brokenBanner from "../icons/brokenBanner.jpeg";
 import cameraIcon from "../icons/cameraIcon.png";
-import deleteIcon from "../icons/delete-icon.png"
-import deleteicon from "../icons/delete-icon.png";
+import deleteIcon from "../icons/delete-icon.png";
+import trashIcon from "../icons/trashIcon.png";
 import "./businessImages.css";
 
 const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
@@ -21,11 +21,8 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
 
   const currBusiness = useSelector((state) => state.business[businessId]);
   const sessionUser = useSelector((state) => state.session.user);
-  
 
-// delete last uploaded image from getAllImagesArr when you click on delete icon
-
-
+  // delete last uploaded image from getAllImagesArr when you click on delete icon
 
   const [isLoaded, setIsLoaded] = useState(false);
   // const [currImage, setCurrImage] = useState(false);
@@ -42,8 +39,6 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId, showImageDelete]);
 
- 
-
   return (
     isLoaded && (
       <div className="all-images-modal-container">
@@ -52,7 +47,7 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
             className="close-all-images-modal"
             onClick={() => setShowAllBusinessImages(false)}
           >
-            Close
+            Close &nbsp;
           </button>
           <img
             className="close-icon"
@@ -60,47 +55,47 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
             onClick={() => setShowAllBusinessImages(false)}
           ></img>
         </div>
-        <div className="images-header-container">
-          <div className="all-images-header-container">
-            <div className="all-images-business-title">
-              Photos from {currBusiness.business_name}
-            </div>
-            <Link to={`/businesses/${businessId}/images/new`}>
-              <button className="add-photo-bttn-modal">
-                <img className="camera-icon" src={cameraIcon}></img>
-                Add photo
-              </button>
-            </Link>
-            
-          
-          </div>{" "}
+        <div className="all-images-business-title">
+          <span>
+          Photos from {currBusiness.business_name}
+        <Link to={`/businesses/${businessId}/images/new`}>
+          <button className="add-photo-bttn-modal">
+            <img className="camera-icon" src={cameraIcon}></img>
+            Add photos
+          </button>
+        </Link>
+
+          </span>
+        </div>
+        <div className="images-headerr-container">
+          <div className="all-images-header-container"></div>{" "}
           {getAllImagesArr.map((image) => {
             return (
               <div>
                 <img
-                  className="img-currSpots"
+                  className="img-currSpots-images"
                   src={image.imageUrl}
                   alt={brokenBanner}
                   onError={(e) => {
                     e.currentTarget.src = brokenBanner;
                   }}
                 ></img>
-
                 {showImageDelete && (
-              <Modal onClose={() => setShowImageDelete(true)}>
-                <ImageDelete
-                  businessId={businessId}
-                  id={image.id}
-                  setShowImageDelete={setShowImageDelete}
-                />
-              </Modal>
-            )}
-            <button
-            className="edit-review-bttns"pro
-            onClick={() => setShowImageDelete(true)}
-          >
-            <img className="editreviewbttnicon" src={deleteicon}></img>
-            </button>
+                  <Modal onClose={() => setShowImageDelete(true)}>
+                    <ImageDelete
+                      businessId={businessId}
+                      id={image.id}
+                      setShowImageDelete={setShowImageDelete}
+                    />
+                  </Modal>
+                )}
+                <button
+                  className="delete-icon-images"
+                  onClick={() => setShowImageDelete(true)}
+                >
+                  <img className="deleteimageIcon" src={trashIcon}></img>
+                </button>
+
               </div>
             );
           })}

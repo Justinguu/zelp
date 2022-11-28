@@ -1,7 +1,10 @@
 .all-images-modal-container {
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 2.0rem;
+    height: 33rem;
+    width: 60rem;
+    background-color: white;
 }
 
 .close-all-images-modal-container {
@@ -35,17 +38,29 @@
     cursor: pointer;
 }
 
+.images-headerr-container{
+display: flex;
+margin-left: 7rem;
+width: 100%;
+height: 30rem;
+
+
+}  
+
 .all-images-header-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    height: auto;
 }
 
 .all-images-business-title {
     font-size: 26px;
     font-weight: bold;
+    /* margin-top: -1.0rem; */
+    margin-left: 8rem;
 }
 
 .add-photo-bttn-modal {
@@ -60,12 +75,26 @@
     border: 2px solid lightgray;
     font-size: 1rem;
     font-weight: bold;
-    margin-right:5.5rem;
+    margin-left:40.0rem;
+    margin-bottom: 1rem;
 }
 
+.img-currSpots-images{
+    display:flex;
+
+    object-fit: cover;
+    width: 220px;
+    height:220px;
+    border-radius: 5px;
+    margin-top:15px;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    /* box-shadow: 0px 0px 6px rgb(195 195 195); */
+
+}
 .add-photo-bttn-modal:hover {
     cursor: pointer;
-    background-color: lightgray;
+    /* background-color: lightgray; */
 }
 
 .all-business-images-container {
@@ -85,4 +114,18 @@
     margin-top: 25px;
     margin-right: 25px;
     box-shadow: 0px 0px 6px rgb(195, 195, 195);
+    z-index:2;
+}
+
+.deleteimageIcon{
+    height: 12px;
+    width: 12px;
+  
+}
+
+.delete-icon-images{
+    background-color: orange;
+    margin-bottom: 2rem;
+    z-index: 3
+    
 }
