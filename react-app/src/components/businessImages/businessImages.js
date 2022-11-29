@@ -25,7 +25,7 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
   // delete last uploaded image from getAllImagesArr when you click on delete icon
 
   const [isLoaded, setIsLoaded] = useState(false);
-  // const [currImage, setCurrImage] = useState(false);
+  const [thisImage, setThisImage] = useState(false);
   const [showImageDelete, setShowImageDelete] = useState(false);
 
   const dispatch = useDispatch();
@@ -56,8 +56,8 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
           ></img>
         </div>
         <div className="all-images-business-title">
-    
-            Photos from {currBusiness.business_name}
+           
+            <div className="business-titlee"> Photos from {currBusiness.business_name}</div>
             <Link to={`/businesses/${businessId}/images/new`}>
               <button className="add-photo-bttn-modal">
                 <img className="camera-icon" src={cameraIcon}></img>
