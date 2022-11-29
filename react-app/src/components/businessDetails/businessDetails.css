@@ -72,6 +72,38 @@ img.img-currSpots {
   font-size: 17px;
   padding-top: 5px;
 }
+.description-container{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
+  padding-bottom: 40px;
+  margin-bottom: 2rem;
+}
+.description-title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.user-pic-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.reviewUserPic {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+}
+
+.business-details-description{
+  margin-left: .2rem;
+  width: 40rem;
+  word-wrap: break-word;
+}
+
 
 .business-details-bottom-container {
   display: flex;

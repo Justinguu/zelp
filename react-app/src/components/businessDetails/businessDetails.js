@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getOneBusinessThunk, getAllReviewsArr } from "../../store/business";
 import { getCurrReviewThunk, createReviewThunk } from "../../store/review";
+import { getAllUsersThunk } from "../../store/AllUsers";
 import { getOneImageThunk } from "../../store/image";
 import { Modal } from "../../context/Modal";
 import GetBusinessReviews from "../Review/ReviewGet/getReviews";
@@ -31,7 +32,9 @@ const BusinessDetails = () => {
 
   const { businessId } = useParams();
 
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.allUsers);
+  const allUsersArr = Object.values(user);
+
   const currBusiness = useSelector((state) => state.business[businessId]);
 
   const allReviews = useSelector((state) => state.review);
@@ -39,7 +42,6 @@ const BusinessDetails = () => {
 
   const allImages = useSelector((state) => state.image);
   const getAllImagesArr = Object.values(allImages);
-
 
   const history = useHistory();
 
@@ -50,6 +52,10 @@ const BusinessDetails = () => {
     dispatch(getOneImageThunk(businessId));
     dispatch(getOneBusinessThunk(businessId)).then(() => setIsLoaded(true));
   }, [dispatch, businessId]);
+
+  useEffect(() => {
+    dispatch(getAllUsersThunk());
+  }, [dispatch]);
 
   if (currBusiness === undefined) {
     return <div>Business not found</div>; // if currBusiness is undefined, return this
@@ -69,11 +75,7 @@ const BusinessDetails = () => {
     const dashPlaces = [3, 6];
     return numWithoutDashes
       .split("")
-      .reduce(
-        (acc, curr, i) =>
-          dashPlaces.includes(i) ? [...acc, "-", curr] : [...acc, curr],
-        []
-      )
+      .reduce((acc, curr, i) => (dashPlaces.includes(i) ? [...acc, "-", curr] : [...acc, curr]), [])
       .join("");
   }
 
@@ -81,21 +83,11 @@ const BusinessDetails = () => {
     let forRatings = [];
 
     for (let num = 0; num < int; num++) {
-      forRatings.push(
-        <div
-          class="fa-regular fa-star"
-          style={{ color: "orange", margin: "0 5px" }}
-        ></div>
-      );
+      forRatings.push(<div class="fa-regular fa-star" style={{ color: "orange", margin: "0 5px" }}></div>);
     }
 
     for (let num = 0; num < 5 - int; num++) {
-      forRatings.push(
-        <div
-          class="fa-regular fa-star"
-          style={{ color: "lightgrey", margin: "0 .2rem" }}
-        ></div>
-      );
+      forRatings.push(<div class="fa-regular fa-star" style={{ color: "lightgrey", margin: "0 .2rem" }}></div>);
     }
 
     return forRatings.map((ratings) => {
@@ -157,22 +149,16 @@ const BusinessDetails = () => {
 
             <div className="details-price">
               {" "}
-              {currBusiness.address} {currBusiness.city}, {currBusiness.state},
-              {currBusiness.country} {currBusiness.zip_code}
+              {currBusiness.address} {currBusiness.city}, {currBusiness.state},{currBusiness.country}{" "}
+              {currBusiness.zip_code}
             </div>
             <div>
-              <button
-                className="all-photos-bttn"
-                onClick={() => setShowAllBusinessImages(true)}
-              >
+              <button className="all-photos-bttn" onClick={() => setShowAllBusinessImages(true)}>
                 See All Photos
               </button>
               {showAllBusinessImages && (
                 <Modal onClose={() => setShowAllBusinessImages(false)}>
-                  <BusinessImages
-                    businessId={businessId}
-                    setShowAllBusinessImages={setShowAllBusinessImages}
-                  />
+                  <BusinessImages businessId={businessId} setShowAllBusinessImages={setShowAllBusinessImages} />
                 </Modal>
               )}
             </div>
@@ -182,30 +168,66 @@ const BusinessDetails = () => {
               <div className="business-details-left">
                 <div>
                   {user.id !== currBusiness.owner_id ? (
-                    <button
-                      className="create-review-button"
-                      onClick={() => setShowReview(true)}
-                    >
+                    <button className="create-review-button" onClick={() => setShowReview(true)}>
                       <img className="star" src={star} alt="star" />
                       &nbsp; Write A Review
                     </button>
                   ) : (
                     <button className="create-review-button" disabled={disable}>
                       {/* <img className="star" src={star} alt="star" /> */}
-                      <div className="cantreview">
-                        {" "}
-                        &nbsp; Owner's can't review their own business
-                      </div>
+                      <div className="cantreview"> &nbsp; Owner's can't review their own business</div>
                     </button>
                   )}
                   <div>
                     <img className="highlights" src={highlights} />
                   </div>
+                  <div className="description-container">
+                    <div className="description-title">About Business</div>
+                    <div className="user-name">
+                      {allUsersArr &&
+                        allUsersArr.map((user) => {
+                          return (
+                            <>
+                              {" "}
+                              {currBusiness.owner_id === user.id ? (
+                                <div className="user-pic-name">
+                                  <img
+                                    className="reviewUserPic"
+                                    src={user.profileImage}
+                                    alt={brokenBanner}
+                                    onError={(e) => {
+                                      e.currentTarget.src = brokenBanner;
+                                    }}
+                                  ></img>
+                                  <div>
+                                    <div
+                                      className="business-details-owner-name"
+                                      style={{
+                                        fontWeight: "bold",
+                                        fontSize: "20px",
+                                      }}
+                                    >
+                                      {currBusiness.owner_id === user.id ? user.firstName : ""}
+                                      &nbsp;
+                                      {currBusiness.owner_id === user.id ? user.lastName : ""}
+                                    </div>
+                                    <div style={{ color: "gray" }}>Business Owner</div>
+                                  </div>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </>
+                          );
+                        })}
+                    </div>
+                    <div>
+                    <div className="business-details-description">{currBusiness.description}</div>
+                    </div>
+                  </div>
                   <div className="blue-review-box">
-                    <div className="blue-box-bold-text">
-                      Your trust is our top concern,
-                    </div>{" "}
-                    so everyones review reflect the integrity of the business .
+                    <div className="blue-box-bold-text">Your trust is our top concern,</div> so everyones review reflect
+                    the integrity of the business .
                   </div>
                   {showReview && (
                     <Modal onClose={() => setShowReview(false)}>
@@ -215,42 +237,27 @@ const BusinessDetails = () => {
                 </div>
 
                 <div>
-                  <GetBusinessReviews
-                    businessId={businessId}
-                    sessionUser={user}
-                  />
+                  <GetBusinessReviews businessId={businessId} sessionUser={user} />
                 </div>
               </div>
               <div className="business-details-right">
                 {currBusiness.owner_id === user.id && (
                   <div className="details-container">
-                    <button
-                      className="Editbiz-button"
-                      onClick={() => setShowUpdate(true)}
-                    >
+                    <button className="Editbiz-button" onClick={() => setShowUpdate(true)}>
                       Edit Business
                     </button>
-                    <button
-                      className="Deletebiz-button"
-                      onClick={() => setShowDelete(true)}
-                    >
+                    <button className="Deletebiz-button" onClick={() => setShowDelete(true)}>
                       Delete Busineess
                     </button>
                     {showUpdate && (
                       <Modal onClose={() => setShowUpdate(false)}>
-                        <EditBusinessForm
-                          businessId={businessId}
-                          setShowUpdate={setShowUpdate}
-                        />
+                        <EditBusinessForm businessId={businessId} setShowUpdate={setShowUpdate} />
                       </Modal>
                     )}
 
                     {showDelete && (
                       <Modal onClose={() => setShowDelete(false)}>
-                        <BusinessDelete
-                          businessId={businessId}
-                          setShowDelete={setShowDelete}
-                        />
+                        <BusinessDelete businessId={businessId} setShowDelete={setShowDelete} />
                       </Modal>
                     )}
                   </div>
