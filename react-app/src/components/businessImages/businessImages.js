@@ -82,13 +82,16 @@ const BusinessImages = ({ businessId, setShowAllBusinessImages }) => {
                 <div className="delete-bttn-imagesss">
                   {image.owner_id === sessionUser?.id && (
                     <button
-                      className="delete-icon-images"
-                      onClick={() => setShowImageDelete(true)}
+                    className="delete-icon-images"
+                    onClick={() => setShowImageDelete(true)}
                     >
                       <img className="deleteimageIcon" src={trashIcon}></img>
                     </button>
                   )}
                 </div>
+                
+                
+                {/* <div className="image-descriptions">{image.description}</div> */}
 
                 {showImageDelete && (
                   <Modal onClose={() => setShowImageDelete(true)}>

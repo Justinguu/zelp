@@ -34,8 +34,7 @@ const CreateBizImageForm = () => {
     const errors = [];
 
     if (!imageUrl) errors.push("Please provide a image");
-    if (description.length > 100)
-      errors.push("Description cannot be over 300 characters long");
+    if (description.length > 100) errors.push("Description cannot be over 300 characters long");
 
     setErrors(errors);
   }, [imageUrl, description]);
@@ -51,9 +50,7 @@ const CreateBizImageForm = () => {
     setHasSubmitted(true);
 
     if (errors.length > 0) {
-      return alert(
-        "There was an error with your submission, Please recheck your inputs"
-      );
+      return alert("There was an error with your submission, Please recheck your inputs");
     }
 
     // const handleSubmit = (e) => {
@@ -65,7 +62,7 @@ const CreateBizImageForm = () => {
     //       formData.append("description", description);
     //       formData.append("video_url", video_url);
     //       formData.append("video_views", video_Views);
-    
+
     //       return dispatch(
     //         newVideoThunk(formData)
     //       )
@@ -73,9 +70,7 @@ const CreateBizImageForm = () => {
     // const formData = new FormData()
     // formData
 
-    const createdImage = dispatch(
-      createImageThunk(owner_id, businessId, imageUrl, description)
-    );
+    const createdImage = dispatch(createImageThunk(owner_id, businessId, imageUrl, description));
 
     if (createdImage) {
       history.push(`/businesses/${businessId}`);
@@ -89,10 +84,10 @@ const CreateBizImageForm = () => {
   ));
 
   const imageSet = (e) => {
-    const file = e.target.files[0]
-    console.log(file)
-    setImageUrl(file)
-  }
+    const file = e.target.files[0];
+    console.log(file);
+    setImageUrl(file);
+  };
 
   return (
     isLoaded && (
@@ -100,27 +95,23 @@ const CreateBizImageForm = () => {
         <div className="create-image-wrapper">
           <div className="create-image-header">
             <NavLink to={`/businesses/${businessId}`}>
-              <div className="create-image-business-title">
-                {currBusiness.name}
-              </div>
+              <div className="create-image-business-title">{currBusiness.name}</div>
             </NavLink>
             <div className="title-add-photo">Add Photos To Your Business</div>
           </div>
-          <div className="create-review-errors">
-            {hasSubmitted && errorList}
-          </div>
+          <div className="create-review-errors">{hasSubmitted && errorList}</div>
           <div className="create-image-form-container">
             <img className="photo-frame" src={foodPhoto}></img>
             <form className="create-image-form" onSubmit={onSubmit}>
               <div className="">
-                {/* <input
-                                    className="imageUrl-field"
-                                    type="text"
-                                    placeholder="Image Url"
-                                    value={imageUrl}
-                                    onChange={(e) => setImageUrl(e.target.value)}
-                                /> */}
-                <input type="file" accept="image/*" onChange={imageSet} />
+                <input
+                  className="imageUrl-field"
+                  type="text"
+                  placeholder="Image Url"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                />
+                {/* <input type="file" accept="image/*" onChange={imageSet} /> */}
                 <textarea
                   className="descriptionCreateImage"
                   type="text"
@@ -130,11 +121,7 @@ const CreateBizImageForm = () => {
                 />
               </div>
               <div className="create-review-submit-container">
-                <button
-                  className="submitCreateComment"
-                  type="submit"
-                  disabled={hasSubmitted && errors.length > 0}
-                >
+                <button className="submitCreateComment" type="submit" disabled={hasSubmitted && errors.length > 0}>
                   Submit Image
                 </button>
               </div>
