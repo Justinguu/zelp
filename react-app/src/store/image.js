@@ -57,13 +57,27 @@ export const getOneImageThunk = (businessId) => async (dispatch) => {
     }
 }       
 
-export const createImageThunk = (owner_id,business_id,imageUrl,description) => async (dispatch) => {
-    const response = await fetch(`/api/businesses/${business_id}/images/new`, {
+// export const createImageThunk = (owner_id,business_id,imageUrl,description) => async (dispatch) => {
+//     const response = await fetch(`/api/businesses/${business_id}/images/new`, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({owner_id,business_id,imageUrl,description})
+//     });
+
+//     if (response.ok) {
+//         const image = await response.json();
+//         dispatch(createImage(image));
+//     }
+// }
+export const createImageThunk = (formData) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/images/new`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({owner_id,business_id,imageUrl,description})
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        body:formData
     });
 
     if (response.ok) {

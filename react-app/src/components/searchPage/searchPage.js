@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import brokenImage from "../icons/brokenImage.png";
 import commentbox from "../icons/commentbox.png"
+import "./searchPage.css"
 
 export default function SearchPage() {
   const history = useHistory();
@@ -33,12 +34,12 @@ export default function SearchPage() {
   return (
     <>
       {filteredBusinesses != null ? (
-        <div>
+        <div className="searchPageMainContainer">
           {filteredBusinesses &&
             filteredBusinesses.map((business) => {
               return (
                 <>
-                <div className="singleBusinessContainer">
+                <div className="singleSearchBusinessContainer">
                   <div className="main-left-side-container">
                     {" "}
                     <NavLink to={`/businesses/${business.id}`}>

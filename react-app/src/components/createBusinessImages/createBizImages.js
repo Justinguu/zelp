@@ -49,33 +49,35 @@ const CreateBizImageForm = () => {
 
     setHasSubmitted(true);
 
-    if (errors.length > 0) {
-      return alert("There was an error with your submission, Please recheck your inputs");
-    }
+    if (errors.length <= 0) {
+      // return alert("There was an error with your submission, Please recheck your inputs");
+   
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
     //     if (errors.length <= 0) {
-    //       const formData = new FormData()
-    //       formData.append("channel_id", channel_id);
-    //       formData.append("title", title);
-    //       formData.append("description", description);
-    //       formData.append("video_url", video_url);
-    //       formData.append("video_views", video_Views);
+          const formData = new FormData()
+          formData.append("owner_id", owner_id);
+          formData.append("businessId", businessId);
+          formData.append("imageUrl", imageUrl);
+          formData.append("description", description);
+          // formData.append("video_views", video_Views);
 
     //       return dispatch(
     //         newVideoThunk(formData)
     //       )
 
-    // const formData = new FormData()
-    // formData
+// console.log("imageUrl", imageUrl)
 
-    const createdImage = dispatch(createImageThunk(owner_id, businessId, imageUrl, description));
-
-    if (createdImage) {
-      history.push(`/businesses/${businessId}`);
-    }
-  };
+    // const createdImage = dispatch(createImageThunk(owner_id, businessId, imageUrl, description));
+   return dispatch(createImageThunk(formData)).then(() => history.push(`/businesses/${businessId}`))
+  }
+  return errors
+ }
+  //   if (createdImage) {
+  //     history.push(`/businesses/${businessId}`);
+  //   }
+  // };
 
   const errorList = errors.map((error) => (
     <p className="create-review-single-error" key={error}>
@@ -85,7 +87,7 @@ const CreateBizImageForm = () => {
 
   const imageSet = (e) => {
     const file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     setImageUrl(file);
   };
 
@@ -104,14 +106,14 @@ const CreateBizImageForm = () => {
             <img className="photo-frame" src={foodPhoto}></img>
             <form className="create-image-form" onSubmit={onSubmit}>
               <div className="">
-                <input
+                {/* <input
                   className="imageUrl-field"
                   type="text"
                   placeholder="Image Url"
                   value={imageUrl}
                   onChange={(e) => setImageUrl(e.target.value)}
-                />
-                {/* <input type="file" accept="image/*" onChange={imageSet} /> */}
+                /> */}
+                <input type="file" accept="image/*" onChange={imageSet} />
                 <textarea
                   className="descriptionCreateImage"
                   type="text"

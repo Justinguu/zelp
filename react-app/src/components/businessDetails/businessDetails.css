@@ -14,22 +14,21 @@ div.whole-page-container {
 
 .all-photos-bttn {
   display: flex;
-    border: 2px solid white;
-    border-radius: 5px;
-    padding: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    background: rgba(0, 0, 0, .2);
-    text-decoration: none;
-    color: white;
-    margin-left: 73rem;
-    margin-top: -1.5rem;
-
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: white;
+  margin-left: 87rem;
+  margin-top: -1.5rem;
 }
 
 .all-photos-bttn:hover {
   cursor: pointer;
-  background: rgb(255, 255, 255, .2);
+  background: rgb(255, 255, 255, 0.2);
 }
 
 img.img-currSpots {
@@ -72,7 +71,7 @@ img.img-currSpots {
   font-size: 17px;
   padding-top: 5px;
 }
-.description-container{
+.description-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -81,10 +80,10 @@ img.img-currSpots {
   padding-bottom: 40px;
   margin-bottom: 2rem;
 }
-.description-title{
-    font-size: 24px;
-    font-weight: bold;
-    /* margin-bottom: 15px; */
+.description-title {
+  font-size: 24px;
+  font-weight: bold;
+  /* margin-bottom: 15px; */
 }
 .user-pic-name {
   display: flex;
@@ -98,12 +97,11 @@ img.img-currSpots {
   border-radius: 30px;
 }
 
-.business-details-description{
-  margin-left: .2rem;
+.business-details-description {
+  margin-left: 0.2rem;
   width: 40rem;
   word-wrap: break-word;
 }
-
 
 .business-details-bottom-container {
   display: flex;

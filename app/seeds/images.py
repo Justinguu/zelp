@@ -16,8 +16,14 @@ def seed_images():
     image_13 = Image(owner_id=6, business_id=6, imageUrl="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80", description="Family meals are the best meals")
     image_14 = Image(owner_id=6, business_id=6, imageUrl="https://images.unsplash.com/photo-1506280754576-f6fa8a873550?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", description="Family meals are the best meals")
     image_15 = Image(owner_id=7, business_id=7, imageUrl="https://images.unsplash.com/photo-1611765083444-a3ce30f1c885?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80", description="Family meals are the best meals")
-    image_16 = Image(owner_id=7, business_id=7, imageUrl="https://images.unsplash.com/photo-1562457346-c1d10d9dee52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1656&q=80", description="Family meals are the best meals")
-    images = [image_1, image_2, image_3, image_4,image_5,image_6,image_7,image_8,image_9,image_10,image_11,image_12,image_13,image_14,image_15,image_16]
+    image_16 = Image(owner_id=7, business_id=7, imageUrl="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80", description="Family meals are the best meals")
+    image_17 = Image(owner_id=7, business_id=7, imageUrl="https://images.unsplash.com/photo-1571162242324-f1607b1eceaa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", description="Family meals are the best meals")
+    image_18 = Image(owner_id=8, business_id=8, imageUrl="https://images.unsplash.com/photo-1576506295286-5cda18df43e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80", description="Family meals are the best meals")
+    image_19 = Image(owner_id=8, business_id=8, imageUrl="https://images.unsplash.com/photo-1629385744299-74b9cf013f52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", description="Family meals are the best meals")
+    image_20 = Image(owner_id=8, business_id=8, imageUrl="https://images.unsplash.com/photo-1625758600922-4085dd859395?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", description="Family meals are the best meals")
+
+
+    images = [image_1, image_2, image_3, image_4,image_5,image_6,image_7,image_8,image_9,image_10,image_11,image_12,image_13,image_14,image_15,image_16,image_17,image_18,image_19,image_20]
     for image in images:
         db.session.add(image)
         db.session.commit()
