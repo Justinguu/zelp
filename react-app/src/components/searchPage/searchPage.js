@@ -44,7 +44,7 @@ export default function SearchPage() {
                     {" "}
                     <NavLink to={`/businesses/${business.id}`}>
                       <img
-                        className="single-image"
+                        className="single-image-search"
                         src={business.preview_image}
                         alt={brokenImage}
                         onError={(e) => {
