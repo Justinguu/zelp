@@ -22,6 +22,11 @@ export const SearchBar = () => {
       });
       setSearchTerm("")
     }
+   else {
+    return alert(
+      "No businesses were found "
+    );
+   }
   };
 
   return (

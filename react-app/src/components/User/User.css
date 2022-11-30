@@ -47,6 +47,7 @@
   margin-bottom: -.5rem;
   height:auto;
   width:12rem;
+  border-radius: 0.3rem;
 }
 .business-bottom-container{
   display:flex;
