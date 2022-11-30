@@ -98,14 +98,6 @@ function User() {
 
   // number of reviews per business
   const numOfReviews = thebusinessReviews.length;
-  // let reviewList = [];
-  // if (user.reviews) {
-  //   reviewList = user.reviews.map((review) => (
-  //     <div key={review.id}>
-  //       <a href={`/businesses/${review.businessId}`}>{review.review}</a>
-  //     </div>
-  //   ));
-  // }
 
   return (
     <div className="user-container">

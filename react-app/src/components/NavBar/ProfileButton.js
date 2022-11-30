@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import logoutLogo from "../icons/logoutLogo.png";
-import defaultPhoto from "../icons/defaultProfile.svg";
+import defaultPhoto from "../icons/default-profile-image.png";
 import brokenImage from "../icons/brokenImage.png";
 import "./ProfileButton.css";
 
 export default function ProfileButton() {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const sessionUser = useSelector((state) => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -64,18 +65,18 @@ export default function ProfileButton() {
                 <div className="profile-page-reroute">
                   <NavLink to={`/users/${sessionUser.id}`}> {sessionUser.username}! </NavLink>
                 </div>
-              </div>
-
+              </div> 
+                <NavLink to={`/users/${sessionUser.id}`}>
+              <div className="about-me-bttn">
+                <img className="about-me-photo" src={defaultPhoto}></img>
+                <div className="profile-text"> About Me </div>
+              </div></NavLink>
+              
               <div className="hover-link logout-li" onClick={logout}>
                 <div className="logout-container">
                   <img className="logout-logo-pic" src={logoutLogo}></img>
                   <div className="logout-text"> Log Out &nbsp; &nbsp;</div>
                 </div>
-              </div>
-
-              <div>
-                <img className="logout-logo-pic" src={defaultPhoto}></img>
-                <div className="logout-text"> About Me </div>
               </div>
             </div>
           )}
