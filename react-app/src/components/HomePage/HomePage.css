@@ -183,3 +183,42 @@
   
 /* ----------------------------if not user ------------------------------------ */
 
+.nlg-business-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.oneBusinessContainer{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1.5rem;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.-nlg-hp-slideShowPic{
+  height: 50rem;
+  max-height: 500px;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.create-business-quote{
+  z-index: 3;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 1rem;
+  font-weight: bold;
+  color: orange;
+  height: 3rem;
+  background-color: 	#fffdd0
+
+}

@@ -13,6 +13,7 @@ import commentbox from "../icons/commentbox.png";
 import githubIcon from "../icons/githubIcon.png";
 import linkedIn from "../icons/linkedIn.png";
 import brokenImage from "../icons/brokenImage.png";
+import phone from "../icons/phone.png";
 import "./HomePage.css";
 
 const GetAllTheBusinesses = () => {
@@ -57,148 +58,152 @@ const GetAllTheBusinesses = () => {
     dispatch(getAllUsersThunk());
   }, [dispatch, allUsersArray]);
 
-  // allbusinessesArray = allbusinessesArr.sort((a,b) => b.id - a.id)
-  // allUsersArray = Object.values(allusers)
-if(!user){
+    // display most recently created 
+  if (!sessionUser) {
     return (
-        <div className="homepage-container">
-      <img className="hp-slideShowPic" alt="slideShow" src={pictures} />
-      <div className="best-resturants-text"></div>
-      <div className="business-container">
-        <div className="about-details">Welcome Food Lovers! Quickly Scope Out Where to Eat </div>
-        <div className="hp-header"> Zelp To A Resturant</div>
-        <div className="business-wrapper">
-          {allbusinessesArr.map((business) => {
-            return (
-              <>
-                <div className="singleBusinessContainer" key={business.id}>
-                  <div className="main-left-side-container">
-                    <NavLink to={`/businesses/${business.id}`}>
-                      <img
-                        className="single-image"
-                        src={business.preview_image}
-                        alt={brokenImage}
-                        onError={(e) => {
-                          e.currentTarget.src = brokenImage;
-                        }}
-                      ></img>
-                    </NavLink>
-                  </div>
-                  <div className="main-right-side-container">
-                    <NavLink to={`/businesses/${business.id}`}>
-                      <div className="business-name-caption">{business.business_name}</div>
-                    </NavLink>
-                    <div className="business-captions">
-                      {" "}
-                      {business.city}, {business.state}
-                    </div>
-                    <div className="detailsAndComment">
-                      <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img>
-                      <div className="business-descriptions-hp"> {business.description}</div>
-                    </div>
-                    <div>
-                      <img className="home-takeout-pic" src={options} />
-                    </div>
-                    {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
-                    {/* <div className="business-captions">{business.description}</div> */}
-                  </div>
-                </div>
-              </>
-            );
-          })}
+      <div className="homepage-container">
+        <div>
+          <div className="create-business-quote">Can't Decide What To Eat? Sign Up With Zelp & Let Us Help You </div>
+          <img className="-nlg-hp-slideShowPic" alt="slideShow" src={pictures} />
         </div>
-      </div>
-      <footer className="parentFooter">
-        <div class="footer-home">
-          <img className="ourRepo" src={githubIcon} alt="ourRepo" />
-          <div className="footer-home-wrap-containers">
-            <a className="text-for-github" href="https://github.com/Justinguu/zelp">
-              {" "}
-              https://github.com/Justinguu/zelp
-            </a>
-            &nbsp; &nbsp; &nbsp;
-            <img className="linkedin" src={linkedIn} alt="linkedin"></img>
-            <a className="text-for-github" href="https://www.linkedin.com/in/jung-gu-b69b98154/">
-              {" "}
-              https://www.linkedin.com/in/jung-gu-b69b98154/
-            </a>
-            &nbsp; &nbsp; &nbsp;Copyright 2022. All Rights Reserved.
+
+        <div className="best-resturants-text"></div>
+        <div className="business-container">
+          {/* <div className="about-details">Welcome Food Lovers! Quickly Scope Out Where to Eat </div> */}
+          <div className="hp-header"> Recently Added Busineess</div>
+          <div className="nlg-business-wrapper">
+            {allbusinessesArr.sort((a, b) => b.id - a.id).slice(0, 4).map((business) => {
+              return (
+                <>
+                  <div className="oneBusinessContainer" key={business.id}>
+                    <div className="main-left-side-container">
+                      <NavLink to={`/businesses/${business.id}`}>
+                        <img
+                          className="single-image"
+                          src={business.preview_image}
+                          alt={brokenImage}
+                          onError={(e) => {
+                            e.currentTarget.src = brokenImage;
+                          }}
+                        ></img>
+                      </NavLink>
+                    </div>
+                    <div className="main-right-side-container">
+                      <NavLink to={`/businesses/${business.id}`}>
+                        <div className="business-name-caption">{business.business_name}</div>
+                      </NavLink>
+                      <div className="business-captions">
+                        {" "}
+                        {business.city}, {business.state}
+                      </div>
+                      <div className="detailsAndComment">
+                        <img className="" src={phone} alt="phone" /> {business.phone_number}
+                        {/* <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img> */}
+                        {/* <div className="business-descriptions-hp"> {business.description}</div> */}
+                      </div>
+                      <div>
+                        <img className="home-takeout-pic" src={options} />
+                      </div>
+                      {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
+                      {/* <div className="business-captions">{business.description}</div> */}
+                    </div>
+                  </div>
+                </>
+              );
+            })}
           </div>
         </div>
-      </footer>
-    </div>
-    )
-}
-if(user){
-  return (
-    <div className="homepage-container">
-      <img className="hp-slideShowPic" alt="slideShow" src={pictures} />
-      <div className="best-resturants-text"></div>
-      <div className="business-container">
-        <div className="about-details">Welcome Food Lovers! Quickly Scope Out Where to Eat </div>
-        <div className="hp-header"> Zelp To A Resturant</div>
-        <div className="business-wrapper">
-          {allbusinessesArr.map((business) => {
-            return (
-              <>
-                <div className="singleBusinessContainer" key={business.id}>
-                  <div className="main-left-side-container">
-                    <NavLink to={`/businesses/${business.id}`}>
-                      <img
-                        className="single-image"
-                        src={business.preview_image}
-                        alt={brokenImage}
-                        onError={(e) => {
-                          e.currentTarget.src = brokenImage;
-                        }}
-                      ></img>
-                    </NavLink>
-                  </div>
-                  <div className="main-right-side-container">
-                    <NavLink to={`/businesses/${business.id}`}>
-                      <div className="business-name-caption">{business.business_name}</div>
-                    </NavLink>
-                    <div className="business-captions">
-                      {" "}
-                      {business.city}, {business.state}
-                    </div>
-                    <div className="detailsAndComment">
-                      <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img>
-                      <div className="business-descriptions-hp"> {business.description}</div>
-                    </div>
-                    <div>
-                      <img className="home-takeout-pic" src={options} />
-                    </div>
-                    {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
-                    {/* <div className="business-captions">{business.description}</div> */}
-                  </div>
-                </div>
-              </>
-            );
-          })}
-        </div>
+        <footer className="parentFooter">
+          <div class="footer-home">
+            <img className="ourRepo" src={githubIcon} alt="ourRepo" />
+            <div className="footer-home-wrap-containers">
+              <a className="text-for-github" href="https://github.com/Justinguu/zelp">
+                {" "}
+                https://github.com/Justinguu/zelp
+              </a>
+              &nbsp; &nbsp; &nbsp;
+              <img className="linkedin" src={linkedIn} alt="linkedin"></img>
+              <a className="text-for-github" href="https://www.linkedin.com/in/jung-gu-b69b98154/">
+                {" "}
+                https://www.linkedin.com/in/jung-gu-b69b98154/
+              </a>
+              &nbsp; &nbsp; &nbsp;Copyright 2022. All Rights Reserved.
+            </div>
+          </div>
+        </footer>
       </div>
-      <footer className="parentFooter">
-        <div class="footer-home">
-          <img className="ourRepo" src={githubIcon} alt="ourRepo" />
-          <div className="footer-home-wrap-containers">
-            <a className="text-for-github" href="https://github.com/Justinguu/zelp">
-              {" "}
-              https://github.com/Justinguu/zelp
-            </a>
-            &nbsp; &nbsp; &nbsp;
-            <img className="linkedin" src={linkedIn} alt="linkedin"></img>
-            <a className="text-for-github" href="https://www.linkedin.com/in/jung-gu-b69b98154/">
-              {" "}
-              https://www.linkedin.com/in/jung-gu-b69b98154/
-            </a>
-            &nbsp; &nbsp; &nbsp;Copyright 2022. All Rights Reserved.
+    );
+  }
+  if (sessionUser) {
+    return (
+      <div className="homepage-container">
+        <img className="hp-slideShowPic" alt="slideShow" src={pictures} />
+        <div className="best-resturants-text"></div>
+        <div className="business-container">
+          <div className="about-details">Welcome Food Lovers! Quickly Scope Out Where to Eat </div>
+          <div className="hp-header"> Zelp To A Resturant</div>
+          <div className="business-wrapper">
+            {allbusinessesArr.map((business) => {
+              return (
+                <>
+                  <div className="singleBusinessContainer" key={business.id}>
+                    <div className="main-left-side-container">
+                      <NavLink to={`/businesses/${business.id}`}>
+                        <img
+                          className="single-image"
+                          src={business.preview_image}
+                          alt={brokenImage}
+                          onError={(e) => {
+                            e.currentTarget.src = brokenImage;
+                          }}
+                        ></img>
+                      </NavLink>
+                    </div>
+                    <div className="main-right-side-container">
+                      <NavLink to={`/businesses/${business.id}`}>
+                        <div className="business-name-caption">{business.business_name}</div>
+                      </NavLink>
+                      <div className="business-captions">
+                        {" "}
+                        {business.city}, {business.state}
+                      </div>
+                      <div className="detailsAndComment">
+                        <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img>
+                        <div className="business-descriptions-hp"> {business.description}</div>
+                      </div>
+                      <div>
+                        <img className="home-takeout-pic" src={options} />
+                      </div>
+                      {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
+                      {/* <div className="business-captions">{business.description}</div> */}
+                    </div>
+                  </div>
+                </>
+              );
+            })}
           </div>
         </div>
-      </footer>
-    </div>
-  );
-        }
+        <footer className="parentFooter">
+          <div class="footer-home">
+            <img className="ourRepo" src={githubIcon} alt="ourRepo" />
+            <div className="footer-home-wrap-containers">
+              <a className="text-for-github" href="https://github.com/Justinguu/zelp">
+                {" "}
+                https://github.com/Justinguu/zelp
+              </a>
+              &nbsp; &nbsp; &nbsp;
+              <img className="linkedin" src={linkedIn} alt="linkedin"></img>
+              <a className="text-for-github" href="https://www.linkedin.com/in/jung-gu-b69b98154/">
+                {" "}
+                https://www.linkedin.com/in/jung-gu-b69b98154/
+              </a>
+              &nbsp; &nbsp; &nbsp;Copyright 2022. All Rights Reserved.
+            </div>
+          </div>
+        </footer>
+      </div>
+    );
+  }
 };
 
 export default GetAllTheBusinesses;
