@@ -58,7 +58,7 @@ const GetAllTheBusinesses = () => {
     dispatch(getAllUsersThunk());
   }, [dispatch, allUsersArray]);
 
-    // display most recently created 
+ 
   if (!sessionUser) {
     return (
       <div className="homepage-container">
@@ -98,8 +98,7 @@ const GetAllTheBusinesses = () => {
                       </div>
                       <div className="detailsAndComment">
                         <img className="" src={phone} alt="phone" /> {business.phone_number}
-                        {/* <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img> */}
-                        {/* <div className="business-descriptions-hp"> {business.description}</div> */}
+     
                       </div>
                       <div>
                         <img className="home-takeout-pic" src={options} />
