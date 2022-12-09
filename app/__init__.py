@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.business_routes import business_routes
 from .api.review_routes import review_routes
 from .api.image_routes import image_routes
+# from .api.category_routes import category_routes
 
 
 
@@ -41,6 +42,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(business_routes, url_prefix='/api/businesses')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(image_routes, url_prefix='/api/images')
+# app.register_blueprint(category_routes, url_prefix='/api/categories')
 
 
 db.init_app(app)

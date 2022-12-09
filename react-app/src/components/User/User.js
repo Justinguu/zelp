@@ -290,7 +290,9 @@ function User() {
               <div className="user-business-images">{userImagesArr.map((image) => {
                 return (
                   <div className="user-business-images-container">
+                    
                     {/* <div className="user-image-business-num"><strong>From Business #</strong>{image.business_id}</div> */}
+                
                     <img className="user-business-image"src={image.imageUrl} alt="restraunt" ></img>
                   
                   </div>
