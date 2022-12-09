@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getOneBusinessThunk, getAllBusinessesThunk } from "../../store/business";
 import { getAllReviewsThunk } from "../../store/review";
 import { getAllImagesThunk } from "../../store/image";
-import star from "../icons/star.png";
+import Bstar from "../icons/Bstar.jpg";
 import checkmark from "../icons/checkmark.png";
 import "./User.css";
 
@@ -40,19 +40,23 @@ function User() {
 
   const reviewsss = useSelector((state) => state.review);
   const allReviewsArr = Object.values(reviewsss);
+  const flatReviewArr = allReviewsArr.flat();
 
   const allImage = useSelector((state) => state.image);
   const allImageArr = Object.values(allImage);
 
+  
   const userBusinessesArr = allBusinessesArr.filter((business) => business.owner_id == sessionUser.id);
-  const userReviewsArr = allReviewsArr.filter((review) => review.user_id === sessionUser.id);
-  const userImagesArr = allImageArr.filter((image) => image.user_id === sessionUser.id);
+  const userReviewsArr = flatReviewArr.filter((review) => review.user_id === sessionUser.id);
+ 
+  const userImagesArr = allImageArr.filter((image) => image.business_id === sessionUser.id);
 
-  console.log(userImagesArr)
 
-  // go through AllUsersArr and grab the reviews data
 
-  //
+
+
+
+
 
   useEffect(() => {
     if (!userId) {
@@ -170,19 +174,32 @@ function User() {
           <div className="display-curr-tab-info-container">
             {tab === 1 ? (
               <div className="user-profileOverTab">
+                
                 <div>
+                <div>
+                    <strong>First Name: </strong>
+                    {sessionUser.firstName}{" "}
+                  </div>
+                  <div>
+                    <strong>Last Name: </strong>
+                    {sessionUser.lastName}{" "}
+                  </div>
                   <strong>Username: </strong>
-                  {sessionUser.firstName} {sessionUser.lastName}{" "}
+                  {sessionUser.username}{" "}
                   <div>
                     <strong>Email: </strong>
                     {sessionUser.email}{" "}
+                  </div>
+                  <div>
+                  <strong>Account Created: </strong>
+                  {new Date(sessionUser.createdAt).toString().slice(4, 15)}{" "}
                   </div>
                   <div>
                     <strong>Number Of Businesses Owned:</strong> &nbsp;{numBusinesses}
                   </div>
                   {/* <div className="user-businessList">{businessList}</div> */}
                   <div>
-                    <strong>Number Of Reviews:</strong>&nbsp;{numReviews}
+                    <strong>Number Of Reviews For Business:</strong>&nbsp;{numReviews}
                   </div>{" "}
                 </div>
               </div>
@@ -202,7 +219,7 @@ function User() {
                               <img className="blue-checkmark" src={checkmark} alt="checkmark" />
                               &nbsp;<div className="claimed">Claimed</div>
                             </div>
-                            <img className="user-business-image" src={business.preview_image} alt="restraunt" />
+                            <img className="user-business-imagess" src={business.preview_image} alt="restraunt" />
                           </NavLink>
                           <div className="user-business-info">
                             <div>
@@ -241,18 +258,18 @@ function User() {
                 </div>
                 <div>
                   {userReviewsArr.map((review) => {
-                    {
-                      console.log(review);
-                    }
+                    // {
+                    //   console.log(review);
+                    // }
                     return (
                       <div className="all-reviews-container">
                         <div className="singleReviewContainer">
                           <div className="reviews-user-info">
                             <div className="review-business-name">
-                              <strong>Rating :</strong> {review.avg_rating}
+                              <strong>Rating :</strong> {review.avg_rating} <img className="Bstar" src={Bstar} alt="star" />
                             </div>
                             <div className="theUserReviews">
-                              <strong>Review</strong>: {review.review} <img className="star" src={star} alt="star" />
+                              <strong>Review</strong>: {review.review}
                             </div>
                             <div>
                               <strong>Date Created</strong>: {new Date(review.created_at).toString().slice(4, 15)}
@@ -268,7 +285,19 @@ function User() {
               ""
             )}
 
-            {tab === 4 ? <div>Photos info her</div> : ""}
+            {tab === 4 ? <div>
+              <div className="userImagesText" u><strong>My Business Images </strong></div>
+              <div className="user-business-images">{userImagesArr.map((image) => {
+                return (
+                  <div className="user-business-images-container">
+                    {/* <div className="user-image-business-num"><strong>From Business #</strong>{image.business_id}</div> */}
+                    <img className="user-business-image"src={image.imageUrl} alt="restraunt" ></img>
+                  
+                  </div>
+                )
+              })} </div>
+
+            </div> : ""}
           </div>
         </div>
       </div>

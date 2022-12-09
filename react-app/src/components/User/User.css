@@ -40,12 +40,14 @@
   height: 10rem;
   width: 10rem;
 }
-.user-business-image {
+.user-business-imagess {
   margin-top: 1rem;
-  margin-bottom: -0.5rem;
+
+  /* margin-left: .5rem; */
   height: auto;
-  width: 12rem;
+  width: 15rem;
   border-radius: 0.3rem;
+
 }
 .business-bottom-container {
   display: flex;
@@ -60,12 +62,13 @@
   margin: 1rem;
   margin-bottom: 1rem;
   width: 60rem;
-  /* height: 20rem; */
+  height: 18rem;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 .user-business-info {
-  margin-left: 15rem;
-  margin-top: -8rem;
+  margin-left: 20rem;
+  margin-top: -10rem;
+
 }
 
 /* -------------------- tabs----------------------- */
@@ -80,10 +83,9 @@
   padding-bottom: 20px;
 }
 
-.active-tab-bg{
+.active-tab-bg {
   background: lightgray;
   border-bottom: 6px solid #7eb312;
-  
 }
 
 .user-tab-buttons {
@@ -93,7 +95,6 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
-
 }
 
 .user-tab-buttons:hover {
@@ -102,7 +103,7 @@
 }
 
 /*------------------------  ProfileOverview Tab---------------------------- */
-.user-profileOverTab{
+.user-profileOverTab {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,16 +114,14 @@
   margin: 1rem;
   border: 1px solid lightgray;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  
 }
 
 /*------------------------  Review Tab---------------------------- */
-.userReviewsText{
+.userReviewsText {
   display: flex;
   justify-content: center;
-
 }
-.all-reviews-container{
+.all-reviews-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,12 +132,46 @@
   border: 1px solid lightgray;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
+.theUserReviews {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 
-
-.reviews-user-info{
+.reviews-user-info {
   margin-bottom: 1rem;
 }
 
-.star-user{
-  background-color: black;
+.Bstar {
+  height: 12.5px;
+  width: 12.5px;
+}
+
+/*------------------------  Images Tab---------------------------- */
+
+.userImagesText {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+.user-business-images {
+  display: flex;
+  flex-direction: row;
+  
+}
+.user-business-image {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  height: 12rem;
+  width: 15rem;
+
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid lightgray;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+}
+
+.user-image-business-num{
+margin-left: 1.5rem;
+margin-bottom: -.5rem;
 }

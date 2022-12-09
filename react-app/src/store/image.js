@@ -39,7 +39,7 @@ const deleteImage = (imageId) => {
 //thunks
 
 export const getAllImagesThunk = () => async (dispatch) => {
-    const response = await fetch('/api/businesses/all');
+    const response = await fetch('/api/images/all');
 
     if (response.ok) {
     const images = await response.json();
