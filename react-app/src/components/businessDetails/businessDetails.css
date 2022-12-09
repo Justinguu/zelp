@@ -22,8 +22,11 @@ div.whole-page-container {
   background: rgba(0, 0, 0, 0.2);
   text-decoration: none;
   color: white;
-  margin-left: 87rem;
+  position:fixed;
+  left: 64rem;
+  /* margin-left: 78rem; */
   margin-top: -1.5rem;
+  z-index: 1
 }
 
 .all-photos-bttn:hover {

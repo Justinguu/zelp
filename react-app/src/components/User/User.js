@@ -3,12 +3,15 @@ import { useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneBusinessThunk, getAllBusinessesThunk } from "../../store/business";
 import { getAllReviewsThunk } from "../../store/review";
+import { getAllImagesThunk } from "../../store/image";
+import star from "../icons/star.png";
 import checkmark from "../icons/checkmark.png";
 import "./User.css";
 
 function User() {
   const [user, setUser] = useState({});
-  const { userId, businessId, owner_id } = useParams();
+  const [tab, setTab] = useState(1);
+  const { userId, businessId } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,17 +26,33 @@ function User() {
     dispatch(getAllReviewsThunk());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getAllImagesThunk());
+  }, [dispatch]);
+
+  // const allUsersArr = useSelector((state) => Object.values(state.allUsers));
+  // console.log(allUsersArr)
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const business = useSelector((state) => state.business);
   const allBusinessesArr = Object.values(business);
 
-  const currBusiness = useSelector((state) => state.business[businessId]);
-  const reviews = useSelector((state) => state.review);
-  const allReviewsArr = Object.values(reviews);
+  const reviewsss = useSelector((state) => state.review);
+  const allReviewsArr = Object.values(reviewsss);
+
+  const allImage = useSelector((state) => state.image);
+  const allImageArr = Object.values(allImage);
 
   const userBusinessesArr = allBusinessesArr.filter((business) => business.owner_id == sessionUser.id);
-  const userReviewsArr = allReviewsArr.filter((review) => review.userId == userId);
+  const userReviewsArr = allReviewsArr.filter((review) => review.user_id === sessionUser.id);
+  const userImagesArr = allImageArr.filter((image) => image.user_id === sessionUser.id);
+
+  console.log(userImagesArr)
+
+  // go through AllUsersArr and grab the reviews data
+
+  //
 
   useEffect(() => {
     if (!userId) {
@@ -69,35 +88,35 @@ function User() {
     ));
   }
 
-  const ratingIncrementer = (int) => {
-    let forRatings = [];
+  // const ratingIncrementer = (int) => {
+  //   let forRatings = [];
 
-    for (let num = 0; num < int; num++) {
-      forRatings.push(<div class="fa-regular fa-star" style={{ color: "orange", margin: "0 5px" }}></div>);
-    }
+  //   for (let num = 0; num < int; num++) {
+  //     forRatings.push(<div class="fa-regular fa-star" style={{ color: "orange", margin: "0 5px" }}></div>);
+  //   }
 
-    for (let num = 0; num < 5 - int; num++) {
-      forRatings.push(<div class="fa-regular fa-star" style={{ color: "lightgrey", margin: "0 .2rem" }}></div>);
-    }
+  //   for (let num = 0; num < 5 - int; num++) {
+  //     forRatings.push(<div class="fa-regular fa-star" style={{ color: "lightgrey", margin: "0 .2rem" }}></div>);
+  //   }
 
-    return forRatings.map((ratings) => {
-      return ratings;
-    });
-  };
+  //   return forRatings.map((ratings) => {
+  //     return ratings;
+  //   });
+  // };
 
-  const thebusinessReviews = allReviewsArr.filter((review) => {
-    return review.business_id === parseInt(businessId);
-  });
+  // const thebusinessReviews = allReviewsArr.filter((review) => {
+  //   return review.business_id === parseInt(businessId);
+  // });
 
-  //  the average of thebusinessReviews avg_rating
-  const avgRating = thebusinessReviews.reduce((acc, review) => {
-    return acc + review.avg_rating;
-  }, 0);
-  const avgRatingFinal = avgRating / thebusinessReviews.length;
-  const avgRatingFinalWhole = Math.round(avgRatingFinal);
+  // //  the average of thebusinessReviews avg_rating
+  // const avgRating = thebusinessReviews.reduce((acc, review) => {
+  //   return acc + review.avg_rating;
+  // }, 0);
+  // const avgRatingFinal = avgRating / thebusinessReviews.length;
+  // const avgRatingFinalWhole = Math.round(avgRatingFinal);
 
-  // number of reviews per business
-  const numOfReviews = thebusinessReviews.length;
+  // // number of reviews per business
+  // const numOfReviews = thebusinessReviews.length;
 
   return (
     <div className="user-container">
@@ -106,58 +125,150 @@ function User() {
           <img src={user.profileImage} className="user-pfImage" alt="user profile" />
         </span>
 
-         <div><h1>Welcome {user.username} </h1></div> 
+        <div>
+          <h1>Welcome {user.username} </h1>
+        </div>
 
         <div className="user-emails"></div>
-        <div>
+        {/* <div>
           <strong>Number Of Businesses Owned:</strong> &nbsp;{numBusinesses}
-        </div>
+        </div> */}
         {/* <div className="user-businessList">{businessList}</div> */}
 
-        <div>
+        {/* <div>
           <strong>Number Of Reviews:</strong>&nbsp;{numReviews}
-        </div>
+        </div> */}
         <div className="business-bottom-container">
-          <div className="single-rest-container-left">
-            {userBusinessesArr.map((business) => {
-              return (
-                <div className="all-restraunts-container" key={business.id}>
-                  <div className="">
-                    <div className="singleUserBusinessContainer">
-                      <NavLink to={`/businesses/${business.id}`}>
-                      <div className="currSpot-name">{business.business_name}</div>{" "}
-                      <div className="price-claim">
-                        <img className="blue-checkmark" src={checkmark} alt="checkmark" />
-                        &nbsp;<div className="claimed">Claimed</div>
-                      </div>
-                        <img className="user-business-image" src={business.preview_image} alt="restraunt" />
-                      </NavLink>
-                      <div className="user-business-info">
-                        <div>
-                          {" "}
-                          <strong>Business Email =</strong> {user.email}
-                        </div>
-                        <div>
-                          <strong>Business Address = </strong> {business.address} {business.city}, {business.state},
-                          {business.country} {business.zip_code}
-                        </div>
-                        <div>
-                          <strong>Business Price =</strong> {business.price}{" "}
-                        </div>
-                        <div>
-                          <strong>Business Category = </strong>
-                          {business.category}
-                        </div>
-                        <div>
-                          <strong>Business Description = </strong>
-                          {business.description}
+          <div className="user-profile-tabs-container">
+            <div
+              className={tab === 1 ? "user-tab-buttons active-tab-bg" : "user-tab-buttons"}
+              onClick={() => setTab(1)}
+            >
+              Profile Overview
+            </div>
+            <div
+              className={tab === 2 ? "user-tab-buttons active-tab-bg" : "user-tab-buttons"}
+              onClick={() => setTab(2)}
+            >
+              My Businesses
+            </div>
+
+            <div
+              className={tab === 3 ? "user-tab-buttons active-tab-bg" : "user-tab-buttons"}
+              onClick={() => setTab(3)}
+            >
+              My Reviews
+            </div>
+
+            <div
+              className={tab === 4 ? "user-tab-buttons active-tab-bg" : "user-tab-buttons"}
+              onClick={() => setTab(4)}
+            >
+              My Photos
+            </div>
+          </div>
+          <div className="display-curr-tab-info-container">
+            {tab === 1 ? (
+              <div className="user-profileOverTab">
+                <div>
+                  <strong>Username: </strong>
+                  {sessionUser.firstName} {sessionUser.lastName}{" "}
+                  <div>
+                    <strong>Email: </strong>
+                    {sessionUser.email}{" "}
+                  </div>
+                  <div>
+                    <strong>Number Of Businesses Owned:</strong> &nbsp;{numBusinesses}
+                  </div>
+                  {/* <div className="user-businessList">{businessList}</div> */}
+                  <div>
+                    <strong>Number Of Reviews:</strong>&nbsp;{numReviews}
+                  </div>{" "}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+            {tab === 2 ? (
+              <div className="user-business-tab">
+                {userBusinessesArr.map((business) => {
+                  return (
+                    <div className="all-restraunts-container" key={business.id}>
+                      <div className="">
+                        <div className="singleUserBusinessContainer">
+                          <NavLink to={`/businesses/${business.id}`}>
+                            <div className="currSpot-name">{business.business_name}</div>{" "}
+                            <div className="price-claim">
+                              <img className="blue-checkmark" src={checkmark} alt="checkmark" />
+                              &nbsp;<div className="claimed">Claimed</div>
+                            </div>
+                            <img className="user-business-image" src={business.preview_image} alt="restraunt" />
+                          </NavLink>
+                          <div className="user-business-info">
+                            <div>
+                              {" "}
+                              <strong>Business Email =</strong> {user.email}
+                            </div>
+                            <div>
+                              <strong>Business Address = </strong> {business.address} {business.city}, {business.state},
+                              {business.country} {business.zip_code}
+                            </div>
+                            <div>
+                              <strong>Business Price =</strong> {business.price}{" "}
+                            </div>
+                            <div>
+                              <strong>Business Category = </strong>
+                              {business.category}
+                            </div>
+                            <div>
+                              <strong>Business Description = </strong>
+                              {business.description}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  );
+                })}
+              </div>
+            ) : (
+              ""
+            )}
+            {tab === 3 ? (
+              <div key={reviewsss.id}>
+                <div className="userReviewsText">
+                  <strong>Number Of Reviews:</strong>&nbsp;{numReviews}
                 </div>
-              );
-            })}
+                <div>
+                  {userReviewsArr.map((review) => {
+                    {
+                      console.log(review);
+                    }
+                    return (
+                      <div className="all-reviews-container">
+                        <div className="singleReviewContainer">
+                          <div className="reviews-user-info">
+                            <div className="review-business-name">
+                              <strong>Rating :</strong> {review.avg_rating}
+                            </div>
+                            <div className="theUserReviews">
+                              <strong>Review</strong>: {review.review} <img className="star" src={star} alt="star" />
+                            </div>
+                            <div>
+                              <strong>Date Created</strong>: {new Date(review.created_at).toString().slice(4, 15)}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>{" "}
+              </div>
+            ) : (
+              ""
+            )}
+
+            {tab === 4 ? <div>Photos info her</div> : ""}
           </div>
         </div>
       </div>
