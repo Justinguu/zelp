@@ -6,7 +6,7 @@ from app.models import db, Business, Review,User,Image
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
 from app.forms.business_image_form import BusinessImageForm
-from app.api.aws_routes import (upload_file_to_s3,allowed_file, get_unique_filename)
+# from app.api.aws_routes import (upload_file_to_s3,allowed_file, get_unique_filename)
 
 
 business_routes = Blueprint('businesses', __name__)
