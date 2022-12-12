@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, useParams, Redirect } from "react-router-dom";
 import { getAllBusinessesThunk } from "../../store/business";
 import { getAllUsersThunk } from "../../store/AllUsers";
+import GetCategories from "../categories/GetCategories";
 import img1 from "../icons/image1.avif";
 import img2 from "../icons/image2.avif";
 import img3 from "../icons/image3.avif";
@@ -58,7 +59,6 @@ const GetAllTheBusinesses = () => {
     dispatch(getAllUsersThunk());
   }, [dispatch, allUsersArray]);
 
- 
   if (!sessionUser) {
     return (
       <div className="homepage-container">
@@ -72,45 +72,48 @@ const GetAllTheBusinesses = () => {
           {/* <div className="about-details">Welcome Food Lovers! Quickly Scope Out Where to Eat </div> */}
           <div className="hp-header"> Recently Added Busineess</div>
           <div className="nlg-business-wrapper">
-            {allbusinessesArr.sort((a, b) => b.id - a.id).slice(0, 4).map((business) => {
-              return (
-                <>
-                  <div className="oneBusinessContainer" key={business.id}>
-                    <div className="main-left-side-container">
-                      <NavLink to={`/businesses/${business.id}`}>
-                        <img
-                          className="single-image"
-                          src={business.preview_image}
-                          alt={brokenImage}
-                          onError={(e) => {
-                            e.currentTarget.src = brokenImage;
-                          }}
-                        ></img>
-                      </NavLink>
+            {allbusinessesArr
+              .sort((a, b) => b.id - a.id)
+              .slice(0, 4)
+              .map((business) => {
+                return (
+                  <>
+                    <div className="oneBusinessContainer" key={business.id}>
+                      <div className="main-left-side-container">
+                        <NavLink to={`/businesses/${business.id}`}>
+                          <img
+                            className="single-image"
+                            src={business.preview_image}
+                            alt={brokenImage}
+                            onError={(e) => {
+                              e.currentTarget.src = brokenImage;
+                            }}
+                          ></img>
+                        </NavLink>
+                      </div>
+                      <div className="main-right-side-container">
+                        <NavLink to={`/businesses/${business.id}`}>
+                          <div className="business-name-caption">{business.business_name}</div>
+                        </NavLink>
+                        <div className="business-captions">
+                          {" "}
+                          {business.city}, {business.state}
+                        </div>
+                        <div className="detailsAndComment">
+                          <img className="" src={phone} alt="phone" /> {business.phone_number}
+                        </div>
+                        <div>
+                          <img className="home-takeout-pic" src={options} />
+                        </div>
+                        {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
+                        {/* <div className="business-captions">{business.description}</div> */}
+                      </div>
                     </div>
-                    <div className="main-right-side-container">
-                      <NavLink to={`/businesses/${business.id}`}>
-                        <div className="business-name-caption">{business.business_name}</div>
-                      </NavLink>
-                      <div className="business-captions">
-                        {" "}
-                        {business.city}, {business.state}
-                      </div>
-                      <div className="detailsAndComment">
-                        <img className="" src={phone} alt="phone" /> {business.phone_number}
-     
-                      </div>
-                      <div>
-                        <img className="home-takeout-pic" src={options} />
-                      </div>
-                      {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
-                      {/* <div className="business-captions">{business.description}</div> */}
-                    </div>
-                  </div>
-                </>
-              );
-            })}
+                  </>
+                );
+              })}
           </div>
+          <GetCategories />
         </div>
         <footer className="parentFooter">
           <div class="footer-home">
