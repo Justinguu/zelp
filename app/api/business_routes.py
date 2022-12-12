@@ -120,24 +120,24 @@ def get_all_images(businessId):
     return {"images": [image.to_dict() for image in images]}
 
 # Post a new image to a business by businessId if they are the owner_id
-# @business_routes.route('/<int:businessId>/images/new', methods=['POST'])
-# @login_required
-# def add_business_image(businessId):
-#     form = BusinessImageForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         image = Image(
-#             owner_id = form.data['owner_id'],
-#             business_id = form.data['business_id'],
-#             imageUrl=form.data['imageUrl'],
-#             description=form.data['description'],
-#         )
+@business_routes.route('/<int:businessId>/images/new', methods=['POST'])
+@login_required
+def add_business_image(businessId):
+    form = BusinessImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        image = Image(
+            owner_id = form.data['owner_id'],
+            business_id = form.data['business_id'],
+            imageUrl=form.data['imageUrl'],
+            description=form.data['description'],
+        )
 
-#         db.session.add(image)
-#         db.session.commit()
-#         return(image.to_dict())
-#     if form.errors:
-#         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        db.session.add(image)
+        db.session.commit()
+        return(image.to_dict())
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
     # from a businessId delete one image by id
 @business_routes.route('/<int:businessId>/images/<int:id>/delete', methods=['DELETE'])
@@ -155,45 +155,45 @@ def delete_image(businessId,id):
 
 # ----------------------aws Routes----------------------
 
-@business_routes.route('/images/new', methods=['POST'])
-@login_required
-def upload_image():
-    if "imageUrl" not in request.files:
-        return {"errors": "image required"}, 400
-        # return request.files, 400
+# @business_routes.route('/images/new', methods=['POST'])
+# @login_required
+# def upload_image():
+#     if "imageUrl" not in request.files:
+#         return {"errors": "image required"}, 400
+#         # return request.files, 400
 
-    imageUrl = request.files["imageUrl"]
+#     imageUrl = request.files["imageUrl"]
 
-    if not allowed_file(imageUrl.filename):
-        return {"errors": "file type not permitted"}, 400
+#     if not allowed_file(imageUrl.filename):
+#         return {"errors": "file type not permitted"}, 400
     
-    imageUrl.filename = get_unique_filename(imageUrl.filename)
+#     imageUrl.filename = get_unique_filename(imageUrl.filename)
 
-    upload = upload_file_to_s3(imageUrl)
+#     upload = upload_file_to_s3(imageUrl)
 
-    if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
-        return upload, 400
+#     if "url" not in upload:
+#         # if the dictionary doesn't have a url key
+#         # it means that there was an error when we tried to upload
+#         # so we send back that error message
+#         return upload, 400
 
-    imageUrl_aws = upload["url"]
-    # flask_login allows us to get the current user from the request
-    form = BusinessImageForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        image = Image(
-            owner_id = form.data['owner_id'],
-            business_id = form.data['business_id'],
-            imageUrl=imageUrl_aws,
-            description=form.data['description'],
-        )
+#     imageUrl_aws = upload["url"]
+#     # flask_login allows us to get the current user from the request
+#     form = BusinessImageForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         image = Image(
+#             owner_id = form.data['owner_id'],
+#             business_id = form.data['business_id'],
+#             imageUrl=imageUrl_aws,
+#             description=form.data['description'],
+#         )
 
-        db.session.add(image)
-        db.session.commit()
-        return(image.to_dict())
-    if form.errors:
-         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+#         db.session.add(image)
+#         db.session.commit()
+#         return(image.to_dict())
+#     if form.errors:
+#          return {'errors': validation_errors_to_error_messages(form.errors)}, 401
    
 
 
