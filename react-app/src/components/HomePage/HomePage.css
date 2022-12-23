@@ -6,8 +6,8 @@
   height: 100%;
 }
 .hp-slideShowPic {
-  height: 50rem;
-  max-height: 500px;
+  height: 25rem;
+  /* max-height: 400px; */
   width: 100%;
   object-fit: cover;
 }
@@ -16,12 +16,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
+  /* padding: 3rem; */
   font-size: 2.5rem;
   font-weight: bold;
   color: orange;
+  margin-bottom: 1rem;
 }
+.hp-header-ngl{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: orange;
+  margin-bottom: 2rem;
+  margin-top: 2.5rem;
+}
 .business-container {
   display: flex;
   align-items: center;
@@ -37,20 +48,21 @@
   display:flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  border: 1px solid lightgray;
-  margin-top: 2rem;
+  /* box-sizing: border-box;
+  border: 1px solid lightgray; */
+  /* margin-top: 2rem; */
 }
 
 
 .business-wrapper {
   display: flex;
-  flex-wrap: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* border: solid .2rem blue; */
-  /* padding-top: 10rem; */
-  width: 45rem;
+  /* flex-wrap: flex; */
+  flex-direction: row;
+  
+  width: 90rem;
+  height: 100%;
+  margin-bottom: 5rem;
+  margin-top: -4rem;
 }
 
 .singleBusinessContainer {
@@ -111,6 +123,196 @@
   padding-top: .5rem;
   margin-bottom:-.7rem;
 }
+.detailsAndHeader{
+  display:flex;
+  flex-direction: column;
+  background: linear-gradient(90deg, rgba(2,0,36,0.6629026610644257) 75%, rgba(0,0,0,0.18391106442577032) 100%);
+  padding: 1.5rem;
+  position: fixed;
+  bottom: 26.3rem;
+  width: 96%;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* ----------------------------------------------CATEGORY & PRICE FILTERS-------------------------------------------------------- */
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.filter-header{
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 10px;
+}
+
+.price-filter-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  width: 17rem;
+  border-bottom: 1px solid lightgray;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.price-filter-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 10rem;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 0;
+}
+
+.filter-price-buttons-first {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-right: 1px solid gray;
+}
+
+.filter-price-buttons-mid {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-right: 1px solid gray;
+}
+
+.filter-price-buttons-last {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.filter-price-buttons-first:hover {
+  background: lightgray;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.filter-price-buttons-mid:hover {
+  background: lightgray;
+  color: white;
+  cursor: pointer;
+}
+
+.filter-price-buttons-last:hover {
+  background: lightgray;
+  color: white;
+  cursor: pointer;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.price-active-filter-bg-first {
+  background: orange;
+  color: white;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.price-active-filter-bg-mid {
+  background: orange;
+  color: white;
+}
+
+
+.price-active-filter-bg-last {
+  background: orange;
+  color: white;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.type-filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 16rem;
+  height: 15rem;
+  border-bottom: 1px solid lightgray;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+}
+
+.clear-filter-buttons-inactive {
+  display: flex;
+  justify-content: right;
+  color: lightgray;
+  pointer-events: none;
+}
+
+.clear-filter-buttons-active {
+  display: flex;
+  justify-content: right;
+  color: orange;
+}
+
+.clear-filter-buttons-active:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.type-filter-option-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 18rem;
+}
+
+.filter-type-buttons {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  background: white;
+}
+
+.filter-type-buttons:hover {
+  background: lightgray;
+  cursor: pointer;
+}
+
+.type-active-filter-bg {
+  background: orange;
+  border: 1px solid orange;
+}
+
+.fa-check{
+  color: white;
+}
+
+.restraunt-filter-no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 40rem;
+  border-radius: 5px;
+}
+
+.logo-PNF{
+  height: 8rem;
+  width: 12rem;
+}
 
 
 
@@ -120,16 +322,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
+/* -----------------------------------------------------FOOTER------------------------------------------------------------- */
 
 .footer-home {
     display: flex;
@@ -188,6 +381,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 5rem;
 }
 
 .oneBusinessContainer{
@@ -202,15 +396,15 @@
 }
 
 .-nlg-hp-slideShowPic{
-  height: 50rem;
-  max-height: 500px;
+  height: 24.5rem;
+  /* max-height: 500px; */
   width: 100%;
   object-fit: cover;
   z-index: 1;
 }
 
 .create-business-quote{
-  z-index: 3;
+  /* z-index: 3; */
   display:flex;
   justify-content: center;
   align-items: center;
@@ -219,6 +413,8 @@
   font-weight: bold;
   color: orange;
   height: 3rem;
+  border-top: 1px solid black;
+  background: linear-gradient(90deg, rgba(2,0,36,0.6629026610644257) 75%, rgba(0,0,0,0.18391106442577032) 100%);
   /* background-color: 	#fffdd0 */
 
 }
