@@ -4,7 +4,7 @@ import { useHistory, NavLink, useParams, Redirect } from "react-router-dom";
 import { getAllBusinessesThunk } from "../../store/business";
 import { getAllUsersThunk } from "../../store/AllUsers";
 import GetCategories from "../categories/GetCategories";
-import zelpLogo from "../icons/klickr-logo-title.png"
+import zelpLogo from "../icons/klickr-logo-title.png";
 import img1 from "../icons/image1.avif";
 import img2 from "../icons/image2.avif";
 import img3 from "../icons/image3.avif";
@@ -162,10 +162,10 @@ const GetAllTheBusinesses = () => {
         <img className="hp-slideShowPic" alt="slideShow" src={pictures} />
         <div className="business-container">
           <div className="detailsAndHeader">
-          <div className="hp-header"> Zelp To A Resturant</div>
-              <div className="about-details">Welcome Food Lovers! Quickly Scope Out Where to Eat </div>
+            <div className="hp-header"> Zelp To A Resturant</div>
+            <div className="about-details">Welcome Food Lovers! Quickly Scope Out Where to Eat </div>
           </div>
-        
+
           <div className="business-wrapper">
             <div className="filter-container">
               <div className="filter-header">Filters</div>
@@ -344,57 +344,59 @@ const GetAllTheBusinesses = () => {
                 </div>
               </div>
             </div>
-            <div>
-              {priceBusinessesArr.length === 0 ? 
-              <div className="restraunts-container">
-              <div className="restraunts-wrapper">
-                  <div className="login-container-PNF">
+            <div className="business-results-containers">
+              {priceBusinessesArr.length === 0 ? (
+                <div className="restraunts-container">
+                  <div className="restraunts-wrapper">
+                    <div className="login-container-PNF">
                       <div className="restraunt-filter-no-data-container">
-                          <img className="logo-PNF" src={zelpLogo}></img>
-                          <div className="title-PNF">No Results Found</div>
-                      </div>
-                  </div>
-              </div>
-          </div> :
-              priceBusinessesArr.map((business) => {
-                return (
-                  <>
-                    <div className="singleBusinessContainer" key={business.id}>
-                      <div className="main-left-side-container">
-                        <NavLink to={`/businesses/${business.id}`}>
-                          <img
-                            className="single-image"
-                            src={business.preview_image}
-                            alt={brokenImage}
-                            onError={(e) => {
-                              e.currentTarget.src = brokenImage;
-                            }}
-                          ></img>
-                        </NavLink>
-                      </div>
-                      <div className="main-right-side-container">
-                        <NavLink to={`/businesses/${business.id}`}>
-                          <div className="business-name-caption">{business.business_name}</div>
-                        </NavLink>
-                        <div className="business-captions">
-                          {" "}
-                          {business.city}, {business.state}
-                        </div>
-                        <div className="business-captions">Category: {business.category}</div>
-                        <div className="detailsAndComment">
-                          <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img>
-                          <div className="business-descriptions-hp"> {business.description}</div>
-                        </div>
-                        <div>
-                          <img className="home-takeout-pic" src={options} />
-                        </div>
-                        {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
-                        {/* <div className="business-captions">{business.description}</div> */}
+                        <img className="logo-PNF" src={zelpLogo}></img>
+                        <div className="title-PNF">No Results Found</div>
                       </div>
                     </div>
-                  </>
-                );
-              })}
+                  </div>
+                </div>
+              ) : (
+                priceBusinessesArr.map((business) => {
+                  return (
+                    <>
+                      <div className="singleBusinessContainer" key={business.id}>
+                        <div className="main-left-side-container">
+                          <NavLink to={`/businesses/${business.id}`}>
+                            <img
+                              className="single-image"
+                              src={business.preview_image}
+                              alt={brokenImage}
+                              onError={(e) => {
+                                e.currentTarget.src = brokenImage;
+                              }}
+                            ></img>
+                          </NavLink>
+                        </div>
+                        <div className="main-right-side-container">
+                          <NavLink to={`/businesses/${business.id}`}>
+                            <div className="business-name-caption">{business.business_name}</div>
+                          </NavLink>
+                          <div className="business-captions">
+                            {" "}
+                            {business.city}, {business.state}
+                          </div>
+                          <div className="business-captions">Category: {business.category}</div>
+                          <div className="detailsAndComment">
+                            <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img>
+                            <div className="business-descriptions-hp"> {business.description}</div>
+                          </div>
+                          <div>
+                            <img className="home-takeout-pic" src={options} />
+                          </div>
+                          {/* <div className="business-captions">Average Cost = ${business.price}.00</div> */}
+                          {/* <div className="business-captions">{business.description}</div> */}
+                        </div>
+                      </div>
+                    </>
+                  );
+                })
+              )}
             </div>
           </div>
         </div>

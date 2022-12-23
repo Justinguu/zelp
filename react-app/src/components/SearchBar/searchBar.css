@@ -29,7 +29,7 @@ color: rgb(0, 0, 0);
 
 .MagnifyingGlassSearchBarContainer {
     border: 1px solid;
-    background-color: rgb(236, 9, 9);
+    background-color: orange;
     border-radius: 0px 10px 10px 0px;
 
     display: flex;

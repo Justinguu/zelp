@@ -64,7 +64,9 @@
   margin-bottom: 5rem;
   margin-top: -4rem;
 }
-
+.business-results-containers{
+  margin-top: 5rem;
+}
 .singleBusinessContainer {
   display: flex;
   flex-wrap: wrap;
@@ -128,8 +130,8 @@
   flex-direction: column;
   background: linear-gradient(90deg, rgba(2,0,36,0.6629026610644257) 75%, rgba(0,0,0,0.18391106442577032) 100%);
   padding: 1.5rem;
-  position: fixed;
-  bottom: 26.3rem;
+  position: absolute;
+  bottom: 37.4rem;
   width: 96%;
   height: 4rem;
   align-items: center;
