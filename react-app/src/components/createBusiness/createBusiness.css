@@ -215,7 +215,7 @@
   color: rgb(132,132,132)
 }
 .business-submit-button {
-  background-color: red;
+  background-color: orange;
   color: white;
   border-radius: 0.4em;
   height: 2.2rem;
@@ -227,7 +227,7 @@
   cursor: pointer;
 }
 .business-submit-button:disabled {
-  background-color: red;
+  background-color: orange;
   color: black;
   border-radius: 0.4em;
   height: 2.2rem;

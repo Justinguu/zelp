@@ -35,6 +35,8 @@ const BusinessDetails = () => {
   const user = useSelector((state) => state.allUsers);
   const allUsersArr = Object.values(user);
 
+  const sessionUser = useSelector((state) => state.session.user)
+
   const currBusiness = useSelector((state) => state.business[businessId]);
 
   const allReviews = useSelector((state) => state.review);
@@ -241,7 +243,7 @@ const BusinessDetails = () => {
                 </div>
               </div>
               <div className="business-details-right">
-                {currBusiness.owner_id === user.id && (
+                {currBusiness.owner_id === sessionUser.id && (
                   <div className="details-container">
                     <button className="Editbiz-button" onClick={() => setShowUpdate(true)}>
                       Edit Business

@@ -127,7 +127,7 @@ img.img-currSpots {
   font-weight: 600;
   font-size: 15px;
   color: #fff;
-  background-color: #e00707;
+  background-color: orange;
   border: 1px solid #d3d3d3;
   border-radius: 5px;
   width: 175px;
@@ -166,7 +166,7 @@ img.img-currSpots {
 }
 
 .Editbiz-button {
-  background-color: #e00707;
+  background-color: orange;
   color: white;
   border: none;
   height: 2.6em;
@@ -180,7 +180,7 @@ img.img-currSpots {
 }
 
 .Deletebiz-button {
-  background-color: #e00707;
+  background-color: orange;
   color: white;
   border: none;
   height: 2.6em;

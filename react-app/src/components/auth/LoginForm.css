@@ -35,7 +35,7 @@
 }
 
 .login-font {
-    color: rgb(211,34,34);
+    color: orange;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -67,7 +67,7 @@
     height: 2.2rem;
     width: 17.0rem;
     color: white;
-    background-color: #dc3434;
+    background-color: orange;
     margin-top: 3px;
     margin-bottom: 14px;
     border-radius: .3rem;
@@ -80,7 +80,7 @@
     height: 2.2rem;
     width: 17.0rem;
     color: white;
-    background-color: #dc3434;
+    background-color: orange;
     margin-top: 3px;
     margin-bottom: 8px;
    
