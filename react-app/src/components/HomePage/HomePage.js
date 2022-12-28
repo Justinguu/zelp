@@ -17,7 +17,7 @@ import linkedIn from "../icons/linkedIn.png";
 import brokenImage from "../icons/brokenImage.png";
 import phone from "../icons/phone.png";
 import "./HomePage.css";
-
+//
 const GetAllTheBusinesses = () => {
   const history = useHistory();
   const dispatch = useDispatch();
