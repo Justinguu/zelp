@@ -17,52 +17,56 @@ import linkedIn from "../icons/linkedIn.png";
 import brokenImage from "../icons/brokenImage.png";
 import phone from "../icons/phone.png";
 import "./HomePage.css";
+import ReactGA from 'react-ga';
+
 //////
 const GetAllTheBusinesses = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { businessId } = useParams();
   const [submitted, setSubmitted] = useState(false);
-
+  
   const business = useSelector((state) => state.business);
   const allBusinessesArr = Object.values(business);
   const allusers = useSelector((state) => state.allUsers);
   const sessionUser = useSelector((state) => state.session.user);
-
+  
   if (!sessionUser) {
     <Redirect to="/login"></Redirect>;
   }
-
+  
   // let allbusinessesArray;
   let allUsersArray;
-
+  
   const slideShowPic = [img1, img2, img3, img4, img5];
   const [pictures, setPictures] = useState(slideShowPic[0]);
   const [counter, setCounter] = useState(0);
-
+  
   const [filterPrice, setFilterPrice] = useState("allResultsPrice");
   const [filterType, setFilterType] = useState("allResultsType");
-
+  
   let typeBusinessesArr;
-
+  
   let priceBusinessesArr;
-
+  
   if (filterType !== "allResultsType") {
     typeBusinessesArr = allBusinessesArr.filter((business) => business.category == filterType);
   } else {
     typeBusinessesArr = allBusinessesArr;
   }
-
+  
   if (filterPrice !== "allResultsPrice") {
     priceBusinessesArr = typeBusinessesArr?.filter((business) => business.price == filterPrice);
   } else {
     priceBusinessesArr = typeBusinessesArr;
   }
-
+  ReactGA.initialize('G-PX5FZX4KCL');
+  ReactGA.pageview(window.location.pathname + window.location.search);
+  
   useEffect(() => {
     setPictures(slideShowPic[counter]);
   }, [counter]);
-
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setCounter((counter) => (counter === 4 ? 0 : counter + 1));
@@ -81,7 +85,9 @@ const GetAllTheBusinesses = () => {
 
   if (!sessionUser) {
     return (
+      
       <div className="homepage-container">
+        
         <div>
           {/* <div className="create-business-quote">Can't Decide What To Eat? Sign Up With Zelp & Let Us Help You </div> */}
           <img className="-nlg-hp-slideShowPic" alt="slideShow" src={pictures} />
