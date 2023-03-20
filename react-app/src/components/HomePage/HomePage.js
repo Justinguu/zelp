@@ -17,7 +17,7 @@ import linkedIn from "../icons/linkedIn.png";
 import brokenImage from "../icons/brokenImage.png";
 import phone from "../icons/phone.png";
 import "./HomePage.css";
-import ReactGA from 'react-ga';
+
 
 //////
 const GetAllTheBusinesses = () => {
@@ -60,8 +60,7 @@ const GetAllTheBusinesses = () => {
   } else {
     priceBusinessesArr = typeBusinessesArr;
   }
-  ReactGA.initialize('G-PX5FZX4KCL');
-  ReactGA.pageview(window.location.pathname + window.location.search);
+
   
   useEffect(() => {
     setPictures(slideShowPic[counter]);
