@@ -9,7 +9,7 @@ function BusinessEditForm({ setShowUpdate }) {
 
   const { businessId } = useParams();
   const prefilledBizInfo = useSelector((state) => state.business[businessId]);
-
+//
   const [businessName, setBusinessName] = useState(
     prefilledBizInfo.business_name
   );
