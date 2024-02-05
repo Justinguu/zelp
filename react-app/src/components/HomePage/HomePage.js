@@ -88,7 +88,7 @@ const GetAllTheBusinesses = () => {
       <div className="homepage-container">
         
         <div>
-          {/* <div className="create-business-quote">Can't Decide What To Eat? Sign Up With Zelp & Let Us Help You </div> */}
+        
           <img className="-nlg-hp-slideShowPic" alt="slideShow" src={pictures} />
         </div>
 

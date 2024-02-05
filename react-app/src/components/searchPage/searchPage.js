@@ -98,8 +98,7 @@ export default function SearchPage() {
                                <div className="detailsAndComment">
                                 <img className="descriptionAndComment" src={commentbox} alt="commentbox"></img>
                                <div className="business-descriptions-hp"> {business.description}</div>
-                                </div>
-                                
+                                </div>   
                     </div>
                   </div>
                   
